@@ -54,7 +54,7 @@ public class SessionControlador implements Serializable {
         this.user = user;
     }
 
-    /* boolean isAdministrator(){
+    /*public boolean isAdministrator(){
         for (Rol r : user.getRol()){
             if(r.getId() == 1){
                 return true;
