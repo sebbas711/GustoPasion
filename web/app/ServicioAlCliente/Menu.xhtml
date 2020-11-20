@@ -18,7 +18,7 @@
                             <a class="nav-link" href="Pagina1.xhtml">Inicio</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="QuienesSomos1.xhtml">Quienes Somos</a>
+                            <a class="nav-link" href="../ServicioAlCliente/QuienesSomos1.xhtml">Quienes Somos</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Menú</a>
@@ -36,17 +36,32 @@
                             </div>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="PQRS1.xhtml">PQRS</a>
+                            <a class="nav-link" href="../Usuario/InicioSesion.xhtml">PQRS</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="Contactenos.xhtml">Contáctenos</a>
+                            <a class="nav-link" href="../ServicioAlCliente/Contactenos.xhtml">Contáctenos</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="InicioSesion.xhtml">Haz tu Pedidos Online</a>
+                        <li class="nav-item dropdown">
+                            <i class="fas fa-cart-arrow-down nav-link dropdown-toggle" height="50px" width="50px" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: 40px;"></i>
+                            <div id="carrito" class="dropdown-menu" aria-labelledby="navbarCollapse">
+                                <table id="lista-carrito" class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Imagen</th>
+                                            <th>Nombre</th>
+                                            <th>Precio</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                                <a href="#" id="vaciar-carrito" class="btn btn-danger btn-block">Vaciar Carrito</a>
+                                <a href="compraSinLogin.xhtml" id="procesar-pedido" class="btn btn-success btn-block">Realizar Pedido</a>
+                            </div>
                         </li>
                         <br/>  
-                        <li style="margin-top:-20px; margin-right:20px;"><a class="reg" href="Registro.xhtml" style="color: yellow">Registrarse</a></li><br/>
-                        <li style="margin-top:-20px"><a href="InicioSesion.xhtml" style="color: yellow" >Iniciar Sesión</a></li>
+                        <li style="margin-top:-20px; margin-right:20px;"><a class="reg" href="../Usuario/Registro.xhtml" style="color: yellow">Registrarse</a></li><br/>
+                        <li style="margin-top:-20px"><a href="../Usuario/InicioSesion.xhtml" style="color: yellow" >Iniciar Sesión</a></li>
                     </ul>
                 </div>
             </div>
@@ -68,39 +83,40 @@
                         <a href="#Pizzas" style="text-decoration: none; color: black;"> <h4 class="my-0 font-weight-bold" style="font-size: 12px;">PIZZAS</h4>
                             <div class="card-body">
                                 <img src="#{request.contextPath}/resource/img/Pizzas/PizzaEspecial.jpg" class="card-img-top" style="height: 100px;"/>
-                            </div></a>
+                            </div></a> 
                     </div>
                 </div>
                 <div class="card mb-4 shadow-sm main">
                     <div class="card-header">
                         <a href="#Raviolis" style="text-decoration: none; color: black;"> <h4 class="my-0 font-weight-bold"  style="font-size: 12px;">RAVIOLIS</h4>
-
                             <div class="card-body">
                                 <img src="#{request.contextPath}/resource/img/Raviolis/RavioliEspecial.jpg" class="card-img-top" style="height: 100px;"/>
-                            </div></a>
+                            </div></a> 
                     </div>
                 </div>
                 <div class="card mb-4 shadow-sm main">
                     <div class="card-header">
                         <a href="#Panzerotti" style="text-decoration: none; color: black;"> <h4 class="my-0 font-weight-bold" style="font-size: 12px;">PANZEROTTI</h4>
-
                             <div class="card-body">
                                 <img src="#{request.contextPath}/resource/img/Panzerotti/PanzerottiEspecial.jpg" class="card-img-top" style="height: 100px;"/> 
-                            </div></a></div>
+                            </div></a>
+                    </div>
                 </div>
                 <div class="card mb-4 shadow-sm main">
                     <div class="card-header">
                         <a href="#Spaguetti" style="text-decoration: none; color: black;"> <h4 class="my-0 font-weight-bold" style="font-size: 12px;">SPAGUETTI</h4>
                             <div class="card-body">
-                                <img src="#{request.contextPath}/resource/img/Spaguetti/PastaEspecial.jpg" class="card-img-top" style="height: 100px;"/>
-                            </div></a></div>
+                                <img src="#{request.contextPath}/resource/img/Spaguetti/PastaEspecial.jpg" class="card-img-top" style="height: 100px;"/> 
+                            </div></a>
+                    </div>
                 </div>
                 <div class="card mb-4 shadow-sm main">
                     <div class="card-header">
                         <a href="#Lasagna" style="text-decoration: none; color: black;"> <h4 class="my-0 font-weight-bold" style="font-size: 12px;">LASAGNAS</h4>
                             <div class="card-body">
-                                <img src="#{request.contextPath}/resource/img/Lasagna/LasagnaEspecial.jpg" class="card-img-top" style="height: 100px;"/> 
-                            </div></a></div>
+                                <img src="#{request.contextPath}/resource/img/Lasagna/LasagnaEspecial.jpg" class="card-img-top" style="height: 100px;"/>
+                            </div></a> 
+                    </div>
                 </div>
             </div>
         </div>  
@@ -109,37 +125,46 @@
                 <div class="card mb-4 shadow-sm main">
                     <div class="card-header">
                         <a href="#Carnes" style="text-decoration: none; color: black;"> <h4 class="my-0 font-weight-bold" style="font-size: 12px;">CARNES</h4>
+
                             <div class="card-body">
                                 <img src="#{request.contextPath}/resource/img/Carnes/Carne.jpg" class="card-img-top" style="height: 100px;"/>
-                            </div></a></div>
+                            </div></a> 
+                    </div>
                 </div>
                 <div class="card mb-4 shadow-sm main">
                     <div class="card-header">
                         <a href="#Hamburguesa" style="text-decoration: none; color: black;"> <h4 class="my-0 font-weight-bold" style="font-size: 12px;">HAMBURGUESAS</h4>
                             <div class="card-body">
                                 <img src="#{request.contextPath}/resource/img/Hamburguesa/Hamburguesa.jpg" class="card-img-top" style="height: 100px;"/>
-                            </div></a></div>
+                            </div></a> 
+                    </div>
                 </div>
                 <div class="card mb-4 shadow-sm main">
                     <div class="card-header">
                         <a href="#Perros" style="text-decoration: none; color: black;"> <h4 class="my-0 font-weight-bold" style="font-size: 12px;">HOT DOGS</h4>
+
                             <div class="card-body">
-                                <img src="#{request.contextPath}/resource/img/Perros/PerroAmericano.png" class="card-img-top" style="height: 100px;"/>
-                            </div></a></div>
+                                <img src="#{request.contextPath}/resource/img/Perros/PerroAmericano.png" class="card-img-top" style="height: 100px;"/> 
+                            </div></a>
+                    </div>
                 </div>
                 <div class="card mb-4 shadow-sm main">
                     <div class="card-header">
                         <a href="#Papicar" style="text-decoration: none; color: black;"> <h4 class="my-0 font-weight-bold" style="font-size: 12px;">PA´PICAR</h4>
+
                             <div class="card-body">
                                 <img src="#{request.contextPath}/resource/img/Pa´picar/Salchipapa.jpg" class="card-img-top" style="height: 100px;"/>
-                            </div></a></div>
+                            </div></a> 
+                    </div>
                 </div>
                 <div class="card mb-4 shadow-sm main">
                     <div class="card-header">
                         <a href="#Bebidas" style="text-decoration: none; color: black;"> <h4 class="my-0 font-weight-bold" style="font-size: 12px;">BEBIDAS</h4>
+
                             <div class="card-body">
-                                <img src="#{request.contextPath}/resource/img/Bebidas/Gaseosas.jpg" class="card-img-top" style="height: 100px;"/> 
-                            </div></a></div>
+                                <img src="#{request.contextPath}/resource/img/Bebidas/Gaseosas.jpg" class="card-img-top" style="height: 100px;"/>
+                            </div></a> 
+                    </div>
                 </div>
             </div>
         </div>
@@ -163,7 +188,7 @@
                                 <li>Pollo, Champiñones, Jamón, Queso</li>
                             </ul>
                             <br/>
-                            <a href="../InicioSesion.xhtml" class="btn btn-block btn-success" data-id="49">Agregar al Carro</a>
+                            <a href="" class="btn btn-block btn-success agregar-carrito" data-id="50">Agregar al Carro</a>
                         </div>
                     </div>
                     <div class="card mb-4 shadow-sm">
@@ -177,7 +202,7 @@
                                 <li>Jamón, Piña, Queso</li>
                             </ul>
                             <br/>
-                            <a href="InicioSesion.xhtml" class="btn btn-block btn-success" data-id="50">Agregar al Carro</a>
+                            <a href="" class="btn btn-block btn-success agregar-carrito" data-id="51">Agregar al Carro</a>
                         </div>
                     </div>
                     <div class="card mb-4 shadow-sm">
@@ -191,11 +216,11 @@
                                 <li>Salami, Peperoni, Jamón</li>
                             </ul>
                             <br/>
-                            <a href="InicioSesion.xhtml" class="btn btn-block btn-success" data-id="51">Agregar al Carro</a>
+                            <a href="" class="btn btn-block btn-success agregar-carrito" data-id="52">Agregar al Carro</a>
+
                         </div>
                     </div>
                 </div>
-
                 <div class="card-deck mb-3 text-center">
                     <div class="card mb-4 shadow-sm">
                         <div class="card-header">
@@ -207,7 +232,8 @@
                             <ul class="list-unstyled mt-3 mb-4">
                                 <li>Carne, Pico de Gallo, Jalapeño, Tostacos, Queso</li>
                             </ul>
-                            <a href="InicioSesion.xhtml" class="btn btn-block btn-success" data-id="52">Agregar al Carro</a>
+                            <a href="" class="btn btn-block btn-success agregar-carrito" data-id="53">Agregar al Carro</a>
+
                         </div>
                     </div>
                     <div class="card mb-4 shadow-sm">
@@ -220,7 +246,8 @@
                             <ul class="list-unstyled mt-3 mb-4">
                                 <li>Champiñon, Tomate, Cebolla, Orégano, Queso</li>
                             </ul>
-                            <a href="InicioSesion.xhtml" class="btn btn-block btn-success" data-id="53">Agregar al Carro</a>
+                            <a href="" class="btn btn-block btn-success agregar-carrito" data-id="54">Agregar al Carro</a>
+
                         </div>
                     </div>
                     <div class="card mb-4 shadow-sm">
@@ -234,7 +261,8 @@
                                 <li>Queso y Bocadillo</li>
                             </ul>
                             <br/>
-                            <a href="InicioSesion.xhtml" class="btn btn-block btn-success" data-id="54">Agregar al Carro</a>
+                            <a href="" class="btn btn-block btn-success agregar-carrito" data-id="55">Agregar al Carro</a>
+
                         </div>
                     </div>
                 </div>
@@ -249,7 +277,8 @@
                             <ul class="list-unstyled mt-3 mb-4">
                                 <li>Piña, Cereza, Ciruela, Durazno, Queso</li>
                             </ul>
-                            <a href="InicioSesion.xhtml" class="btn btn-block btn-success" data-id="55">Agregar al Carro</a>
+                            <a href="" class="btn btn-block btn-success agregar-carrito" data-id="56">Agregar al Carro</a>
+
                         </div>
                     </div>
                     <div class="card mb-4 shadow-sm">
@@ -263,7 +292,8 @@
                                 <li></li>
                                 <li>Mazorca, Carne, Cebolla, Pimentón, Chorizo, Queso</li>
                             </ul>
-                            <a href="InicioSesion.xhtml" class="btn btn-block btn-success" data-id="56">Agregar al Carro</a>
+                            <a href="" class="btn btn-block btn-success agregar-carrito" data-id="57">Agregar al Carro</a>
+
                         </div>
                     </div>
                 </div>
@@ -286,7 +316,7 @@
                                 <li></li>
                                 <li>Pollo, Champiñones, Jamón, Boloñesa</li>
                             </ul>
-                            <a href="InicioSesion.xhtml" class="btn btn-block btn-success" data-id="1">Agregar al Carro</a>
+                            <a href="" class="btn btn-block btn-success agregar-carrito" data-id="58">Agregar al Carro</a>
                         </div>
                     </div>
                     <div class="card mb-4 shadow-sm">
@@ -300,7 +330,7 @@
                                 <li></li>
                                 <li>Tocineta, Huevo, Crema de Leche</li>
                             </ul>
-                            <a href="InicioSesion.xhtml" class="btn btn-block btn-success" data-id="2">Agregar al Carro</a>
+                            <a href="" class="btn btn-block btn-success agregar-carrito" data-id="59">Agregar al Carro</a>
                         </div>
                     </div>
                     <div class="card mb-4 shadow-sm">
@@ -314,7 +344,7 @@
                                 <li></li>
                                 <li>Pollo, Salsa Boloñesa</li>
                             </ul>
-                            <a href="InicioSesion.xhtml" class="btn btn-block btn-success" data-id="3">Agregar al Carro</a>
+                            <a href="" class="btn btn-block btn-success agregar-carrito" data-id="60">Agregar al Carro</a>
                         </div>
                     </div>
                 </div>
@@ -330,7 +360,7 @@
                                 <li></li>
                                 <li>Pollo, Champiñones</li>
                             </ul>
-                            <a href="InicioSesion.xhtml" class="btn btn-block btn-success" data-id="4">Agregar al Carro</a>
+                            <a href="" class="btn btn-block btn-success agregar-carrito" data-id="61">Agregar al Carro</a>
                         </div>
                     </div>
                     <div class="card mb-4 shadow-sm">
@@ -344,7 +374,7 @@
                                 <li></li>
                                 <li>Salsa con Pollo</li>
                             </ul>
-                            <a href="InicioSesion.xhtml" class="btn btn-block btn-success" data-id="5">Agregar al Carro</a>
+                            <a href="" class="btn btn-block btn-success agregar-carrito" data-id="62">Agregar al Carro</a>
                         </div>
                     </div>
                     <div class="card mb-4 shadow-sm">
@@ -358,7 +388,7 @@
                                 <li></li>
                                 <li>Salsa de Carne</li>
                             </ul>
-                            <a href="InicioSesion.xhtml" class="btn btn-block btn-success" data-id="6">Agregar al Carro</a>
+                            <a href="" class="btn btn-block btn-success agregar-carrito" data-id="63">Agregar al Carro</a>
                         </div>
                     </div>
                 </div>
@@ -375,7 +405,7 @@
                                     <li></li>
                                     <li>Sencillo, Mixto o Especial</li>
                                 </ul>
-                                <a href="InicioSesion.xhtml" class="btn btn-block btn-success" data-id="7">Agregar al Carro</a>
+                                <a href="" class="btn btn-block btn-success agregar-carrito" data-id="64">Agregar al Carro</a>
                             </div>
                         </div>
                     </div>
@@ -400,7 +430,8 @@
                                 <li>Pollo, Champiñones, Jamón, Queso</li>
                             </ul>
                             <br/>
-                            <a href="InicioSesion.xhtml" class="btn btn-block btn-success" data-id="36">Agregar al Carro</a>
+                            <a href="" class="btn btn-block btn-success agregar-carrito" data-id="65">Agregar al Carro</a>
+
                         </div>
                     </div>
                     <div class="card mb-4 shadow-sm">
@@ -415,7 +446,8 @@
                                 <li>Jamón, Queso, PiñaJamón, Queso, Piña</li>
                             </ul>
                             <br/>
-                            <a href="InicioSesion.xhtml" class="btn btn-block btn-success" data-id="37">Agregar al Carro</a>
+                            <a href="" class="btn btn-block btn-success agregar-carrito" data-id="66">Agregar al Carro</a>
+
                         </div>
                     </div>
                     <div class="card mb-4 shadow-sm">
@@ -430,7 +462,8 @@
                                 <li>Salami, Peperoni, Jamón</li>
                             </ul>
                             <br/>
-                            <a href="InicioSesion.xhtml" class="btn btn-block btn-success" data-id="38">Agregar al Carro</a>
+                            <a href="" class="btn btn-block btn-success agregar-carrito" data-id="67">Agregar al Carro</a>
+
                         </div>
                     </div>
                 </div>
@@ -447,7 +480,8 @@
                                 <li>Queso y Bocadillo</li>
                             </ul>
                             <br/>
-                            <a href="InicioSesion.xhtml" class="btn btn-block btn-success" data-id="39">Agregar al Carro</a>
+                            <a href="" class="btn btn-block btn-success agregar-carrito" data-id="68">Agregar al Carro</a>
+
                         </div>
                     </div>
                     <div class="card mb-4 shadow-sm">
@@ -461,7 +495,8 @@
                                 <li></li>
                                 <li>Carne, Pico de Gallo, Jalapeño,Tostacos, Queso</li>
                             </ul>
-                            <a href="InicioSesion.xhtml" class="btn btn-block btn-success" data-id="40">Agregar al Carro</a>
+                            <a href="" class="btn btn-block btn-success agregar-carrito" data-id="69">Agregar al Carro</a>
+
                         </div>
                     </div>
                     <div class="card mb-4 shadow-sm">
@@ -475,7 +510,8 @@
                                 <li></li>
                                 <li>Mazorca, Carne, Cebolla,Pimentón, Chorizo, Queso</li>
                             </ul>
-                            <a href="InicioSesion.xhtml" class="btn btn-block btn-success" data-id="41">Agregar al Carro</a>
+                            <a href="" class="btn btn-block btn-success agregar-carrito" data-id="70">Agregar al Carro</a>
+
                         </div>
                     </div>
                 </div>
@@ -491,7 +527,8 @@
                                 <li></li>
                                 <li>Piña, Cereza, Ciruela, Durazno, Queso</li>
                             </ul>
-                            <a href="InicioSesion.xhtml" class="btn btn-block btn-success" data-id="42">Agregar al Carro</a>
+                            <a href="" class="btn btn-block btn-success agregar-carrito" data-id="71">Agregar al Carro</a>
+
                         </div>
                     </div>
                     <div class="card mb-4 shadow-sm">
@@ -505,7 +542,8 @@
                                 <li></li>
                                 <li>Champiñón, Tomate, Cebolla, Orégano, Queso</li>
                             </ul>
-                            <a href="InicioSesion.xhtml" class="btn btn-block btn-success" data-id="43">Agregar al Carro</a>
+                            <a href="" class="btn btn-block btn-success agregar-carrito" data-id="72">Agregar al Carro</a>
+
                         </div>
                     </div>
                 </div>
@@ -529,7 +567,8 @@
                                 <li>Pollo, Champiñones, Jamón, Boloñesa</li>
                             </ul>
                             <br/>
-                            <a href="InicioSesion.xhtml" class="btn btn-block btn-success" data-id="57">Agregar al Carro</a>
+                            <a href="" class="btn btn-block btn-success agregar-carrito" data-id="73">Agregar al Carro</a>
+
                         </div>
                     </div>
                     <div class="card mb-4 shadow-sm">
@@ -544,7 +583,8 @@
                                 <li>Salsa Napolitana, Cebolla, Pimentón, Champiñón</li>
                             </ul>
 
-                            <a href="InicioSesion.xhtml" class="btn btn-block btn-success" data-id="58">Agregar al Carro</a>
+                            <a href="" class="btn btn-block btn-success agregar-carrito" data-id="74">Agregar al Carro</a>
+
                         </div>
                     </div>
                     <div class="card mb-4 shadow-sm">
@@ -559,7 +599,8 @@
                                 <li>Tocineta, Huevo, Crema de Leche</li>
                             </ul>
                             <br/>
-                            <a href="InicioSesion.xhtml" class="btn btn-block btn-success" data-id="59">Agregar al Carro</a>
+                            <a href="" class="btn btn-block btn-success agregar-carrito" data-id="75">Agregar al Carro</a>
+
                         </div>
                     </div>
                 </div>
@@ -576,7 +617,8 @@
                                 <li>Pollo, Salsa Boloñesa</li>
                             </ul>
 
-                            <a href="InicioSesion.xhtml" class="btn btn-block btn-success" data-id="60">Agregar al Carro</a>
+                            <a href="" class="btn btn-block btn-success agregar-carrito" data-id="76">Agregar al Carro</a>
+
                         </div>
                     </div>
                     <div class="card mb-4 shadow-sm">
@@ -590,7 +632,8 @@
                                 <li></li>
                                 <li>Pollo, Champiñones</li>
                             </ul>
-                            <a href="InicioSesion.xhtml" class="btn btn-block btn-success" data-id="61">Agregar al Carro</a>
+                            <a href="" class="btn btn-block btn-success agregar-carrito" data-id="77">Agregar al Carro</a>
+
                         </div>
                     </div>
                     <div class="card mb-4 shadow-sm">
@@ -605,7 +648,8 @@
                                 <li>Salsa con Pollo</li>
                             </ul>
 
-                            <a href="InicioSesion.xhtml" class="btn btn-block btn-success" data-id="62">Agregar al Carro</a>
+                            <a href="" class="btn btn-block btn-success agregar-carrito" data-id="78">Agregar al Carro</a>
+
                         </div>
                     </div>
                 </div>
@@ -621,7 +665,8 @@
                                 <li></li>
                                 <li>Salsa de Carne</li>
                             </ul>
-                            <a href="InicioSesion.xhtml" class="btn btn-block btn-success" data-id="63">Agregar al Carro</a>
+                            <a href="" class="btn btn-block btn-success agregar-carrito" data-id="79">Agregar al Carro</a>
+
                         </div>
                     </div>
                     <div class="card mb-4 shadow-sm">
@@ -635,7 +680,8 @@
                                 <li></li>
                                 <li>Sencillo, Mixto o Especial</li>
                             </ul>
-                            <a href="InicioSesion.xhtml" class="btn btn-block btn-success" data-id="56">Agregar al Carro</a>
+                            <a href="" class="btn btn-block btn-success agregar-carrito" data-id="80">Agregar al Carro</a>
+
                         </div>
                     </div>
                 </div>
@@ -659,7 +705,8 @@
                                 <li>Pollo, Champiñones, Jamón, Boloñesa, Queso</li>
                             </ul>
                             <br/>
-                            <a href="InicioSesion.xhtml" class="btn btn-block btn-success" data-id="28">Agregar al Carro</a>
+                            <a href="" class="btn btn-block btn-success agregar-carrito" data-id="81">Agregar al Carro</a>
+
                         </div>
                     </div>
                     <div class="card mb-4 shadow-sm">
@@ -674,7 +721,8 @@
                                 <li>Pollo, Boloñesa, Pico de Gallo, Jalapeño, Queso</li>
                             </ul>
                             <br/>
-                            <a href="InicioSesion.xhtml" class="btn btn-block btn-success" data-id="29">Agregar al Carro</a>
+                            <a href="" class="btn btn-block btn-success agregar-carrito" data-id="82">Agregar al Carro</a>
+
                         </div>
                     </div>
                     <div class="card mb-4 shadow-sm">
@@ -689,7 +737,7 @@
                                 <li>Champiñón, Cebolla, Tomate, Pimentón, Queso</li>
                             </ul>
                             <br/>
-                            <a href="InicioSesion.xhtml" class="btn btn-block btn-success" data-id="30">Agregar al Carro</a>
+                            <a href="" class="btn btn-block btn-success agregar-carrito" data-id="83">Agregar al Carro</a>
                         </div>
                     </div>
                 </div>
@@ -705,7 +753,8 @@
                                 <li></li>
                                 <li>Pollo, Salsa Boloñesa, Queso</li>
                             </ul>
-                            <a href="InicioSesion.xhtml" class="btn btn-block btn-success" data-id="31">Agregar al Carro</a>
+                            <a href="" class="btn btn-block btn-success agregar-carrito" data-id="84">Agregar al Carro</a>
+
                         </div>
                     </div>
                     <div class="card mb-4 shadow-sm">
@@ -719,7 +768,8 @@
                                 <li></li>
                                 <li>Pollo, Champiñones, Queso</li>
                             </ul>
-                            <a href="InicioSesion.xhtml" class="btn btn-block btn-success" data-id="32">Agregar al Carro</a>
+                            <a href="" class="btn btn-block btn-success agregar-carrito" data-id="85">Agregar al Carro</a>
+
                         </div>
                     </div>
                     <div class="card mb-4 shadow-sm">
@@ -733,7 +783,8 @@
                                 <li></li>
                                 <li>Salsa con Pollo, Queso</li>
                             </ul>
-                            <a href="InicioSesion.xhtml" class="btn btn-block btn-success" data-id="33">Agregar al Carro</a>
+                            <a href="" class="btn btn-block btn-success agregar-carrito" data-id="86">Agregar al Carro</a>
+
                         </div>
                     </div>
                 </div>
@@ -749,7 +800,8 @@
                                 <li></li>
                                 <li>Sencilla, Mixta o Especial</li>
                             </ul>
-                            <a href="InicioSesion.xhtml" class="btn btn-block btn-success" data-id="34">Agregar al Carro</a>
+                            <a href="" class="btn btn-block btn-success agregar-carrito" data-id="87">Agregar al Carro</a>
+
                         </div>
                     </div>
                     <div class="card mb-4 shadow-sm">
@@ -763,7 +815,8 @@
                                 <li></li>
                                 <li>Salsa de Carne, Queso</li>
                             </ul>
-                            <a href="InicioSesion.xhtml" class="btn btn-block btn-success" data-id="35">Agregar al Carro</a>
+                            <a href="" class="btn btn-block btn-success agregar-carrito" data-id="88">Agregar al Carro</a>
+
                         </div>
                     </div>
                 </div>
@@ -786,7 +839,8 @@
                                 <li></li>
                                 <li>Pechuga asada bañada con salsa de champiñones, acompañada de papa francesa o espaguetti.</li>
                             </ul>
-                            <a href="InicioSesion.xhtml" class="btn btn-block btn-success" data-id="16">Agregar al Carro</a>
+                            <a href="" class="btn btn-block btn-success agregar-carrito" data-id="89">Agregar al Carro</a>
+
                         </div>
                     </div>
                     <div class="card mb-4 shadow-sm">
@@ -800,7 +854,8 @@
                                 <li></li>
                                 <li>Pechuga asada con tocineta, Jamón y Queso, Acompañada de papa francesa y ensalada</li>
                             </ul>
-                            <a href="InicioSesion.xhtml" class="btn btn-block btn-success" data-id="17">Agregar al Carro</a>
+                            <a href="" class="btn btn-block btn-success agregar-carrito" data-id="90">Agregar al Carro</a>
+
                         </div>
                     </div>
                     <div class="card mb-4 shadow-sm">
@@ -815,7 +870,8 @@
                                 <li>Acompañada de papa francesa y ensalada</li>
                             </ul>
                             <br/><br/>
-                            <a href="InicioSesion.xhtml" class="btn btn-block btn-success" data-id="18">Agregar al Carro</a>
+                            <a href="" class="btn btn-block btn-success agregar-carrito" data-id="91">Agregar al Carro</a>
+
                         </div>
                     </div>
                 </div>
@@ -832,7 +888,8 @@
                                 <li>Acompañado de papa francesa y ensalada</li>
                             </ul>
                             <br/>
-                            <a href="InicioSesion.xhtml" class="btn btn-block btn-success" data-id="19">Agregar al Carro</a>
+                            <a href="" class="btn btn-block btn-success agregar-carrito" data-id="92">Agregar al Carro</a>
+
                         </div>
                     </div>
                     <div class="card mb-4 shadow-sm">
@@ -846,7 +903,8 @@
                                 <li></li>
                                 <li>Corte de 250 grs. acompañado de papa francesa y ensalada</li>
                             </ul>
-                            <a href="InicioSesion.xhtml" class="btn btn-block btn-success" data-id="20">Agregar al Carro</a>
+                            <a href="" class="btn btn-block btn-success agregar-carrito" data-id="93">Agregar al Carro</a>
+
                         </div>
                     </div>
                     <div class="card mb-4 shadow-sm">
@@ -860,7 +918,8 @@
                                 <li></li>
                                 <li>Corte de 250 grs. acompañado de papa francesa y ensalada</li>
                             </ul>
-                            <a href="InicioSesion.xhtml" class="btn btn-block btn-success" data-id="21">Agregar al Carro</a>
+                            <a href="" class="btn btn-block btn-success agregar-carrito" data-id="94">Agregar al Carro</a>
+
                         </div>
                     </div>
                 </div>
@@ -877,7 +936,8 @@
                                     <li></li>
                                     <li>Acompañadas de papa francesa arroz y ensalada</li>
                                 </ul>
-                                <a href="InicioSesion.xhtml" class="btn btn-block btn-success" data-id="22">Agregar al Carro</a>
+                                <a href="" class="btn btn-block btn-success agregar-carrito" data-id="95">Agregar al Carro</a>
+
                             </div>
                         </div>
                     </div>
@@ -902,7 +962,8 @@
                                 <li>Con queso, cebolla, tomate, lechuga, papa fosforito y huevo de codorniz</li>
                             </ul>
                             <br/>
-                            <a href="InicioSesion.xhtml" class="btn btn-block btn-success" data-id="23">Agregar al Carro</a>
+                            <a href="" class="btn btn-block btn-success agregar-carrito" data-id="96">Agregar al Carro</a>
+
                         </div>
                     </div>
                     <div class="card mb-4 shadow-sm">
@@ -916,7 +977,8 @@
                                 <li></li>
                                 <li>Pechuga asada con tocineta, Jamón y Queso, Acompañada de papa francesa y ensalada</li>
                             </ul>
-                            <a href="InicioSesion.xhtml" class="btn btn-block btn-success" data-id="24">Agregar al Carro</a>
+                            <a href="" class="btn btn-block btn-success agregar-carrito" data-id="97">Agregar al Carro</a>
+
                         </div>
                     </div>
                     <div class="card mb-4 shadow-sm">
@@ -931,7 +993,8 @@
                                 <li>Con queso, cebolla, tomate, lechuga, papa fosforito y huevo de codorniz</li>
                             </ul>
                             <br/>
-                            <a href="InicioSesion.xhtml" class="btn btn-block btn-success" data-id="25">Agregar al Carro</a>
+                            <a href="" class="btn btn-block btn-success agregar-carrito" data-id="98">Agregar al Carro</a>
+
                         </div>
                     </div>
                 </div>
@@ -948,7 +1011,8 @@
                                 <li>Adicionalmente con champiñones, jamón y pollo desmechado</li>
                             </ul>
                             <br/>
-                            <a href="InicioSesion.xhtml" class="btn btn-block btn-success" data-id="26">Agregar al Carro</a>
+                            <a href="" class="btn btn-block btn-success agregar-carrito" data-id="99">Agregar al Carro</a>
+
                         </div>
                     </div>
                     <div class="card mb-4 shadow-sm">
@@ -962,7 +1026,8 @@
                                 <li></li>
                                 <li>Con doble carne o doble pollo o mixta, y todos los ingredientes de la especial.</li>
                             </ul>
-                            <a href="InicioSesion.xhtml" class="btn btn-block btn-success" data-id="27">Agregar al Carro</a>
+                            <a href="" class="btn btn-block btn-success agregar-carrito" data-id="100">Agregar al Carro</a>
+
                         </div>
                     </div>
                 </div>
@@ -984,7 +1049,7 @@
                             <li></li>
                             <li>Con salchicha Zenu americana, queso, cebolla, jamón, papa fosforito, pollo desmechado y huevo de codorniz</li>
                         </ul>
-                        <a href="InicioSesion.xhtml" class="btn btn-block btn-success" data-id="8">Agregar al Carro</a>
+                        <a href="" class="btn btn-block btn-success agregar-carrito" data-id="101">Agregar al Carro</a>
                     </div>
                 </div>
                 <div class="card mb-4 shadow-sm">
@@ -999,7 +1064,7 @@
                             <li>Con salchicha Zenu tipo long, queso, cebolla, papa fosforito
                                 y huevo de codorniz</li>
                         </ul>
-                        <a href="InicioSesion.xhtml" class="btn btn-block btn-success" data-id="9">Agregar al Carro</a>
+                        <a href="" class="btn btn-block btn-success agregar-carrito" data-id="102">Agregar al Carro</a>
                     </div>
                 </div>
             </div>
@@ -1022,7 +1087,8 @@
                                 <li>Papa francesa, huevo de codorniz, chorizitos, jalapeños</li>
                             </ul>
                             <br/>
-                            <a href="InicioSesion.xhtml" class="btn btn-block btn-success" data-id="43">Agregar al Carro</a>
+                            <a href="" class="btn btn-block btn-success agregar-carrito" data-id="103">Agregar al Carro</a>
+
                         </div>
                     </div>
                     <div class="card mb-4 shadow-sm">
@@ -1038,7 +1104,8 @@
                             </ul>
                             <br/>
                             <br/>
-                            <a href="InicioSesion.xhtml" class="btn btn-block btn-success" data-id="44">Agregar al Carro</a>
+                            <a href="" class="btn btn-block btn-success agregar-carrito" data-id="104">Agregar al Carro</a>
+
                         </div>
                     </div>
                     <div class="card mb-4 shadow-sm">
@@ -1052,7 +1119,8 @@
                             <br/>
                             <br/>
                             <br/>
-                            <a href="InicioSesion.xhtml" class="btn btn-block btn-success" data-id="45">Agregar al Carro</a>
+                            <a href="" class="btn btn-block btn-success agregar-carrito" data-id="105">Agregar al Carro</a>
+
                         </div>
                     </div>
                 </div>
@@ -1064,7 +1132,8 @@
                         <div class="card-body">
                             <img src="#{request.contextPath}/resource/img/Pa´picar/PapaFrancesa.jpg" class="card-img-top" style="height: 210px;"/>
                             <h1 class="card-title pricing-card-title precio">$ <span class="">4.500</span></h1>
-                            <a href="InicioSesion.xhtml" class="btn btn-block btn-success" data-id="46">Agregar al Carro</a>
+                            <a href="" class="btn btn-block btn-success agregar-carrito" data-id="106">Agregar al Carro</a>
+
                         </div>
                     </div>
                     <div class="card mb-4 shadow-sm">
@@ -1074,7 +1143,8 @@
                         <div class="card-body">
                             <img src="#{request.contextPath}/resource/img/Pa´picar/queso.jpg" class="card-img-top" style="height: 210px;"/>
                             <h1 class="card-title pricing-card-title precio">$<span class="">3.000</span></h1>
-                            <a href="InicioSesion.xhtml" class="btn btn-block btn-success" data-id="47">Agregar al Carro</a>
+                            <a href="" class="btn btn-block btn-success agregar-carrito" data-id="107">Agregar al Carro</a>
+
                         </div>
                     </div>
                     <div class="card mb-4 shadow-sm">
@@ -1084,7 +1154,8 @@
                         <div class="card-body">
                             <img src="#{request.contextPath}/resource/img/Pa´picar/PorcionPan.jpg" class="card-img-top" style="height: 210px;"/>
                             <h1 class="card-title pricing-card-title precio">$<span class="">1.500</span></h1>
-                            <a href="InicioSesion.xhtml" class="btn btn-block btn-success" data-id="48">Agregar al Carro</a>
+                            <a href="" class="btn btn-block btn-success agregar-carrito" data-id="108">Agregar al Carro</a>
+
                         </div>
                     </div>
                 </div>
@@ -1104,7 +1175,8 @@
                             <img src="#{request.contextPath}/resource/img/Bebidas/Agua.jpg" class="card-img-top" style="height: 210px;"/>
                             <h1 class="card-title pricing-card-title precio">$<span class="">2.000</span></h1>
                             <br/>
-                            <a href="InicioSesion.xhtml" class="btn btn-block btn-success" data-id="10">Agregar al Carro</a>
+                            <a href="" class="btn btn-block btn-success agregar-carrito" data-id="109">Agregar al Carro</a>
+
                         </div>
                     </div>
                     <div class="card mb-4 shadow-sm">
@@ -1115,7 +1187,8 @@
                             <img src="#{request.contextPath}/resource/img/Bebidas/ClubColombia.jpeg" class="card-img-top" style="height: 210px;"/>
                             <h1 class="card-title pricing-card-title precio">$<span class="">5.000</span></h1>
                             <br/>
-                            <a href="InicioSesion.xhtml" class="btn btn-block btn-success" data-id="11">Agregar al Carro</a>
+                            <a href="" class="btn btn-block btn-success agregar-carrito" data-id="110">Agregar al Carro</a>
+
                         </div>
                     </div>
                     <div class="card mb-4 shadow-sm">
@@ -1126,7 +1199,8 @@
                             <img src="#{request.contextPath}/resource/img/Bebidas/Gaseosas.jpg" class="card-img-top" style="height: 210px;"/>
                             <h1 class="card-title pricing-card-title precio">$<span class="">1.800</span></h1>
                             <br/>
-                            <a href="InicioSesion.xhtml" class="btn btn-block btn-success" data-id="12">Agregar al Carro</a>
+                            <a href="" class="btn btn-block btn-success agregar-carrito" data-id="111">Agregar al Carro</a>
+
                         </div>
                     </div>
                 </div>
@@ -1139,7 +1213,8 @@
                             <img src="#{request.contextPath}/resource/img/Bebidas/Hit.jpg" class="card-img-top" style="height: 210px;"/>
                             <h1 class="card-title pricing-card-title precio">$ <span class="">1.500</span></h1>
                             <br/>
-                            <a href="InicioSesion.xhtml" class="btn btn-block btn-success" data-id="13">Agregar al Carro</a>
+                            <a href="" class="btn btn-block btn-success agregar-carrito" data-id="112">Agregar al Carro</a>
+
                         </div>
                     </div>
                     <div class="card mb-4 shadow-sm">
@@ -1150,7 +1225,8 @@
                             <img src="#{request.contextPath}/resource/img/Bebidas/nectar.jpg" class="card-img-top" style="height: 210px;"/>
                             <h1 class="card-title pricing-card-title precio">$<span class="">1.500</span></h1>
                             <br/>
-                            <a href="InicioSesion.xhtml" class="btn btn-block btn-success" data-id="14">Agregar al Carro</a>
+                            <a href="" class="btn btn-block btn-success agregar-carrito" data-id="113">Agregar al Carro</a>
+
                         </div>
                     </div>
                     <div class="card mb-4 shadow-sm">
@@ -1161,13 +1237,16 @@
                             <img src="#{request.contextPath}/resource/img/Bebidas/Gatetorade.jpg" class="card-img-top" style="height: 210px"/>
                             <h1 class="card-title pricing-card-title precio">$<span class="">2.300</span></h1>
                             <br/>
-                            <a href="InicioSesion.xhtml" class="btn btn-block btn-success" data-id="15">Agregar al Carro</a>
+                            <a href="" class="btn btn-block btn-success agregar-carrito" data-id="114">Agregar al Carro</a>
+
                         </div>
                     </div>
                 </div>
             </div>
         </main>        
-      
+
+        <script src="#{request.contextPath}/resource/js/jquery-3.4.1.min.js"></script>
+        <script src="#{request.contextPath}/resource/js/pedido.js"></script>
     </ui:define>
 </ui:composition>
 
