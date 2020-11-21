@@ -6,7 +6,6 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.inject.Named;
-import javax.enterprise.context.RequestScoped;
 import javax.faces.view.ViewScoped;
 import pyp.modelo.DAO.ITipoInsumoDAO;
 import pyp.modelo.entidades.TipoInsumo;
