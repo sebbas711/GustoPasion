@@ -102,7 +102,7 @@ public class SessionControlador implements Serializable {
     public void validarSesion() throws IOException {
         if (!isStartSession()) {
             ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
-            ec.redirect(ec.getRequestContextPath() + "../Usuario/InicioSesion.xhtml");
+            ec.redirect(ec.getRequestContextPath() + "/app/Usuario/InicioSesion.xhtml");
         }
     }
 
@@ -120,7 +120,7 @@ public class SessionControlador implements Serializable {
                         break;
                     case 1:
                         ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
-                        ec.redirect(ec.getRequestContextPath() + "/app/Inventario/PerfilAdministrador.xhtml");
+                        ec.redirect(ec.getRequestContextPath() + "/app/Inventario/RegistroInsumo.xhtml");
                         break;
                 }
             } else {
