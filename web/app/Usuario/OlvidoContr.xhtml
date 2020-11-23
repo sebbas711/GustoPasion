@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <f:view locale="#{languagecontroller.locale}">
+
+        <h:head>
+            <meta charset="utf-8"/>
+            <meta name="viewport"
+                  content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1.0"/>
+            <link rel="stylesheet" type="text/css" href="#{request.contextPath}/resource/css/bootstrap.min.css"/>
+            <link rel="stylesheet" type="text/css" href="#{request.contextPath}/resource/css/inicio sesion.css"/>
+            <link rel="icon" type="Pagina" href="img/Logo2.png"/>
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css"/>
+            <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+            <title>#{msjLogin.title}</title>
+        </h:head>
+
+        <h:body>
+            <div class="container formulario">
+                <div class="row">
+                    <h4 style="margin-top:100px; color: white; margin-left: 200px">¿Olvido su contraseña?</h4>
+                    <br/>
+                    <br/>
+                    <h:form style="margin-top:50px; color: white; margin-left: 100px">
+                        <br/>
+                        <br/>
+                        <br/>
+                        <div>
+                            <strong>
+                                <p style="color: white">Ingrese su correo electronico</p>
+                            </strong>
+                            <h:inputText a:placeholder="Correo" autocomplete="off" class="form-control placeholder-no-fix"/>
+                        </div>
+                        <br/>
+                            <div>
+                                <button class="btn btn-danger" type="button" style="margin-left: 10px">Cancelar</button>
+                                <h:commandButton class="btn btn-success" value="Restablecer" style="margin-left: 10px"/>
+                            </div>
+                        <br/>
+                       
+                    </h:form>
+                </div>
+            </div>
+        </h:body>
+    </f:view>
+</html>
+
