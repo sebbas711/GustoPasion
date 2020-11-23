@@ -10,14 +10,14 @@
                 <ul class="nav navbar-nav">
                     <li>
                         <div style="text-align: center; color: green; margin-top: 15px">
-                            Bienvenido
+                            <b class="">Bienvenido !</b>
+                            <br/>
+                            <b style="color: #C82333">#{sessionControlador.user.primerNombre} #{sessionControlador.user.primerApellido}</b>
                             <br/>
                             #{sessionControlador.user.rol.descripcion}
-                            <br/>
-                            #{sessionControlador.user.primerNombre} #{sessionControlador.user.primerApellido}
                         </div>
                     </li><!-- /.menu-title 1 -->
-                    
+
                     <ui:include src="/WEB-INF/includes/navegacion/menus/administrador.xhtml"/>
                 </ul>
             </div><!-- /.navbar-collapse -->

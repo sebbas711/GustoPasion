@@ -25,19 +25,19 @@
                     <div class="form-group"  style="margin-left:20px">
                         <label for="message-text" class="col-form-label">Auxiliar Cocina: <b style="color: red">*</b></label>
                         <h:selectOneMenu class="form-control" value="#{inventarioControlador.nuevoInsumo.auxCocina}">
-                            <f:selectItem itemLabel="Seleccione un tipo de Insumo" itemValue=""/>
-                            <f:selectItems value="#{auxCocinaControlador.auxCocina}" var="aux" itemLabel="#{aux.id}"/>
+                            <f:selectItem itemLabel="Seleccione Auxiliar Cocina" itemValue=""/>
+                            <f:selectItems value="#{auxCocinaControlador.auxCocina}" var="aux" itemLabel="#{aux.usuario.primerNombre} #{aux.usuario.primerApellido}"/>
                         </h:selectOneMenu>
                     </div>
                     <div class="form-group" style="margin-left:20px">
                         <label for="message-text" class="col-form-label">FECHA DE INGRESO: <b style="color: red">*</b></label>
-                        <h:inputText class="form-control" value="#{inventarioControlador.nuevoInsumo.fechaIngreso}">
+                        <h:inputText a:type="date" class="form-control" value="#{inventarioControlador.nuevoInsumo.fechaIngreso}">
                             <f:convertDateTime pattern="yyyy-MM-dd"/>
                         </h:inputText>
                     </div>
                     <div class="form-group" style="margin-left:20px">
                         <label for="message-text" class="col-form-label">FECHA DE VENCIMIENTO: <b style="color: red">*</b></label>
-                        <h:inputText class="form-control" value="#{inventarioControlador.nuevoInsumo.fechaVencimiento}">
+                        <h:inputText a:type="date" class="form-control" value="#{inventarioControlador.nuevoInsumo.fechaVencimiento}">
                             <f:convertDateTime pattern="yyyy-MM-dd"/>
                         </h:inputText>
                     </div>
@@ -52,17 +52,19 @@
                         <h:inputText class="form-control" value="#{inventarioControlador.nuevoInsumo.descripcion}"/>
                     </div>
                     <div class="form-group" style="margin-right:20px">
-                        <label for="message-text"  class="col-form-label">CANTIDAD: </label>
+                        <label for="message-text"  class="col-form-label">CANTIDAD: <b style="color: red">*</b></label>
                         <h:inputText class="form-control"  a:type="number" value="#{inventarioControlador.nuevoInsumo.cantidad}"/>
                     </div>
                 </div>
             </div>
             <div class="col-sm-12">
-                <center><a class="btn btn-danger" 
+                <center>
+                    <h:commandButton class="btn btn-success"
+                                     value="Registrar" action="#{inventarioControlador.registrar()}" style="margin-right: 10px"/>&nbsp;&nbsp;
+                    <a class="btn btn-danger" 
                            href="RegistroInsumo.xhtml">Cancelar
                     </a>
-                    <h:commandButton class="btn btn-success"
-                                     value="Registrar" action="#{inventarioControlador.registrar()}" style="margin-right: 10px"/></center>
+                </center>
             </div>
 
         </h:form>

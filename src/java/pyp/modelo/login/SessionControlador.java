@@ -9,7 +9,6 @@ import javax.ejb.EJB;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import pyp.modelo.DAO.IUsuarioDAO;
-import pyp.modelo.entidades.Rol;
 import pyp.modelo.entidades.Usuario;
 import pyp.modelo.util.MessageUtil;
 
@@ -114,7 +113,7 @@ public class SessionControlador implements Serializable {
             if (user != null) {
                 switch (user.getEstado()) {
                     case 0:
-                        MessageUtil.sendInfo(null, "Usuario Incativo",
+                        MessageUtil.sendInfo(null, "Usuario Inactivo",
                                 "Debe contactar al administrador para activar su usuario.", Boolean.FALSE);
                         user = null;
                         break;

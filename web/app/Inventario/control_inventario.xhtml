@@ -95,9 +95,47 @@
             <!-- .animated -->
         </div>
         <h:form prependId="false">
-            <center><a class="btn btn-success" href="RegistroInsumo.xhtml"><i class="fa fa-plus">Registrar Nuevo Insumo</i></a></center>
+            <a class="btn btn-secundary border-success" href="RegistroInsumo.xhtml"><i class="fa fa-plus"> Registrar Insumo</i></a>
             <br/>
-            <h6 class="text-center"><b>INVENTARIO GENERAL</b></h6>
+            <h3 class="text-center"><b>INVENTARIO GENERAL</b></h3>
+            <br/>
+            <p:dataTable class="table table-striped" value="#{inventarioControlador.insumos}" 
+                         rows="10"
+                         paginator="true"
+                         rowsPerPageTemplate="5,10,15"
+                         reflow="true"
+                         var="insu">
+
+                <p:column headerText="ID" priority="2">
+                    <h:outputText value="#{insu.id}"/>
+                </p:column>
+                <p:column headerText="NOMBRE" priority="2">
+                    <h:outputText value="#{insu.nombre}"/>
+                </p:column>
+                <p:column headerText="CANTIDAD" priority="2">
+                    <h:outputText value="#{insu.cantidad} "/>
+                </p:column>
+                <p:column headerText="ESTADO" priority="2">
+                    <h:outputText value="#{insu.estado} "/>
+                </p:column>
+                <p:column headerText="OPCIONES" priority="2">
+                    <h:commandLink class="btn btn-primary" a:data-toggle="modal" a:data-target="#verInfoInsumo"
+                                   action="#{inventarioControlador.seleccionarInsumo(insu)}">
+                        <i class="fa fa-eye"></i>
+                        <f:ajax render=":verInfoInsumoContent" />
+                    </h:commandLink>
+                    <a class="btn btn-warning"><i class="fa fa-pencil"></i></a>
+                    <a class="btn btn-info"><i class="fa fa-trash"></i></a>
+                    <a class="btn btn-danger"><i class="fa fa-lock"></i></a>
+
+                </p:column>
+            </p:dataTable>
+        </h:form>
+
+        <h:form  id="bebidas">
+            <a  class="btn  btn-secundary border-success" href="RegistroInsumo.xhtml"><i class="fa fa-plus"> Registrar Insumo</i></a>
+            <br/>
+            <h4 class="text-center" ><b style="color: #198C1C">BEBIDAS</b></h4>
             <br/>
             <p:dataTable class="table table-striped" value="#{inventarioControlador.insumos}" 
                          rows="10"
@@ -132,48 +170,10 @@
             </p:dataTable>
         </h:form>
 
-        <h:form prependId="false">
-            <center><a class="btn btn-success" href="RegistroInsumo.xhtml"><i class="fa fa-plus">Registrar Nuevo Insumo</i></a></center>
+        <h:form id="carnes">
+            <a class="btn  btn-secundary border-success" href="RegistroInsumo.xhtml"><i class="fa fa-plus"> Registrar Insumo</i></a>
             <br/>
-            <h6 class="text-center" id="bebidas"><b>BEBIDAS</b></h6>
-            <br/>
-            <p:dataTable class="table table-striped" value="#{inventarioControlador.insumos}" 
-                         rows="10"
-                         paginator="true"
-                         rowsPerPageTemplate="5,10,15"
-                         reflow="true"
-                         var="insu">
-
-                <p:column headerText="ID" priority="2">
-                    <h:outputText value="#{insu.id}"/>
-                </p:column>
-                <p:column headerText="NOMBRE" priority="2">
-                    <h:outputText value="#{insu.nombre}"/>
-                </p:column>
-                <p:column headerText="CANTIDAD" priority="2">
-                    <h:outputText value="#{insu.cantidad} "/>
-                </p:column>
-                <p:column headerText="ESTADO" priority="2">
-                    <h:outputText value="#{insu.estado} "/>
-                </p:column>
-                <p:column headerText="OPCIONES" priority="2">
-                    <h:commandLink class="btn btn-primary" a:data-toggle="modal" a:data-target="#verInfoInsumo"
-                                   action="#{inventarioControlador.seleccionarInsumo(insu)}">
-                        <i class="fa fa-eye"></i>
-                        <f:ajax render=":verInfoInsumoContent" />
-                    </h:commandLink>
-                    <a class="btn btn-warning"><i class="fa fa-pencil"></i></a>
-                    <a class="btn btn-info"><i class="fa fa-trash"></i></a>
-                    <a class="btn btn-danger"><i class="fa fa-lock"></i></a>
-
-                </p:column>
-            </p:dataTable>
-        </h:form>
-        
-                <h:form prependId="false">
-            <center><a class="btn btn-success" href="RegistroInsumo.xhtml"><i class="fa fa-plus">Registrar Nuevo Insumo</i></a></center>
-            <br/>
-            <h6 class="text-center" id="carnes"><b>CARNES</b></h6>
+            <h4 class="text-center" ><b style="color: #C5A809">CARNES</b></h4>
             <br/>
             <p:dataTable class="table table-striped" value="#{inventarioControlador.insumos}" 
                          rows="10"
@@ -207,11 +207,11 @@
                 </p:column>
             </p:dataTable>
         </h:form>
-        
-                <h:form prependId="false">
-            <center><a class="btn btn-success" href="RegistroInsumo.xhtml"><i class="fa fa-plus">Registrar Nuevo Insumo</i></a></center>
+
+        <h:form id="harinas">
+            <a class="btn  btn-secundary border-success" href="RegistroInsumo.xhtml"><i class="fa fa-plus"> Registrar Insumo</i></a>
             <br/>
-            <h6 class="text-center" id="harinas"><b>HARINAS</b></h6>
+            <h4 class="text-center" ><b style="color: #C56C09">HARINAS</b></h4>
             <br/>
             <p:dataTable class="table table-striped" value="#{inventarioControlador.insumos}" 
                          rows="10"
@@ -245,11 +245,11 @@
                 </p:column>
             </p:dataTable>
         </h:form>
-        
-                <h:form prependId="false">
-            <center><a class="btn btn-success" href="RegistroInsumo.xhtml"><i class="fa fa-plus">Registrar Nuevo Insumo</i></a></center>
+
+        <h:form id="verduras">
+            <a class="btn  btn-secundary border-success" href="RegistroInsumo.xhtml"><i class="fa fa-plus"> Registrar Insumo</i></a>
             <br/>
-            <h6 class="text-center" id="verduras"><b>VERDURAS</b></h6>
+            <h4 class="text-center" ><b style="color: #D40C1F">VERDURAS</b></h4>
             <br/>
             <p:dataTable class="table table-striped" value="#{inventarioControlador.insumos}" 
                          rows="10"
