@@ -41,13 +41,13 @@
                                         errorStyle="background: #FF0000" infoClass="background: #999999"/>
                             <div class="form-group mx-sm-4 pt-3 user">
                                 <h:inputText class="form-control" id="usuario" a:type="text" a:placeholder="#{msjLogin.usuarioPlaceholder}" 
-                                             required="" value="#{sessionControlador.email}"/>
+                                             required="" value="#{sessionControlador.email}" maxlength="45"/>
                             </div>
 
                             <div class="form-group mx-sm-4 pb-3 user">
                                 <h:inputSecret class="form-control" id="contraseña"
                                                a:placeholder="#{msjLogin.ContraseñaLabel}" required="" 
-                                               value="#{sessionControlador.password}"/>
+                                               value="#{sessionControlador.password}" maxlength="45"/>
                             </div>
 
                             <div class="form-group mx-sm-4">

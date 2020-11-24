@@ -37,25 +37,40 @@
                                         errorStyle="background: #FF0000" infoClass="background: #999999"/>
                             <div class="form-group mx-sm-4 pt-3 user">
                                 <h:inputText class="form-control" id="usuario" a:type="text" a:placeholder="#{msjLogin.usuarioPlaceholder}" 
-                                             required="" value="#{sessionControlador.email}"/>
+                                             required="" value="#{sessionControlador.email}" maxlength="45"/>
                             </div>
 
                             <div class="form-group mx-sm-4 pb-3 user">
                                 <h:inputSecret class="form-control" id="contraseña"
                                                a:placeholder="#{msjLogin.ContraseñaLabel}" required="" 
-                                               value="#{sessionControlador.password}"/>
+                                               value="#{sessionControlador.password}" maxlength="45"/>
                             </div>
 
                             <div class="form-group mx-sm-4">
-                                <h:commandButton class="btn btn-block ingresar" value="#{msjLogin.btnIngresarValue}" action="#{sessionControlador.startSession()}"/>
+                                <center>
+                                    <h:commandButton class="btn btn-success" value="#{msjLogin.btnIngresarValue}" action="#{sessionControlador.startSession()}"/>
+                                </center>
                                 <br/>
-                                <div class="form-group mx-sm-4 text-center">
-                                    <span><a href="#{request.contextPath}/app/Usuario/Registro.xhtml" class="olvide1 btn-block">#{msjLogin.btnRegistrarseValue} </a></span>
-                                </div>
+                                <center>
+                                    <a href="../Usuario/OlvidoContr.xhtml" style="color: white">¿Olvido su contraseña?</a>
+                                </center>
 
-                                <div class="form-group mx-sm-4 text-center mb-5">
-                                    <span><a href="#" class="olvide">#{msjLogin.OlvidasteContraseñalabel}</a></span>
+                                <hr/>
+                                <div class="login-social-link centered">
+                                    <center>
+                                        <a href="https://www.facebook.com/Pastas-Y-Pizza-Del-Sur-110613129131207/" class="btn btn-info" type="submit"><i class="fa fa-facebook" style="color: white"></i> Facebook</a>
+                                        <a href="https://www.instagram.com/explore/locations/690231582/pastas-y-pizza-del-sur/" class="btn btn-danger" type="submit"><i class="fa fa-instagram" style="color: white"></i> Instagram</a>
+                                    </center>
                                 </div>
+                                <br/>
+                                <center>
+                                    <div class="registration">
+                                        ¿Todavía no tienes una cuenta?<br/>
+                                        <a class="" href="../Usuario/Registro.xhtml" style="color: white">
+                                            Crear una cuenta
+                                        </a>
+                                    </div>
+                                </center>
                             </div>
                         </h:form>
                     </div>

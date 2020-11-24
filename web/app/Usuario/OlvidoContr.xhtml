@@ -20,6 +20,11 @@
         </h:head>
 
         <h:body>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+
             <div class="container formulario">
                 <div class="row">
                     <h4 style="margin-top:100px; color: white; margin-left: 200px">¿Olvido su contraseña?</h4>
@@ -31,17 +36,17 @@
                         <br/>
                         <div>
                             <strong>
-                                <p style="color: white">Ingrese su correo electronico</p>
+                                <p style="color: white">Ingrese su correo electronico para enviarle una nueva contraseña</p>
                             </strong>
-                            <h:inputText a:placeholder="Correo" autocomplete="off" class="form-control placeholder-no-fix"/>
+                            <h:inputText a:placeholder="Correo" autocomplete="off" class="form-control placeholder-no-fix" maxlength="45"/>
                         </div>
                         <br/>
-                            <div>
-                                <button class="btn btn-danger" type="button" style="margin-left: 10px">Cancelar</button>
-                                <h:commandButton class="btn btn-success" value="Restablecer" style="margin-left: 10px"/>
-                            </div>
+                        <div>
+                            <button class="btn btn-danger" type="button" style="margin-left: 10px">Cancelar</button>
+                            <h:commandButton class="btn btn-success" value="Restablecer" style="margin-left: 10px"/>
+                        </div>
                         <br/>
-                       
+
                     </h:form>
                 </div>
             </div>

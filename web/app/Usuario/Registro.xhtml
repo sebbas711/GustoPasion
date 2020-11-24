@@ -16,6 +16,7 @@
             <link rel="icon" type="Pagina" href="img/Logo2.png"/>
             <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css"/>
             <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+            
             <title>#{msjLogin.title}</title>
         </h:head>
 
@@ -40,24 +41,25 @@
                                 </h:selectOneMenu>
                                 <br/>
 
-                                <h:inputText  value="" class="form-control" a:placeholder="Numero documento" a:autofocus="true"/>
+                                <h:inputText  value="" class="form-control" a:placeholder="Numero documento" a:autofocus="true" maxlength="15"/>
                                 <br/>
 
 
-                                <h:inputText  value="" class="form-control" a:placeholder="Nombres" a:autofocus="true"/>
+                                <h:inputText  value="" class="form-control" a:placeholder="Nombres" a:autofocus="true" maxlength="45"/>
                                 <br/>
-                                <h:inputText value="" class="form-control" a:placeholder="Apellidos" a:autofocus="true"/>
+                                <h:inputText value="" class="form-control" a:placeholder="Apellidos" a:autofocus="true" maxlength="45"/>
                                 <br/>
-                                <h:inputText  value="" class="form-control" a:placeholder="Dirección" a:autofocus="true"/>
+                                <h:inputText  value="" class="form-control" a:placeholder="Dirección" a:autofocus="true" maxlength="45"/>
                                 <br/>
-                                <h:inputText  value="" class="form-control" a:placeholder="Telefono" a:autofocus="true"/>
+                                <h:inputText  value="" class="form-control" a:placeholder="Telefono" a:autofocus="true" maxlength="10"/>
                                 <br/>
-                                <h:inputText  value="" a:type="email" class="form-control" a:placeholder="Correo" a:autofocus="true"/>
+                                <h:inputText  value="" a:type="email" class="form-control" a:placeholder="Correo" a:autofocus="true" maxlength="45"/>
                                 <br/>
-                                <h:inputSecret  value="" class="form-control" a:placeholder="Contraseña"/>
+                                <h:inputSecret  value="" class="form-control" a:placeholder="Contraseña" maxlength="20"/>
                                 <br/>
                                 <center>
-                                    <h:commandButton class="btn btn-success" value="Registrarse" />
+                                    <a href="InicioSesion.xhtml" class="btn btn-danger" style="margin-left: 10px">Volver</a>
+                                    <h:commandButton class="btn btn-success" value="Registrarse" style="margin-left: 10px"/>
                                 </center>
                                 <br/>
                             </div>
