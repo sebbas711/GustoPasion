@@ -9,7 +9,7 @@ body{
 .formulario{
 	height: auto;
 	color: #fff;
-	border: 5px solid#198C1C;
+	border: 5px solid #951010;
 	transition: 2s;
 	background: #000;
 	background: rgba(0,0,0,0.3);
@@ -26,7 +26,7 @@ h3{
 	color: #fff;
 }
 .ingresar{
-	background: #198C1C;
+	background: #951010;
 	color: #fff; 
 	transition: 0.5s ease-in;
 	outline: none;
@@ -35,7 +35,7 @@ h3{
 	border-radius: 10px;
 }
 .ingresar:hover{
-	background: #22B125;
+	background: #951010;
 	color: #fff; 
 	outline: none;
 	box-shadow: none;
@@ -43,7 +43,7 @@ h3{
 }
 .form-control{
 	background: rgba(0,0,0,0.1);
-	border: 2px solid#198C1C;
+	border: 2px solid #951010;
 	transition: 0.5s ease-in;	
 	outline: none;
 	box-shadow: none;
@@ -51,7 +51,7 @@ h3{
 }
 .form-control:focus{
 	background: none;
-	border: solid#22B125;
+	border: solid #951010;
 	outline: none;
 	box-shadow: none;
 	color: #fff;
@@ -69,9 +69,9 @@ h3{
 .olvide1{
 	color: #fff;
 	font-size: 15px;
-	border: 2px solid#198C1C;
+	border: 2px solid #951010;
 	padding: 5px;
-	background: #198C1C;
+	background: #951010;
 	border-radius: 10px;
 	outline: none;
 	box-shadow: none;
@@ -79,9 +79,9 @@ h3{
 .olvide1:hover{
 	color: #fff;
 	text-decoration: none;
-	background:  #22B125;
+	background:  #951010;
 	transition: 0.5s ease-in;
 	outline: none;
 	box-shadow: none;
-	border: 2px solid#22B125;
+	border: 2px solid #951010;
 }

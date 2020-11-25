@@ -7,7 +7,6 @@
                 xmlns:f="http://xmlns.jcp.org/jsf/core"
                 xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
     <ui:define name="contenido">
-
         <div class="breadcrumbs">
             <div class="breadcrumbs-inner">
                 <div class="row m-0">
@@ -33,12 +32,10 @@
         </div>
 
         <div class="content">
-            <!-- Animated -->
             <div class="animated fadeIn">
-                <!-- Widgets  -->
                 <div class="row">
                     <div class="col-sm-6 col-lg-3">
-                        <div class="card text-white colorverde">
+                        <div class="card text-white colorverde" style="background: #580000">
                             <a class="hovcard" href="#Nuevos">
                                 <div class="card-body">
                                     <div class="card-left pt-1 float-left">
@@ -46,8 +43,7 @@
                                             <span class="count">5</span>
                                         </h3>
                                         <p class="text-light mt-1 m-0 cardsordenpedido">Nuevos</p>
-                                    </div><!-- /.card-left -->
-
+                                    </div>
                                     <div class="card-right float-right text-right">
                                         <i class="icon fade-5 icon-lg pe-7s-magic-wand"></i>
                                     </div><!-- /.card-right -->
@@ -55,10 +51,8 @@
                             </a>
                         </div>
                     </div>
-                    <!--/.col-->
-
                     <div class="col-sm-6 col-lg-3">
-                        <div class="card text-white coloramarillo">
+                        <div class="card text-white coloramarillo" style="background: #951010">
                             <a class="hovcard" href="#EnProceso">
                                 <div class="card-body">
                                     <div class="card-left pt-1 float-left">
@@ -78,7 +72,7 @@
                     <!--/.col-->
 
                     <div class="col-sm-6 col-lg-3">
-                        <div class="card text-white colorcancel">
+                        <div class="card text-white colorcancel" style="background: #727272 ">
                             <a class="hovcard" href="#Anulados">
                                 <div class="card-body">
                                     <div class="card-left pt-1 float-left">
@@ -97,7 +91,7 @@
                     </div>
 
                     <div class="col-sm-6 col-lg-3">
-                        <div class="card text-white colorred">
+                        <div class="card text-white colorred" style="background: #9D9898">
                             <a class="hovcard" href="#Finalizados">
                                 <div class="card-body">
                                     <div class="card-left pt-1 float-left">
@@ -148,14 +142,14 @@
                                         </h:column>
                                         <h:column>
                                             <f:facet name="header">OPCIONES:</f:facet>
-                                            <h:commandLink class="btn" style="color: whitesmoke; background: #03A900"  a:data-toggle="modal" a:data-target="#verInfoPedidos"
-                                                           action="#{pedidosControlador.seleccionarPedido(pedidos)}">
-                                                <i class="fa fa-eye"></i>
+                                            <h:commandLink class="btn" a:data-toggle="modal" a:data-target="#verInfoPedidos"
+                                                           action="#{pedidosControlador.seleccionarPedido(pedidos)}" style="background: #580000">
+                                                <i class="fa fa-eye" style="color: white"></i>
                                                 <f:ajax render=":verInfoPedidosContent"/>
                                             </h:commandLink>
-                                            <a class="btn" style="color: #03A900; background: #E7CD13"><i class="fa fa-pencil"></i></a>
-                                            <a class="btn" style="color: whitesmoke; background: #D20000"><i class="fa fa-trash"></i></a>
-                                            <a class="btn" style="color: #03A900; background: #DFDFDF"><i class="fa fa-lock"></i></a>
+                                            <a class="btn" style="background: #951010"><i class="fa fa-pencil" style="color: white"></i></a>
+                                            <a class="btn" style="background: #727272"><i class="fa fa-trash" style="color: white"></i></a>
+                                            <a class="btn" style="background: #9D9898"><i class="fa fa-lock" style="color: white"></i></a>
 
                                         </h:column>
 
@@ -205,14 +199,14 @@
                             </h:column>
                             <h:column>
                                 <f:facet name="header">OPCIONES:</f:facet>
-                                <h:commandLink class="btn" style="color: whitesmoke; background: #03A900"  a:data-toggle="modal" a:data-target="#verInfoPqrs"
-                                               action="#{pqrsControlador.seleccionarPqrs(pqrs)}">
-                                    <i class="fa fa-eye"></i>
-                                    <f:ajax render=":verInfoPqrsContent"/>
+                                <h:commandLink class="btn" a:data-toggle="modal" a:data-target="#verInfoPedidos"
+                                               action="#{pedidosControlador.seleccionarPedido(pedidos)}" style="background: #580000">
+                                    <i class="fa fa-eye" style="color: white"></i>
+                                    <f:ajax render=":verInfoPedidosContent"/>
                                 </h:commandLink>
-                                <a class="btn" style="color: #03A900; background: #E7CD13"><i class="fa fa-pencil"></i></a>
-                                <a class="btn" style="color: whitesmoke; background: #D20000"><i class="fa fa-trash"></i></a>
-                                <a class="btn" style="color: #03A900; background: #DFDFDF"><i class="fa fa-lock"></i></a>
+                                <a class="btn" style="background: #951010"><i class="fa fa-pencil" style="color: white"></i></a>
+                                <a class="btn" style="background: #727272"><i class="fa fa-trash" style="color: white"></i></a>
+                                <a class="btn" style="background: #9D9898"><i class="fa fa-lock" style="color: white"></i></a>
 
                             </h:column>
 
@@ -260,14 +254,14 @@
                             </h:column>
                             <h:column>
                                 <f:facet name="header">OPCIONES:</f:facet>
-                                <h:commandLink class="btn" style="color: whitesmoke; background: #03A900"  a:data-toggle="modal" a:data-target="#verInfoPqrs"
-                                               action="#{pqrsControlador.seleccionarPqrs(pqrs)}">
-                                    <i class="fa fa-eye"></i>
-                                    <f:ajax render=":verInfoPqrsContent"/>
+                                <h:commandLink class="btn" a:data-toggle="modal" a:data-target="#verInfoPedidos"
+                                               action="#{pedidosControlador.seleccionarPedido(pedidos)}" style="background: #580000">
+                                    <i class="fa fa-eye" style="color: white"></i>
+                                    <f:ajax render=":verInfoPedidosContent"/>
                                 </h:commandLink>
-                                <a class="btn" style="color: #03A900; background: #E7CD13"><i class="fa fa-pencil"></i></a>
-                                <a class="btn" style="color: whitesmoke; background: #D20000"><i class="fa fa-trash"></i></a>
-                                <a class="btn" style="color: #03A900; background: #DFDFDF"><i class="fa fa-lock"></i></a>
+                                <a class="btn" style="background: #951010"><i class="fa fa-pencil" style="color: white"></i></a>
+                                <a class="btn" style="background: #727272"><i class="fa fa-trash" style="color: white"></i></a>
+                                <a class="btn" style="background: #9D9898"><i class="fa fa-lock" style="color: white"></i></a>
 
                             </h:column>
 
@@ -307,14 +301,14 @@
                             </h:column>
                             <h:column>
                                 <f:facet name="header">OPCIONES:</f:facet>
-                                <h:commandLink class="btn" style="color: whitesmoke; background: #03A900"  a:data-toggle="modal" a:data-target="#verInfoPqrs"
-                                               action="#{pqrsControlador.seleccionarPqrs(pqrs)}">
-                                    <i class="fa fa-eye"></i>
-                                    <f:ajax render=":verInfoPqrsContent"/>
+                                <h:commandLink class="btn" a:data-toggle="modal" a:data-target="#verInfoPedidos"
+                                               action="#{pedidosControlador.seleccionarPedido(pedidos)}" style="background: #580000">
+                                    <i class="fa fa-eye" style="color: white"></i>
+                                    <f:ajax render=":verInfoPedidosContent"/>
                                 </h:commandLink>
-                                <a class="btn" style="color: #03A900; background: #E7CD13"><i class="fa fa-pencil"></i></a>
-                                <a class="btn" style="color: whitesmoke; background: #D20000"><i class="fa fa-trash"></i></a>
-                                <a class="btn" style="color: #03A900; background: #DFDFDF"><i class="fa fa-lock"></i></a>
+                                <a class="btn" style="background: #951010"><i class="fa fa-pencil" style="color: white"></i></a>
+                                <a class="btn" style="background: #727272"><i class="fa fa-trash" style="color: white"></i></a>
+                                <a class="btn" style="background: #9D9898"><i class="fa fa-lock" style="color: white"></i></a>
 
                             </h:column>
 

@@ -36,7 +36,7 @@
                 <!-- Widgets  -->
                 <div class="row">
                     <div class="col-sm-6 col-lg-6">
-                        <div class="card text-white colorverde">
+                        <div class="card text-white colorverde" style="background: #951010">
                             <a class="hovcard" href="#Constestadas">
                                 <div class="card-body">
                                     <div class="card-left pt-1 float-left">
@@ -55,7 +55,7 @@
                     </div>
                     <!--/.col-->
                     <div class="col-sm-6 col-lg-6">
-                        <div class="card text-white coloramarillo">
+                        <div class="card text-white coloramarillo" style="background: #727272">
                             <a class="hovcard" href="#NoContestadas">
                                 <div class="card-body">
                                     <div class="card-left pt-1 float-left">
@@ -100,14 +100,14 @@
                                         </h:column>
                                         <h:column>
                                             <f:facet name="header">OPCIONES:</f:facet>
-                                            <h:commandLink class="btn" style="color: whitesmoke; background: #03A900"  a:data-toggle="modal" a:data-target="#verInfoPqrs"
-                                                           action="#{pqrsControlador.seleccionarPqrs(pqrs)}">
-                                                <i class="fa fa-eye"></i>
+                                            <h:commandLink class="btn" a:data-toggle="modal" a:data-target="#verInfoPqrs"
+                                                           action="#{pqrsControlador.seleccionarPqrs(pqrs)}" style="background: #580000">
+                                                <i class="fa fa-eye" style="color: white"></i>
                                                 <f:ajax render=":verInfoPqrsContent"/>
                                             </h:commandLink>
-                                            <a class="btn" style="color: #03A900; background: #E7CD13"><i class="fa fa-pencil"></i></a>
-                                            <a class="btn" style="color: whitesmoke; background: #D20000"><i class="fa fa-trash"></i></a>
-                                            <a class="btn" style="color: #03A900; background: #DFDFDF"><i class="fa fa-lock"></i></a>
+                                            <a class="btn" style="background: #951010"><i class="fa fa-pencil" style="color: white"></i></a>
+                                            <a class="btn" style="background: #727272"><i class="fa fa-trash" style="color: white"></i></a>
+                                            <a class="btn" style="background: #9D9898"><i class="fa fa-lock" style="color: white"></i></a>
 
                                         </h:column>
 
@@ -141,14 +141,14 @@
                                                 </h:column>
                                                 <h:column>
                                                     <f:facet name="header">OPCIONES:</f:facet>
-                                            <h:commandLink class="btn" style="color: whitesmoke; background: #03A900"  a:data-toggle="modal" a:data-target="#verInfoPqrs"
-                                                           action="#{pqrsControlador.seleccionarPqrs(pqrs)}">
-                                                <i class="fa fa-eye"></i>
-                                                <f:ajax render=":verInfoPqrsContent"/>
-                                            </h:commandLink>
-                                            <a class="btn" style="color: #03A900; background: #E7CD13"><i class="fa fa-pencil"></i></a>
-                                            <a class="btn" style="color: whitesmoke; background: #D20000"><i class="fa fa-trash"></i></a>
-                                            <a class="btn" style="color: #03A900; background: #DFDFDF"><i class="fa fa-lock"></i></a>
+                                                    <h:commandLink class="btn" a:data-toggle="modal" a:data-target="#verInfoPqrs"
+                                                                   action="#{pqrsControlador.seleccionarPqrs(pqrs)}" style="background: #580000">
+                                                        <i class="fa fa-eye" style="color: white"></i>
+                                                        <f:ajax render=":verInfoPqrsContent"/>
+                                                    </h:commandLink>
+                                                    <a class="btn" style="background: #951010"><i class="fa fa-pencil" style="color: white"></i></a>
+                                                    <a class="btn" style="background: #727272"><i class="fa fa-trash" style="color: white"></i></a>
+                                                    <a class="btn" style="background: #9D9898"><i class="fa fa-lock" style="color: white"></i></a>
 
                                                 </h:column>
                                             </h:dataTable> 

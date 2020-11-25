@@ -8,7 +8,7 @@
   bars: {
     show: true,
     lineWidth: 0,
-    fillColor: '#85c988'          
+    fillColor: '#951010'          
   }
 }], {
   grid: {

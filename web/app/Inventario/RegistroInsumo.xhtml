@@ -11,7 +11,7 @@
     <ui:define name="contenido">
         <h:form prependId="false"> 
             <br/>
-            <h3 class="text-center"><b style="color: green">REGISTRAR INSUMOS</b></h3>
+            <h3 class="text-center"><b style="color: #951010">REGISTRAR INSUMOS</b></h3>
             <br/>
             <div class="row">
                 <div class="col-md-6">
@@ -59,12 +59,13 @@
             </div>
             <div class="col-sm-12">
                 <center>
-                    <h:commandButton class="btn btn-success"
-                                     value="Registrar" action="#{inventarioControlador.registrar()}" style="margin-right: 10px"/>&nbsp;&nbsp;
                     <a class="btn btn-danger" 
-                           href="RegistroInsumo.xhtml">Cancelar
+                           href="RegistroInsumo.xhtml" style="margin-right: 10px; background: #951010">Cancelar
                     </a>
+                    <h:commandButton class="btn btn-success"
+                                     value="Registrar" action="#{inventarioControlador.registrar()}" style="margin-right: 10px; background: #727272"/>
                 </center>
+                <br/>
             </div>
 
         </h:form>

@@ -10,17 +10,17 @@
                 <h:form prependId="false">
                     <h:panelGroup id="confirmarBloquearUsuario" layout="block">
                         <div id=""></div>
-                        <div class="modal-header" style="background-color: green">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <div class="modal-header" style="background-color: #951010">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: white">
                                 <span aria-hidden="true">x</span>
                             </button>
-                            <span><center><img src="#{request.contextPath}/resource/img/LOgo.png" class="rounded-pill" target="_blank" style="height: 70px"/></center></span>             
+                            <span><center><img src="#{request.contextPath}/resource/img/LOgo.png" class="rounded-pill" target="_blank" style="height: 100px"/></center></span>             
                         </div>
                         <div class="modal-body">
-                            <h5>¿Esta seguro de #{usuarioControlador.btnValueBloquear.toLowerCase()} el usuario #{usuarioControlador.usuarioSeleccionado.primerNombre} #{usuarioControlador.usuarioSeleccionado.primerApellido}</h5>
+                            <h5>¿Esta seguro de #{usuarioControlador.btnValueBloquear.toLowerCase()} el usuario <strong>#{usuarioControlador.usuarioSeleccionado.primerNombre} #{usuarioControlador.usuarioSeleccionado.primerApellido}</strong>? </h5>
                             <div class="modal-footer">
-                                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                                <h:commandButton class="btn btn-danger" value="#{usuarioControlador.btnValueBloquear}" action="#{usuarioControlador.bloquearODesbloquear()}"/>
+                                <button class="btn btn-secondary" type="button" data-dismiss="modal" style="background: #951010">Cancelar</button>
+                                <h:commandButton class="btn btn-danger" value="#{usuarioControlador.btnValueBloquear}" action="#{usuarioControlador.bloquearODesbloquear()}" style="background: #727272"/>
                             </div>
                         </div>
                     </h:panelGroup>

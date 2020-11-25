@@ -4,7 +4,7 @@ body {
 }
 
 .navbar{
-	background-color: #067E1C;
+	background-color: #951010;
 	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .05);
 	min-height: 100px;
 }
@@ -13,10 +13,10 @@ body {
 	margin-left: 30px;
 }
 
-.nav-link:hover {color: yellow;}
+.nav-link:hover {color: #727272;}
 
 .navbar{
-	box-shadow: 2px 2px 5px #067E1C;
+	box-shadow: 2px 2px 5px #951010;
 	opacity: .9;
 }
 .logo-brand{
