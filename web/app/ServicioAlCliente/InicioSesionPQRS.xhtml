@@ -22,7 +22,7 @@
                     <div class="col-xs-12 col-sm-12 col-md-6  col-lg-5 formulario">
                         <h:form prependId="false">
                             <h:selectOneMenu value="#{languagecontroller.lang}"
-                                             onchange="submit();" style="background: green; color: white">
+                                             onchange="submit();" style="background: #951010; color: white">
                                 <f:selectItems value="#{languagecontroller.locales}"
                                                var="l" itemLabel="#{l.language}"/>
                             </h:selectOneMenu>
@@ -48,7 +48,7 @@
 
                             <div class="form-group mx-sm-4">
                                 <center>
-                                    <h:commandButton class="btn btn-success" value="#{msjLogin.btnIngresarValue}" action="#{sessionControlador.startSession()}"/>
+                                    <h:commandButton class="btn" value="#{msjLogin.btnIngresarValue}" action="#{sessionControlador.startSession()}" style="background: #951010; color: white"/>
                                 </center>
                                 <br/>
                                 <center>

@@ -8,9 +8,12 @@
                 xmlns:f="http://xmlns.jcp.org/jsf/core"
                 xmlns:p="http://primefaces.org/ui">
     <ui:define name="contenido">
+        <br/>
+        <br/>
+
         <h:form prependId="false"> 
             <br/>
-            <h3 class="text-center"><b style="color: green">REGISTRAR USUARIOS</b></h3>
+            <h3 class="text-center"><b style="color: #951010">REGISTRAR USUARIOS</b></h3>
             <br/>
             <div class="row">
                 <div class="col-md-5" style="margin-left: 100px">
@@ -20,7 +23,6 @@
                             <f:selectItem itemLabel="Seleccione un tipo de Rol" itemValue=""/>
                             <f:selectItems value="#{tipoRolControlador.roles}" var="rol" itemLabel="#{rol.descripcion}"/>
                         </h:selectOneMenu>
-
                     </div>
                     <div class="form-group">
                         <label>TIPO DE IDENTIFICACION</label>
@@ -30,7 +32,6 @@
                         <label>Numero de Identificación: </label>
                         <h:inputText class="form-control" a:type="number" value="#{usuarioControlador.nuevoUsuario.idUsuario}" maxlength="15" a:placeholder="Numero de Identificación"/>
                     </div>
-
                     <div class="form-group">
                         <label>PRIMER NOMBRE</label>
                         <h:inputText class="form-control" value="#{usuarioControlador.nuevoUsuario.primerNombre}" maxlength="20" a:placeholder="Primer Nombre"/>
@@ -68,10 +69,9 @@
                     </div>
                     <div class="form-group">
                         <label>ESTADO: </label>
-                        <h:selectOneRadio class="form-check" value="#{usuarioControlador.nuevoUsuario.estado}">
+                        <h:selectOneRadio class="form-check" value="#{usuarioControlador.nuevoUsuario.estado}" a:style="margin-right: 10px">
                             <f:selectItem itemLabel="Inactivo" itemValue="0"/>
                             <f:selectItem itemLabel="Activo" itemValue="1"/>
-
                         </h:selectOneRadio>
                     </div>
                 </div>
@@ -79,14 +79,16 @@
             <br/>
             <div class="col-sm-12">
                 <center>
-                    <a class="btn btn-danger" 
-                       href="RegistroUsuario.xhtml" style="margin-right: 10px">Cancelar
+                    <a class="btn" 
+                       href="RegistroUsuario.xhtml" style="margin-right: 10px; background: #951010; color: white">Cancelar
                     </a>
-                    <h:commandButton class="btn btn-success"
-                                     style="margin-left: 10px" value="Registrar" action="#{usuarioControlador.registrar()}"/>
+                    <h:commandButton class="btn"
+                                     style="margin-left: 10px; color: white; background: #727272" value="Registrar" action="#{usuarioControlador.registrar()}"/>
                 </center>
             </div>
-
+            <br/>
+            <br/>
+            <br/>
         </h:form>
     </ui:define>
 </ui:composition>

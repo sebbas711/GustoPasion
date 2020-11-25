@@ -8,7 +8,7 @@ let Contraseña = document.getElementById("contraseña");
 
 function validacionEmail(e) {
     if(!regexEmail.test(usuario.value)){
-        usuario.style.border ='1px solid red';
+        usuario.style.border ='1px solid #951010';
         e.preventDefault();
     }else{
         usuario.style.border ='';
@@ -18,7 +18,7 @@ function validacionEmail(e) {
 
 function validarPass(e) {
     if(!regexfiveTofifteencharacters.test(Contraseña.value)){
-        Contraseña.style.border = '1px solid red';
+        Contraseña.style.border = '1px solid #951010';
         e.preventDefault();
     }else{
         Contraseña.style.border='';
@@ -28,7 +28,7 @@ function validarPass(e) {
 function validacionGeneral(e) {
     validacionEmail(e);
     validarPass(e);
-    redireccionar();
+    #951010 ireccionar();
 }
 formularioInicioSesion.addEventListener("submit",validacionGeneral);
 
@@ -47,7 +47,7 @@ let passwordCajero = "123456";
 let usuarioMesero = "Ana@gmail.com";
 let passwordMesero = "123456";
 
-function redireccionar(){
+function #951010ireccionar(){
     if (usuarioCliente === usuario.value && password === Contraseña.value){
         window.open("./Pagina.xhtml");
     }else if(usuarioadmin === usuario.value && passwordadmin === Contraseña.value){

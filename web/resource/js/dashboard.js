@@ -84,7 +84,7 @@
  var plot = $.plot($('#flotLine2'),[{
   data: [[0, 8], [1, 5], [2,7], [3, 8], [4, 7], [5, 10], [6, 8], [7, 5], [8, 8], [9, 6], [10, 4]],
   label: 'New Data Flow',
-  color: '#42a5f5'
+  color: '#951010'
 }],
 {
   series: {
@@ -113,7 +113,7 @@
  var plot = $.plot($('#flotLine3'),[{
   data: [[0, 8], [1, 5], [2,7], [3, 8], [4, 7], [5, 10], [6, 8], [7, 5], [8, 8], [9, 6], [10, 4]],
   label: 'New Data Flow',
-  color: '#ffa726'
+  color: '#951010'
 }],
 {
   series: {
@@ -142,7 +142,7 @@
  var plot = $.plot($('#flotLine4'),[{
   data: [[0, 8], [1, 5], [2,7], [3, 8], [4, 7], [5, 10], [6, 8], [7, 5], [8, 8], [9, 6], [10, 4]],
   label: 'New Data Flow',
-  color: '#5c6bc0'
+  color: '#951010'
 }],
 {
   series: {
@@ -206,9 +206,9 @@
 
  /**************** PIE CHART *******************/
  var piedata = [
- { label: "Desktop visits", data: [[1,32]], color: '#5c6bc0'},
- { label: "Tab visits", data: [[1,33]], color: '#ef5350'},
- { label: "Mobile visits", data: [[1,35]], color: '#66bb6a'}
+ { label: "Desktop visits", data: [[1,32]], color: '#951010'},
+ { label: "Tab visits", data: [[1,33]], color: '#951010'},
+ { label: "Mobile visits", data: [[1,35]], color: '#951010'}
  ];
 
  $.plot('#flotPie1', piedata, {
@@ -264,7 +264,7 @@ function getRandomData() {
   var updateInterval = 1000;
 
   var plot5 = $.plot('#flotRealtime2', [ getRandomData() ], {
-    colors: ['#5c6bc0'],
+    colors: ['#951010'],
 
     series: {
       // label: 'Upload',
@@ -350,7 +350,7 @@ function getRandomData() {
       id: "g1",
       value: 72,
       //title: "Completed",
-      fill: '#ffa726',
+      fill: '#951010',
       symbol: '%',
       min: 0,
       max: 100,
@@ -371,7 +371,7 @@ function getRandomData() {
     disableHiddenCheck: true,
     resize: true,
     barSpacing: '2',
-    barColor: '#42a5f5'
+    barColor: '#951010'
   });
   
   $('#sparklinedash2, #sparklinedash7, #sparklinedash12').sparkline([ 0, 5, 6, 10, 9, 12, 4, 9], {
@@ -380,7 +380,7 @@ function getRandomData() {
     barWidth: '5',
     resize: true,
     barSpacing: '2',
-    barColor: '#ef5350'
+    barColor: '#951010'
   });
   $('#sparklinedash3, #sparklinedash8, #sparklinedash13').sparkline([ 0, 5, 6, 10, 9, 12, 4, 9], {
     type: 'bar',
@@ -388,7 +388,7 @@ function getRandomData() {
     barWidth: '5',
     resize: true,
     barSpacing: '2',
-    barColor: '#66bb6a'
+    barColor: '#951010'
   });
   $('#sparklinedash4, #sparklinedash9, #sparklinedash14').sparkline([ 0, 5, 6, 10, 9, 12, 4, 9], {
     type: 'bar',
@@ -396,7 +396,7 @@ function getRandomData() {
     barWidth: '5',
     resize: true,
     barSpacing: '2',
-    barColor: '#5c6bc0'
+    barColor: '#951010'
   });
   $('#sparklinedash5, #sparklinedash10, #sparklinedash15').sparkline([ 0, 5, 6, 10, 9, 12, 4, 9], {
     type: 'bar',
@@ -404,7 +404,7 @@ function getRandomData() {
     barWidth: '5',
     resize: true,
     barSpacing: '2',
-    barColor: '#ffa726'
+    barColor: '#951010'
   });
 
  // Chartist
@@ -435,7 +435,7 @@ function getRandomData() {
           {
             label: "My Third dataset",
             backgroundColor: 'transparent',
-            borderColor: '#5c6bc0',
+            borderColor: '#951010',
             pointBackgroundColor: "#ffffff",
             data: [2700, 7000, 3500, 6900, 2600, 6500, 2200]
           }]
@@ -497,8 +497,8 @@ if (Gauge) {
             color: '#000' // Fill color
           },
         limitMax: 'true', // If true, the pointer will not go past the end of the gauge
-        colorStart: '#42a5f5', // Colors
-        colorStop: '#42a5f5', // just experiment with them
+        colorStart: '#951010', // Colors
+        colorStop: '#951010', // just experiment with them
         strokeColor: '#fbfbfc', // to see which ones work best for you
         generateGradient: true
       };

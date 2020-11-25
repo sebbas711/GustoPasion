@@ -16,7 +16,7 @@ body {
 .nav-link:hover {color: #727272;}
 
 .navbar{
-	box-shadow: 2px 2px 5px #951010;
+	box-shadow: 2px 2px 5px #727272;
 	opacity: .9;
 }
 .logo-brand{
@@ -47,7 +47,7 @@ body {
  	
  }
 .desplagable:hover{
-	color: red;
+	color: #951010;
 
 }
 .carta{
@@ -64,13 +64,13 @@ body {
 	
 }
 .carta:hover{
-		color: #55C23F;
-		border: 1px solid #55C23F ;
+		color: #951010;
+		border: 1px solid #951010 ;
 }
 
 .pqrs:hover{
 
-	background: #D84B4B;
+	background: #951010;
 }
 .main:hover{
 
