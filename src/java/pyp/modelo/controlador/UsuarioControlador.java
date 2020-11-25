@@ -68,10 +68,6 @@ public class UsuarioControlador implements Serializable {
     }
 
     public void registrar() {
-        System.out.println("Nombre: " + nuevoUsuario.getPrimerNombre());
-        System.out.println("Primer Apellido: " + nuevoUsuario.getPrimerApellido());
-        System.out.println("Correo: " + nuevoUsuario.getEmail());
-        System.out.println("Contraseña: " + nuevoUsuario.getContraseña());
         usuarioDAO.create(nuevoUsuario);
 
     }

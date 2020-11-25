@@ -22,7 +22,6 @@
                         <li class="nav-item" style="margin-top: 15px">
                             <a class="nav-link" href="#{request.contextPath}/app/ServicioAlCliente/InicioSesionPQRS.xhtml">PQRS</a>
                         </li>
-                        <a class="navbar-brand" href="#{request.contextPath}/index.xhtml"><img src="#{request.contextPath}/resource/img/Logo2.png" class="logo-brand" alt="logo" style="height: 85px; margin-top: -20px"/></a>
                         <li class="nav-item dropdown" style="margin-top: 15px">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Menú</a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -38,9 +37,31 @@
                                 <a class="dropdown-item" href="#Bebidas">Bebidas</a>
                             </div>
                         </li>
+                        
+                        
+                        <a class="navbar-brand" href="#{request.contextPath}/index.xhtml"><img src="#{request.contextPath}/resource/img/Logo2.png" class="logo-brand" alt="logo" style="height: 85px; margin-top: -20px"/></a>
+
 
                         <li class="nav-item" style="margin-top: 15px">
                             <a class="nav-link" href="#{request.contextPath}/app/ServicioAlCliente/Contactenos.xhtml">Contáctenos</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <i class="fas fa-cart-arrow-down nav-link dropdown-toggle" height="50px" width="50px" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: 40px; margin-top: 10px;"></i>
+                            <div id="carrito" class="dropdown-menu" aria-labelledby="navbarCollapse">
+                                <table id="lista-carrito" class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Imagen</th>
+                                            <th>Nombre</th>
+                                            <th>Precio</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                                <a href="#" id="vaciar-carrito" class="btn btn-danger btn-block">Vaciar Carrito</a>
+                                <a href="" id="procesar-pedido" class="btn btn-success btn-block">Realizar Pedido</a>
+                            </div>
                         </li>
                         <li class="nav-item" style="margin-top: 15px">
                             <a class="nav-link" href="#{request.contextPath}/app/ServicioAlCliente/Menu.xhtml">Haz tus Pedidos</a>

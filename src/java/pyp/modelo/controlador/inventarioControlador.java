@@ -67,19 +67,8 @@ public class inventarioControlador implements Serializable {
     public void registrar() {
         FacesContext fc = FacesContext.getCurrentInstance();
         try{
-        System.out.println("Id: " + nuevoInsumo.getId());
-        System.out.println("Tipo de Insumo: " + nuevoInsumo.getTipoInsumo());
-        System.out.println("Auxiliar de Cocina: " + nuevoInsumo.getAuxCocina());
-        System.out.println("Fecha de Ingreso: " + nuevoInsumo.getFechaIngreso());
-        System.out.println("Fecha de Ingreso: " + nuevoInsumo.getFechaIngreso());
-        System.out.println("Fecha de Vencimiento: " + nuevoInsumo.getFechaVencimiento());
-        System.out.println("Nombre: " + nuevoInsumo.getNombre());
-        System.out.println("Descripcion: " + nuevoInsumo.getDescripcion());
-        System.out.println("Cantidad: " + nuevoInsumo.getCantidad());
-        System.out.println("Estado: " + nuevoInsumo.getEstado());
         nuevoInsumo.setEstado(Short.valueOf("1"));
         IDAO.create(nuevoInsumo);
-
     }catch(Exception ex){
         
     }
