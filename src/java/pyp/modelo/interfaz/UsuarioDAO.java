@@ -6,6 +6,7 @@
 package pyp.modelo.interfaz;
 
 import javax.ejb.Stateless;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import pyp.modelo.entidades.Usuario;
 import pyp.modelo.DAO.IUsuarioDAO;
@@ -23,16 +24,27 @@ public class UsuarioDAO extends AbstractDAO<Usuario> implements IUsuarioDAO {
 
     @Override
     public Usuario findByEmailAndPassword(String email, String password) {
-        try{
-        TypedQuery<Usuario> q = getEntityManager().createQuery("SELECT u FROM Usuario u WHERE u.email=:email AND u.contraseña=:pass", Usuario.class);
-        q.setParameter("email", email);
-        q.setParameter("pass", password);
-        return q.getSingleResult();
-        }catch(Exception e){
+        try {
+            TypedQuery<Usuario> q = getEntityManager().createQuery("SELECT u FROM Usuario u WHERE u.email=:email AND u.contraseña=:pass", Usuario.class);
+            q.setParameter("email", email);
+            q.setParameter("pass", password);
+            return q.getSingleResult();
+        } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
 
+    }
+
+    @Override
+    public Usuario recuperarClave(String correIn) {
+        try {
+            Query qe = em.createQuery("SELECT u FROM Usuario u WHERE u.email = :correoIn");
+            qe.setParameter("correoIn", correIn);
+            return (Usuario) qe.getSingleResult();
+        } catch (Exception e) {
+            return new Usuario();
+        }
     }
 
 }

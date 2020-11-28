@@ -38,12 +38,17 @@
                             <strong>
                                 <p style="color: white">Ingrese su correo electronico para enviarle una nueva contraseña</p>
                             </strong>
-                            <h:inputText a:placeholder="Correo" autocomplete="off" class="form-control placeholder-no-fix" maxlength="45"/>
+                            <h:inputText id="correoId" required="true" requiredMessage="Se requiere un correo"
+                                         a:placeholder="Correo" autocomplete="off" 
+                                         class="form-control placeholder-no-fix" maxlength="45"
+                                         value="#{usuarioControlador.correo}"/>
                         </div>
                         <br/>
                         <div>
                             <a href="InicioSesion.xhtml"><button class="btn" type="button" style="margin-left: 10px; background: #951010; color: white">Cancelar</button></a>
-                            <h:commandButton class="btn" value="Restablecer" style="margin-left: 10px; background: #727272; color: white"/>
+                            <h:commandButton class="btn" value="Restablecer" style="margin-left: 10px; 
+                                             background: #727272; color: white"
+                                             action="#{usuarioControlador.recuperarClave()}"/>
                         </div>
                         <br/>
 

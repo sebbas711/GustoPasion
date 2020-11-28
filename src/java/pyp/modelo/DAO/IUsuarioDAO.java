@@ -16,4 +16,6 @@ import pyp.modelo.entidades.Usuario;
 public interface IUsuarioDAO extends DAO<Usuario> {
     
     Usuario findByEmailAndPassword(String email, String password);
+
+    public Usuario recuperarClave(String correIn);
 }

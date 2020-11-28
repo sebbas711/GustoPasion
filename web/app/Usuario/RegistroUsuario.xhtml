@@ -17,63 +17,50 @@
             <br/>
             <div class="row">
                 <div class="col-md-5" style="margin-left: 100px">
-                    <div class="form-group">
-                        <label>ROL</label>
-                        <h:selectOneMenu class="form-control" value="#{usuarioControlador.nuevoUsuario.rol}">
-                            <f:selectItem itemLabel="Seleccione un tipo de Rol" itemValue=""/>
-                            <f:selectItems value="#{tipoRolControlador.roles}" var="rol" itemLabel="#{rol.descripcion}"/>
-                        </h:selectOneMenu>
-                    </div>
-                    <div class="form-group">
-                        <label>TIPO DE IDENTIFICACION</label>
-                        <h:inputText class="form-control" value="#{usuarioControlador.nuevoUsuario.tipoIdentificación}" maxlength="20" a:placeholder="Tipo de Identificación"/>
-                    </div>
-                    <div class="form-group">
-                        <label>Numero de Identificación: </label>
-                        <h:inputText class="form-control" a:type="number" value="#{usuarioControlador.nuevoUsuario.idUsuario}" maxlength="15" a:placeholder="Numero de Identificación"/>
-                    </div>
-                    <div class="form-group">
-                        <label>PRIMER NOMBRE</label>
-                        <h:inputText class="form-control" value="#{usuarioControlador.nuevoUsuario.primerNombre}" maxlength="20" a:placeholder="Primer Nombre"/>
-                    </div>
-                    <div class="form-group">
-                        <label>SEGUNDO NOMBRE</label>
-                        <h:inputText class="form-control" value="#{usuarioControlador.nuevoUsuario.segundoNombre}" maxlength="20" a:placeholder="Segundo Nombre"/>
-                    </div>
-                    <div class="form-group">
-                        <label>PRIMER APELLIDO</label>
-                        <h:inputText class="form-control" value="#{usuarioControlador.nuevoUsuario.primerApellido}" maxlength="20" a:placeholder="Primer Apellido"/>
-                    </div>
+
+                    <h:outputLabel for="fr_rol">ROL</h:outputLabel>
+                    <h:selectOneMenu id="fr_rol" class="form-control" value="#{usuarioControlador.nuevoUsuario.rol}">
+                        <f:selectItem itemLabel="Seleccione un tipo de Rol" itemValue=""/>
+                        <f:selectItems value="#{tipoRolControlador.roles}" var="rol" itemLabel="#{rol.descripcion}"/>
+                    </h:selectOneMenu>
+                    <br/>
+                    <h:outputLabel for="fr_tipoi">Tipo de Identidicación</h:outputLabel>
+                    <h:selectOneMenu id="fr_tipoi" required="true" requiredMessage="Por favor ingrese el tipo de identificación" class="form-control" value="#{usuarioControlador.nuevoUsuario.tipoIdentificación}">
+                        <f:selectItem itemLabel="Cedula" itemValue="Cedula" a:style="color: black"></f:selectItem>                                       
+                        <f:selectItem itemLabel="Cedula Ex" itemValue="Cedula Ex" a:style="color: black"></f:selectItem>
+                        <f:selectItem itemLabel="T. Identidad" itemValue="T. Identidad" a:style="color: black"></f:selectItem>
+                        <f:selectItem itemLabel="Pasaporte" itemValue="Pasaporte" a:style="color: black"></f:selectItem>
+                    </h:selectOneMenu>
+                    <br/>
+                    <h:outputLabel for="fr_numeroi">Numero de identificación</h:outputLabel>
+                    <h:inputText id="fr_numeroi" required="true" requiredMessage="Por favor ingrese el numero de identificación" class="form-control" a:type="number" value="#{usuarioControlador.nuevoUsuario.idUsuario}" maxlength="15" a:placeholder="Numero de Identificación"/>
+                    <br/>
+                    <h:outputLabel for="fr_pnombre">Primer Nombre</h:outputLabel>
+                    <h:inputText id="fr_pnombre" required="true" requiredMessage="Por favor ingrese su nombre" class="form-control" value="#{usuarioControlador.nuevoUsuario.primerNombre}" maxlength="20" a:placeholder="Primer Nombre"/>
+                    <br/>
+                    <h:outputLabel for="fr_snombre">Segundo Nombre</h:outputLabel>
+                    <h:inputText id="fr_snombre" class="form-control" value="#{usuarioControlador.nuevoUsuario.segundoNombre}" maxlength="20" a:placeholder="Segundo Nombre"/>
+                    <br/>
+                    <h:outputLabel for="fr_papellido">Primer Apellido</h:outputLabel>
+                    <h:inputText id="fr_papellido" required="true"  requiredMessage="Por favor ingrese su primer apellido" class="form-control" value="#{usuarioControlador.nuevoUsuario.primerApellido}" maxlength="20" a:placeholder="Primer Apellido"/>
                 </div>
                 <div class="col-md-5">
-                    <div class="form-group">
-                        <label>SEGUNDO APELLIDO</label>
-                        <h:inputText class="form-control" value="#{usuarioControlador.nuevoUsuario.segundoApellido}" maxlength="20" a:placeholder="Segundo Apellido"/>
-                    </div>
 
-                    <div class="form-group">
-                        <label>DIRECCION</label>
-                        <h:inputText class="form-control" value="#{usuarioControlador.nuevoUsuario.direccion}" maxlength="20" a:placeholder="Dirección"/>
-                    </div>
-                    <div class="form-group">
-                        <label>EMAIL</label>
-                        <h:inputText class="form-control" value="#{usuarioControlador.nuevoUsuario.email}" maxlength="45" a:placeholder="Correo electronico"/>
-                    </div>
-                    <div class="form-group">
-                        <label>TELEFONO</label>
-                        <h:inputText class="form-control" value="#{usuarioControlador.nuevoUsuario.telefono}" maxlength="10" a:placeholder="Telefono / Celular"/>
-                    </div>
-                    <div class="form-group">
-                        <label>CONTRASEÑA</label>
-                        <h:inputSecret class="form-control" value="#{usuarioControlador.nuevoUsuario.contraseña}" maxlength="20" a:placeholder="Ingrese contraseña"/>
-                    </div>
-                    <div class="form-group">
-                        <label>ESTADO: </label>
-                        <h:selectOneRadio class="form-check" value="#{usuarioControlador.nuevoUsuario.estado}" a:style="margin-right: 10px">
-                            <f:selectItem itemLabel="Inactivo" itemValue="0"/>
-                            <f:selectItem itemLabel="Activo" itemValue="1"/>
-                        </h:selectOneRadio>
-                    </div>
+                    <h:outputLabel for="fr_sapellido">Segundo Apellido</h:outputLabel>
+                    <h:inputText id="fr_sapellido" class="form-control" value="#{usuarioControlador.nuevoUsuario.segundoApellido}" maxlength="20" a:placeholder="Segundo Apellido"/>
+                    <br/>
+                    <h:outputLabel for="fr_direccion">Dirección</h:outputLabel>
+                    <h:inputText id="fr_direccion" class="form-control" value="#{usuarioControlador.nuevoUsuario.direccion}" maxlength="20" a:placeholder="Dirección"/>
+                    <br/>
+                    <h:outputLabel for="fr_email">Email</h:outputLabel>
+                    <h:inputText id="fr_email" class="form-control" value="#{usuarioControlador.nuevoUsuario.email}" maxlength="45" a:placeholder="Correo electronico"/>
+                    <br/>
+                    <h:outputLabel for="fr_telefono">Telefono</h:outputLabel>
+                    <h:inputText id="fr_telefono" class="form-control" value="#{usuarioControlador.nuevoUsuario.telefono}" maxlength="10" a:placeholder="Telefono / Celular"/>
+                    <br/>
+                    <h:outputLabel for="fr_contraseña">Contraseña</h:outputLabel>
+                    <h:inputSecret id="fr_contraseña" class="form-control" value="#{usuarioControlador.nuevoUsuario.contraseña}" maxlength="20" a:placeholder="Ingrese contraseña"/>
+
                 </div>
             </div>
             <br/>

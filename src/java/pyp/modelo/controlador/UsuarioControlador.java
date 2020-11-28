@@ -9,10 +9,13 @@ import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
 import pyp.modelo.DAO.IUsuarioDAO;
 import pyp.modelo.entidades.Usuario;
+import pyp.modelo.util.Email;
 import pyp.modelo.util.MessageUtil;
 
 /**
@@ -28,6 +31,8 @@ public class UsuarioControlador implements Serializable {
     private List<Usuario> usuarios;
     private Usuario UsuarioSeleccionado;
     private Usuario nuevoUsuario;
+
+    private String correo = "";
 
     public UsuarioControlador() {
     }
@@ -68,8 +73,40 @@ public class UsuarioControlador implements Serializable {
     }
 
     public void registrar() {
-        usuarioDAO.create(nuevoUsuario);
+        FacesContext fc = FacesContext.getCurrentInstance();
+        try {
+            nuevoUsuario.setEstado(Short.valueOf("1"));
+            usuarioDAO.create(nuevoUsuario);
+        } catch (Exception e) {
+        }
 
+    }
+
+    public void recuperarClave() {
+        String mensaje = "Usuario con el correo: " + correo;
+        Usuario usuarioResultado = new Usuario();
+        usuarioResultado = usuarioDAO.recuperarClave(correo);
+
+        if (usuarioResultado.getPrimerNombre() == null) {
+            mensaje += " NO ESTA EN LA BASE DE DATOS ";
+        } else {
+            try {
+                int nuevaClave = (int) (Math.random() * 100000);
+                usuarioResultado.setContraseña("RE-" + nuevaClave);
+                usuarioDAO.edit(usuarioResultado);
+                
+                Email.sendClaves(usuarioResultado.getEmail(),
+                        usuarioResultado.getPrimerNombre() + " " + usuarioResultado.getPrimerApellido(),
+                        usuarioResultado.getEmail(),
+                        "RE-"+nuevaClave);
+
+            } catch (Exception e) {
+                System.out.println("error enviando mensaje de recuperación -->" + e.getMessage());
+            }
+            mensaje += " su clave se envio al correo registrado.";
+        }
+        FacesMessage ms = new FacesMessage(mensaje);
+        FacesContext.getCurrentInstance().addMessage(null, ms);
     }
 
     public void eliminar() {
@@ -127,6 +164,14 @@ public class UsuarioControlador implements Serializable {
             return "Bloquear";
         }
         return "";
+    }
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
     }
 
 }

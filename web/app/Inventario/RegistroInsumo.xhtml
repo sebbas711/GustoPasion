@@ -9,66 +9,68 @@
                 xmlns:p="http://primefaces.org/ui">
 
     <ui:define name="contenido">
-        <h:form prependId="false"> 
-            <br/>
-            <h3 class="text-center"><b style="color: #951010;font-family: inherit">REGISTRAR INSUMOS</b></h3>
-            <br/>
-            <div class="row">
-                <div class="col-md-5"  style="margin-left:40px">
-                    <div class="form-group" >
-                        <label for="message-text" class="col-form-label">Tipo de Insumo: <b style="color: red">*</b></label>
-                        <h:selectOneMenu class="form-control" value="#{inventarioControlador.nuevoInsumo.tipoInsumo}">
-                            <f:selectItem itemLabel="Seleccione un tipo de Insumo" itemValue=""/>
-                            <f:selectItems value="#{tipoInsumoControlador.tiposInsumo}" var="ti" itemLabel="#{ti.nombre}"/>
-                        </h:selectOneMenu>
-                    </div>
-                    <div class="form-group">
-                        <label for="message-text" class="col-form-label">Auxiliar Cocina: <b style="color: red">*</b></label>
-                        <h:selectOneMenu class="form-control" value="#{inventarioControlador.nuevoInsumo.auxCocina}">
-                            <f:selectItem itemLabel="Seleccione Auxiliar Cocina" itemValue=""/>
-                            <f:selectItems value="#{auxCocinaControlador.auxCocina}" var="aux" itemLabel="#{aux.usuario.primerNombre} #{aux.usuario.primerApellido}"/>
-                        </h:selectOneMenu>
-                    </div>
-                    <div class="form-group">
-                        <label for="message-text" class="col-form-label">FECHA DE INGRESO: <b style="color: red">*</b></label>
-                        <h:inputText a:type="date" class="form-control" value="#{inventarioControlador.nuevoInsumo.fechaIngreso}">
-                            <f:convertDateTime pattern="yyyy-MM-dd"/>
-                        </h:inputText>
-                    </div>
-                    <div class="form-group">
-                        <label for="message-text" class="col-form-label">FECHA DE VENCIMIENTO: <b style="color: red">*</b></label>
-                        <h:inputText a:type="date" class="form-control" value="#{inventarioControlador.nuevoInsumo.fechaVencimiento}">
-                            <f:convertDateTime pattern="yyyy-MM-dd"/>
-                        </h:inputText>
-                    </div>
-                </div>
-                <div class="col-md-6" style="margin-left:40px">
-                    <div class="form-group">
-                        <label for="message-text" class="col-form-label">NOMBRE: <b style="color: red">*</b></label>
-                        <h:inputText class="form-control" value="#{inventarioControlador.nuevoInsumo.nombre}" a:placeholder="Nombre del Insumo" maxlength="20"/>
-                    </div>
-                    <div class="form-group">
-                        <label for="message-text" class="col-form-label">DESCRIPCION: <b style="color: red">*</b></label>
-                        <h:inputText class="form-control" value="#{inventarioControlador.nuevoInsumo.descripcion}" a:placeholder="Descripción" maxlength="70"/>
-                    </div>
-                    <div class="form-group">
-                        <label for="message-text"  class="col-form-label">CANTIDAD: <b style="color: red">*</b></label>
-                        <h:inputText class="form-control"  a:type="number" value="#{inventarioControlador.nuevoInsumo.cantidad}"/>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-12">
-                <center>
-                    <h:commandLink class="btn btn-danger" 
-                                   action="RegistroInsumo.xhtml" style="margin-right: 10px; background: #951010" value="Cancelar">
-                    </h:commandLink>
-                    <h:commandButton class="btn btn-primary border-success"
-                                     value="Registrar" action="#{inventarioControlador.registrar()}" style="margin-right: 10px; background: #727272"/>
-                </center>
+        <div class="container">
+            <h:form prependId="false"> 
                 <br/>
-            </div>
+                <h3 class="text-center"><b style="color: #951010;font-family: inherit">REGISTRAR INSUMOS</b></h3>
+                <br/>
+                <div class="row">
+                    <div class="col-md-5"  style="margin-left:40px">
+                        <div class="form-group" >
+                            <label for="message-text" class="col-form-label">Tipo de Insumo: <b style="color: red">*</b></label>
+                            <h:selectOneMenu class="form-control" value="#{inventarioControlador.nuevoInsumo.tipoInsumo}">
+                                <f:selectItem itemLabel="Seleccione un tipo de Insumo" itemValue=""/>
+                                <f:selectItems value="#{tipoInsumoControlador.tiposInsumo}" var="ti" itemLabel="#{ti.nombre}"/>
+                            </h:selectOneMenu>
+                        </div>
+                        <div class="form-group">
+                            <label for="message-text" class="col-form-label">Auxiliar Cocina: <b style="color: red">*</b></label>
+                            <h:selectOneMenu class="form-control" value="#{inventarioControlador.nuevoInsumo.auxCocina}">
+                                <f:selectItem itemLabel="Seleccione Auxiliar Cocina" itemValue=""/>
+                                <f:selectItems value="#{auxCocinaControlador.auxCocina}" var="aux" itemLabel="#{aux.usuario.primerNombre} #{aux.usuario.primerApellido}"/>
+                            </h:selectOneMenu>
+                        </div>
+                        <div class="form-group">
+                            <label for="message-text" class="col-form-label">FECHA DE INGRESO: <b style="color: red">*</b></label>
+                            <h:inputText a:type="date" class="form-control" value="#{inventarioControlador.nuevoInsumo.fechaIngreso}">
+                                <f:convertDateTime pattern="yyyy-MM-dd"/>
+                            </h:inputText>
+                        </div>
+                        <div class="form-group">
+                            <label for="message-text" class="col-form-label">FECHA DE VENCIMIENTO: <b style="color: red">*</b></label>
+                            <h:inputText a:type="date" class="form-control" value="#{inventarioControlador.nuevoInsumo.fechaVencimiento}">
+                                <f:convertDateTime pattern="yyyy-MM-dd"/>
+                            </h:inputText>
+                        </div>
+                    </div>
+                    <div class="col-md-6" style="margin-left:40px">
+                        <div class="form-group">
+                            <label for="message-text" class="col-form-label">NOMBRE: <b style="color: red">*</b></label>
+                            <h:inputText class="form-control" value="#{inventarioControlador.nuevoInsumo.nombre}" a:placeholder="Nombre del Insumo" maxlength="20"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="message-text" class="col-form-label">DESCRIPCION: <b style="color: red">*</b></label>
+                            <h:inputText class="form-control" value="#{inventarioControlador.nuevoInsumo.descripcion}" a:placeholder="Descripción" maxlength="70"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="message-text"  class="col-form-label">CANTIDAD: <b style="color: red">*</b></label>
+                            <h:inputText class="form-control"  a:type="number" value="#{inventarioControlador.nuevoInsumo.cantidad}"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <center>
+                        <h:commandLink class="btn btn-danger" 
+                                       action="RegistroInsumo.xhtml" style="margin-right: 10px; background: #951010" value="Cancelar">
+                        </h:commandLink>
+                        <h:commandButton class="btn btn-primary border-success"
+                                         value="Registrar" action="#{inventarioControlador.registrar()}" style="margin-right: 10px; background: #727272"/>
+                    </center>
+                    <br/>
+                </div>
 
-        </h:form>
+            </h:form>
+        </div>
     </ui:define>
 </ui:composition>
 

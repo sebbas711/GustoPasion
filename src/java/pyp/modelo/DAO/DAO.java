@@ -6,6 +6,7 @@
 package pyp.modelo.DAO;
 
 import java.util.List;
+import pyp.modelo.entidades.Usuario;
 
 /**
  *
@@ -26,4 +27,5 @@ public interface DAO<E>  {
     List<E> findRange(int[] range);
 
     int count();
+
 }

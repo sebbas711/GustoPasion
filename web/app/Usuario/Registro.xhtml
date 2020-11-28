@@ -16,53 +16,78 @@
             <link rel="icon" type="Pagina" href="img/Logo2.png"/>
             <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css"/>
             <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-            
+
             <title>#{msjLogin.title}</title>
         </h:head>
 
         <h:body>
-
             <div class="container">
-                <div class="row justify-content-center pt-5 mt-5 m-1">
-                    <div class="col-xs-12 col-sm-12 col-md-6  col-lg-6 formulario">
-                        <h:form id="registro" class="form-login">
-                            <div class="form-group text-center">
-                                <img src="#{request.contextPath}/resource/img/LOgo.png" class="logo img-fluid "/>
-                                <h3>#{msjLogin.title}</h3>
+                <div class="row justify-content-center pt-5 ">
+                    <div class="formulario col-lg-10">
+                        <h:form prependId="false"> 
+                            <br/>
+                            <h3 class="text-center"><b style="color: white">REGISTRARSE</b></h3>
+                            <br/>
+                            <div class="row">
+                                <div class="col-md-5" style="margin-left: 70px">
+                                    <h:outputLabel for="fr_rol">ROL</h:outputLabel>
+                                    <h:selectOneMenu id="fr_rol" class="form-control" value="#{usuarioControlador.nuevoUsuario.rol}">
+                                        <f:selectItem itemLabel="Seleccione un tipo de Rol" itemValue="" a:style="color: black"/>
+                                        <f:selectItems value="#{tipoRolControlador.roles}" var="rol" itemLabel="#{rol.descripcion}" a:style="color: black"/>
+                                    </h:selectOneMenu>
+                                    <br/>
+                                    <h:outputLabel for="fr_tipoi">Tipo de Identidicación</h:outputLabel>
+                                    <h:selectOneMenu id="fr_tipoi" required="true" requiredMessage="Por favor ingrese el tipo de identificación" class="form-control" value="#{usuarioControlador.nuevoUsuario.tipoIdentificación}">
+                                        <f:selectItem itemLabel="Cedula" itemValue="Cedula" a:style="color: black"></f:selectItem>                                       
+                                        <f:selectItem itemLabel="Cedula Ex" itemValue="Cedula Ex" a:style="color: black"></f:selectItem>
+                                        <f:selectItem itemLabel="T. Identidad" itemValue="T. Identidad" a:style="color: black"></f:selectItem>
+                                        <f:selectItem itemLabel="Pasaporte" itemValue="Pasaporte" a:style="color: black"></f:selectItem>
+                                    </h:selectOneMenu>
+                                    <br/>
+                                    <h:outputLabel for="fr_numeroi">Numero de identificación</h:outputLabel>
+                                    <h:inputText id="fr_numeroi" required="true" requiredMessage="Por favor ingrese el numero de identificación" class="form-control" a:type="number" value="#{usuarioControlador.nuevoUsuario.idUsuario}" maxlength="15" a:placeholder="Numero de Identificación"/>
+                                    <br/>
+                                    <h:outputLabel for="fr_pnombre">Primer Nombre</h:outputLabel>
+                                    <h:inputText id="fr_pnombre" required="true" requiredMessage="Por favor ingrese su nombre" class="form-control" value="#{usuarioControlador.nuevoUsuario.primerNombre}" maxlength="20" a:placeholder="Primer Nombre"/>
+                                    <br/>
+                                    <h:outputLabel for="fr_snombre">Segundo Nombre</h:outputLabel>
+                                    <h:inputText id="fr_snombre" class="form-control" value="#{usuarioControlador.nuevoUsuario.segundoNombre}" maxlength="20" a:placeholder="Segundo Nombre"/>
+                                    <br/>
+                                    <h:outputLabel for="fr_papellido">Primer Apellido</h:outputLabel>
+                                    <h:inputText id="fr_papellido" required="true"  requiredMessage="Por favor ingrese su primer apellido" class="form-control" value="#{usuarioControlador.nuevoUsuario.primerApellido}" maxlength="20" a:placeholder="Primer Apellido"/>
+                                </div>
+                                <div class="col-md-5">
+
+                                    <h:outputLabel for="fr_sapellido">Segundo Apellido</h:outputLabel>
+                                    <h:inputText id="fr_sapellido" class="form-control" value="#{usuarioControlador.nuevoUsuario.segundoApellido}" maxlength="20" a:placeholder="Segundo Apellido"/>
+                                    <br/>
+                                    <h:outputLabel for="fr_direccion">Dirección</h:outputLabel>
+                                    <h:inputText id="fr_direccion" class="form-control" value="#{usuarioControlador.nuevoUsuario.direccion}" maxlength="20" a:placeholder="Dirección"/>
+                                    <br/>
+                                    <h:outputLabel for="fr_email">Email</h:outputLabel>
+                                    <h:inputText id="fr_email" class="form-control" value="#{usuarioControlador.nuevoUsuario.email}" maxlength="45" a:placeholder="Correo electronico"/>
+                                    <br/>
+                                    <h:outputLabel for="fr_telefono">Telefono</h:outputLabel>
+                                    <h:inputText id="fr_telefono" class="form-control" value="#{usuarioControlador.nuevoUsuario.telefono}" maxlength="10" a:placeholder="Telefono / Celular"/>
+                                    <br/>
+                                    <h:outputLabel for="fr_contraseña">Contraseña</h:outputLabel>
+                                    <h:inputSecret id="fr_contraseña" class="form-control" value="#{usuarioControlador.nuevoUsuario.contraseña}" maxlength="20" a:placeholder="Ingrese contraseña"/>
+                                    <br/>
+                                </div>
                             </div>
                             <br/>
-                            <div class="login-wrap">
-                                <h:selectOneMenu value="" class="form-control">
-                                    <f:selectItem itemLabel="Cedula" itemValue="Cedula" a:style="background:#951010"  ></f:selectItem>
-                                    <f:selectItem itemLabel="Cedula Ex." itemValue="Cedula Ex." a:style="background:#951010" ></f:selectItem>
-                                    <f:selectItem itemLabel="Pasaporte" itemValue="Pasaporte" a:style="background:#951010" ></f:selectItem>
-                                    <f:selectItem itemLabel="Tar. Identidad" itemValue="Tar. Identidad" a:style="background:#951010" ></f:selectItem>
-                                </h:selectOneMenu>
-                                <br/>
-
-                                <h:inputText  value="" class="form-control" a:placeholder="Numero documento" a:autofocus="true" maxlength="15"/>
-                                <br/>
-
-
-                                <h:inputText  value="" class="form-control" a:placeholder="Nombres" a:autofocus="true" maxlength="45"/>
-                                <br/>
-                                <h:inputText value="" class="form-control" a:placeholder="Apellidos" a:autofocus="true" maxlength="45"/>
-                                <br/>
-                                <h:inputText  value="" class="form-control" a:placeholder="Dirección" a:autofocus="true" maxlength="45"/>
-                                <br/>
-                                <h:inputText  value="" class="form-control" a:placeholder="Telefono" a:autofocus="true" maxlength="10"/>
-                                <br/>
-                                <h:inputText  value="" a:type="email" class="form-control" a:placeholder="Correo" a:autofocus="true" maxlength="45"/>
-                                <br/>
-                                <h:inputSecret  value="" class="form-control" a:placeholder="Contraseña" maxlength="20"/>
-                                <br/>
+                            <div class="col-sm-12">
                                 <center>
-                                    <a href="InicioSesion.xhtml" class="btn" style="margin-left: 10px; background: #951010; color: white">Volver</a>
-                                    <h:commandButton class="btn" value="Registrarse" style="margin-left: 10px; background: #727272; color: white"/>
+                                    <a class="btn" 
+                                       href="RegistroUsuario.xhtml" style="margin-right: 10px; background: #951010; color: white">Cancelar
+                                    </a>
+                                    <h:commandButton class="btn" style="margin-left: 10px; color: white; background: #727272" 
+                                                     value="Registrar" action="#{usuarioControlador.registrar()}"/>
                                 </center>
-                                <br/>
                             </div>
-
+                            <br/>
+                            <br/>
+                            <br/>
                         </h:form>
                     </div>
                 </div>
