@@ -1,0 +1,24 @@
+*{
+	
+}
+body{
+	font-family: arial;
+}
+table, td, th{
+	border: 1px  solid #ccc;
+}
+table{
+	border-collapse: collapse;
+	width: 500px;
+	text-align: center;
+}
+th, td{
+	padding: 10px 20px;
+}
+th{
+	background: #009ddc;
+	color: #fff;
+}
+tr:hover{
+	background: #e8e538;
+}

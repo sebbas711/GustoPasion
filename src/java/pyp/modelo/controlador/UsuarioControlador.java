@@ -13,6 +13,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
+import org.primefaces.PrimeFaces;
 import pyp.modelo.DAO.IUsuarioDAO;
 import pyp.modelo.entidades.Usuario;
 import pyp.modelo.util.Email;
@@ -73,68 +74,74 @@ public class UsuarioControlador implements Serializable {
     }
 
     public void registrar() {
+        String mensajeRequest = "";
         FacesContext fc = FacesContext.getCurrentInstance();
         try {
             nuevoUsuario.setEstado(Short.valueOf("1"));
             usuarioDAO.create(nuevoUsuario);
+            mensajeRequest = "swal('Registro Exitoso', '', 'success');";
         } catch (Exception e) {
+            System.out.println("Error UsuarioControlador:registrar " + e.getMessage());
+            mensajeRequest = "swal('Verifique sus datos', 'Intente de nuevo', 'error');";
+
         }
+        PrimeFaces.current().executeScript(mensajeRequest);
+        nuevoUsuario = new Usuario();
 
     }
 
     public void recuperarClave() {
-        String mensaje = "Usuario con el correo: " + correo;
+        
+        String mensajeRequest = "";
         Usuario usuarioResultado = new Usuario();
-        usuarioResultado = usuarioDAO.recuperarClave(correo);
-
-        if (usuarioResultado.getPrimerNombre() == null) {
-            mensaje += " NO ESTA EN LA BASE DE DATOS ";
-        } else {
-            try {
-                int nuevaClave = (int) (Math.random() * 100000);
-                usuarioResultado.setContraseña("RE-" + nuevaClave);
-                usuarioDAO.edit(usuarioResultado);
-                
-                Email.sendClaves(usuarioResultado.getEmail(),
-                        usuarioResultado.getPrimerNombre() + " " + usuarioResultado.getPrimerApellido(),
-                        usuarioResultado.getEmail(),
-                        "RE-"+nuevaClave);
-
-            } catch (Exception e) {
-                System.out.println("error enviando mensaje de recuperación -->" + e.getMessage());
-            }
-            mensaje += " su clave se envio al correo registrado.";
+        
+        try {
+            usuarioResultado = usuarioDAO.recuperarClave(correo);
+            int claveNew = (int) (Math.random()*100000);
+            usuarioResultado.setContraseña("GP-"+claveNew);
+            usuarioDAO.edit(usuarioResultado);
+            mensajeRequest += "swal('Envio Exitoso', 'Clave enviada al correo registrado', 'success');";
+            Email.sendClaves(usuarioResultado.getEmail(), usuarioResultado.getPrimerNombre() + " " + 
+                    usuarioResultado.getPrimerApellido(), correo, "GP-"+claveNew);
+        } catch (Exception e) {
+            System.out.println("Error RegistroRequest:recuperarClave" + e.getMessage());
+            mensajeRequest = "swal('Verifique sus datos', 'Intente de nuevo', 'error');";
         }
-        FacesMessage ms = new FacesMessage(mensaje);
-        FacesContext.getCurrentInstance().addMessage(null, ms);
+        PrimeFaces.current().executeScript(mensajeRequest);
+        correo = "";
     }
 
     public void eliminar() {
+        String mensajeRequest = "";
+        FacesContext fc = FacesContext.getCurrentInstance();
         try {
             usuarioDAO.remove(UsuarioSeleccionado);
-            MessageUtil.sendInfo(null, "El usuario se ha eliminado correctamente", "", false);
+            mensajeRequest = "swal('Usuario Eliminado', 'Correctamente', 'success');";
             usuarios = null;
         } catch (Exception e) {
-            e.printStackTrace();
-            MessageUtil.sendError(null, "Error al eliminar el usuario", e.getMessage(), false);
+            mensajeRequest = "swal('Error', 'No se pudo eliminar el usuario', 'error');";
         }
     }
 
     public void actualizar() {
+        String mensajeRequest = "";
+        FacesContext fc = FacesContext.getCurrentInstance();
         try {
             if (UsuarioSeleccionado != null) {
                 usuarioDAO.edit(UsuarioSeleccionado);
-                MessageUtil.sendInfo(null, "La informacion del usuario se ha modificado correctamente", "", false);
+                mensajeRequest = "swal('Actulizado', 'Correctamente', 'success');";
                 usuarios = null;
             }
         } catch (Exception e) {
-            e.printStackTrace();
-            MessageUtil.sendError(null, "Error al modificar la infromacion del usuario", e.getMessage(), false);
+            mensajeRequest = "swal('Error', 'No se pudo actualizar el usuario', 'error');";
         }
+        PrimeFaces.current().executeScript(mensajeRequest);
 
     }
 
     public void bloquearODesbloquear() {
+        String mensajeRequest = "";
+        FacesContext fc = FacesContext.getCurrentInstance();
         try {
             if (UsuarioSeleccionado != null) {
                 if (UsuarioSeleccionado.getEstado() != 0) {
@@ -143,13 +150,15 @@ public class UsuarioControlador implements Serializable {
                     UsuarioSeleccionado.setEstado((short) 1);
                 }
                 usuarioDAO.edit(UsuarioSeleccionado);
-                MessageUtil.sendInfo(null, "El estado del usuario se ha modificado correctamente", "", false);
+                mensajeRequest = "swal('Estado el Usuario', 'Modificado', 'success');";
                 usuarios = null;
             }
         } catch (Exception e) {
             e.printStackTrace();
-            MessageUtil.sendError(null, "Error al modificar el estado del usuario", e.getMessage(), false);
+            mensajeRequest = "swal('Error', 'No se pudo cambiar el estado del usuario', 'error');";
         }
+        
+        PrimeFaces.current().executeScript(mensajeRequest);
     }
 
     public boolean renderedBtnBloquear(Usuario usuario) {

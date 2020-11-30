@@ -16,41 +16,46 @@
             <br/>
             <h4 class="text-center"><b>Usuarios</b></h4>
             <br/>
-            <h:dataTable class="table table-striped" value="#{usuarioControlador.usuarios}" 
+            <p:dataTable class="table table-striped" value="#{usuarioControlador.usuarios}" 
                          rows="10"
+                         paginator="true"
+                         rowsPerPageTemplate="5,10,15"
+                         reflow="true"
                          var="usuario">
-
-                <h:column>
+                <p:column style="width: 120px">
                     <f:facet name="header">ID:</f:facet>
                     <h:outputText value="#{usuario.idUsuario}"/>
-                </h:column>
-                <h:column>
+                </p:column>
+                <p:column style="width: 130px">
                     <f:facet name="header">ROL:</f:facet>
                     <h:outputText value="#{usuario.rol.descripcion}"/>
-                </h:column>
-                <h:column>
+                </p:column>
+                <p:column style="width: 250px">
                     <f:facet name="header">NOMBRES:</f:facet>
                     <h:outputText value="#{usuario.primerNombre} #{usuario.segundoNombre} "/>
-                </h:column>
-                <h:column>
+                </p:column>
+                <p:column style="width: 250px">
                     <f:facet name="header">APELLIDOS:</f:facet>
                     <h:outputText value="#{usuario.primerApellido} #{usuario.segundoApellido} "/>
-                </h:column>
-                <h:column>
+                </p:column>
+                <p:column style="width: 200px">
                     <f:facet name="header">OPCIONES:</f:facet>
                     <h:commandLink class="btn" a:data-toggle="modal" a:data-target="#verInfoUsuario"
-                                   action="#{usuarioControlador.seleccionarUsuario(usuario)}" style="background: #580000">
+                                   action="#{usuarioControlador.seleccionarUsuario(usuario)}" 
+                                   style="background: #580000; margin-right: 12px">
                         <i class="fa fa-eye" style="color: white"></i>
                         <f:ajax render=":verInfoUsuarioContent"/>
                     </h:commandLink>
                     <h:commandLink class="btn" a:data-toggle="modal" a:data-target="#editarInfoUsuario" 
-                                   action="#{usuarioControlador.seleccionarUsuario(usuario)}" style="background: #951010">
+                                   action="#{usuarioControlador.seleccionarUsuario(usuario)}" 
+                                   style="background: #951010; margin-right: 12px">
                         <i class="fa fa-pencil" style="color: white"></i>
                         <f:ajax render=":editarInfoUsuarioContent"/>
                     </h:commandLink>
                     <h:commandLink class="btn"
                                    action="#{usuarioControlador.seleccionarUsuario(usuario)}" 
-                                   a:data-toggle="modal" a:data-target="#eliminarUsuario" style="background: #727272">
+                                   a:data-toggle="modal" a:data-target="#eliminarUsuario" 
+                                   style="background: #727272; margin-right: 12px">
                         <i class="fa fa-trash" style="color: white"></i>
                         <f:ajax render=":confirmEliminarUsuario"/>
                     </h:commandLink>
@@ -68,8 +73,8 @@
                         <i class="fa fa-lock" style="color: white"></i>
                         <f:ajax render=":confirmarBloquearUsuario"/>
                     </h:commandLink>
-                </h:column>
-            </h:dataTable>
+                </p:column>
+            </p:dataTable>
         </h:form>
 
         <ui:include src="/WEB-INF/includes/modal/usuarios/ver_info_usuario.xhtml"></ui:include>

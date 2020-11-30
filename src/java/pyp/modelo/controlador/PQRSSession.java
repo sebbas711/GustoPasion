@@ -6,6 +6,7 @@ import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import org.primefaces.PrimeFaces;
 import pyp.modelo.DAO.IPqrsDAO;
 import pyp.modelo.entidades.Pqrs;
 
@@ -22,20 +23,20 @@ public class PQRSSession implements Serializable {
      */
     public PQRSSession() {
     }
-    
+
     @PostConstruct
     public void init() {
     }
-    
+
     @EJB
-    
+
     private IPqrsDAO pqrsDAO;
     private List<Pqrs> pqrs;
     private Pqrs pqrsSeleccionada;
     private Pqrs pqrsNueva;
 
     public List<Pqrs> getPqrs() {
-        if(pqrs == null || pqrs.isEmpty()){
+        if (pqrs == null || pqrs.isEmpty()) {
             pqrs = pqrsDAO.findAll();
         }
         return pqrs;
@@ -60,13 +61,22 @@ public class PQRSSession implements Serializable {
     public void setPqrsNueva(Pqrs pqrsNueva) {
         this.pqrsNueva = pqrsNueva;
     }
-    
-    public void seleccionarPqrs(Pqrs pqrs){
+
+    public void seleccionarPqrs(Pqrs pqrs) {
         this.pqrsSeleccionada = pqrs;
     }
-    
-    public void registrarPqrs(){
-        pqrsDAO.create(pqrsNueva);
+
+    public void registrarPqrs() {
+        String mensajeRequest = "";
+        try {
+            pqrsDAO.create(pqrsNueva);
+            mensajeRequest = "swal('Registro Exitoso', '', 'success');";
+        } catch (Exception e) {
+            System.out.println("Error UsuarioControlador:registrar " + e.getMessage());
+            mensajeRequest = "swal('Verifique sus datos', 'Intente de nuevo', 'error');";
+        }
+        PrimeFaces.current().executeScript(mensajeRequest);
+        pqrsNueva = new Pqrs();
     }
-    
+
 }

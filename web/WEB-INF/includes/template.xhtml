@@ -10,31 +10,11 @@
     </f:metadata>
     <h:head>
         <ui:include src="/WEB-INF/includes/head/head.xhtml"></ui:include>
-        <title><ui:insert name="title"></ui:insert> | Pastas y Pizzas</title>
+        <title><ui:insert name="title"></ui:insert> || Restaurante Gusto y Pasión</title>
         <ui:insert name="headPlus"></ui:insert>
-        <script type="text/javascript">
-            $(document).ready(function () {
-                var unique_id = $.gritter.add({
-                    // (string | mandatory) the heading of the notification
-                    title: 'Bienvenido ${nombreUsuario} al modulo ${ruta}!',
-                    // (string | mandatory) the text inside the notification
-                    text: 'No olvidar cerrar sesion',
-                    // (string | optional) the image to display on the left
-                    image: '../img/ui-sam.jpg',
-                    // (bool | optional) if you want it to fade out on its own or just sit there
-                    sticky: false,
-                    // (int | optional) the time you want it to be alive for before fading out
-                    time: 8000,
-                    // (string | optional) the class name you want to apply to that specific message
-                    class_name: 'my-sticky-class'
-                });
-
-                return false;
-            });
-        </script>
+        
     </h:head>
     <h:body id="page-top">
-        <ui:param name="nombreUsuario" value="Josarta"></ui:param>
         <ui:include src="/WEB-INF/includes/navegacion/menu-lateral.xhtml"></ui:include>
         <div id="right-panel" class="right-panel">
             <ui:include src="/WEB-INF/includes/navegacion/menu-superior.xhtml"></ui:include>

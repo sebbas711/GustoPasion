@@ -2,10 +2,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
-
-    <f:view locale="#{languagecontroller.locale}">
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
 
         <h:head>
             <meta charset="utf-8"/>
@@ -16,15 +13,14 @@
             <link rel="icon" type="Pagina" href="img/Logo2.png"/>
             <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css"/>
             <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-            <title>#{msjLogin.title}</title>
         </h:head>
 
         <h:body>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-
+            <center>
+                <div class="form-group text-center" style="width: 400px">
+                    <img src="#{request.contextPath}/resource/img/LOgo.png" class="logo img-fluid "/>
+                </div>
+            </center>
             <div class="container formulario">
                 <div class="row">
                     <h4 style="margin-top:100px; color: white; margin-left: 200px">¿Olvido su contraseña?</h4>
@@ -35,12 +31,13 @@
                         <br/>
                         <br/>
                         <div>
+
                             <strong>
                                 <p style="color: white">Ingrese su correo electronico para enviarle una nueva contraseña</p>
                             </strong>
                             <h:inputText id="correoId" required="true" requiredMessage="Se requiere un correo"
                                          a:placeholder="Correo" autocomplete="off" 
-                                         class="form-control placeholder-no-fix" maxlength="45"
+                                         class="form-control placeholder-no-fix" maxlength="80"
                                          value="#{usuarioControlador.correo}"/>
                         </div>
                         <br/>
@@ -56,6 +53,6 @@
                 </div>
             </div>
         </h:body>
-    </f:view>
+  
 </html>
 

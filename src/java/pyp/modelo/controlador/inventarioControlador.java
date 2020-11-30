@@ -8,6 +8,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
+import org.primefaces.PrimeFaces;
 import pyp.modelo.DAO.IInsumoDAO;
 import pyp.modelo.entidades.Insumo;
 
@@ -65,13 +66,17 @@ public class inventarioControlador implements Serializable {
     }
 
     public void registrar() {
-        FacesContext fc = FacesContext.getCurrentInstance();
-        try{
-        nuevoInsumo.setEstado(Short.valueOf("1"));
-        IDAO.create(nuevoInsumo);
-    }catch(Exception ex){
-        
-    }
+        String mensajeRequest = "";
+        try {
+            nuevoInsumo.setEstado(Short.valueOf("1"));
+            IDAO.create(nuevoInsumo);
+            mensajeRequest = "swal('Registro Exitoso', '', 'success');";
+        } catch (Exception ex) {
+            System.out.println("Error UsuarioControlador:registrar " + ex.getMessage());
+            mensajeRequest = "swal('Verifique sus datos', 'Intente de nuevo', 'error');";
+        }
+        PrimeFaces.current().executeScript(mensajeRequest);
+        nuevoInsumo = new Insumo();
     }
 
 }
