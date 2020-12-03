@@ -8,6 +8,8 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
+import static org.jboss.weld.context.cache.RequestScopedCache.invalidate;
 import pyp.modelo.DAO.IUsuarioDAO;
 import pyp.modelo.entidades.Usuario;
 import pyp.modelo.util.MessageUtil;
@@ -128,6 +130,19 @@ public class SessionControlador implements Serializable {
             }
         } else {
             MessageUtil.sendInfo(null, "Datos Obligatorios", "Debe diligenciar todos los campos", Boolean.FALSE);
+        }
+    }
+    
+    public void cerrarSesion(){
+        user = null;
+        ExternalContext ext = FacesContext.getCurrentInstance().getExternalContext();
+        String ctxPath = ext.getRequestContextPath();
+        
+        try {
+            ((HttpSession) ext.getSession(false)).invalidate();
+            ext.redirect(ctxPath + "/index.xhtml");
+        } catch (Exception e) {
+            System.out.println("Error UsuarioSesion:cerraSesion" + e.getMessage());
         }
     }
 

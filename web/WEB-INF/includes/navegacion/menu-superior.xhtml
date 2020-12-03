@@ -50,7 +50,9 @@
                         <img class="user-avatar rounded-circle" src="#{request.contextPath}/resource/img/LOgo.png" alt="User Avatar"/>
                     </a>
                     <div class="user-menu dropdown-menu">
-                        <a class="nav-link" href="../Usuario/InicioSesion.xhtml"><i class="fa fa-power-off"></i>Cerrar Sesión</a>
+                        <h:form>
+                            <h:commandLink action="#{sessionControlador.cerrarSesion()}" class="nav-link" value="Cerrar Sesion"></h:commandLink>
+                        </h:form>
                     </div>
                 </div>
 
