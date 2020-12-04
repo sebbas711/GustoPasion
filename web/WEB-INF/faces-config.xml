@@ -9,5 +9,9 @@
             <base-name>pyp.modelo.language.Login</base-name>
             <var>msjLogin</var>
         </resource-bundle>
+        <resource-bundle>
+            <base-name>pyp.modelo.language.index</base-name>
+            <var>msjIndex</var>
+        </resource-bundle>
     </application>
 </faces-config>

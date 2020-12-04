@@ -5,7 +5,7 @@
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <!-- modal mostrar usuarios-->
     <div class="modal fade" id="verInfoUsuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <h:panelGroup id="verInfoUsuarioContent" layout="block">
                     <div class="modal-header" style="background-color: #951010">
@@ -14,46 +14,52 @@
                         </button>
                         <span><center><img src="#{request.contextPath}/resource/img/LOgo.png" class="rounded-pill" target="_blank" style="height: 100px"/></center></span>             
                     </div>
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label for="message-text" class="col-form-label">ID:</label>
-                            <span class="form-control">#{usuarioControlador.usuarioSeleccionado.idUsuario}</span>
+                    <div class="modal-body row">
+                        <div class="col-md-6">
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label for="message-text" class="col-form-label">ID:</label>
+                                    <span class="form-control">#{usuarioControlador.usuarioSeleccionado.idUsuario}</span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="message-text" class="col-form-label">ROL:</label>
+                                    <span class="form-control">#{usuarioControlador.usuarioSeleccionado.rol.descripcion}</span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="message-text" class="col-form-label">TIPO DE IDENTIFICACION:</label>
+                                    <span class="form-control">#{usuarioControlador.usuarioSeleccionado.tipoIdentificación}</span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="message-text" class="col-form-label">NOMBRES:</label>
+                                    <span class="form-control">#{usuarioControlador.usuarioSeleccionado.primerNombre} #{usuarioControlador.usuarioSeleccionado.segundoNombre}</span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="message-text" class="col-form-label">APELLIDOS:</label>
+                                    <span class="form-control">#{usuarioControlador.usuarioSeleccionado.primerApellido} #{usuarioControlador.usuarioSeleccionado.segundoApellido}</span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="message-text" class="col-form-label">ROL:</label>
-                            <span class="form-control">#{usuarioControlador.usuarioSeleccionado.rol.descripcion}</span>
-                        </div>
-                        <div class="form-group">
-                            <label for="message-text" class="col-form-label">TIPO DE IDENTIFICACION:</label>
-                            <span class="form-control">#{usuarioControlador.usuarioSeleccionado.tipoIdentificación}</span>
-                        </div>
-                        <div class="form-group">
-                            <label for="message-text" class="col-form-label">NOMBRES:</label>
-                            <span class="form-control">#{usuarioControlador.usuarioSeleccionado.primerNombre} #{usuarioControlador.usuarioSeleccionado.segundoNombre}</span>
-                        </div>
-                        <div class="form-group">
-                            <label for="message-text" class="col-form-label">APELLIDOS:</label>
-                            <span class="form-control">#{usuarioControlador.usuarioSeleccionado.primerApellido} #{usuarioControlador.usuarioSeleccionado.segundoApellido}</span>
-                        </div>
-                        <div class="form-group">
-                            <label for="message-text" class="col-form-label">DIRECCION:</label>
-                            <span class="form-control">#{usuarioControlador.usuarioSeleccionado.direccion}</span>
-                        </div>
-                        <div class="form-group">
-                            <label for="message-text" class="col-form-label">EMAIL:</label>
-                            <span class="form-control">#{usuarioControlador.usuarioSeleccionado.email}</span>
-                        </div>
-                        <div class="form-group">
-                            <label for="message-text" class="col-form-label">TELEFONO:</label>
-                            <span class="form-control">#{usuarioControlador.usuarioSeleccionado.telefono}</span>
-                        </div>
-                        <div class="form-group">
-                            <label for="message-text" class="col-form-label">CONTRASEÑA:</label>
-                            <span class="form-control">#{usuarioControlador.usuarioSeleccionado.contraseña}</span>
-                        </div>
-                        <div class="form-group">
-                            <label for="message-text" class="col-form-label">ESTADO:</label>
-                            <span class="form-control">#{usuarioControlador.usuarioSeleccionado.estado}</span>
+                        <div class="col-md-6" style="margin-top: 15px">
+                            <div class="form-group">
+                                <label for="message-text" class="col-form-label">DIRECCION:</label>
+                                <span class="form-control">#{usuarioControlador.usuarioSeleccionado.direccion}</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="message-text" class="col-form-label">EMAIL:</label>
+                                <span class="form-control">#{usuarioControlador.usuarioSeleccionado.email}</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="message-text" class="col-form-label">TELEFONO:</label>
+                                <span class="form-control">#{usuarioControlador.usuarioSeleccionado.telefono}</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="message-text" class="col-form-label">CONTRASEÑA:</label>
+                                <span class="form-control">#{usuarioControlador.usuarioSeleccionado.contraseña}</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="message-text" class="col-form-label">ESTADO:</label>
+                                <span class="form-control">#{usuarioControlador.usuarioSeleccionado.estado}</span>
+                            </div>
                         </div>
                     </div>
                     <div class="modal-footer">

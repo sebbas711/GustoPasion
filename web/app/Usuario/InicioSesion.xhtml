@@ -53,11 +53,11 @@
 
                             <div class="form-group mx-sm-4">
                                 <center>
-                                    <h:commandButton class="btn" value="#{msjLogin.btnIngresarValue}" action="#{sessionControlador.startSession()}" style="background: #951010; color: white"/>
+                                    <h:commandLink class="btn" value="#{msjLogin.btnIngresarValue}" action="#{sessionControlador.startSession()}" style="background: #951010; color: white"/>
                                 </center>
                                 <br/>
                                 <center>
-                                    <a href="OlvidoContr.xhtml" style="color: white">¿Olvido su contraseña?</a>
+                                    <a href="OlvidoContr.xhtml" style="color: white">#{msjLogin.OlvidoSuContraseñalabel}</a>
                                 </center>
 
                                 <hr/>
@@ -70,9 +70,9 @@
                                 <br/>
                                 <center>
                                     <div class="registration">
-                                        ¿Todavía no tienes una cuenta?<br/>
+                                        #{msjLogin.TodaviaNoTieneCuentaLabel}<br/>
                                         <a class="" href="Registro.xhtml" style="color: white">
-                                            Crear una cuenta
+                                            #{msjLogin.CrearCuentaLabel}
                                         </a>
                                     </div>
                                 </center>

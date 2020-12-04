@@ -90,26 +90,51 @@
                          rowsPerPageTemplate="5,10,15"
                          reflow="true"
                          var="insu">
-                <p:column headerText="ID" priority="2" style="width: 80px">
+                <p:column headerText="ID" priority="2" style="width: 70px">
                     <h:outputText value="#{insu.id}"/>
                 </p:column>
-                <p:column headerText="NOMBRE" priority="2">
+                <p:column headerText="NOMBRE" priority="2" style="width: 150px">
                     <h:outputText value="#{insu.nombre}"/>
                 </p:column>
-                <p:column headerText="CANTIDAD" priority="2" style="width: 140px">
+                <p:column headerText="CANTIDAD" priority="2" style="width: 100px">
                     <h:outputText value="#{insu.cantidad} "/>
                 </p:column>
                 <p:column headerText="ESTADO" priority="2" style="width: 140px">
                     <h:outputText value="#{insu.estado} "/>
                 </p:column>
                 <p:column headerText="OPCIONES" priority="2" style="width: 180px">
-                    <h:commandLink class="btn" style="color: white; background: #580000" title="Ver " a:data-toggle="modal" a:data-target="#verInfoInsumo"
+                    <h:commandLink class="btn" style="color: white; background: #580000; margin-left: 10px" title="Editar" 
+                                   a:data-toggle="modal" a:data-target="#verInfoInsumo"
                                    action="#{inventarioControlador.seleccionarInsumo(insu)}">
                         <i class="fa fa-eye"></i>
                         <f:ajax render=":verInfoInsumoContent" />
                     </h:commandLink>
-                    <a class="btn" title="Modificar" style="background: #951010; color: white"><i class="fa fa-pencil"></i></a>
-                    <a class="btn" title="Eliminar" style="background: #727272; color: white"><i class="fa fa-trash"></i></a>
+                    <h:commandLink class="btn" style="background: #951010; color: white; margin-left: 15px" title="Modificar" 
+                                   a:data-toggle="modal" a:data-target="#editarInfoInsumo"
+                                   action="#{inventarioControlador.seleccionarInsumo(insu)}">
+                        <i class="fa fa-pencil"></i>
+                        <f:ajax render=":editarInfoInsumoContent" />
+                    </h:commandLink>
+                    <h:commandLink class="btn" style="background: #727272; color: white; margin-left: 15px" title="Eliminar" 
+                                   a:data-toggle="modal" a:data-target="#eliminarInsumo"
+                                   action="#{inventarioControlador.seleccionarInsumo(insu)}">
+                        <i class="fa fa-trash"></i>
+                        <f:ajax render=":confirmEliminarInsumo" />
+                    </h:commandLink>
+                    <h:commandLink rendered="#{inventarioControlador.renderedBtnBloquear(insu)}" class="btn"
+                                   action="#{inventarioControlador.seleccionarInsumo(insu)}"
+                                   a:data-toggle="modal" a:data-target="#bloquearInsumo"
+                                   style="background: #9D9898; margin-left: 15px">
+                        <i class="fa fa-unlock" style="color: white"></i>
+                        <f:ajax render=":confirmarBloquearInsumo"/>
+                    </h:commandLink>
+                    <h:commandLink rendered="#{empty insu.estado or insu.estado eq 0}" class="btn"
+                                   action="#{inventarioControlador.seleccionarInsumo(insu)}"
+                                   a:data-toggle="modal" a:data-target="#bloquearInsumo"
+                                   style="background: #9D9898; margin-left: 15px">
+                        <i class="fa fa-lock" style="color: white"></i>
+                        <f:ajax render=":confirmarBloquearInsumo"/>
+                    </h:commandLink>
                 </p:column>
             </p:dataTable>
         </h:form>
@@ -126,26 +151,51 @@
                          reflow="true"
                          var="insu">
 
-                <p:column headerText="ID" priority="2" style="width: 80px">
+               <p:column headerText="ID" priority="2" style="width: 70px">
                     <h:outputText value="#{insu.id}"/>
                 </p:column>
-                <p:column headerText="NOMBRE" priority="2">
+                <p:column headerText="NOMBRE" priority="2" style="width: 150px">
                     <h:outputText value="#{insu.nombre}"/>
                 </p:column>
-                <p:column headerText="CANTIDAD" priority="2" style="width: 140px">
+                <p:column headerText="CANTIDAD" priority="2" style="width: 100px">
                     <h:outputText value="#{insu.cantidad} "/>
                 </p:column>
                 <p:column headerText="ESTADO" priority="2" style="width: 140px">
                     <h:outputText value="#{insu.estado} "/>
                 </p:column>
                 <p:column headerText="OPCIONES" priority="2" style="width: 180px">
-                    <h:commandLink class="btn" style="color: white; background: #580000" title="Ver " a:data-toggle="modal" a:data-target="#verInfoInsumo"
+                    <h:commandLink class="btn" style="color: white; background: #580000; margin-left: 10px" title="Editar" 
+                                   a:data-toggle="modal" a:data-target="#verInfoInsumo"
                                    action="#{inventarioControlador.seleccionarInsumo(insu)}">
                         <i class="fa fa-eye"></i>
                         <f:ajax render=":verInfoInsumoContent" />
                     </h:commandLink>
-                    <a class="btn" title="Modificar" style="background: #951010; color: white"><i class="fa fa-pencil"></i></a>
-                    <a class="btn" title="Eliminar" style="background: #727272; color: white"><i class="fa fa-trash"></i></a>
+                    <h:commandLink class="btn" style="background: #951010; color: white; margin-left: 15px" title="Modificar" 
+                                   a:data-toggle="modal" a:data-target="#editarInfoInsumo"
+                                   action="#{inventarioControlador.seleccionarInsumo(insu)}">
+                        <i class="fa fa-pencil"></i>
+                        <f:ajax render=":editarInfoInsumoContent" />
+                    </h:commandLink>
+                    <h:commandLink class="btn" style="background: #727272; color: white; margin-left: 15px" title="Eliminar" 
+                                   a:data-toggle="modal" a:data-target="#eliminarInsumo"
+                                   action="#{inventarioControlador.seleccionarInsumo(insu)}">
+                        <i class="fa fa-trash"></i>
+                        <f:ajax render=":confirmEliminarInsumo" />
+                    </h:commandLink>
+                    <h:commandLink rendered="#{inventarioControlador.renderedBtnBloquear(insu)}" class="btn"
+                                   action="#{inventarioControlador.seleccionarInsumo(insu)}"
+                                   a:data-toggle="modal" a:data-target="#bloquearInsumo"
+                                   style="background: #9D9898; margin-left: 15px">
+                        <i class="fa fa-unlock" style="color: white"></i>
+                        <f:ajax render=":confirmarBloquearInsumo"/>
+                    </h:commandLink>
+                    <h:commandLink rendered="#{empty insu.estado or insu.estado eq 0}" class="btn"
+                                   action="#{inventarioControlador.seleccionarInsumo(insu)}"
+                                   a:data-toggle="modal" a:data-target="#bloquearInsumo"
+                                   style="background: #9D9898; margin-left: 15px">
+                        <i class="fa fa-lock" style="color: white"></i>
+                        <f:ajax render=":confirmarBloquearInsumo"/>
+                    </h:commandLink>
                 </p:column>
             </p:dataTable>
         </h:form>
@@ -162,26 +212,51 @@
                          reflow="true"
                          var="insu">
 
-                <p:column headerText="ID" priority="2" style="width: 80px">
+                <p:column headerText="ID" priority="2" style="width: 70px">
                     <h:outputText value="#{insu.id}"/>
                 </p:column>
-                <p:column headerText="NOMBRE" priority="2">
+                <p:column headerText="NOMBRE" priority="2" style="width: 150px">
                     <h:outputText value="#{insu.nombre}"/>
                 </p:column>
-                <p:column headerText="CANTIDAD" priority="2" style="width: 140px">
+                <p:column headerText="CANTIDAD" priority="2" style="width: 100px">
                     <h:outputText value="#{insu.cantidad} "/>
                 </p:column>
                 <p:column headerText="ESTADO" priority="2" style="width: 140px">
                     <h:outputText value="#{insu.estado} "/>
                 </p:column>
                 <p:column headerText="OPCIONES" priority="2" style="width: 180px">
-                    <h:commandLink class="btn" style="color: white; background: #580000" title="Ver " a:data-toggle="modal" a:data-target="#verInfoInsumo"
+                    <h:commandLink class="btn" style="color: white; background: #580000; margin-left: 10px" title="Editar" 
+                                   a:data-toggle="modal" a:data-target="#verInfoInsumo"
                                    action="#{inventarioControlador.seleccionarInsumo(insu)}">
                         <i class="fa fa-eye"></i>
                         <f:ajax render=":verInfoInsumoContent" />
                     </h:commandLink>
-                    <a class="btn" title="Modificar" style="background: #951010; color: white"><i class="fa fa-pencil"></i></a>
-                    <a class="btn" title="Eliminar" style="background: #727272; color: white"><i class="fa fa-trash"></i></a>
+                    <h:commandLink class="btn" style="background: #951010; color: white; margin-left: 15px" title="Modificar" 
+                                   a:data-toggle="modal" a:data-target="#editarInfoInsumo"
+                                   action="#{inventarioControlador.seleccionarInsumo(insu)}">
+                        <i class="fa fa-pencil"></i>
+                        <f:ajax render=":editarInfoInsumoContent" />
+                    </h:commandLink>
+                    <h:commandLink class="btn" style="background: #727272; color: white; margin-left: 15px" title="Eliminar" 
+                                   a:data-toggle="modal" a:data-target="#eliminarInsumo"
+                                   action="#{inventarioControlador.seleccionarInsumo(insu)}">
+                        <i class="fa fa-trash"></i>
+                        <f:ajax render=":confirmEliminarInsumo" />
+                    </h:commandLink>
+                    <h:commandLink rendered="#{inventarioControlador.renderedBtnBloquear(insu)}" class="btn"
+                                   action="#{inventarioControlador.seleccionarInsumo(insu)}"
+                                   a:data-toggle="modal" a:data-target="#bloquearInsumo"
+                                   style="background: #9D9898; margin-left: 15px">
+                        <i class="fa fa-unlock" style="color: white"></i>
+                        <f:ajax render=":confirmarBloquearInsumo"/>
+                    </h:commandLink>
+                    <h:commandLink rendered="#{empty insu.estado or insu.estado eq 0}" class="btn"
+                                   action="#{inventarioControlador.seleccionarInsumo(insu)}"
+                                   a:data-toggle="modal" a:data-target="#bloquearInsumo"
+                                   style="background: #9D9898; margin-left: 15px">
+                        <i class="fa fa-lock" style="color: white"></i>
+                        <f:ajax render=":confirmarBloquearInsumo"/>
+                    </h:commandLink>
                 </p:column>
             </p:dataTable>
         </h:form>
@@ -198,26 +273,51 @@
                          reflow="true"
                          var="insu">
 
-                <p:column headerText="ID" priority="2" style="width: 80px">
+                <p:column headerText="ID" priority="2" style="width: 70px">
                     <h:outputText value="#{insu.id}"/>
                 </p:column>
-                <p:column headerText="NOMBRE" priority="2">
+                <p:column headerText="NOMBRE" priority="2" style="width: 150px">
                     <h:outputText value="#{insu.nombre}"/>
                 </p:column>
-                <p:column headerText="CANTIDAD" priority="2" style="width: 140px">
+                <p:column headerText="CANTIDAD" priority="2" style="width: 100px">
                     <h:outputText value="#{insu.cantidad} "/>
                 </p:column>
                 <p:column headerText="ESTADO" priority="2" style="width: 140px">
                     <h:outputText value="#{insu.estado} "/>
                 </p:column>
                 <p:column headerText="OPCIONES" priority="2" style="width: 180px">
-                    <h:commandLink class="btn" style="color: white; background: #580000" title="Ver " a:data-toggle="modal" a:data-target="#verInfoInsumo"
+                    <h:commandLink class="btn" style="color: white; background: #580000; margin-left: 10px" title="Editar" 
+                                   a:data-toggle="modal" a:data-target="#verInfoInsumo"
                                    action="#{inventarioControlador.seleccionarInsumo(insu)}">
                         <i class="fa fa-eye"></i>
                         <f:ajax render=":verInfoInsumoContent" />
                     </h:commandLink>
-                    <a class="btn" title="Modificar" style="background: #951010; color: white"><i class="fa fa-pencil"></i></a>
-                    <a class="btn" title="Eliminar" style="background: #727272; color: white"><i class="fa fa-trash"></i></a>
+                    <h:commandLink class="btn" style="background: #951010; color: white; margin-left: 15px" title="Modificar" 
+                                   a:data-toggle="modal" a:data-target="#editarInfoInsumo"
+                                   action="#{inventarioControlador.seleccionarInsumo(insu)}">
+                        <i class="fa fa-pencil"></i>
+                        <f:ajax render=":editarInfoInsumoContent" />
+                    </h:commandLink>
+                    <h:commandLink class="btn" style="background: #727272; color: white; margin-left: 15px" title="Eliminar" 
+                                   a:data-toggle="modal" a:data-target="#eliminarInsumo"
+                                   action="#{inventarioControlador.seleccionarInsumo(insu)}">
+                        <i class="fa fa-trash"></i>
+                        <f:ajax render=":confirmEliminarInsumo" />
+                    </h:commandLink>
+                    <h:commandLink rendered="#{inventarioControlador.renderedBtnBloquear(insu)}" class="btn"
+                                   action="#{inventarioControlador.seleccionarInsumo(insu)}"
+                                   a:data-toggle="modal" a:data-target="#bloquearInsumo"
+                                   style="background: #9D9898; margin-left: 15px">
+                        <i class="fa fa-unlock" style="color: white"></i>
+                        <f:ajax render=":confirmarBloquearInsumo"/>
+                    </h:commandLink>
+                    <h:commandLink rendered="#{empty insu.estado or insu.estado eq 0}" class="btn"
+                                   action="#{inventarioControlador.seleccionarInsumo(insu)}"
+                                   a:data-toggle="modal" a:data-target="#bloquearInsumo"
+                                   style="background: #9D9898; margin-left: 15px">
+                        <i class="fa fa-lock" style="color: white"></i>
+                        <f:ajax render=":confirmarBloquearInsumo"/>
+                    </h:commandLink>
                 </p:column>
             </p:dataTable>
         </h:form>
@@ -234,32 +334,60 @@
                          reflow="true"
                          var="insu">
 
-                <p:column headerText="ID" priority="2" style="width: 80px">
+                <p:column headerText="ID" priority="2" style="width: 70px">
                     <h:outputText value="#{insu.id}"/>
                 </p:column>
-                <p:column headerText="NOMBRE" priority="2">
+                <p:column headerText="NOMBRE" priority="2" style="width: 150px">
                     <h:outputText value="#{insu.nombre}"/>
                 </p:column>
-                <p:column headerText="CANTIDAD" priority="2" style="width: 140px">
+                <p:column headerText="CANTIDAD" priority="2" style="width: 100px">
                     <h:outputText value="#{insu.cantidad} "/>
                 </p:column>
                 <p:column headerText="ESTADO" priority="2" style="width: 140px">
                     <h:outputText value="#{insu.estado} "/>
                 </p:column>
                 <p:column headerText="OPCIONES" priority="2" style="width: 180px">
-                    <h:commandLink class="btn" style="color: white; background: #580000" title="Ver " a:data-toggle="modal" a:data-target="#verInfoInsumo"
+                    <h:commandLink class="btn" style="color: white; background: #580000; margin-left: 10px" title="Editar" 
+                                   a:data-toggle="modal" a:data-target="#verInfoInsumo"
                                    action="#{inventarioControlador.seleccionarInsumo(insu)}">
                         <i class="fa fa-eye"></i>
                         <f:ajax render=":verInfoInsumoContent" />
                     </h:commandLink>
-                    <a class="btn" title="Modificar" style="background: #951010; color: white"><i class="fa fa-pencil"></i></a>
-                    <a class="btn" title="Eliminar" style="background: #727272; color: white"><i class="fa fa-trash"></i></a>
+                    <h:commandLink class="btn" style="background: #951010; color: white; margin-left: 15px" title="Modificar" 
+                                   a:data-toggle="modal" a:data-target="#editarInfoInsumo"
+                                   action="#{inventarioControlador.seleccionarInsumo(insu)}">
+                        <i class="fa fa-pencil"></i>
+                        <f:ajax render=":editarInfoInsumoContent" />
+                    </h:commandLink>
+                    <h:commandLink class="btn" style="background: #727272; color: white; margin-left: 15px" title="Eliminar" 
+                                   a:data-toggle="modal" a:data-target="#eliminarInsumo"
+                                   action="#{inventarioControlador.seleccionarInsumo(insu)}">
+                        <i class="fa fa-trash"></i>
+                        <f:ajax render=":confirmEliminarInsumo" />
+                    </h:commandLink>
+                    <h:commandLink rendered="#{inventarioControlador.renderedBtnBloquear(insu)}" class="btn"
+                                   action="#{inventarioControlador.seleccionarInsumo(insu)}"
+                                   a:data-toggle="modal" a:data-target="#bloquearInsumo"
+                                   style="background: #9D9898; margin-left: 15px">
+                        <i class="fa fa-unlock" style="color: white"></i>
+                        <f:ajax render=":confirmarBloquearInsumo"/>
+                    </h:commandLink>
+                    <h:commandLink rendered="#{empty insu.estado or insu.estado eq 0}" class="btn"
+                                   action="#{inventarioControlador.seleccionarInsumo(insu)}"
+                                   a:data-toggle="modal" a:data-target="#bloquearInsumo"
+                                   style="background: #9D9898; margin-left: 15px">
+                        <i class="fa fa-lock" style="color: white"></i>
+                        <f:ajax render=":confirmarBloquearInsumo"/>
+                    </h:commandLink>
                 </p:column>
             </p:dataTable>
         </h:form>
 
         <ui:include src="/WEB-INF/includes/modal/inventario/ver_insumos.xhtml"></ui:include>
         <ui:include src="/WEB-INF/includes/modal/inventario/confirmar_eliminar.xhtml"></ui:include>
+        <ui:include src="/WEB-INF/includes/modal/inventario/confirmar_bloquear.xhtml"></ui:include>
+        <ui:include src="/WEB-INF/includes/modal/inventario/editar-info-insumo.xhtml"></ui:include>
+
 
     </ui:define>
 

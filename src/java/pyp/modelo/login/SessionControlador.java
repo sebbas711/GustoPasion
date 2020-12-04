@@ -9,8 +9,8 @@ import javax.ejb.EJB;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
-import static org.jboss.weld.context.cache.RequestScopedCache.invalidate;
 import pyp.modelo.DAO.IUsuarioDAO;
+import pyp.modelo.entidades.Rol;
 import pyp.modelo.entidades.Usuario;
 import pyp.modelo.util.MessageUtil;
 
@@ -23,6 +23,7 @@ public class SessionControlador implements Serializable {
     private String email;
     private String password;
     private Usuario user;
+    private Rol rolSeleccionado;
 
     public SessionControlador() {
     }
@@ -55,64 +56,28 @@ public class SessionControlador implements Serializable {
         this.user = user;
     }
 
-    /*public boolean isAdministrator(){
-        for (Rol r : user.getRol()){
-            if(r.getId() == 1){
-                return true;
-            }
-        }
-        return false;
-    }*/
-    /*public boolean isCajero(){
-        for (Rol r : user.getRol()){
-            if(r.getId() == 2){
-                return true;
-            }
-        }
-        return false;
-    }*/
-     /*public boolean isAuxCocina(){
-        for (Rol r : user.getRol()){
-            if(r.getId() == 3){
-                return true;
-            }
-        }
-        return false;
-    }*/
-     /*public boolean isOperario(){
-        for (Rol r : user.getRol()){
-            if(r.getId() == 4){
-                return true;
-            }
-        }
-        return false;
-    }*/
-    /*public boolean isClient(){
-        for (Rol r : user.getRol()){
-            if(r.getId() == 5){
-                return true;
-            }
-        }
-        return false;
-    }*/
+    public Rol getRolSeleccionado() {
+        return rolSeleccionado;
+    }
+
+    public void setRolSeleccionado(Rol rolSeleccionado) {
+        this.rolSeleccionado = rolSeleccionado;
+    }
     
-    public boolean isStartSession() {
-        return user != null;
-    }
+    public String startSession() throws IOException {
 
-    public void validarSesion() throws IOException {
-        if (!isStartSession()) {
-            ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
-            ec.redirect(ec.getRequestContextPath() + "/app/Usuario/InicioSesion.xhtml");
-        }
-    }
-
-    public void startSession() throws IOException {
-
-        if (email != null && email.length() > 0
-                && password != null && password.length() > 0) {
+        if (email != null && email.trim().length() > 0
+                && password != null && password.trim().length() > 0) {
             user = uDAO.findByEmailAndPassword(email, password);
             if (user != null) {
+                /*if(!user.getRol().isEmpty()){
+                    rolSeleccionado = user.getRol().getId(1);
+                    return "/app/Inventario/control_inventario.xhtml?faces-redirect=true";
+                }else{
+                    user = null;
+                    MessageUtil.sendInfo(null, "Usuario sin Rol",
+                                "el Usuario debe esperar a que se le asigne un Rol.", Boolean.FALSE);
+                }*/
                 switch (user.getEstado()) {
                     case 0:
                         MessageUtil.sendInfo(null, "Usuario Inactivo",
@@ -131,13 +96,26 @@ public class SessionControlador implements Serializable {
         } else {
             MessageUtil.sendInfo(null, "Datos Obligatorios", "Debe diligenciar todos los campos", Boolean.FALSE);
         }
+        return "";
     }
-    
-    public void cerrarSesion(){
+
+    public boolean isStartSession() {
+        return user != null;
+    }
+
+    public void validarSesion() throws IOException {
+        if (!isStartSession()) {
+            FacesContext fc = FacesContext.getCurrentInstance();
+            ExternalContext ec = fc.getExternalContext();
+            ec.redirect(ec.getRequestContextPath() + "/app/Usuario/InicioSesion.xhtml");
+        }
+    }
+
+    public void cerrarSesion() {
         user = null;
         ExternalContext ext = FacesContext.getCurrentInstance().getExternalContext();
         String ctxPath = ext.getRequestContextPath();
-        
+
         try {
             ((HttpSession) ext.getSession(false)).invalidate();
             ext.redirect(ctxPath + "/index.xhtml");

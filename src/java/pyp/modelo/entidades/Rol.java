@@ -108,6 +108,4 @@ public class Rol implements Serializable {
     public String toString() {
         return "pyp.modelo.entidades.Rol[ id=" + id + " ]";
     }
-
-    
 }

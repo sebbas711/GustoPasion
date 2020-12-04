@@ -9,7 +9,6 @@ import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
-import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
@@ -17,7 +16,6 @@ import org.primefaces.PrimeFaces;
 import pyp.modelo.DAO.IUsuarioDAO;
 import pyp.modelo.entidades.Usuario;
 import pyp.modelo.util.Email;
-import pyp.modelo.util.MessageUtil;
 
 /**
  *
@@ -74,16 +72,14 @@ public class UsuarioControlador implements Serializable {
     }
 
     public void registrar() {
+        
         String mensajeRequest = "";
-        FacesContext fc = FacesContext.getCurrentInstance();
         try {
             nuevoUsuario.setEstado(Short.valueOf("1"));
             usuarioDAO.create(nuevoUsuario);
             mensajeRequest = "swal('Registro Exitoso', '', 'success');";
         } catch (Exception e) {
-            System.out.println("Error UsuarioControlador:registrar " + e.getMessage());
             mensajeRequest = "swal('Verifique sus datos', 'Intente de nuevo', 'error');";
-
         }
         PrimeFaces.current().executeScript(mensajeRequest);
         nuevoUsuario = new Usuario();
@@ -113,7 +109,6 @@ public class UsuarioControlador implements Serializable {
 
     public void eliminar() {
         String mensajeRequest = "";
-        FacesContext fc = FacesContext.getCurrentInstance();
         try {
             usuarioDAO.remove(UsuarioSeleccionado);
             mensajeRequest = "swal('Usuario Eliminado', 'Correctamente', 'success');";
@@ -121,6 +116,7 @@ public class UsuarioControlador implements Serializable {
         } catch (Exception e) {
             mensajeRequest = "swal('Error', 'No se pudo eliminar el usuario', 'error');";
         }
+        PrimeFaces.current().executeScript(mensajeRequest);
     }
 
     public void actualizar() {

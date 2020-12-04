@@ -14,11 +14,23 @@
                            data-toggle="dropdown" 
                            aria-haspopup="true" 
                            style="color: #444; font-family: arial">
+                            #{sessionControlador.user.rol.descripcion} <br/>
                             <b>#{sessionControlador.user.primerNombre} #{sessionControlador.user.primerApellido}</b>
+
                         </a>
                     </li>
-
                     <ui:include src="/WEB-INF/includes/navegacion/menus/administrador.xhtml"/>
+
+                    <h:panelGroup rendered="#{sessionControlador.rolSeleccionado.id eq 3}">
+                        <ui:include src="/WEB-INF/includes/navegacion/menus/auxCocina.xhtml"/>
+                    </h:panelGroup>
+                    <h:panelGroup rendered="#{sessionControlador.rolSeleccionado.id eq 2}">
+                        <ui:include src="/WEB-INF/includes/navegacion/menus/cajero.xhtml"/>
+                    </h:panelGroup>
+                    <h:panelGroup rendered="#{sessionControlador.rolSeleccionado.id eq 4}">
+                        <ui:include src="/WEB-INF/includes/navegacion/menus/mesero.xhtml"/>
+                    </h:panelGroup>
+
                 </ul>
             </div><!-- /.navbar-collapse -->
         </nav>

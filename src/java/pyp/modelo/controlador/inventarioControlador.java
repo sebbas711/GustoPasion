@@ -4,8 +4,6 @@ import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
 import org.primefaces.PrimeFaces;
@@ -77,6 +75,68 @@ public class inventarioControlador implements Serializable {
         }
         PrimeFaces.current().executeScript(mensajeRequest);
         nuevoInsumo = new Insumo();
+    }
+
+    public void eliminarInsumo() {
+        String mensajeRequest = "";
+        try {
+            IDAO.remove(insumoSeleccionado);
+            mensajeRequest = "swal('Insumo Eliminado', 'Correctamente', 'success');";
+            insumos = null;
+        } catch (Exception e) {
+            mensajeRequest = "swal('Error', 'No se pudo eliminar el Insumo', 'error');";
+        }
+        PrimeFaces.current().executeScript(mensajeRequest);
+    }
+
+    public void actualizar() {
+
+        String mensajeRequest = "";
+        try {
+            if (insumoSeleccionado != null) {
+                IDAO.edit(insumoSeleccionado);
+                mensajeRequest = "swal('Actualizado', 'Correctamente', 'success');";
+                insumos = null;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            mensajeRequest = "swal('Error', 'No se pudo modificar la informacion del insumo', 'error');";
+        }
+        PrimeFaces.current().executeScript(mensajeRequest);
+    }
+
+    public void bloquearODesbloquear() {
+        String mensajeRequest = "";
+        try {
+            if (insumoSeleccionado != null) {
+                if (insumoSeleccionado.getEstado() != 0) {
+                    insumoSeleccionado.setEstado((short) 0);
+                } else {
+                    insumoSeleccionado.setEstado((short) 1);
+                }
+                IDAO.edit(insumoSeleccionado);
+                mensajeRequest = "swal('Estado el Usuario', 'Modificado', 'success');";
+                insumos = null;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            mensajeRequest = "swal('Error', 'No se pudo cambiar el estado del usuario', 'error');";
+        }
+        PrimeFaces.current().executeScript(mensajeRequest);
+    }
+
+    public boolean renderedBtnBloquear(Insumo insumo) {
+        return (insumo.getEstado() != 0);
+    }
+
+    public String getBtnValueBloquear() {
+        if (insumoSeleccionado != null) {
+            if (insumoSeleccionado.getEstado() == 0) {
+                return "Desbloquear";
+            }
+            return "Bloquear";
+        }
+        return "";
     }
 
 }
