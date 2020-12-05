@@ -52,11 +52,11 @@
                         <a class="nav-link" href="#{request.contextPath}/app/ServicioAlCliente/Menu.xhtml">Haz tus Pedidos</a>
                     </li>
                     <br/>
-                    <li style="margin-top:-10px; margin-right:20px;"><a class="reg" href="#{request.contextPath}/app/Usuario/Registro.xhtml" style="color: white">Registrarse</a></li><br/>
+                    <li style="margin-top:-10px; margin-right:30px;"><a class="reg" href="#{request.contextPath}/app/Usuario/Registro.xhtml" style="color: white">Registrarse</a></li><br/>
                     <li style="margin-top:-10px"><a href="#{request.contextPath}/app/Usuario/InicioSesion.xhtml" style="color: white" >Ingresar</a></li>
                     <h:form prependId="false">
                         <h:selectOneMenu value="#{languagecontroller.lang}"
-                                         onchange="submit();" style="background: #951010; color: white; margin-top:40px">
+                                         onchange="submit();" style="background: #951010; color: white;margin-top: 50px">
                             <f:selectItems value="#{languagecontroller.locales}"
                                            var="l" itemLabel="#{l.language}"/>
                         </h:selectOneMenu>

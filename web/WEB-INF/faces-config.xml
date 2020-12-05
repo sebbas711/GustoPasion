@@ -13,5 +13,17 @@
             <base-name>pyp.modelo.language.index</base-name>
             <var>msjIndex</var>
         </resource-bundle>
+        <resource-bundle>
+            <base-name>pyp.modelo.language.Usuario</base-name>
+            <var>msjUsuario</var>
+        </resource-bundle>
+        <resource-bundle>
+            <base-name>pyp.modelo.language.RegistroUsuario</base-name>
+            <var>msjRegistro</var>
+        </resource-bundle>
+        <resource-bundle>
+            <base-name>pyp.modelo.language.OlvidoContr</base-name>
+            <var>msjOlvContr</var>
+        </resource-bundle>
     </application>
 </faces-config>
