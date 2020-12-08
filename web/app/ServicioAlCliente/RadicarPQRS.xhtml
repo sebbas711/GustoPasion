@@ -19,26 +19,20 @@
                 <div class="row">
                     <div class="col-md-6 ">
                         <div class="form-group" >
-                            <div class="form-group">
                                 <h:outputLabel for="fr_tipo_pqrs" class="col-form-label"><b>TIPO PQRS:</b> <b style="color: red">*</b></h:outputLabel>
                                 <h:selectOneMenu  id="fr_tipo_pqrs" class="form-control" 
-                                                  value="#{pqrsControlador.nuevaPqrs.tipoPQRS}"
-                                                  required="true">
+                                                  value="#{pqrsControlador.nuevaPqrs.tipoPQRS}">
                                     <f:selectItem itemLabel="Seleccione el tipo de PQRS"/>
                                     <f:selectItems value="#{tipoPqrsView.tiposPqrs}" var="tp" itemLabel="#{tp.nombre}"/>
                                 </h:selectOneMenu>
-                            </div>
                         </div>
                         <div class="form-group" >
-                            <div class="form-group">
                                 <h:outputLabel for="fr_admin" class="col-form-label"><b>ADMINISTRADOR:</b> <b style="color: red">*</b></h:outputLabel>
                                 <h:selectOneMenu  id="fr_admin" class="form-control" 
-                                                  value="#{pqrsControlador.nuevaPqrs.administrador}"
-                                                  required="true">
+                                                  value="#{pqrsControlador.nuevaPqrs.administrador}">
                                     <f:selectItem itemLabel="Seleccione el tipo de PQRS"/>
                                     <f:selectItems value="#{administradorControlador.administradores}" var="admins" itemLabel="#{admins.usuario.primerNombre} #{admins.usuario.primerApellido}"/>
                                 </h:selectOneMenu>
-                            </div>
                         </div>
                     </div>
                     <div class="col-md-6 ">
@@ -47,16 +41,14 @@
                             <h:inputText id="fr_nom_cliente" class="form-control" 
                                          a:type="text" a:placeholder="Ingrese su nombre completo" 
                                          maxlength="55"
-                                         value="#{pqrsControlador.nuevaPqrs.nombreCliente}"
-                                         required="true"/>
+                                         value="#{pqrsControlador.nuevaPqrs.nombreCliente}"/>
                         </div>
                         <div class="form-group">
                             <h:outputLabel for="fr_email_cliente" class="col-form-label"><b>CORREO ELECTRÓNICO CLIENTE:</b> <b style="color: red">*</b></h:outputLabel>
                             <h:inputText id="fr_email_cliente" class="form-control" 
                                          a:type="email" a:placeholder="Ingrese su correo electrónico" 
                                          maxlength="55"
-                                         value="#{pqrsControlador.nuevaPqrs.emailCliente}"
-                                         required="true"/> 
+                                         value="#{pqrsControlador.nuevaPqrs.emailCliente}"/> 
                         </div>
                     </div>
                 </div>

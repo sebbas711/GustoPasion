@@ -17,10 +17,10 @@
                             <span><center><img src="#{request.contextPath}/resource/img/LOgo.png" class="rounded-pill" target="_blank" style="height: 70px"/></center></span>             
                         </div>
                         <div class="modal-body">
-                            <h5>¿Esta seguro de #{pqrsControlador.btnValueBloquear.toLowerCase()} la PQRS <strong>#{pqrsControlador.pqrsSeleccionada.id}</strong>? </h5>
+                            <h5>¿Esta seguro de #{pqrsControlador.btnValueEstado.toLowerCase()} la PQRS <strong>#{pqrsControlador.pqrsSeleccionada.id}</strong>? </h5>
                             <div class="modal-footer">
                                 <button class="btn" type="button" data-dismiss="modal" style="background: #951010; color: white">Cancelar</button>
-                                <h:commandButton class="btn" value="#{pqrsControlador.btnValueBloquear}" action="#{pqrsControlador.bloquearODesbloquear()}" style="background: #727272; color: white"/>
+                                <h:commandButton class="btn" value="#{pqrsControlador.btnValueEstado}" action="#{pqrsControlador.cambiarEstado()}" style="background: #727272; color: white"/>
                             </div>
                         </div>
 
