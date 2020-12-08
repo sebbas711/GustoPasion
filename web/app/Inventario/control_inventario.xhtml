@@ -85,21 +85,21 @@
             <br/>
             <p:dataTable class="table table-striped"
                          value="#{inventarioControlador.insumos}" 
-                         rows="10"
+                         rows="5"
                          paginator="true"
                          rowsPerPageTemplate="5,10,15"
                          reflow="true"
                          var="insu">
-                <p:column headerText="ID" priority="2" style="width: 70px">
+                <p:column headerText="ID" priority="2" style="width: 30px">
                     <h:outputText value="#{insu.id}"/>
                 </p:column>
                 <p:column headerText="NOMBRE" priority="2" style="width: 150px">
                     <h:outputText value="#{insu.nombre}"/>
                 </p:column>
-                <p:column headerText="CANTIDAD" priority="2" style="width: 100px">
+                <p:column headerText="CANTIDAD" priority="2" style="width: 70px">
                     <h:outputText value="#{insu.cantidad} "/>
                 </p:column>
-                <p:column headerText="ESTADO" priority="2" style="width: 140px">
+                <p:column headerText="ESTADO" priority="2" style="width: 60px">
                     <h:outputText value="#{insu.estado} "/>
                 </p:column>
                 <p:column headerText="OPCIONES" priority="2" style="width: 180px">
@@ -115,12 +115,12 @@
                         <i class="fa fa-pencil"></i>
                         <f:ajax render=":editarInfoInsumoContent" />
                     </h:commandLink>
-                    <h:commandLink class="btn" style="background: #727272; color: white; margin-left: 15px" title="Eliminar" 
+                    <!--h:commandLink class="btn" style="background: #727272; color: white; margin-left: 15px" title="Eliminar" 
                                    a:data-toggle="modal" a:data-target="#eliminarInsumo"
-                                   action="#{inventarioControlador.seleccionarInsumo(insu)}">
+                                   action="#inventarioControlador.seleccionarInsumo(insu)}">
                         <i class="fa fa-trash"></i>
                         <f:ajax render=":confirmEliminarInsumo" />
-                    </h:commandLink>
+                    </h:commandLink-->
                     <h:commandLink rendered="#{inventarioControlador.renderedBtnBloquear(insu)}" class="btn"
                                    action="#{inventarioControlador.seleccionarInsumo(insu)}"
                                    a:data-toggle="modal" a:data-target="#bloquearInsumo"
