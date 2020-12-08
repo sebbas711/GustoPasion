@@ -31,7 +31,7 @@ import javax.validation.constraints.Size;
 
 /**
  *
- * @GAES 5
+ * @author alejo
  */
 @Entity
 @Table(name = "pedido")
@@ -90,7 +90,7 @@ public class Pedido implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "Estado")
-    private String estado;
+    private int estado;
     @JoinTable(name = "producto_has_pedido", joinColumns = {
         @JoinColumn(name = "Pedido", referencedColumnName = "Id")}, inverseJoinColumns = {
         @JoinColumn(name = "Producto", referencedColumnName = "id")})
@@ -116,7 +116,7 @@ public class Pedido implements Serializable {
         this.id = id;
     }
 
-    public Pedido(Integer id, Date fecha, int cantidad, double valorUnitario, double valorTotal, String tipoPedido, String puntoEntrega, String estado) {
+    public Pedido(Integer id, Date fecha, int cantidad, double valorUnitario, double valorTotal, String tipoPedido, String puntoEntrega, int estado) {
         this.id = id;
         this.fecha = fecha;
         this.cantidad = cantidad;
@@ -199,11 +199,11 @@ public class Pedido implements Serializable {
         this.observaciones = observaciones;
     }
 
-    public String getEstado() {
+    public int getEstado() {
         return estado;
     }
 
-    public void setEstado(String estado) {
+    public void setEstado(int estado) {
         this.estado = estado;
     }
 

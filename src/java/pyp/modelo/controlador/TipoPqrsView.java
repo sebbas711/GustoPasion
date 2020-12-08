@@ -7,6 +7,8 @@ package pyp.modelo.controlador;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.annotation.PostConstruct;
+import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
 import pyp.modelo.DAO.ITipopqrsDAO;
@@ -18,7 +20,12 @@ import pyp.modelo.entidades.Tipopqrs;
  */
 @Named(value = "tipoPqrsView")
 @ViewScoped
-public class TipoPqrsView implements Serializable{
+public class TipoPqrsView implements Serializable {
+
+    @EJB
+    
+    private ITipopqrsDAO tipoPqrsDAO;
+    private List<Tipopqrs> tiposPqrs;
 
     /**
      * Creates a new instance of TipoPqrsView
@@ -26,12 +33,13 @@ public class TipoPqrsView implements Serializable{
     public TipoPqrsView() {
     }
     
-    private ITipopqrsDAO tipoPqrsDAO;
-    
-    private List<Tipopqrs> tiposPqrs;
+    @PostConstruct
+    public void init() {
+
+    }
 
     public List<Tipopqrs> getTiposPqrs() {
-        if(tiposPqrs == null || tiposPqrs.isEmpty()){
+        if (tiposPqrs == null || tiposPqrs.isEmpty()) {
             tiposPqrs = tipoPqrsDAO.findAll();
         }
         return tiposPqrs;
@@ -40,6 +48,5 @@ public class TipoPqrsView implements Serializable{
     public void setTiposPqrs(List<Tipopqrs> tiposPqrs) {
         this.tiposPqrs = tiposPqrs;
     }
-    
-    
+
 }

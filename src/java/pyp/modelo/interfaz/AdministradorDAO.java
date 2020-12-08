@@ -6,6 +6,7 @@
 package pyp.modelo.interfaz;
 
 import javax.ejb.Stateless;
+import javax.persistence.Query;
 import pyp.modelo.entidades.Administrador;
 import pyp.modelo.DAO.IAdministradorDAO;
 
@@ -18,6 +19,19 @@ public class AdministradorDAO extends AbstractDAO<Administrador> implements IAdm
 
     public AdministradorDAO() {
         super(Administrador.class);
+    }
+
+    @Override
+    public Administrador buscarAdminConMenosPqrs() {
+        Query q = em.createNativeQuery("select a.* from administrador a " 
+                + "left join pqrs pq on pq.administrador = a.id"
+                + "group by a.id"
+                + "order by count(pq.id) asc "
+                + "limit 1", Administrador.class);
+        return (Administrador) q.getResultList()
+                .stream()
+                .findFirst()
+                .orElse(null);
     }
     
 }

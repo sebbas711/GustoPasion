@@ -4,103 +4,85 @@
     template="/WEB-INF/includes3/template.xhtml"
     xmlns="http://www.w3.org/1999/xhtml"
     xmlns:h="http://xmlns.jcp.org/jsf/html"
-    xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:f="http://xmlns.jcp.org/jsf/core">
     <ui:define name="contenido">
-        
-        <br/><br/>
-        <br/>
-        <br/>
-
-        <div class="jumbotron" style="background-image: url(#{request.contextPath}/resource/img/Quienessomos.jpg); background-size: 100%">
+        <br/><br/> <br/><br/><div class="jumbotron" style="background-image: url(#{request.contextPath}/resource/img/Quienessomos.jpg); background-size: 100%">
             <h1 class="display-3 mb-3" style="font-family: Garamond; font-size: 40px; color: white; margin-top: 10px; margin-left: 120px;">RADICAR PQRS</h1> 
         </div>
         <br/>
         <div class="container">
-            <h2 style="color:#980505">Formulario PQRS</h2>
+            <h2 style="color:#980505"><b>Formulario PQRS</b></h2>
             <br/>
-            <form style="margin-left: 30px">
-                <div class="form-row">
-                    <div class="col-md-6 form-group">
-                        <label for="Tipo">Tipo: *</label>
-                        <select name="Tipo" id="Tipo" class="form-control">
-                            <option value="Petición">Petición</option>
-                            <option value="Queja">Queja</option>
-                            <option value="Reclamo">Reclamo</option>
-                            <option value="Sugerencia">Sugerencia</option>
-                            <option value="Felicitación">Felicitación</option>
-                        </select>
-                    </div>
-                    <div class="col-md-6 form-group">
-                        <label for="Localidad">Localidad: *</label>
-                        <select name="Localidad" id="Localidad" class="form-control">
-                            <option value="1.Usaquen">1. Usaquén</option>
-                            <option value="2.Chapinero">2. Chapinero</option>
-                            <option value="3. Santa Fe">3. Santa Fe</option>
-                            <option value="4. San Cristóbal">4. San Cristóbal</option>
-                            <option value="5. Usme">5. Usme</option>
-                            <option value="6. Tunjuelito">6. Tunjuelito</option>
-                            <option value="7. Bosa">7. Bosa</option>
-                            <option value="8. Kennedy">8. Kennedy</option>
-                            <option value="9. Fontibón">9. Fontibón</option>
-                            <option value="10. Engativá">10. Engativá</option>
-                            <option value="11. Suba">11. Suba</option>
-                            <option value="12. Barrios Unidos">12. Barrios Unidos</option>
-                            <option value="13. Teusaquillo">13. Teusaquillo</option>
-                            <option value="14. Los Mártires">14. Los Mártires</option>
-                            <option value="15. Antonio Nariño">15. Antonio Nariño</option>
-                            <option value="16. Puente Aranda">16. Puente Aranda</option>
-                            <option value="17. La Candelaria">17. La Candelaria</option>
-                            <option value="18. Rafael Uribe">18. Rafael Uribe</option>
-                            <option value="19. Ciudad Bolivar">19. Ciudad Bolivar</option>
-                            <option value="20. Sumapaz">20. Sumapaz</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <div class="col-sm-12 col-md-4 mb-3">
-                        <label for="Barrio">Barrio:</label>
-                        <input class="form-control" placeholder="Barrio" type="text" name="Barrio" id="Barrio" maxlength="25"/>
-                    </div>
-                    <div class="col-sm-12 col-md-4 mb-3">
-                        <label for="Correo">Correo Electronico:</label>
-                        <input class="form-control" placeholder="Correo Electronico" type="text" name="Correo" id="Correo" maxlength="45"/>
-                    </div>
-                    <div class="col-sm-12 col-md-4 mb-3">
-                        <label for="Telefono">Telefono / Celular:</label>
-                        <input class="form-control" placeholder="Telefono / Celular" type="text" name="Telefono" id="Telefono" maxlength="10"/>
-                    </div>
-                </div>
-
-                <div class="form-group row">
-                    <div class="col-sm-12 col-md-12 mb-3">
-                        <label for="Mensaje">Mensaje: *</label>
-                        <textarea name="Mensaje" id="Mensaje" class="form-control"></textarea>
-                    </div>
-                </div>
-                <div class="form-check mb-3">
-                    <label class="form-check-label">
-                        <input type="checkbox" name="condiciones" id="condiciones" class="form-check-input mr-2"/>Acepto terminos y condiciones
-                    </label>
-                </div>
-            </form>
-            <div class="container">
+            <h:form>
                 <div class="row">
-                    <div class="col">
-                        <button class="btn float-right" data-toggle="modal" data-target="#samodal" style="background: #951010; color: white">Radicar PQRS</button>
-                        <div class="modal fade" id="samodal" tagindex="-1" role="dialog" area-label-ledby="samodal" aria-hudden="true" style="margin-top: 220px">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-body">
-                                        <h6 class="text-center">SU NUMERO DE RADICADO ES:</h6><br/>
-                                        <p class="text-center">"3578951246"</p>
-                                        <p class="text-center"> Gracias por preferir <br/> <strong style="color: #980505">Restaurante Gusto y Pasión</strong></p>
-                                    </div>
-                                </div>
+                    <div class="col-md-6 ">
+                        <div class="form-group" >
+                            <div class="form-group">
+                                <h:outputLabel for="fr_tipo_pqrs" class="col-form-label"><b>TIPO PQRS:</b> <b style="color: red">*</b></h:outputLabel>
+                                <h:selectOneMenu  id="fr_tipo_pqrs" class="form-control" 
+                                                  value="#{pqrsControlador.nuevaPqrs.tipoPQRS}"
+                                                  required="true">
+                                    <f:selectItem itemLabel="Seleccione el tipo de PQRS"/>
+                                    <f:selectItems value="#{tipoPqrsView.tiposPqrs}" var="tp" itemLabel="#{tp.nombre}"/>
+                                </h:selectOneMenu>
+                            </div>
+                        </div>
+                        <div class="form-group" >
+                            <div class="form-group">
+                                <h:outputLabel for="fr_admin" class="col-form-label"><b>ADMINISTRADOR:</b> <b style="color: red">*</b></h:outputLabel>
+                                <h:selectOneMenu  id="fr_admin" class="form-control" 
+                                                  value="#{pqrsControlador.nuevaPqrs.administrador}"
+                                                  required="true">
+                                    <f:selectItem itemLabel="Seleccione el tipo de PQRS"/>
+                                    <f:selectItems value="#{administradorControlador.administradores}" var="admins" itemLabel="#{admins.usuario.primerNombre} #{admins.usuario.primerApellido}"/>
+                                </h:selectOneMenu>
                             </div>
                         </div>
                     </div>
+                    <div class="col-md-6 ">
+                        <div class="form-group">
+                            <h:outputLabel for="fr_nom_cliente" class="col-form-label"><b>NOMBRE CLIENTE:</b> <b style="color: red">*</b></h:outputLabel>
+                            <h:inputText id="fr_nom_cliente" class="form-control" 
+                                         a:type="text" a:placeholder="Ingrese su nombre completo" 
+                                         maxlength="55"
+                                         value="#{pqrsControlador.nuevaPqrs.nombreCliente}"
+                                         required="true"/>
+                        </div>
+                        <div class="form-group">
+                            <h:outputLabel for="fr_email_cliente" class="col-form-label"><b>CORREO ELECTRÓNICO CLIENTE:</b> <b style="color: red">*</b></h:outputLabel>
+                            <h:inputText id="fr_email_cliente" class="form-control" 
+                                         a:type="email" a:placeholder="Ingrese su correo electrónico" 
+                                         maxlength="55"
+                                         value="#{pqrsControlador.nuevaPqrs.emailCliente}"
+                                         required="true"/> 
+                        </div>
+                    </div>
                 </div>
-            </div>
+                <div class="form-group row">
+                    <div class="col-sm-12 col-md-12 mb-3">
+                        <h:outputLabel for="fr_observacione" class="col-form-label"><b>OBSERVACIÓN:</b> <b style="color: red">*</b></h:outputLabel>
+                        <h:inputTextarea a:name="Mensaje" id="fr_observacione" 
+                                         class="form-control"
+                                         value="#{pqrsControlador.nuevaPqrs.observaciones}"/>
+                    </div>
+                </div>
+                <div class="form-check mb-3">
+                    <h:outputLabel class="col-form-label">
+                        Los campos con (<b class="text-danger">*</b>) son obligatorios
+                    </h:outputLabel>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <h:commandButton class="btn float-right" 
+                                         style="background: #951010; color: white"
+                                         value="Radicar PQRS"
+                                         action="#{pqrsControlador.registrarPqrs()}">
+                        </h:commandButton>
+                    </div>
+                </div>
+            </h:form>
         </div>
         <br/>
         <br/>

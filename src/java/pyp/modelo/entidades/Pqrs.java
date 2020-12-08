@@ -26,7 +26,7 @@ import javax.validation.constraints.Size;
 
 /**
  *
- * @GAES 5
+ * @author alejo
  */
 @Entity
 @Table(name = "pqrs")
@@ -35,6 +35,8 @@ import javax.validation.constraints.Size;
     , @NamedQuery(name = "Pqrs.findById", query = "SELECT p FROM Pqrs p WHERE p.id = :id")
     , @NamedQuery(name = "Pqrs.findByFecha", query = "SELECT p FROM Pqrs p WHERE p.fecha = :fecha")
     , @NamedQuery(name = "Pqrs.findByObservaciones", query = "SELECT p FROM Pqrs p WHERE p.observaciones = :observaciones")
+    , @NamedQuery(name = "Pqrs.findByNombreCliente", query = "SELECT p FROM Pqrs p WHERE p.nombreCliente = :nombreCliente")
+    , @NamedQuery(name = "Pqrs.findByEmailCliente", query = "SELECT p FROM Pqrs p WHERE p.emailCliente = :emailCliente")
     , @NamedQuery(name = "Pqrs.findByEstado", query = "SELECT p FROM Pqrs p WHERE p.estado = :estado")})
 public class Pqrs implements Serializable {
 
@@ -54,14 +56,21 @@ public class Pqrs implements Serializable {
     private String observaciones;
     @Basic(optional = false)
     @NotNull
+    @Size(min = 1, max = 55)
+    @Column(name = "nombre_cliente")
+    private String nombreCliente;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 85)
+    @Column(name = "email_cliente")
+    private String emailCliente;
+    @Basic(optional = false)
+    @NotNull
     @Column(name = "estado")
     private int estado;
     @JoinColumn(name = "administrador", referencedColumnName = "id")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Administrador administrador;
-    @JoinColumn(name = "cliente", referencedColumnName = "id")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private Cliente cliente;
     @JoinColumn(name = "tipoPQRS", referencedColumnName = "id")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Tipopqrs tipoPQRS;
@@ -73,9 +82,11 @@ public class Pqrs implements Serializable {
         this.id = id;
     }
 
-    public Pqrs(Integer id, Date fecha, int estado) {
+    public Pqrs(Integer id, Date fecha, String nombreCliente, String emailCliente, int estado) {
         this.id = id;
         this.fecha = fecha;
+        this.nombreCliente = nombreCliente;
+        this.emailCliente = emailCliente;
         this.estado = estado;
     }
 
@@ -103,6 +114,22 @@ public class Pqrs implements Serializable {
         this.observaciones = observaciones;
     }
 
+    public String getNombreCliente() {
+        return nombreCliente;
+    }
+
+    public void setNombreCliente(String nombreCliente) {
+        this.nombreCliente = nombreCliente;
+    }
+
+    public String getEmailCliente() {
+        return emailCliente;
+    }
+
+    public void setEmailCliente(String emailCliente) {
+        this.emailCliente = emailCliente;
+    }
+
     public int getEstado() {
         return estado;
     }
@@ -117,14 +144,6 @@ public class Pqrs implements Serializable {
 
     public void setAdministrador(Administrador administrador) {
         this.administrador = administrador;
-    }
-
-    public Cliente getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
     }
 
     public Tipopqrs getTipoPQRS() {

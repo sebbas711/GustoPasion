@@ -14,5 +14,7 @@ import pyp.modelo.entidades.Administrador;
  */
 @Local
 public interface IAdministradorDAO extends DAO<Administrador> {
+
+    public Administrador buscarAdminConMenosPqrs();
     
 }

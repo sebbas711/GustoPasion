@@ -24,7 +24,7 @@ import javax.validation.constraints.Size;
 
 /**
  *
- * @GAES 5
+ * @author alejo
  */
 @Entity
 @Table(name = "rol")
@@ -108,4 +108,5 @@ public class Rol implements Serializable {
     public String toString() {
         return "pyp.modelo.entidades.Rol[ id=" + id + " ]";
     }
+    
 }

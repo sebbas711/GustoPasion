@@ -23,7 +23,7 @@ import javax.validation.constraints.NotNull;
 
 /**
  *
- * @GAES 5
+ * @author alejo
  */
 @Entity
 @Table(name = "cliente")
@@ -45,8 +45,6 @@ public class Cliente implements Serializable {
     private Usuario usuario;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "cliente", fetch = FetchType.LAZY)
     private List<Factura> facturas;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "cliente", fetch = FetchType.LAZY)
-    private List<Pqrs> pqrs;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "cliente", fetch = FetchType.LAZY)
     private List<Pedido> pedidos;
 
@@ -87,14 +85,6 @@ public class Cliente implements Serializable {
 
     public void setFacturas(List<Factura> facturas) {
         this.facturas = facturas;
-    }
-
-    public List<Pqrs> getPqrs() {
-        return pqrs;
-    }
-
-    public void setPqrs(List<Pqrs> pqrs) {
-        this.pqrs = pqrs;
     }
 
     public List<Pedido> getPedidos() {
