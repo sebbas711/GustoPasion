@@ -2,43 +2,59 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
-                xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
-
-    <li class="menu-item-has-children dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-list-ol" style="color: #951010"></i>Inventario</a>
-        <ul class="sub-menu children dropdown-menu" style="background-color: rgba(77,19,20,0.1)">
-            <li><i class="fa fa-pencil logit" style="color: #951010"></i><a href="../Inventario/RegistroInsumo.xhtml">Registro de Insumos</a></li>
-            <li><i class="fa fa-briefcase logit" style="color: #951010"></i><a href="../Inventario/control_inventario.xhtml">Control de Insumos</a></li>
-        </ul>
-    </li>
-    <li class="menu-item-has-children dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-cutlery" style="color: #951010"></i>Pedidos</a>
-        <ul class="sub-menu children dropdown-menu" style="background-color: rgba(77,19,20,0.1)">
-            <li><i class="fa fa-pencil logit" style="color: #951010"></i><a href="../Pedidos/SolicitarPedido.xhtml">Solicitar Pedido</a></li>
-            <li><i class="fa fa-briefcase logit" style="color: #951010"></i><a href="../Pedidos/ControlPedidos.xhtml">Control de Pedidos</a></li>
-        </ul>
-    </li>
-    <li class="menu-item-has-children dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-cutlery" style="color: #951010"></i>Servicio Al cliente</a>
-        <ul class="sub-menu children dropdown-menu" style="background-color: rgba(77,19,20,0.1)">
-            <li><i class="fa fa-pencil logit" style="color: #951010"></i><a href="../ServicioAlCliente/GestionarPQRS.xhtml">Gestionar PQRS</a></li>
-            <li><i class="fa fa-briefcase logit" style="color: #951010"></i><a href="../ServicioAlCliente/ControlPQRS.xhtml">Control PQRS</a></li>
-        </ul>
-    </li>
-    <li class="menu-item-has-children dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-clipboard" style="color: #951010"></i>Reportes</a>
-        <ul class="sub-menu children dropdown-menu" style="background-color: rgba(77,19,20,0.1)">
-            <li><i class="fa fa-pencil logit" style="color: #951010"></i><a href="../Inventario/ReportesInventario.xhtml">Reportes Inventario</a></li>
-            <li><i class="fa fa-pencil logit" style="color: #951010"></i><a href="../Pedidos/ReportesPedidos.xhtml">Reportes Pedidos</a></li>
-            <li><i class="fa fa-pencil logit" style="color: #951010"></i><a href="../ServicioAlCliente/ReportesPQRS.xhtml">Reportes PQRS</a></li>
-        </ul>
-    </li>
-    <li class="menu-item-has-children dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-cutlery" style="color: #951010"></i>Usuarios</a>
-        <ul class="sub-menu children dropdown-menu" style="background-color: rgba(77,19,20,0.1)">
-            <li><i class="fa fa-pencil logit" style="color: #951010"></i><a href="../Usuario/Usuario.xhtml">Usuarios</a></li>
-            <li><i class="fa fa-pencil logit" style="color: #951010"></i><a href="../Usuario/RegistroUsuario.xhtml">Registrar Nuevo Usuario</a></li>
-        </ul>
-    </li>
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <f:view locale="#{languagecontroller.locale}">
+        <li class="menu-item-has-children dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
+                <i class="menu-icon fa fa-list-ol" style="color: #951010"></i>#{msjTemplate.Inventario}</a>
+            <ul class="sub-menu children dropdown-menu" style="background-color: rgba(77,19,20,0.1)">
+                <li><i class="fa fa-pencil logit" style="color: #951010"></i><a href="../Inventario/RegistroInsumo.xhtml">
+                        #{msjTemplate.RegistrodeInsumos}</a></li>
+                <li><i class="fa fa-briefcase logit" style="color: #951010"></i>
+                    <a href="../Inventario/control_inventario.xhtml">#{msjTemplate.ControldeInsumos}</a></li>
+            </ul>
+        </li>
+        <li class="menu-item-has-children dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
+                <i class="menu-icon fa fa-cutlery" style="color: #951010"></i>#{msjTemplate.Pedidos}</a>
+            <ul class="sub-menu children dropdown-menu" style="background-color: rgba(77,19,20,0.1)">
+                <li><i class="fa fa-pencil logit" style="color: #951010"></i><a href="../Pedidos/SolicitarPedido.xhtml">
+                        #{msjTemplate.SolicitarPedido}</a></li>
+                <li><i class="fa fa-briefcase logit" style="color: #951010"></i><a href="../Pedidos/ControlPedidos.xhtml">
+                        #{msjTemplate.ControldePedidos}</a></li>
+            </ul>
+        </li>
+        <li class="menu-item-has-children dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
+                <i class="menu-icon fa fa-cutlery" style="color: #951010"></i>#{msjTemplate.ServicioAlcliente}</a>
+            <ul class="sub-menu children dropdown-menu" style="background-color: rgba(77,19,20,0.1)">
+                <li><i class="fa fa-pencil logit" style="color: #951010"></i>
+                    <a href="../ServicioAlCliente/GestionarPQRS.xhtml">#{msjTemplate.GestionarPQRS}</a></li>
+                <li><i class="fa fa-briefcase logit" style="color: #951010"></i>
+                    <a href="../ServicioAlCliente/ControlPQRS.xhtml">#{msjTemplate.ControlPQRS}</a></li>
+            </ul>
+        </li>
+        <li class="menu-item-has-children dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
+                <i class="menu-icon fa fa-clipboard" style="color: #951010"></i>#{msjTemplate.Reportes}</a>
+            <ul class="sub-menu children dropdown-menu" style="background-color: rgba(77,19,20,0.1)">
+                <li><i class="fa fa-pencil logit" style="color: #951010"></i>
+                    <a href="../Inventario/ReportesInventario.xhtml">#{msjTemplate.ReportesInventario}</a></li>
+                <li><i class="fa fa-pencil logit" style="color: #951010"></i><a href="../Pedidos/ReportesPedidos.xhtml">
+                        #{msjTemplate.ReportesPedidos}</a></li>
+                <li><i class="fa fa-pencil logit" style="color: #951010"></i>
+                    <a href="../ServicioAlCliente/ReportesPQRS.xhtml">#{msjTemplate.ReportesPQRS} </a></li>
+            </ul>
+        </li>
+        <li class="menu-item-has-children dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="menu-icon fa fa-cutlery" style="color: #951010"></i>#{msjTemplate.Usuarios} </a>
+            <ul class="sub-menu children dropdown-menu" style="background-color: rgba(77,19,20,0.1)">
+                <li><i class="fa fa-pencil logit" style="color: #951010"></i><a href="../Usuario/Usuario.xhtml">#{msjTemplate.Usuarios} </a></li>
+                <li><i class="fa fa-pencil logit" style="color: #951010"></i><a href="../Usuario/RegistroUsuario.xhtml">#{msjTemplate.RegistrarNuevoUsuario} </a></li>
+            </ul>
+        </li>
+    </f:view>
 </ui:composition>
 

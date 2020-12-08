@@ -4,36 +4,44 @@
     template="/WEB-INF/includes3/template.xhtml"
     xmlns="http://www.w3.org/1999/xhtml"
     xmlns:h="http://xmlns.jcp.org/jsf/html"
-    xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:f="http://xmlns.jcp.org/jsf/core">
     <ui:define name="contenido">
-        <br/><br/>
-        <br/>
-        <br/>
+        <f:view locale="#{languagecontroller.locale}">
+            <br/><br/>
+            <br/>
+            <br/>
 
-        <div class="jumbotron" style="background-image: url(#{request.contextPath}/resource/img/Quienessomos.jpg); background-size: 100%">
-            <h1 class="display-3 mb-3" style="font-family: Garamond; font-size: 40px; color: white; margin-top: 10px; margin-left: 120px;">CONTÁCTENOS</h1> 
-        </div>
+            <div class="jumbotron" style="background-image: url(#{request.contextPath}/resource/img/Quienessomos.jpg); 
+                 background-size: 100%">
+                <h1 class="display-3 mb-3" style="font-family: Garamond; font-size: 40px; color: white; 
+                    margin-top: 10px; margin-left: 120px;">#{msjContactenos.CONTÁCTENOS}</h1> 
+            </div>
 
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <center>
-                        <br/>
-                        <h6 style="margin-left: 90px; font-size: 20px; margin-top: 70px"><strong>Dirección:</strong><br/> Cr 28 # 12-39 <br/> Barrio Ricaurte</h6>
-                        <h6 style="margin-left: 90px; font-size: 20px"><strong>Teléfono:</strong><br/>  3511579 - 3511578 <br/> 314 869 3125</h6>
-                        <h6 style="margin-left: 90px; font-size: 20px"><strong>Correo Electronico:</strong><br/>  gustoypasion2020@gmail.com</h6>
-                    </center>
-                </div>
-                <div class="col-md-6">
-                    <center>
-                        <br/>
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3976.9031364228763!2d-74.09371288568641!3d4.611355343710886!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f996dccf350eb%3A0x205223cc93d0249a!2sCra.%2028%20%2312-39%2C%20Bogot%C3%A1!5e0!3m2!1ses!2sco!4v1606277511092!5m2!1ses!2sco" width="300" height="300" frameborder="0" style="border:2;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe></center>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <center>
+                            <br/>
+                            <h6 style="margin-left: 90px; font-size: 20px; margin-top: 70px">
+                                <strong>#{msjContactenos.Dirección}</strong><br/> Cr 28 # 12-39 <br/> #{msjContactenos.Barrio} Ricaurte</h6>
+                            <h6 style="margin-left: 90px; font-size: 20px"><strong>#{msjContactenos.Teléfono}</strong>
+                                <br/>  3511579 - 3511578 <br/> 314 869 3125</h6>
+                            <h6 style="margin-left: 90px; font-size: 20px"><strong>#{msjContactenos.CorreoElectronico}</strong>
+                                <br/>  gustoypasion2020@gmail.com</h6>
+                        </center>
+                    </div>
+                    <div class="col-md-6">
+                        <center>
+                            <br/>
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3976.9031364228763!2d-74.09371288568641!3d4.611355343710886!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f996dccf350eb%3A0x205223cc93d0249a!2sCra.%2028%20%2312-39%2C%20Bogot%C3%A1!5e0!3m2!1ses!2sco!4v1606277511092!5m2!1ses!2sco" width="300" height="300" frameborder="0" style="border:2;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe></center>
 
+                    </div>
                 </div>
             </div>
-        </div>
-        <br/>
-        <br/>    
+            <br/>
+            <br/>
+        </f:view>
     </ui:define>
 </ui:composition>
 

@@ -4,23 +4,32 @@
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <!-- modal mostrar usuarios-->
-    <div class="modal fade" id="eliminarUsuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="eliminarUsuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" 
+         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <h:form prependId="false">
                     <h:panelGroup id="confirmEliminarUsuario" layout="block">
                         <div id=""></div>
                         <div class="modal-header" style="background-color: #951010">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: white">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close" 
+                                    style="color: white">
                                 <span aria-hidden="true">x</span>
                             </button>
-                            <span><center><img src="#{request.contextPath}/resource/img/LOgo.png" class="rounded-pill" target="_blank" style="height: 100px"/></center></span>             
+                            <span><center><img src="#{request.contextPath}/resource/img/LOgo.png" 
+                                               class="rounded-pill" target="_blank" style="height: 100px"/>
+                                </center></span>             
                         </div>
                         <div class="modal-body">
-                            <h5>¿Esta seguro de eliminar el usuario <strong>#{usuarioControlador.usuarioSeleccionado.primerNombre} #{usuarioControlador.usuarioSeleccionado.segundoNombre} #{usuarioControlador.usuarioSeleccionado.primerApellido}</strong> ?</h5>
+                            <h5>#{msjModales.Estasegurodeeliminarelusuario} <strong>
+                                    #{usuarioControlador.usuarioSeleccionado.primerNombre} 
+                                    #{usuarioControlador.usuarioSeleccionado.segundoNombre} 
+                                    #{usuarioControlador.usuarioSeleccionado.primerApellido}</strong> ?</h5>
                             <div class="modal-footer">
-                                <button class="btn" type="button" data-dismiss="modal" style="background: #951010; color: white">Cancelar</button>
-                                <h:commandButton class="btn" value="Eliminar" action="#{usuarioControlador.eliminar()}" style="background: #727272; color: white"/>
+                                <button class="btn" type="button" data-dismiss="modal" style="background: #951010; 
+                                        color: white">#{msjModales.Cancelar}</button>
+                                        <h:commandButton class="btn" value="#{msjModales.Eliminar}" action="#{usuarioControlador.eliminar()}" 
+                                                 style="background: #727272; color: white"/>
                             </div>
                         </div>
                     </h:panelGroup>

@@ -3,84 +3,86 @@
 <ui:composition template="/WEB-INF/includes/template.xhtml" 
                 xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
-                xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
     <ui:define name="contenido">
-
-                <div class="breadcrumbs">
-                    <div class="breadcrumbs-inner">
-                        <div class="row m-0">
-                            <div class="col-sm-4">
-                                <div class="page-header float-left">
-                                    <div class="page-title">
-                                        <h1>Reportes PQRS</h1>
-                                    </div>
+        <f:view locale="#{languagecontroller.locale}">
+            <div class="breadcrumbs">
+                <div class="breadcrumbs-inner">
+                    <div class="row m-0">
+                        <div class="col-sm-4">
+                            <div class="page-header float-left">
+                                <div class="page-title">
+                                    <h1>#{msjReportes.ReportesPQRS}</h1>
                                 </div>
                             </div>
-                            <div class="col-sm-8">
-                                <div class="page-header float-right">
-                                    <div class="page-title">
-                                        <ol class="breadcrumb text-right">
-                                            <li><a href="#">Servicio al Cliente</a></li>
-                                            <li class="active">PQRS</li>
-                                        </ol>
-                                    </div>
+                        </div>
+                        <div class="col-sm-8">
+                            <div class="page-header float-right">
+                                <div class="page-title">
+                                    <ol class="breadcrumb text-right">
+                                        <li><a href="#">#{msjReportes.ServicioalCliente}</a></li>
+                                        <li class="active">#{msjReportes.PQRS}</li>
+                                    </ol>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <div class="content">
-                    <!-- Animated -->
-                    <div class="row">
-                        <div class="col-sm-6 col-lg-3">
-                            <div class="card-body">
-                                <div class="card-left pt-1 float-left">
-                                    <h3 class="mb-0 fw-r">
-
-                                    </h3>
-
-                                </div><!-- /.card-left -->
-
-                            </div>
-
-                        </div>
-                    </div>
-                    <!--/.col-->
-
-
-                    <!--/.col-->
-
-
-
-
-                    <!--/.col-->
-
-                    <div class="col-lg-6" style="margin-left: 250px;">
-                        <div class="card">
-                            <div class="card-header">
-                                <strong>Filtro Por Fechas</strong>
-                            </div>
-                            <div class="card-body card-block">
-                                <div class="row form-group">
-                                    <div class="col col-md-2"><label for="text-input" class=" form-control-label">Desde:</label></div>
-                                    <div class="col-12 col-md-10"><input type="date" id="date-input" name="date-input" placeholder="Desde" class="form-control"/></div>
-                                </div>
-                                <div class="row form-group">
-                                    <div class="col col-md-2"><label for="text-input" class=" form-control-label">Hasta:</label></div>
-                                    <div class="col-12 col-md-10"><input type="date" id="date-input" name="date-input" placeholder="Hasta" class="form-control"/></div>
-                                </div> 
-                                <div class="row form-group">
-                                    <div class="col-12 col-md-12" id="Buscar">
-                                        <button id="Buscar" type="submit" class="btn btn-block" style="background: #951010; color: white">
-                                            <span id="Buscar">Consultar</span>
-                                        </button>
-                                    </div>    
-                                </div>   
-                            </div>
-                        </div>
-                    </div>
             </div>
-        </ui:define>
+
+            <div class="content">
+                <!-- Animated -->
+                <div class="row">
+                    <div class="col-sm-6 col-lg-3">
+                        <div class="card-body">
+                            <div class="card-left pt-1 float-left">
+                                <h3 class="mb-0 fw-r">
+
+                                </h3>
+
+                            </div><!-- /.card-left -->
+
+                        </div>
+
+                    </div>
+                </div>
+                <!--/.col-->
+
+
+                <!--/.col-->
+
+
+
+
+                <!--/.col-->
+
+                <div class="col-lg-6" style="margin-left: 250px;">
+                    <div class="card">
+                        <div class="card-header">
+                            <strong>#{msjReportes.FiltroPorFechas}</strong>
+                        </div>
+                        <div class="card-body card-block">
+                            <div class="row form-group">
+                                <div class="col col-md-2"><label for="text-input" class=" form-control-label">#{msjReportes.Desde}</label></div>
+                                <div class="col-12 col-md-10"><input type="date" id="date-input" name="date-input" placeholder="#{msjReportes.Desde}" class="form-control"/></div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-2"><label for="text-input" class=" form-control-label">#{msjReportes.Hasta}</label></div>
+                                <div class="col-12 col-md-10"><input type="date" id="date-input" name="date-input" placeholder="#{msjReportes.Hasta}" class="form-control"/></div>
+                            </div> 
+                            <div class="row form-group">
+                                <div class="col-12 col-md-12" id="Buscar">
+                                    <button id="Buscar" type="submit" class="btn btn-block" style="background: #951010; color: white">
+                                        <span id="Buscar">#{msjReportes.Consultar}</span>
+                                    </button>
+                                </div>    
+                            </div>   
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </f:view>
+    </ui:define>
 </ui:composition>
 

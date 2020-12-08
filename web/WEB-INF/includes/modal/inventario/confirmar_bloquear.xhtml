@@ -14,12 +14,15 @@
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span class="text-light" aria-hidden="true">&times;</span>
                             </button>
-                            <span><center><img src="#{request.contextPath}/resource/img/LOgo.png" class="rounded-pill" target="_blank" style="height: 70px"/></center></span>             
+                            <span><center><img src="#{request.contextPath}/resource/img/LOgo.png" class="rounded-pill" 
+                                               target="_blank" style="height: 70px"/></center></span>             
                         </div>
                         <div class="modal-body">
-                            <h5>¿Esta seguro de #{inventarioControlador.btnValueBloquear.toLowerCase()} el insumo <strong>#{inventarioControlador.insumoSeleccionado.nombre}</strong>? </h5>
+                            <h5>#{msjModales.Estasegurode} #{inventarioControlador.btnValueBloquear.toLowerCase()} 
+                                #{msjModales.elinsumo} <strong>#{inventarioControlador.insumoSeleccionado.nombre}</strong>? </h5>
                             <div class="modal-footer">
-                                <button class="btn" type="button" data-dismiss="modal" style="background: #951010; color: white">Cancelar</button>
+                                <button class="btn" type="button" data-dismiss="modal" style="background: #951010; 
+                                        color: white">#{msjModales.Cancelar}</button>
                                 <h:commandButton class="btn" value="#{inventarioControlador.btnValueBloquear}" action="#{inventarioControlador.bloquearODesbloquear()}" style="background: #727272; color: white"/>
                             </div>
                         </div>

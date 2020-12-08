@@ -13,15 +13,19 @@
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span class="text-light" aria-hidden="true">&times;</span>
                             </button>
-                            <span><center><img src="#{request.contextPath}/resource/img/LOgo.png" class="rounded-pill" target="_blank" style="height: 70px"/></center></span>             
+                            <span><center><img src="#{request.contextPath}/resource/img/LOgo.png" class="rounded-pill" 
+                                               target="_blank" style="height: 70px"/></center></span>             
                         </div>
                         <div class="modal-body">
-                            <h5>¿Esta seguro de eliminar el insumo <strong>#{inventarioControlador.insumoSeleccionado.nombre}</strong>, perteneciente al tipo de insumo
+                            <h5>#{msjModales.Estasegurodeeliminarelinsumo} <strong>#{inventarioControlador.insumoSeleccionado.nombre}
+                                </strong>, #{msjModales.pertenecientealtipodeinsumo} 
                                 <strong>#{inventarioControlador.insumoSeleccionado.tipoInsumo.nombre}</strong>?</h5>
 
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                                <h:commandButton class="btn btn-danger" value="Eliminar" action="#{inventarioControlador.eliminarInsumo()}"/>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">#{msjModales.Cancelar} </button>
+                                <h:commandButton class="btn" value="#{msjModales.Eliminar}" 
+                                                 action="#{inventarioControlador.eliminarInsumo()}"
+                                                 style="background: #951010;color: white"/>
                             </div>
                         </div>
 

@@ -8,81 +8,81 @@
                 xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
 
     <ui:define name="contenido">
+        <f:view locale="#{languagecontroller.locale}">
+            <div class="breadcrumbs">
+                <div class="breadcrumbs-inner">
+                    <div class="row m-0">
+                        <div class="col-sm-4">
+                            <div class="page-header float-left">
+                                <div class="page-title">
+                                    <h1>#{msjPQRS.PQRS}</h1>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-8">
+                            <div class="page-header float-right">
+                                <div class="page-title">
+                                    <ol class="breadcrumb text-right">
+                                        <li><a href="#">#{msjRadicarPQRS.ServicioalCliente}</a></li>
+                                        <li class="active">#{msjRadicarPQRS.PQRSNuevas}</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <strong class="card-title">#{msjRadicarPQRS.PQRSNuevas}</strong>
+                                </div>
+                                <div class="card-body">
+                                    <h:form prependId="false">
+                                        <h:dataTable class="table table-striped" value="#{pqrsControlador.pqrs}"
+                                                     var="pqrs">
+                                            <h:column>
+                                                <f:facet name="header">#{msjRadicarPQRS.ID}</f:facet>
+                                                <h:outputText value="#{pqrs.id}"/>
+                                            </h:column>
+                                            <h:column>
+                                                <f:facet name="header">#{msjRadicarPQRS.FECHA}</f:facet>
+                                                <h:outputText value="#{pqrs.fecha}"/>
+                                            </h:column>
+                                            <h:column>
+                                                <f:facet name="header">#{msjRadicarPQRS.OBSERVACIONES}</f:facet>
+                                                <h:outputText value="#{pqrs.observaciones}"/>
+                                            </h:column>
+                                            <h:column>
+                                                <f:facet name="header">#{msjRadicarPQRS.ESTADO}</f:facet>
+                                                <h:outputText value="#{pqrs.estado}"/>
+                                            </h:column>
+                                            <h:column>
+                                                <f:facet name="header">#{msjRadicarPQRS.OPCIONES}</f:facet>
+                                                <h:commandLink class="btn" style="color: white; background: #580000"  a:data-toggle="modal" a:data-target="#verInfoPqrs"
+                                                               action="#{pqrsControlador.seleccionarPqrs(pqrs)}">
+                                                    <i class="fa fa-eye"></i>
+                                                    <f:ajax render=":verInfoPqrsContent"/>
+                                                </h:commandLink>
+                                                <a class="btn" style="color: white; background: #951010"><i class="fa fa-pencil"></i></a>
+                                                <a class="btn" style="color: white; background: #727272"><i class="fa fa-trash"></i></a>
+                                                <a class="btn" style="color: white; background: #9D9898"><i class="fa fa-lock"></i></a>
 
-        <div class="breadcrumbs">
-            <div class="breadcrumbs-inner">
-                <div class="row m-0">
-                    <div class="col-sm-4">
-                        <div class="page-header float-left">
-                            <div class="page-title">
-                                <h1>PQRS</h1>
+                                            </h:column>
+
+                                        </h:dataTable> 
+                                    </h:form>
+                                    <ui:include src="/WEB-INF/includes/modal/pqrs/ver_info_pqrs.xhtml"/>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-8">
-                        <div class="page-header float-right">
-                            <div class="page-title">
-                                <ol class="breadcrumb text-right">
-                                    <li><a href="#">Servicio al Cliente</a></li>
-                                    <li class="active">PQRS Nuevas</li>
-                                </ol>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="card">
-                            <div class="card-header">
-                                <strong class="card-title">PQRS NUEVAS</strong>
-                            </div>
-                            <div class="card-body">
-                                <h:form prependId="false">
-                                    <h:dataTable class="table table-striped" value="#{pqrsControlador.pqrs}"
-                                                 var="pqrs">
-                                        <h:column>
-                                            <f:facet name="header">ID:</f:facet>
-                                            <h:outputText value="#{pqrs.id}"/>
-                                        </h:column>
-                                        <h:column>
-                                            <f:facet name="header">FECHA:</f:facet>
-                                            <h:outputText value="#{pqrs.fecha}"/>
-                                        </h:column>
-                                        <h:column>
-                                            <f:facet name="header">OBSERVACIONES:</f:facet>
-                                            <h:outputText value="#{pqrs.observaciones}"/>
-                                        </h:column>
-                                        <h:column>
-                                            <f:facet name="header">ESTADO:</f:facet>
-                                            <h:outputText value="#{pqrs.estado}"/>
-                                        </h:column>
-                                        <h:column>
-                                            <f:facet name="header">OPCIONES:</f:facet>
-                                            <h:commandLink class="btn" style="color: white; background: #580000"  a:data-toggle="modal" a:data-target="#verInfoPqrs"
-                                                           action="#{pqrsControlador.seleccionarPqrs(pqrs)}">
-                                                <i class="fa fa-eye"></i>
-                                                <f:ajax render=":verInfoPqrsContent"/>
-                                            </h:commandLink>
-                                            <a class="btn" style="color: white; background: #951010"><i class="fa fa-pencil"></i></a>
-                                            <a class="btn" style="color: white; background: #727272"><i class="fa fa-trash"></i></a>
-                                            <a class="btn" style="color: white; background: #9D9898"><i class="fa fa-lock"></i></a>
-
-                                        </h:column>
-
-                                    </h:dataTable> 
-                                </h:form>
-                                <ui:include src="/WEB-INF/includes/modal/pqrs/ver_info_pqrs.xhtml"/>
-                            </div>
-                        </div>
-                    </div>
+                    <!-- /#add-category -->
                 </div>
-                <!-- /#add-category -->
+                <!-- .animated -->
             </div>
-            <!-- .animated -->
-        </div>
-        <!-- /.content -->
+            <!-- /.content -->
 
 
-        <div class="clearfix"></div>
-
+            <div class="clearfix"></div>
+        </f:view>
     </ui:define>
 </ui:composition>
 

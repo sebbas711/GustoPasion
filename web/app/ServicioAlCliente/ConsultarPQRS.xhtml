@@ -4,83 +4,86 @@
     template="/WEB-INF/includes3/template.xhtml"
     xmlns="http://www.w3.org/1999/xhtml"
     xmlns:h="http://xmlns.jcp.org/jsf/html"
-    xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:f="http://xmlns.jcp.org/jsf/core">
     <ui:define name="contenido">
-        <br/>        <br/>
-        <br/>
-        <br/>
-
-        <div class="jumbotron" style="background-image: url(#{request.contextPath}/resource/img/Quienessomos.jpg); background-size: 100%">
-            <h1 class="display-3 mb-3" style="font-family: Garamond; font-size: 40px; color: white; margin-top: 10px; margin-left: 120px;">CONSULTAR PQRS</h1> 
-        </div>
-        <div class="container">
-            <div class="table-responsive">
-                <table border="1" class="table table-striped table-bordered table-hover">
-                    <thead>
-                        <tr>
-                            <th><center>#</center></th>
-                            <th><center>Fecha</center></th>
-                            <th><center>Tipo de PQRS</center></th>
-                            <th><center>Consultar</center></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>3578951246</td>
-                            <td> <center>2020/07/20</center></td>
-                            <td><center>Petición</center></td>
-                            <td><center><button class="btn" data-toggle="modal" data-target="#samodal" style="background: #951010; color: white">Consultar PQRS</button></center></td>
-                            <div class="modal fade" id="samodal" tagindex="-1" role="dialog" area-label-ledby="samodal" aria-hudden="true" style="margin-top: 220px">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-body">
-                                            <h6 class="text-center">SU PETICIÓN AUN NO HA SIDO CONTESTADA</h6><br/>
-                                            <p class="text-center">"Recuerda que damos respuesta entre 5 a 10 días habiles"</p>
-                                            <p class="text-center"> Gracias por preferir <br/> <strong style="color: #980505">Restaurante Gusto y Pasión</strong></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </tr>
-                        <tr>
-                            <td>7584213590</td>
-                            <td> <center>2019/03/15</center></td>
-                            <td><center>Reclamo</center></td>
-                            <td><center><button class="btn" data-toggle="modal" data-target="#semodal" style="background: #951010; color: white" >Consultar PQRS</button></center></td>
-                            <div class="modal fade" id="semodal" tagindex="-1" role="dialog" area-label-ledby="semodal" aria-hudden="true" style="margin-top: 220px">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-body">
-                                            <h6 class="text-center">Reclamo Numero 7584213590 </h6><br/>
-                                            <p class="text-justify">"Atendiendo al reclamo que usted hace, queremos ofrecer diculpas por la demora en el domicilio, y para remediar este mal momento que vivio con el restaurante le vamos a enviar una pizza familiar a su direccion de residencia. <br/> Gracias por su comprensión y esto no volvera a pasar"</p>
-                                            <p class="text-center"> Gracias por preferir <br/> <strong style="color: #980505">Restaurante Gusto y Pasión</strong></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </tr>
-                        <tr>
-                            <td>8574896512</td>
-                            <td> <center>2017/06/21</center></td>
-                            <td><center>Felicitacion</center></td>
-                            <td><center><button class="btn" data-toggle="modal" data-target="#simodal" style="background: #951010; color: white">Consultar PQRS</button></center></td>
-                            <div class="modal fade" id="simodal" tagindex="-1" role="dialog" area-label-ledby="simodal" aria-hudden="true" style="margin-top: 220px">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-body">
-                                            <h6 class="text-center">Felicitacion Numero 8574896512</h6><br/>
-                                            <p class="text-center">"Nos satisface la buena experiencia que tiene con el restaurante, estamos para servirle y siempre a la orden"</p>
-                                            <p class="text-center"> Gracias por preferir <br/> <strong style="color: #980505">Restaurante Gusto y Pasión</strong></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </tr>
-                    </tbody>
-                </table>
+        <f:view locale="#{languagecontroller.locale}">
+            <br/>        <br/>
+            <br/>
+            <br/>
+            <div class="jumbotron" style="background-image: url(#{request.contextPath}/resource/img/Quienessomos.jpg); background-size: 100%">
+                <h1 class="display-3 mb-3" style="font-family: Garamond; font-size: 40px; color: white; margin-top: 10px; margin-left: 120px;">#{msjRadicarPQRS.CONSULTARPQRS}</h1> 
             </div>
-        </div>
-        <br/>
+            <div class="container">
+                <div class="table-responsive">
+                    <table border="1" class="table table-striped table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th><center>#</center></th>
+                                <th><center>#{msjRadicarPQRS.FECHA}</center></th>
+                                <th><center>#{msjRadicarPQRS.TipodePQRS}</center></th>
+                                <th><center>#{msjRadicarPQRS.Consultar}</center></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>3578951246</td>
+                                <td> <center>2020/07/20</center></td>
+                                <td><center>#{msjRadicarPQRS.Petición}</center></td>
+                                <td><center><button class="btn" data-toggle="modal" data-target="#samodal" style="background: #951010; color: white">#{msjRadicarPQRS.ConsultarPQRS}</button>
+                                    </center></td>
+                                <div class="modal fade" id="samodal" tagindex="-1" role="dialog" area-label-ledby="samodal" aria-hudden="true" style="margin-top: 220px">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-body">
+                                                <h6 class="text-center">#{msjRadicarPQRS.SUPETICIÓNAUNNO}</h6><br/>
+                                                <p class="text-center">#{msjRadicarPQRS.Recuerdaquedamos}</p>
+                                                <p class="text-center"> #{msjRadicarPQRS.Graciasporpreferir}<br/> <strong style="color: #980505">#{msjRadicarPQRS.RestauranteGustoyPasión}</strong></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </tr>
+                            <tr>
+                                <td>7584213590</td>
+                                <td> <center>2019/03/15</center></td>
+                                <td><center>#{msjRadicarPQRS.Reclamo}</center></td>
+                                <td><center><button class="btn" data-toggle="modal" data-target="#semodal" style="background: #951010; color: white" >#{msjRadicarPQRS.ConsultarPQRS}</button></center></td>
+                                <div class="modal fade" id="semodal" tagindex="-1" role="dialog" area-label-ledby="semodal" aria-hudden="true" style="margin-top: 220px">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-body">
+                                                <h6 class="text-center">#{msjRadicarPQRS.ReclamoNumero} </h6><br/>
+                                                <p class="text-justify">#{msjRadicarPQRS.Atendiendo}<br/> #{msjRadicarPQRS.Graciasporsu}</p>
+                                                <p class="text-center"> #{msjRadicarPQRS.Graciasporpreferir} <br/> <strong style="color: #980505">#{msjRadicarPQRS.RestauranteGustoyPasión}</strong></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </tr>
+                            <tr>
+                                <td>8574896512</td>
+                                <td> <center>2017/06/21</center></td>
+                                <td><center>#{msjRadicarPQRS.Felicitación}</center></td>
+                                <td><center><button class="btn" data-toggle="modal" data-target="#simodal" style="background: #951010; color: white">#{msjRadicarPQRS.ConsultarPQRS}</button></center></td>
+                                <div class="modal fade" id="simodal" tagindex="-1" role="dialog" area-label-ledby="simodal" aria-hudden="true" style="margin-top: 220px">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-body">
+                                                <h6 class="text-center">#{msjRadicarPQRS.FelicitacionNumero} 8574896512</h6><br/>
+                                                <p class="text-center">#{msjRadicarPQRS.Nossatisfacelabuena}</p>
+                                                <p class="text-center"> #{msjRadicarPQRS.Graciasporpreferir} <br/> <strong style="color: #980505">#{msjRadicarPQRS.RestauranteGustoyPasión}</strong></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <br/>
+        </f:view>
     </ui:define>
 </ui:composition>
 

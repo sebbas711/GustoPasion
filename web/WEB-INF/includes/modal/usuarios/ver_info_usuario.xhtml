@@ -4,66 +4,70 @@
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <!-- modal mostrar usuarios-->
-    <div class="modal fade" id="verInfoUsuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="verInfoUsuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" 
+         aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <h:panelGroup id="verInfoUsuarioContent" layout="block">
                     <div class="modal-header" style="background-color: #951010">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: white">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" 
+                                style="color: white">
                             <span class="text-light" aria-hidden="true">&times;</span>
                         </button>
-                        <span><center><img src="#{request.contextPath}/resource/img/LOgo.png" class="rounded-pill" target="_blank" style="height: 100px"/></center></span>             
+                        <span><center><img src="#{request.contextPath}/resource/img/LOgo.png" class="rounded-pill" 
+                                           target="_blank" style="height: 100px"/></center></span>             
                     </div>
                     <div class="modal-body row">
                         <div class="col-md-6">
                             <div class="modal-body">
                                 <div class="form-group">
-                                    <label for="message-text" class="col-form-label">ID:</label>
+                                    <label for="message-text" class="col-form-label">#{msjModales.ID}</label>
                                     <span class="form-control">#{usuarioControlador.usuarioSeleccionado.idUsuario}</span>
                                 </div>
                                 <div class="form-group">
-                                    <label for="message-text" class="col-form-label">ROL:</label>
+                                    <label for="message-text" class="col-form-label">#{msjModales.ROL}</label>
                                     <span class="form-control">#{usuarioControlador.usuarioSeleccionado.rol.descripcion}</span>
                                 </div>
                                 <div class="form-group">
-                                    <label for="message-text" class="col-form-label">TIPO DE IDENTIFICACION:</label>
+                                    <label for="message-text" class="col-form-label">#{msjModales.TIPODEIDENTIFICACION}</label>
                                     <span class="form-control">#{usuarioControlador.usuarioSeleccionado.tipoIdentificación}</span>
                                 </div>
                                 <div class="form-group">
-                                    <label for="message-text" class="col-form-label">NOMBRES:</label>
+                                    <label for="message-text" class="col-form-label">#{msjModales.NOMBRES}</label>
                                     <span class="form-control">#{usuarioControlador.usuarioSeleccionado.primerNombre} #{usuarioControlador.usuarioSeleccionado.segundoNombre}</span>
                                 </div>
                                 <div class="form-group">
-                                    <label for="message-text" class="col-form-label">APELLIDOS:</label>
+                                    <label for="message-text" class="col-form-label">#{msjModales.APELLIDOS}</label>
                                     <span class="form-control">#{usuarioControlador.usuarioSeleccionado.primerApellido} #{usuarioControlador.usuarioSeleccionado.segundoApellido}</span>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6" style="margin-top: 15px">
                             <div class="form-group">
-                                <label for="message-text" class="col-form-label">DIRECCION:</label>
+                                <label for="message-text" class="col-form-label">#{msjModales.DIRECCION}</label>
                                 <span class="form-control">#{usuarioControlador.usuarioSeleccionado.direccion}</span>
                             </div>
                             <div class="form-group">
-                                <label for="message-text" class="col-form-label">EMAIL:</label>
+                                <label for="message-text" class="col-form-label">#{msjModales.CORREOELECTRONICO}</label>
                                 <span class="form-control">#{usuarioControlador.usuarioSeleccionado.email}</span>
                             </div>
                             <div class="form-group">
-                                <label for="message-text" class="col-form-label">TELEFONO:</label>
+                                <label for="message-text" class="col-form-label">#{msjModales.TELEFONO}</label>
                                 <span class="form-control">#{usuarioControlador.usuarioSeleccionado.telefono}</span>
                             </div>
                             <div class="form-group">
-                                <label for="message-text" class="col-form-label">CONTRASEÑA:</label>
+                                <label for="message-text" class="col-form-label">#{msjModales.CONTRASEÑA}</label>
                                 <span class="form-control">#{usuarioControlador.usuarioSeleccionado.contraseña}</span>
                             </div>
                             <div class="form-group">
-                                <label for="message-text" class="col-form-label">ESTADO:</label>
+                                <label for="message-text" class="col-form-label">#{msjModales.ESTADO}</label>
                                 <span class="form-control">#{usuarioControlador.usuarioSeleccionado.estado}</span>
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn" data-dismiss="modal" style="background: #951010; color: white">Cancelar</button>
+                        <button type="button" class="btn" data-dismiss="modal" style="background: #951010;
+                                color: white">#{msjModales.Cancelar}</button>
                     </div>
                 </h:panelGroup>
             </div>

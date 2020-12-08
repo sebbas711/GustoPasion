@@ -5,7 +5,6 @@
       xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <f:view locale="#{languagecontroller.locale}">
-
         <h:head>
             <meta charset="utf-8"/>
             <meta name="viewport"
@@ -13,7 +12,7 @@
             <link rel="stylesheet" type="text/css" href="#{request.contextPath}/resource/css/bootstrap.min.css"/>
             <link rel="stylesheet" type="text/css" href="#{request.contextPath}/resource/css/inicio sesion.css"/>
             <link rel="icon" type="Pagina" href="img/Logo2.png"/>
-            <title>PQRS || Pastas y Pizzas </title>
+            <title>PQRS || Restaurante Pastas y Pizzas </title>
         </h:head>
         <h:body>
 
@@ -30,7 +29,7 @@
                         <h:form id="formularioInicioSesion" prependId="false">
                             <div class="form-group text-center">
                                 <img src="#{request.contextPath}/resource/img/LOgo.png" class="logo img-fluid "/>
-                                <h3>#{msjLogin.title} a PQRS</h3>
+                                <h3>#{msjLogin.title} a #{msjPQRS.PQRS}</h3>
                             </div>
                             <h:messages showDetail="true" layout="table"
                                         style="padding: 5px; border-radius: 5px; box-shadow: 0px, 0px, 4px #444; display: block; color: white"
@@ -48,26 +47,29 @@
 
                             <div class="form-group mx-sm-4">
                                 <center>
-                                    <h:commandButton class="btn" value="#{msjLogin.btnIngresarValue}" action="#{sessionControlador.startSession()}" style="background: #951010; color: white"/>
+                                    <h:commandButton class="btn" value="#{msjLogin.btnIngresarValue}" action="#{sessionControlador.startSession()}" 
+                                                     style="background: #951010; color: white"/>
                                 </center>
                                 <br/>
                                 <center>
-                                    <a href="../Usuario/OlvidoContr.xhtml" style="color: white">¿Olvido su contraseña?</a>
+                                    <a href="../Usuario/OlvidoContr.xhtml" style="color: white">#{msjLogin.OlvidoSuContraseñalabel}</a>
                                 </center>
 
                                 <hr/>
                                 <div class="login-social-link centered">
                                     <center>
-                                        <a href="https://www.facebook.com/Pastas-Y-Pizza-Del-Sur-110613129131207/" class="btn btn-info" type="submit"><i class="fa fa-facebook" style="color: white"></i> Facebook</a>
-                                        <a href="https://www.instagram.com/explore/locations/690231582/pastas-y-pizza-del-sur/" class="btn btn-danger" type="submit"><i class="fa fa-instagram" style="color: white"></i> Instagram</a>
+                                        <a href="https://www.facebook.com/Pastas-Y-Pizza-Del-Sur-110613129131207/" class="btn btn-info" type="submit">
+                                            <i class="fa fa-facebook" style="color: white"></i> Facebook</a>
+                                        <a href="https://www.instagram.com/explore/locations/690231582/pastas-y-pizza-del-sur/" class="btn btn-danger" type="submit">
+                                            <i class="fa fa-instagram" style="color: white"></i> Instagram</a>
                                     </center>
                                 </div>
                                 <br/>
                                 <center>
                                     <div class="registration">
-                                        ¿Todavía no tienes una cuenta?<br/>
+                                        #{msjLogin.TodaviaNoTieneCuentaLabel}<br/>
                                         <a class="" href="../Usuario/Registro.xhtml" style="color: white">
-                                            Crear una cuenta
+                                            #{msjLogin.CrearCuentaLabel}
                                         </a>
                                     </div>
                                 </center>
