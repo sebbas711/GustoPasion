@@ -90,6 +90,22 @@ public class PqrsControlador implements Serializable{
         nuevaPqrs = new Pqrs();
     }
     
+    public void actualizar() {
+
+        String mensajeRequest = "";
+        try {
+            if (pqrsSeleccionada != null) {
+                pqDAO.edit(pqrsSeleccionada);
+                mensajeRequest = "swal('Respuesta Realizada', 'No olvide Cambiar el estado', 'success');";
+                pqrs = null;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            mensajeRequest = "swal('Error', 'No se pudo responder la PQRS', 'error');";
+        }
+        PrimeFaces.current().executeScript(mensajeRequest);
+    }
+    
     public void cambiarEstado() {
         String mensajeRequest = "";
         FacesContext fc = FacesContext.getCurrentInstance();

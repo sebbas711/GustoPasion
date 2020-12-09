@@ -16,27 +16,58 @@
                         <span><center style="color: #fff"><img src="#{request.contextPath}/resource/img/LOgo.png" class="rounded-pill" target="_blank" style="height: 70px"/>ID: #{pqrsControlador.pqrsSeleccionada.id}</center></span>             
                     </div>
                     <div class="modal-body">
-                        <div class="form-group">
-                            <label for="message-text" class="col-form-label">Tipo de PQRS:</label>
-                            <span class="form-control">#{pqrsControlador.pqrsSeleccionada.tipoPQRS.nombre}</span>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="message-text" class="col-form-label">Tipo de PQRS:</label>
+                                    <span class="form-control">#{pqrsControlador.pqrsSeleccionada.tipoPQRS.nombre}</span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="message-text" class="col-form-label">Fecha:</label>
+                                    <h:outputText class="form-control" value="#{pqrsControlador.pqrsSeleccionada.fecha}">
+                                        <f:convertDateTime pattern="YYYY/MM/dd"/>
+                                    </h:outputText>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="message-text" class="col-form-label">Observaciones: </label>
+                                    <span class="form-control">#{pqrsControlador.pqrsSeleccionada.observaciones}</span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="message-text" class="col-form-label">Administrador: </label>
+                                    <span class="form-control">#{pqrsControlador.pqrsSeleccionada.administrador.usuario.primerNombre} #{pqrsControlador.pqrsSeleccionada.administrador.usuario.primerApellido}</span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="message-text" class="col-form-label">Fecha:</label>
-                            <h:outputText class="form-control" value="#{pqrsControlador.pqrsSeleccionada.fecha}">
-                                <f:convertDateTime pattern="YYYY/MM/dd"/>
-                            </h:outputText>
+                        <hr style="background-color: #951010"/>
+                        <center><h4 style="color: #951010"><b>DATOS CLIENTE</b></h4></center>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <h:outputLabel for="fr_nombre_cliente" class="col-form-label"><b>NOMBRE CLIENTE:</b></h:outputLabel>
+                                    <h:outputText class="form-control" id="fr_nombre_cliente"
+                                                  value="#{pqrsControlador.pqrsSeleccionada.nombreCliente}"/>
+                                </div>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="message-text" class="col-form-label">Observaciones: </label>
-                            <span class="form-control">#{pqrsControlador.pqrsSeleccionada.observaciones}</span>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <h:outputLabel for="fr_correo_cliente" class="col-form-label"><b>CORREO CLIENTE:</b></h:outputLabel>
+                                    <h:outputText class="form-control" id="fr_correo_cliente"
+                                                  value="#{pqrsControlador.pqrsSeleccionada.emailCliente}"/>
+                                </div>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="message-text" class="col-form-label">Administrador: </label>
-                            <span class="form-control">#{pqrsControlador.pqrsSeleccionada.administrador.usuario.primerNombre} #{pqrsControlador.pqrsSeleccionada.administrador.usuario.primerApellido}</span>
-                        </div>
-                        <div class="form-group">
-                            <label for="message-text" class="col-form-label">Estado: </label>
-                            <span class="form-control">#{pqrsControlador.pqrsSeleccionada.estado}</span>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <h:outputLabel for="fr_observacion" class="col-form-label"><b>OBSERVACIÓN:</b></h:outputLabel>
+                                    <h:outputText class="form-control" id="fr_observacion"
+                                                  value="#{pqrsControlador.pqrsSeleccionada.observaciones}"/>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="modal-footer">
