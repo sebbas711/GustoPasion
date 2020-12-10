@@ -12,10 +12,12 @@ import javax.ejb.EJB;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
+import javax.servlet.http.Part;
 import org.primefaces.PrimeFaces;
 import pyp.modelo.DAO.IUsuarioDAO;
 import pyp.modelo.entidades.Usuario;
 import pyp.modelo.util.Email;
+import pyp.modelo.util.MessageUtil;
 
 /**
  *
@@ -30,8 +32,8 @@ public class UsuarioControlador implements Serializable {
     private List<Usuario> usuarios;
     private Usuario UsuarioSeleccionado;
     private Usuario nuevoUsuario;
-
     private String correo = "";
+    private Part imgPromocion;
 
     public UsuarioControlador() {
     }
@@ -72,12 +74,21 @@ public class UsuarioControlador implements Serializable {
     }
 
     public void registrar() {
-        
+
         String mensajeRequest = "";
         try {
-            nuevoUsuario.setEstado(Short.valueOf("1"));
-            usuarioDAO.create(nuevoUsuario);
-            mensajeRequest = "swal('Registro Exitoso', '', 'success');";
+            if (nuevoUsuario.getIdUsuario() != null && nuevoUsuario.getPrimerNombre() != null
+                    && nuevoUsuario.getPrimerApellido() != null && nuevoUsuario.getEmail() != null) {
+                nuevoUsuario.setEstado(Short.valueOf("1"));
+                usuarioDAO.create(nuevoUsuario);
+                mensajeRequest = "swal('Registro Exitoso', '', 'success');";
+                MessageUtil.sendInfo(null, "Registro exitoso",
+                        "", Boolean.FALSE);
+            } else {
+                MessageUtil.sendInfo(null, "Los campos son obligatorios",
+                        "Por favor diligencie todos los campos", Boolean.FALSE);
+            }
+
         } catch (Exception e) {
             mensajeRequest = "swal('Verifique sus datos', 'Intente de nuevo', 'error');";
         }
@@ -87,18 +98,18 @@ public class UsuarioControlador implements Serializable {
     }
 
     public void recuperarClave() {
-        
+
         String mensajeRequest = "";
         Usuario usuarioResultado = new Usuario();
-        
+
         try {
             usuarioResultado = usuarioDAO.recuperarClave(correo);
-            int claveNew = (int) (Math.random()*100000);
-            usuarioResultado.setContraseña("GP-"+claveNew);
+            int claveNew = (int) (Math.random() * 100000);
+            usuarioResultado.setContraseña("GP-" + claveNew);
             usuarioDAO.edit(usuarioResultado);
             mensajeRequest += "swal('Envio Exitoso', 'Clave enviada al correo registrado', 'success');";
-            Email.sendClaves(usuarioResultado.getEmail(), usuarioResultado.getPrimerNombre() + " " + 
-                    usuarioResultado.getPrimerApellido(), correo, "GP-"+claveNew);
+            Email.sendClaves(usuarioResultado.getEmail(), usuarioResultado.getPrimerNombre() + " "
+                    + usuarioResultado.getPrimerApellido(), correo, "GP-" + claveNew);
         } catch (Exception e) {
             System.out.println("Error RegistroRequest:recuperarClave" + e.getMessage());
             mensajeRequest = "swal('Verifique sus datos', 'Intente de nuevo', 'error');";
@@ -153,7 +164,7 @@ public class UsuarioControlador implements Serializable {
             e.printStackTrace();
             mensajeRequest = "swal('Error', 'No se pudo cambiar el estado del usuario', 'error');";
         }
-        
+
         PrimeFaces.current().executeScript(mensajeRequest);
     }
 
@@ -171,12 +182,39 @@ public class UsuarioControlador implements Serializable {
         return "";
     }
 
+    public void correoMasivo() {
+        String mensajeRequest = "";
+        try {
+            for (Usuario IUsuario : usuarioDAO.findAll()) {
+                Email.sendBienvenido(IUsuario.getEmail(), "Señor " + IUsuario.getPrimerNombre() + " " + IUsuario.getPrimerApellido(),
+                        IUsuario.getEmail(), IUsuario.getContraseña());
+            }
+            mensajeRequest = "swal('Envio exitoso', 'Gracias', 'success');";
+            MessageUtil.sendInfo(null, "Registro exitoso",
+                    "", Boolean.FALSE);
+        } catch (Exception e) {
+            mensajeRequest = "swal('Error', 'No se pudo enviar el correo', 'error');";
+            MessageUtil.sendInfo(null, "Error",
+                    "", Boolean.FALSE);
+        }
+        PrimeFaces.current().executeScript(mensajeRequest);
+
+    }
+
     public String getCorreo() {
         return correo;
     }
 
     public void setCorreo(String correo) {
         this.correo = correo;
+    }
+
+    public Part getImgPromocion() {
+        return imgPromocion;
+    }
+
+    public void setImgPromocion(Part imgPromocion) {
+        this.imgPromocion = imgPromocion;
     }
 
 }

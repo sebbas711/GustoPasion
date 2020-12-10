@@ -47,13 +47,13 @@
 
                             <div class="form-group mx-sm-4 pb-3 user">
                                 <h:inputSecret class="form-control" id="contraseña"
-                                               a:placeholder="#{msjLogin.ContraseñaLabel}" required="" 
+                                               a:placeholder="#{msjLogin.ContraseñaLabel}" required="true" 
                                                value="#{sessionControlador.password}" maxlength="45"/>
                             </div>
 
                             <div class="form-group mx-sm-4">
                                 <center>
-                                    <h:commandLink class="btn" value="#{msjLogin.btnIngresarValue}" action="#{sessionControlador.startSession()}" style="background: #951010; color: white"/>
+                                    <h:commandButton class="btn" value="#{msjLogin.btnIngresarValue}" action="#{sessionControlador.startSession()}" style="background: #951010; color: white"/>
                                 </center>
                                 <br/>
                                 <center>

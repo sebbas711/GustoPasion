@@ -100,11 +100,11 @@
                 </p:column>
                 <p:column headerText="FECHA" priority="2" style="width: 120px">
                     <h:outputText value="#{pq.fecha}">
-                    <f:convertDateTime pattern="yyyy-MM-dd"/>
+                        <f:convertDateTime pattern="yyyy-MM-dd"/>
                     </h:outputText>
                 </p:column>
-                 <p:column headerText="CORREO ELECTRÓNICO" priority="2" style="width: 280px">
-                     <h:outputText value="#{pq.emailCliente}"/>
+                <p:column headerText="CORREO ELECTRÓNICO" priority="2" style="width: 280px">
+                    <h:outputText value="#{pq.emailCliente}"/>
                 </p:column>
                 <p:column headerText="OPCIONES" priority="2" style="width: 180px">
                     <h:commandLink class="btn" style="color: white; background: #580000; margin-left: 10px;display: inline-block" title="Detalles" 
@@ -125,7 +125,7 @@
                         <i class="fa fa-trash"></i>
                         <f:ajax render=":confirmEliminarInsumo" />
                     </h:commandLink-->
-                    <h:commandLink rendered="#{pqrsControlador.renderedBtnBloquear(pq)}" class="btn"
+                    <h:commandLink rendered="#{pqrsControlador.renderedBtnEstado(pq)}" class="btn"
                                    action="#{pqrsControlador.seleccionarPqrs(pq)}"
                                    a:data-toggle="modal" a:data-target="#cambiarEstadoPqrs"
                                    style="background: #9D9898; margin-left: 10px;display: inline-block" title="Cambia estado">
@@ -147,7 +147,7 @@
             <br/><br/><br/>
             <h4 class="text-center" ><a href="#page-top"><b style="color: #580000" href="#page-top">PQRS PENDIENTES</b></a></h4>
             <br/>
-             <p:dataTable class="table table-striped"
+            <p:dataTable class="table table-striped"
                          value="#{pqrsControlador.pqrs}" 
                          rows="5"
                          paginator="true"
@@ -165,7 +165,7 @@
                 </p:column>
                 <p:column headerText="FECHA" priority="2" style="width: 120px">
                     <h:outputText value="#{pq.fecha}">
-                    <f:convertDateTime pattern="yyyy-MM-dd"/>
+                        <f:convertDateTime pattern="yyyy-MM-dd"/>
                     </h:outputText>
                 </p:column>
                 <p:column headerText="CORREO ELECTRÓNICO" priority="2" style="width: 280px">
@@ -184,7 +184,13 @@
                         <i class="fa fa-pencil"></i>
                         <f:ajax render=":responderPQRSContent" />
                     </h:commandLink>
-                    <h:commandLink rendered="#{pqrsControlador.renderedBtnBloquear(pq)}" class="btn"
+                    <!--h:commandLink class="btn" style="background: #727272; color: white; margin-left: 10px;display: inline" title="Eliminar" 
+                                   a:data-toggle="modal" a:data-target="#eliminarInsumo"
+                                   action="#inventarioControlador.seleccionarInsumo(pq)}">
+                        <i class="fa fa-trash"></i>
+                        <f:ajax render=":confirmEliminarInsumo" />
+                    </h:commandLink-->
+                    <h:commandLink rendered="#{pqrsControlador.renderedBtnEstado(pq)}" class="btn"
                                    action="#{pqrsControlador.seleccionarPqrs(pq)}"
                                    a:data-toggle="modal" a:data-target="#cambiarEstadoPqrs"
                                    style="background: #9D9898; margin-left: 10px;display: inline-block" title="Cambia estado">
@@ -206,7 +212,7 @@
             <br/><br/><br/>
             <h4 class="text-center" ><a href="#page-top"><b style="color: #951010" href="#page-top">PQRS RESUELTAS</b></a></h4>
             <br/>
-             <p:dataTable class="table table-striped"
+            <p:dataTable class="table table-striped"
                          value="#{pqrsControlador.pqrs}" 
                          rows="5"
                          paginator="true"
@@ -224,7 +230,7 @@
                 </p:column>
                 <p:column headerText="FECHA" priority="2" style="width: 120px">
                     <h:outputText value="#{pq.fecha}">
-                    <f:convertDateTime pattern="yyyy-MM-dd"/>
+                        <f:convertDateTime pattern="yyyy-MM-dd"/>
                     </h:outputText>
                 </p:column>
                 <p:column headerText="CORREO ELECTRÓNICO" priority="2" style="width: 280px">
@@ -239,11 +245,17 @@
                     </h:commandLink>
                     <h:commandLink class="btn" style="background: #951010; color: white; margin-left: 10px;display: inline-block" title="Modificar" 
                                    a:data-toggle="modal" a:data-target="#responderInfoPQRS"
-                                  action="#{pqrsControlador.seleccionarPqrs(pq)}">
+                                   action="#{pqrsControlador.seleccionarPqrs(pq)}">
                         <i class="fa fa-pencil"></i>
                         <f:ajax render=":responderPQRSContent" />
                     </h:commandLink>
-                    <h:commandLink rendered="#{pqrsControlador.renderedBtnBloquear(pq)}" class="btn"
+                    <!--h:commandLink class="btn" style="background: #727272; color: white; margin-left: 10px;display: inline" title="Eliminar" 
+                                   a:data-toggle="modal" a:data-target="#eliminarInsumo"
+                                   action="#inventarioControlador.seleccionarInsumo(pq)}">
+                        <i class="fa fa-trash"></i>
+                        <f:ajax render=":confirmEliminarInsumo" />
+                    </h:commandLink-->
+                    <h:commandLink rendered="#{pqrsControlador.renderedBtnEstado(pq)}" class="btn"
                                    action="#{pqrsControlador.seleccionarPqrs(pq)}"
                                    a:data-toggle="modal" a:data-target="#cambiarEstadoPqrs"
                                    style="background: #9D9898; margin-left: 10px;display: inline-block" title="Cambia estado">
@@ -265,7 +277,7 @@
             <br/><br/><br/>
             <h4 class="text-center" ><a href="#page-top"><b style="color: #727272" href="#page-top">PQRS GENERAL</b></a></h4>
             <br/>
-             <p:dataTable class="table table-striped"
+            <p:dataTable class="table table-striped"
                          value="#{pqrsControlador.pqrs}" 
                          rows="5"
                          paginator="true"
@@ -283,7 +295,7 @@
                 </p:column>
                 <p:column headerText="FECHA" priority="2" style="width: 120px">
                     <h:outputText value="#{pq.fecha}">
-                    <f:convertDateTime pattern="yyyy-MM-dd"/>
+                        <f:convertDateTime pattern="yyyy-MM-dd"/>
                     </h:outputText>
                 </p:column>
                 <p:column headerText="CORREO ELECTRÓNICO" priority="2" style="width: 280px">
@@ -302,7 +314,13 @@
                         <i class="fa fa-pencil"></i>
                         <f:ajax render=":responderPQRSContent" />
                     </h:commandLink>
-                     <h:commandLink rendered="#{pqrsControlador.renderedBtnBloquear(pq)}" class="btn"
+                    <!--h:commandLink class="btn" style="background: #727272; color: white; margin-left: 10px;display: inline" title="Eliminar" 
+                                   a:data-toggle="modal" a:data-target="#eliminarInsumo"
+                                   action="#inventarioControlador.seleccionarInsumo(pq)}">
+                        <i class="fa fa-trash"></i>
+                        <f:ajax render=":confirmEliminarInsumo" />
+                    </h:commandLink-->
+                    <h:commandLink rendered="#{pqrsControlador.renderedBtnEstado(pq)}" class="btn"
                                    action="#{pqrsControlador.seleccionarPqrs(pq)}"
                                    a:data-toggle="modal" a:data-target="#cambiarEstadoPqrs"
                                    style="background: #9D9898; margin-left: 10px;display: inline-block" title="Cambia estado">
@@ -322,6 +340,8 @@
 
         <ui:include src="/WEB-INF/includes/modal/pqrs/ver_info_pqrs.xhtml"></ui:include>
         <ui:include src="/WEB-INF/includes/modal/pqrs/responder_PQRS.xhtml"></ui:include>
+        <ui:include src="/WEB-INF/includes/modal/pqrs/confirmar_camb_Estado.xhtml"></ui:include>
+
 
 
     </ui:define>
