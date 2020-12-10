@@ -45,6 +45,9 @@ public class PqrsControlador implements Serializable{
     }
 
     public List<Pqrs> getPqrs() {
+        if(pqrs == null || pqrs.isEmpty()){
+            pqrs = pqDAO.findAll();
+        }
         return pqrs;
     }
 
