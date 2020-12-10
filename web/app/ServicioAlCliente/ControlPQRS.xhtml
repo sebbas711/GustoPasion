@@ -103,8 +103,8 @@
                     <f:convertDateTime pattern="yyyy-MM-dd"/>
                     </h:outputText>
                 </p:column>
-                 <p:column headerText="CORREO ELECTRÓNICO" priority="2" style="width: 280px">
-                     <h:outputText value="#{pq.emailCliente}"/>
+                <p:column headerText="CORREO ELECTRÓNICO" priority="2" style="width: 280px">
+                    <h:outputText value="#{pq.emailCliente}"/>
                 </p:column>
                 <p:column headerText="OPCIONES" priority="2" style="width: 180px">
                     <h:commandLink class="btn" style="color: white; background: #580000; margin-left: 10px;display: inline-block" title="Detalles" 
@@ -115,17 +115,11 @@
                     </h:commandLink>
                     <h:commandLink class="btn" style="background: #951010; color: white; margin-left: 10px;display: inline-block" title="Modificar" 
                                    a:data-toggle="modal" a:data-target="#responderInfoPQRS"
-                                   action="#{pqrsControlador.seleccionarPqrs(pq)}">
+                                  action="#{pqrsControlador.seleccionarPqrs(pq)}">
                         <i class="fa fa-pencil"></i>
                         <f:ajax render=":responderPQRSContent" />
                     </h:commandLink>
-                    <!--h:commandLink class="btn" style="background: #727272; color: white; margin-left: 10px;display: inline" title="Eliminar" 
-                                   a:data-toggle="modal" a:data-target="#eliminarInsumo"
-                                   action="#inventarioControlador.seleccionarInsumo(pq)}">
-                        <i class="fa fa-trash"></i>
-                        <f:ajax render=":confirmEliminarInsumo" />
-                    </h:commandLink-->
-                    <h:commandLink rendered="#{pqrsControlador.renderedBtnBloquear(pq)}" class="btn"
+                    <h:commandLink rendered="#{pqrsControlador.renderedBtnEstado(pqrs)}" class="btn"
                                    action="#{pqrsControlador.seleccionarPqrs(pq)}"
                                    a:data-toggle="modal" a:data-target="#cambiarEstadoPqrs"
                                    style="background: #9D9898; margin-left: 10px;display: inline-block" title="Cambia estado">
@@ -180,11 +174,11 @@
                     </h:commandLink>
                     <h:commandLink class="btn" style="background: #951010; color: white; margin-left: 10px;display: inline-block" title="Modificar" 
                                    a:data-toggle="modal" a:data-target="#responderInfoPQRS"
-                                   action="#{pqrsControlador.seleccionarPqrs(pq)}">
+                                  action="#{pqrsControlador.seleccionarPqrs(pq)}">
                         <i class="fa fa-pencil"></i>
                         <f:ajax render=":responderPQRSContent" />
                     </h:commandLink>
-                    <h:commandLink rendered="#{pqrsControlador.renderedBtnBloquear(pq)}" class="btn"
+                    <h:commandLink rendered="#{pqrsControlador.renderedBtnEstado(pqrs)}" class="btn"
                                    action="#{pqrsControlador.seleccionarPqrs(pq)}"
                                    a:data-toggle="modal" a:data-target="#cambiarEstadoPqrs"
                                    style="background: #9D9898; margin-left: 10px;display: inline-block" title="Cambia estado">
@@ -243,7 +237,7 @@
                         <i class="fa fa-pencil"></i>
                         <f:ajax render=":responderPQRSContent" />
                     </h:commandLink>
-                    <h:commandLink rendered="#{pqrsControlador.renderedBtnBloquear(pq)}" class="btn"
+                    <h:commandLink rendered="#{pqrsControlador.renderedBtnEstado(pqrs)}" class="btn"
                                    action="#{pqrsControlador.seleccionarPqrs(pq)}"
                                    a:data-toggle="modal" a:data-target="#cambiarEstadoPqrs"
                                    style="background: #9D9898; margin-left: 10px;display: inline-block" title="Cambia estado">
@@ -298,11 +292,11 @@
                     </h:commandLink>
                     <h:commandLink class="btn" style="background: #951010; color: white; margin-left: 10px;display: inline-block" title="Modificar" 
                                    a:data-toggle="modal" a:data-target="#responderInfoPQRS"
-                                   action="#{pqrsControlador.seleccionarPqrs(pq)}">
+                                  action="#{pqrsControlador.seleccionarPqrs(pq)}">
                         <i class="fa fa-pencil"></i>
                         <f:ajax render=":responderPQRSContent" />
                     </h:commandLink>
-                     <h:commandLink rendered="#{pqrsControlador.renderedBtnBloquear(pq)}" class="btn"
+                    <h:commandLink rendered="#{pqrsControlador.renderedBtnEstado(pqrs)}" class="btn"
                                    action="#{pqrsControlador.seleccionarPqrs(pq)}"
                                    a:data-toggle="modal" a:data-target="#cambiarEstadoPqrs"
                                    style="background: #9D9898; margin-left: 10px;display: inline-block" title="Cambia estado">
