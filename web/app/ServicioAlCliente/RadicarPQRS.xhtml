@@ -11,7 +11,7 @@
     <ui:define name="contenido">
         <f:view locale="#{languagecontroller.locale}">
             <br/><br/> <br/><br/><div class="jumbotron" style="background-image: url(#{request.contextPath}/resource/img/Quienessomos.jpg); background-size: 100%">
-                <h1 class="display-3 mb-3" style="font-family: Garamond; font-size: 40px; color: white; margin-top: 10px; margin-left: 120px;">RADICAR PQRS</h1> 
+                <h1 class="display-3 mb-3" style="font-family: Garamond; font-size: 40px; color: white; margin-top: 10px; margin-left: 120px;">#{msjRadicarPQRS.RADICARPQRS}</h1> 
             </div>
             <br/>
             <div class="container">
@@ -24,7 +24,7 @@
                                 <h:outputLabel for="fr_tipo_pqrs" class="col-form-label"><b>#{msjRadicarPQRS.TipodePQRS}</b> <b style="color: red">*</b></h:outputLabel>
                                 <h:selectOneMenu  id="fr_tipo_pqrs" class="form-control" 
                                                   value="#{pqrsControlador.nuevaPqrs.tipoPQRS}">
-                                    <f:selectItem itemLabel="Seleccione el tipo de PQRS"/>
+                                    <f:selectItem itemLabel="#{msjPQRS.Seleccione}"/>
                                     <f:selectItems value="#{tipoPqrsView.tiposPqrs}" var="tp" itemLabel="#{tp.nombre}"/>
                                 </h:selectOneMenu>
                             </div>
@@ -32,23 +32,24 @@
                                 <h:outputLabel for="fr_admin" class="col-form-label"><b>#{msjPQRS.ADMINISTRADOR}</b> <b style="color: red">*</b></h:outputLabel>
                                 <h:selectOneMenu  id="fr_admin" class="form-control" 
                                                   value="#{pqrsControlador.nuevaPqrs.administrador}">
-                                    <f:selectItem itemLabel="Seleccione el tipo de PQRS"/>
+                                    <f:selectItem itemLabel="#{msjPQRS.ADMINISTRADOR}"/>
                                     <f:selectItems value="#{administradorControlador.administradores}" var="admins" itemLabel="#{admins.usuario.primerNombre} #{admins.usuario.primerApellido}"/>
                                 </h:selectOneMenu>
                             </div>
                         </div>
                         <div class="col-md-6 ">
                             <div class="form-group">
-                                <h:outputLabel for="fr_nom_cliente" class="col-form-label"><b>NOMBRE CLIENTE:</b> <b style="color: red">*</b></h:outputLabel>
+                                <h:outputLabel for="fr_nom_cliente" class="col-form-label"><b>#{msjRadicarPQRS.NOMBRECLIENTE}</b> <b style="color: red">*</b></h:outputLabel>
                                 <h:inputText id="fr_nom_cliente" class="form-control" 
-                                             a:type="text" a:placeholder="Ingrese su nombre completo" 
+                                             a:type="text" a:placeholder="#{msjPQRS.ingresesunombre}" 
                                              maxlength="55"
                                              value="#{pqrsControlador.nuevaPqrs.nombreCliente}"/>
                             </div>
                             <div class="form-group">
-                                <h:outputLabel for="fr_email_cliente" class="col-form-label"><b>#{msjRadicarPQRS.CorreoElectronico}</b> <b style="color: red">*</b></h:outputLabel>
+                                <h:outputLabel for="fr_email_cliente" class="col-form-label">
+                                    <b>#{msjRadicarPQRS.CorreoElectronico}</b> <b style="color: red">*</b></h:outputLabel>
                                 <h:inputText id="fr_email_cliente" class="form-control" 
-                                             a:type="email" a:placeholder="Ingrese su correo electrónico" 
+                                             a:type="email" a:placeholder="#{msjPQRS.Ingresesucorreoelectrónico}" 
                                              maxlength="55"
                                              value="#{pqrsControlador.nuevaPqrs.emailCliente}"/> 
                             </div>
@@ -64,14 +65,14 @@
                     </div>
                     <div class="form-check mb-3">
                         <h:outputLabel class="col-form-label">
-                            Los campos con (<b class="text-danger">*</b>) son obligatorios
+                            #{msjPQRS.Loscamposcon} (<b class="text-danger">*</b>) #{msjPQRS.sonobligatorios}
                         </h:outputLabel>
                     </div>
                     <div class="row">
                         <div class="col">
                             <h:commandButton class="btn float-right" 
                                              style="background: #951010; color: white"
-                                             value="Radicar PQRS"
+                                             value="#{msjRadicarPQRS.RadicarPQRS}"
                                              action="#{pqrsControlador.registrarPqrs()}">
                             </h:commandButton>
                         </div>
