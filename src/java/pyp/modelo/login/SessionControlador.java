@@ -86,7 +86,7 @@ public class SessionControlador implements Serializable {
                         break;
                     case 1:
                         ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
-                        ec.redirect(ec.getRequestContextPath() + "/app/Inventario/RegistroInsumo.xhtml");
+                        ec.redirect(ec.getRequestContextPath() + "/app/Inventario/control_inventario.xhtml");
                         break;
                 }
             } else {

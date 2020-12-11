@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+    >
+    <!-- modal mostrar usuarios-->
+    <div class="modal fade" id="agregarInsumo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <h:form prependId="false">
+                    <h:panelGroup id="agregarInfoInsumoContent" layout="block">
+                        <div id=""></div>
+                        <div class="modal-header" style="background-color: #951010">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span class="text-light" aria-hidden="true">&times;</span>
+                            </button>
+                            <span><center><img src="#{request.contextPath}/resource/img/LOgo.png" class="rounded-pill" target="_blank" style="height: 100px"/></center></span>             
+                        </div>
+                        <div class="modal-body row">
+                            <div class="col-md-6">
+                                <div class="form-group" >
+                                    <label for="message-text" class="col-form-label">Tipo de Insumo: <b style="color: red">*</b></label>
+                                    <h:selectOneMenu class="form-control" value="#{inventarioControlador.nuevoInsumo.tipoInsumo}">
+                                        <f:selectItem itemLabel="Seleccione un tipo de Insumo" itemValue=""/>
+                                        <f:selectItems value="#{tipoInsumoControlador.tiposInsumo}" var="ti" itemLabel="#{ti.nombre}"/>
+                                    </h:selectOneMenu>
+                                </div>
+                                <div class="form-group">
+                                    <label for="message-text" class="col-form-label">Auxiliar Cocina: <b style="color: red">*</b></label>
+                                    <h:selectOneMenu class="form-control" value="#{inventarioControlador.nuevoInsumo.auxCocina}">
+                                        <f:selectItem itemLabel="Seleccione Auxiliar Cocina" itemValue=""/>
+                                        <f:selectItems value="#{auxCocinaControlador.auxCocina}" var="aux" itemLabel="#{aux.usuario.primerNombre} #{aux.usuario.primerApellido}"/>
+                                    </h:selectOneMenu>
+                                </div>
+                                <div class="form-group">
+                                    <label for="message-text" class="col-form-label">FECHA DE INGRESO: <b style="color: red">*</b></label>
+                                    <h:inputText a:type="date" class="form-control" value="#{inventarioControlador.nuevoInsumo.fechaIngreso}">
+                                        <f:convertDateTime pattern="yyyy-MM-dd"/>
+                                    </h:inputText>
+                                </div>
+                                <div class="form-group">
+                                    <label for="message-text" class="col-form-label">FECHA DE VENCIMIENTO: <b style="color: red">*</b></label>
+                                    <h:inputText a:type="date" class="form-control" value="#{inventarioControlador.nuevoInsumo.fechaVencimiento}">
+                                        <f:convertDateTime pattern="yyyy-MM-dd"/>
+                                    </h:inputText>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="message-text" class="col-form-label">NOMBRE: <b style="color: red">*</b></label>
+                                    <h:inputText class="form-control" value="#{inventarioControlador.nuevoInsumo.nombre}" a:placeholder="Nombre del Insumo" maxlength="20"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="message-text" class="col-form-label">DESCRIPCION: <b style="color: red">*</b></label>
+                                    <h:inputText class="form-control" value="#{inventarioControlador.nuevoInsumo.descripcion}" a:placeholder="Descripción" maxlength="70"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="message-text"  class="col-form-label">CANTIDAD: <b style="color: red">*</b></label>
+                                    <h:inputText class="form-control"  a:type="number" value="#{inventarioControlador.nuevoInsumo.cantidad}"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal" style="background: #951010">Cancelar</button>
+                            <h:commandLink class="btn" value="Actualizar" style="background: #727272; color: white"
+                                           action="#{inventarioControlador.registrar()}">
+                                <i class="fa fa-save"></i>
+                            </h:commandLink>
+                        </div>
+
+                    </h:panelGroup>
+                </h:form>
+            </div>
+        </div>
+    </div>
+
+</ui:composition>
+

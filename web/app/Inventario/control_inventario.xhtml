@@ -15,7 +15,7 @@
                 <div class="row">
                     <div class="col-sm-6 col-lg-3">
                         <div class="card text-white colorverde" style="background: #580000">
-                            <a class="hovcard" href="#bebidas">
+                            <a class="hovcard" href="#verduras">
                                 <div class="card-body">
                                     <div class="card-left pt-1 float-left">
                                         <h4 class="mb-0 fw-r">
@@ -59,7 +59,7 @@
 
                     <div class="col-sm-6 col-lg-3">
                         <div class="card text-white colorred" style="background: #9D9898">
-                            <a class="hovcard" href="#verduras">
+                            <a class="hovcard" href="#bebidas">
                                 <div class="card-body">
                                     <div class="card-left pt-1 float-left">
                                         <h4 class="mb-0 fw-r">
@@ -79,8 +79,16 @@
             <!-- .animated -->
         </div>
         <h:form prependId="false">
-            <a class="btn btn-secundary" href="RegistroInsumo.xhtml" style="border: double #951010"><i class="fa fa-plus"> Registrar Insumo</i></a>
-            <br/>
+
+            <h:commandLink class="btn btn-secundary" style="border: double #951010" title="Agregar Insumo" 
+                           value="Agregar Insumo"
+                           a:data-toggle="modal" a:data-target="#agregarInsumo"
+                           >
+                <i class="fa fa-pencil"></i>
+                <f:ajax render=":agregarInfoInsumoContent" />
+            </h:commandLink>
+
+
             <h3 class="text-center"><b style="color: #951010">INVENTARIO GENERAL</b></h3>
             <br/>
             <p:dataTable class="table table-striped"
@@ -103,13 +111,13 @@
                     <h:outputText value="#{insu.estado} "/>
                 </p:column>
                 <p:column headerText="OPCIONES" priority="2" style="width: 180px">
-                    <h:commandLink class="btn" style="color: white; background: #580000; margin-left: 10px" title="Editar" 
+                    <h:commandLink class="btn" style="color: white; background: #580000; margin-left: 10px" title="Detalle" 
                                    a:data-toggle="modal" a:data-target="#verInfoInsumo"
                                    action="#{inventarioControlador.seleccionarInsumo(insu)}">
                         <i class="fa fa-eye"></i>
                         <f:ajax render=":verInfoInsumoContent" />
                     </h:commandLink>
-                    <h:commandLink class="btn" style="background: #951010; color: white; margin-left: 15px" title="Modificar" 
+                    <h:commandLink class="btn" style="background: #951010; color: white; margin-left: 15px" title="Editar" 
                                    a:data-toggle="modal" a:data-target="#editarInfoInsumo"
                                    action="#{inventarioControlador.seleccionarInsumo(insu)}">
                         <i class="fa fa-pencil"></i>
@@ -139,49 +147,55 @@
             </p:dataTable>
         </h:form>
 
-        <h:form  id="bebidas">
-            <a class="btn btn-secundary" href="RegistroInsumo.xhtml" style="border: double #951010"><i class="fa fa-plus"> Registrar Insumo</i></a>
-            <br/>
+        <h:form  id="verduras">
+            <h:commandLink class="btn btn-secundary" style="border: double #951010" title="Agregar Insumo" 
+                           value="Agregar Insumo"
+                           a:data-toggle="modal" a:data-target="#agregarInsumo"
+                           >
+                <i class="fa fa-pencil"></i>
+                <f:ajax render=":agregarInfoInsumoContent" />
+            </h:commandLink>
+            <br/> <br/>
             <h4 class="text-center" ><a href="#page-top"><b style="color: #580000" href="#page-top">VERDURAS</b></a></h4>
             <br/>
-            <p:dataTable class="table table-striped" value="#{inventarioControlador.insumos}" 
-                         rows="10"
+  <p:dataTable class="table table-striped"
+                         value="#{inventarioControlador.insumos}" 
+                         rows="5"
                          paginator="true"
                          rowsPerPageTemplate="5,10,15"
                          reflow="true"
                          var="insu">
-
-               <p:column headerText="ID" priority="2" style="width: 70px">
+                <p:column headerText="ID" priority="2" style="width: 30px">
                     <h:outputText value="#{insu.id}"/>
                 </p:column>
                 <p:column headerText="NOMBRE" priority="2" style="width: 150px">
                     <h:outputText value="#{insu.nombre}"/>
                 </p:column>
-                <p:column headerText="CANTIDAD" priority="2" style="width: 100px">
+                <p:column headerText="CANTIDAD" priority="2" style="width: 70px">
                     <h:outputText value="#{insu.cantidad} "/>
                 </p:column>
-                <p:column headerText="ESTADO" priority="2" style="width: 140px">
+                <p:column headerText="ESTADO" priority="2" style="width: 60px">
                     <h:outputText value="#{insu.estado} "/>
                 </p:column>
                 <p:column headerText="OPCIONES" priority="2" style="width: 180px">
-                    <h:commandLink class="btn" style="color: white; background: #580000; margin-left: 10px" title="Editar" 
+                    <h:commandLink class="btn" style="color: white; background: #580000; margin-left: 10px" title="Detalle" 
                                    a:data-toggle="modal" a:data-target="#verInfoInsumo"
                                    action="#{inventarioControlador.seleccionarInsumo(insu)}">
                         <i class="fa fa-eye"></i>
                         <f:ajax render=":verInfoInsumoContent" />
                     </h:commandLink>
-                    <h:commandLink class="btn" style="background: #951010; color: white; margin-left: 15px" title="Modificar" 
+                    <h:commandLink class="btn" style="background: #951010; color: white; margin-left: 15px" title="Editar" 
                                    a:data-toggle="modal" a:data-target="#editarInfoInsumo"
                                    action="#{inventarioControlador.seleccionarInsumo(insu)}">
                         <i class="fa fa-pencil"></i>
                         <f:ajax render=":editarInfoInsumoContent" />
                     </h:commandLink>
-                    <h:commandLink class="btn" style="background: #727272; color: white; margin-left: 15px" title="Eliminar" 
+                    <!--h:commandLink class="btn" style="background: #727272; color: white; margin-left: 15px" title="Eliminar" 
                                    a:data-toggle="modal" a:data-target="#eliminarInsumo"
-                                   action="#{inventarioControlador.seleccionarInsumo(insu)}">
+                                   action="#inventarioControlador.seleccionarInsumo(insu)}">
                         <i class="fa fa-trash"></i>
                         <f:ajax render=":confirmEliminarInsumo" />
-                    </h:commandLink>
+                    </h:commandLink-->
                     <h:commandLink rendered="#{inventarioControlador.renderedBtnBloquear(insu)}" class="btn"
                                    action="#{inventarioControlador.seleccionarInsumo(insu)}"
                                    a:data-toggle="modal" a:data-target="#bloquearInsumo"
@@ -201,48 +215,54 @@
         </h:form>
 
         <h:form id="carnes">
-            <a class="btn btn-secundary" href="RegistroInsumo.xhtml" style="border: double #951010"><i class="fa fa-plus"> Registrar Insumo</i></a>
-            <br/>
+            <h:commandLink class="btn btn-secundary" style="border: double #951010" title="Agregar Insumo" 
+                           value="Agregar Insumo"
+                           a:data-toggle="modal" a:data-target="#agregarInsumo"
+                           >
+                <i class="fa fa-pencil"></i>
+                <f:ajax render=":agregarInfoInsumoContent" />
+            </h:commandLink>
+            <br/> <br/>
             <h4 class="text-center" ><a href="#page-top"><b style="color: #951010" href="#page-top">CARNES</b></a></h4>
-            <br/>
-            <p:dataTable class="table table-striped" value="#{inventarioControlador.insumos}" 
-                         rows="10"
+            <br/> 
+            <p:dataTable class="table table-striped"
+                         value="#{inventarioControlador.insumos}" 
+                         rows="5"
                          paginator="true"
                          rowsPerPageTemplate="5,10,15"
                          reflow="true"
                          var="insu">
-
-                <p:column headerText="ID" priority="2" style="width: 70px">
+                <p:column headerText="ID" priority="2" style="width: 30px">
                     <h:outputText value="#{insu.id}"/>
                 </p:column>
                 <p:column headerText="NOMBRE" priority="2" style="width: 150px">
                     <h:outputText value="#{insu.nombre}"/>
                 </p:column>
-                <p:column headerText="CANTIDAD" priority="2" style="width: 100px">
+                <p:column headerText="CANTIDAD" priority="2" style="width: 70px">
                     <h:outputText value="#{insu.cantidad} "/>
                 </p:column>
-                <p:column headerText="ESTADO" priority="2" style="width: 140px">
+                <p:column headerText="ESTADO" priority="2" style="width: 60px">
                     <h:outputText value="#{insu.estado} "/>
                 </p:column>
                 <p:column headerText="OPCIONES" priority="2" style="width: 180px">
-                    <h:commandLink class="btn" style="color: white; background: #580000; margin-left: 10px" title="Editar" 
+                    <h:commandLink class="btn" style="color: white; background: #580000; margin-left: 10px" title="Detalle" 
                                    a:data-toggle="modal" a:data-target="#verInfoInsumo"
                                    action="#{inventarioControlador.seleccionarInsumo(insu)}">
                         <i class="fa fa-eye"></i>
                         <f:ajax render=":verInfoInsumoContent" />
                     </h:commandLink>
-                    <h:commandLink class="btn" style="background: #951010; color: white; margin-left: 15px" title="Modificar" 
+                    <h:commandLink class="btn" style="background: #951010; color: white; margin-left: 15px" title="Editar" 
                                    a:data-toggle="modal" a:data-target="#editarInfoInsumo"
                                    action="#{inventarioControlador.seleccionarInsumo(insu)}">
                         <i class="fa fa-pencil"></i>
                         <f:ajax render=":editarInfoInsumoContent" />
                     </h:commandLink>
-                    <h:commandLink class="btn" style="background: #727272; color: white; margin-left: 15px" title="Eliminar" 
+                    <!--h:commandLink class="btn" style="background: #727272; color: white; margin-left: 15px" title="Eliminar" 
                                    a:data-toggle="modal" a:data-target="#eliminarInsumo"
-                                   action="#{inventarioControlador.seleccionarInsumo(insu)}">
+                                   action="#inventarioControlador.seleccionarInsumo(insu)}">
                         <i class="fa fa-trash"></i>
                         <f:ajax render=":confirmEliminarInsumo" />
-                    </h:commandLink>
+                    </h:commandLink-->
                     <h:commandLink rendered="#{inventarioControlador.renderedBtnBloquear(insu)}" class="btn"
                                    action="#{inventarioControlador.seleccionarInsumo(insu)}"
                                    a:data-toggle="modal" a:data-target="#bloquearInsumo"
@@ -262,48 +282,54 @@
         </h:form>
 
         <h:form id="harinas">
-            <a class="btn btn-secundary" href="RegistroInsumo.xhtml" style="border: double #951010"><i class="fa fa-plus"> Registrar Insumo</i></a>
-            <br/>
+            <h:commandLink class="btn btn-secundary" style="border: double #951010" title="Agregar Insumo" 
+                           value="Agregar Insumo"
+                           a:data-toggle="modal" a:data-target="#agregarInsumo"
+                           >
+                <i class="fa fa-pencil"></i>
+                <f:ajax render=":agregarInfoInsumoContent" />
+            </h:commandLink>
+            <br/> <br/><br/>
             <h4 class="text-center" ><a href="#page-top"><b style="color: #727272" href="#page-top">HARINAS</b></a></h4>
             <br/>
-            <p:dataTable class="table table-striped" value="#{inventarioControlador.insumos}" 
-                         rows="10"
+            <p:dataTable class="table table-striped"
+                         value="#{inventarioControlador.insumos}" 
+                         rows="5"
                          paginator="true"
                          rowsPerPageTemplate="5,10,15"
                          reflow="true"
                          var="insu">
-
-                <p:column headerText="ID" priority="2" style="width: 70px">
+                <p:column headerText="ID" priority="2" style="width: 30px">
                     <h:outputText value="#{insu.id}"/>
                 </p:column>
                 <p:column headerText="NOMBRE" priority="2" style="width: 150px">
                     <h:outputText value="#{insu.nombre}"/>
                 </p:column>
-                <p:column headerText="CANTIDAD" priority="2" style="width: 100px">
+                <p:column headerText="CANTIDAD" priority="2" style="width: 70px">
                     <h:outputText value="#{insu.cantidad} "/>
                 </p:column>
-                <p:column headerText="ESTADO" priority="2" style="width: 140px">
+                <p:column headerText="ESTADO" priority="2" style="width: 60px">
                     <h:outputText value="#{insu.estado} "/>
                 </p:column>
                 <p:column headerText="OPCIONES" priority="2" style="width: 180px">
-                    <h:commandLink class="btn" style="color: white; background: #580000; margin-left: 10px" title="Editar" 
+                    <h:commandLink class="btn" style="color: white; background: #580000; margin-left: 10px" title="Detalle" 
                                    a:data-toggle="modal" a:data-target="#verInfoInsumo"
                                    action="#{inventarioControlador.seleccionarInsumo(insu)}">
                         <i class="fa fa-eye"></i>
                         <f:ajax render=":verInfoInsumoContent" />
                     </h:commandLink>
-                    <h:commandLink class="btn" style="background: #951010; color: white; margin-left: 15px" title="Modificar" 
+                    <h:commandLink class="btn" style="background: #951010; color: white; margin-left: 15px" title="Editar" 
                                    a:data-toggle="modal" a:data-target="#editarInfoInsumo"
                                    action="#{inventarioControlador.seleccionarInsumo(insu)}">
                         <i class="fa fa-pencil"></i>
                         <f:ajax render=":editarInfoInsumoContent" />
                     </h:commandLink>
-                    <h:commandLink class="btn" style="background: #727272; color: white; margin-left: 15px" title="Eliminar" 
+                    <!--h:commandLink class="btn" style="background: #727272; color: white; margin-left: 15px" title="Eliminar" 
                                    a:data-toggle="modal" a:data-target="#eliminarInsumo"
-                                   action="#{inventarioControlador.seleccionarInsumo(insu)}">
+                                   action="#inventarioControlador.seleccionarInsumo(insu)}">
                         <i class="fa fa-trash"></i>
                         <f:ajax render=":confirmEliminarInsumo" />
-                    </h:commandLink>
+                    </h:commandLink-->
                     <h:commandLink rendered="#{inventarioControlador.renderedBtnBloquear(insu)}" class="btn"
                                    action="#{inventarioControlador.seleccionarInsumo(insu)}"
                                    a:data-toggle="modal" a:data-target="#bloquearInsumo"
@@ -322,49 +348,55 @@
             </p:dataTable>
         </h:form>
 
-        <h:form id="verduras">
-            <a class="btn btn-secundary" href="RegistroInsumo.xhtml" style="border: double #951010"><i class="fa fa-plus"> Registrar Insumo</i></a>
-            <br/>
+        <h:form id="bebidas">
+            <h:commandLink class="btn btn-secundary" style="border: double #951010" title="Agregar Insumo" 
+                           value="Agregar Insumo"
+                           a:data-toggle="modal" a:data-target="#agregarInsumo"
+                           >
+                <i class="fa fa-pencil"></i>
+                <f:ajax render=":agregarInfoInsumoContent" />
+            </h:commandLink>
+            <br/> <br/>
             <h4 class="text-center" ><a href="#page-top"><b style="color: #9D9898">BEBIDAS</b></a></h4>
             <br/>
-            <p:dataTable class="table table-striped" value="#{inventarioControlador.insumos}" 
-                         rows="10"
+            <p:dataTable class="table table-striped"
+                         value="#{inventarioControlador.insumos}" 
+                         rows="5"
                          paginator="true"
                          rowsPerPageTemplate="5,10,15"
                          reflow="true"
                          var="insu">
-
-                <p:column headerText="ID" priority="2" style="width: 70px">
+                <p:column headerText="ID" priority="2" style="width: 30px">
                     <h:outputText value="#{insu.id}"/>
                 </p:column>
                 <p:column headerText="NOMBRE" priority="2" style="width: 150px">
                     <h:outputText value="#{insu.nombre}"/>
                 </p:column>
-                <p:column headerText="CANTIDAD" priority="2" style="width: 100px">
+                <p:column headerText="CANTIDAD" priority="2" style="width: 70px">
                     <h:outputText value="#{insu.cantidad} "/>
                 </p:column>
-                <p:column headerText="ESTADO" priority="2" style="width: 140px">
+                <p:column headerText="ESTADO" priority="2" style="width: 60px">
                     <h:outputText value="#{insu.estado} "/>
                 </p:column>
                 <p:column headerText="OPCIONES" priority="2" style="width: 180px">
-                    <h:commandLink class="btn" style="color: white; background: #580000; margin-left: 10px" title="Editar" 
+                    <h:commandLink class="btn" style="color: white; background: #580000; margin-left: 10px" title="Detalle" 
                                    a:data-toggle="modal" a:data-target="#verInfoInsumo"
                                    action="#{inventarioControlador.seleccionarInsumo(insu)}">
                         <i class="fa fa-eye"></i>
                         <f:ajax render=":verInfoInsumoContent" />
                     </h:commandLink>
-                    <h:commandLink class="btn" style="background: #951010; color: white; margin-left: 15px" title="Modificar" 
+                    <h:commandLink class="btn" style="background: #951010; color: white; margin-left: 15px" title="Editar" 
                                    a:data-toggle="modal" a:data-target="#editarInfoInsumo"
                                    action="#{inventarioControlador.seleccionarInsumo(insu)}">
                         <i class="fa fa-pencil"></i>
                         <f:ajax render=":editarInfoInsumoContent" />
                     </h:commandLink>
-                    <h:commandLink class="btn" style="background: #727272; color: white; margin-left: 15px" title="Eliminar" 
+                    <!--h:commandLink class="btn" style="background: #727272; color: white; margin-left: 15px" title="Eliminar" 
                                    a:data-toggle="modal" a:data-target="#eliminarInsumo"
-                                   action="#{inventarioControlador.seleccionarInsumo(insu)}">
+                                   action="#inventarioControlador.seleccionarInsumo(insu)}">
                         <i class="fa fa-trash"></i>
                         <f:ajax render=":confirmEliminarInsumo" />
-                    </h:commandLink>
+                    </h:commandLink-->
                     <h:commandLink rendered="#{inventarioControlador.renderedBtnBloquear(insu)}" class="btn"
                                    action="#{inventarioControlador.seleccionarInsumo(insu)}"
                                    a:data-toggle="modal" a:data-target="#bloquearInsumo"
@@ -387,6 +419,7 @@
         <ui:include src="/WEB-INF/includes/modal/inventario/confirmar_eliminar.xhtml"></ui:include>
         <ui:include src="/WEB-INF/includes/modal/inventario/confirmar_bloquear.xhtml"></ui:include>
         <ui:include src="/WEB-INF/includes/modal/inventario/editar-info-insumo.xhtml"></ui:include>
+        <ui:include src="/WEB-INF/includes/modal/inventario/agregar_insumo.xhtml"></ui:include>
 
 
     </ui:define>
