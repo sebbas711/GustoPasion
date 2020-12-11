@@ -45,6 +45,9 @@ public class PqrsControlador implements Serializable{
     }
 
     public List<Pqrs> getPqrs() {
+        if(pqrs == null || pqrs.isEmpty()){
+            pqrs = pqDAO.findAll();
+        }
         return pqrs;
     }
 
@@ -88,6 +91,22 @@ public class PqrsControlador implements Serializable{
         }
         PrimeFaces.current().executeScript(mensajeRequest);
         nuevaPqrs = new Pqrs();
+    }
+    
+    public void actualizar() {
+
+        String mensajeRequest = "";
+        try {
+            if (pqrsSeleccionada != null) {
+                pqDAO.edit(pqrsSeleccionada);
+                mensajeRequest = "swal('Respuesta Realizada', 'No olvide Cambiar el estado', 'success');";
+                pqrs = null;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            mensajeRequest = "swal('Error', 'No se pudo responder la PQRS', 'error');";
+        }
+        PrimeFaces.current().executeScript(mensajeRequest);
     }
     
     public void cambiarEstado() {

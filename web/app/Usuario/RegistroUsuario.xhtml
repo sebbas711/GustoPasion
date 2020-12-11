@@ -11,7 +11,6 @@
         <f:view locale="#{languagecontroller.locale}">
             <br/>
             <br/>
-
             <h:form prependId="false"> 
                 <br/>
                 <h3 class="text-center"><b style="color: #951010">#{msjRegistro.REGISTRARUSUARIOS}</b></h3>
@@ -70,7 +69,7 @@
                                      a:placeholder="#{msjRegistro.Dirección}"/>
                         <br/>
                         <h:outputLabel for="fr_email">#{msjRegistro.CorreoElectronico}</h:outputLabel>
-                        <h:inputText id="fr_email" class="form-control" value="#{usuarioControlador.nuevoUsuario.email}" 
+                        <h:inputText a:type="email" id="fr_email" class="form-control" value="#{usuarioControlador.nuevoUsuario.email}" 
                                      maxlength="85" a:placeholder="#{msjRegistro.CorreoElectronico}"/>
                         <br/>
                         <h:outputLabel for="fr_telefono">#{msjRegistro.Telefono}</h:outputLabel>
@@ -95,6 +94,9 @@
                         <h:commandButton class="btn"
                                          style="margin-left: 10px; color: white; background: #727272" 
                                          value="#{msjRegistro.Registrar}" action="#{usuarioControlador.registrar()}"/>
+                        <h:messages showDetail="false" layout="table"
+                                    style="padding: 5px; border-radius: 5px; box-shadow: 0px, 0px, 4px #951010; display: block; color: red;
+                                    margin-left: 50px"/>
                     </center>
                 </div>
                 <br/>
