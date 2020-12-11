@@ -19,7 +19,7 @@
                                 <div class="card-body">
                                     <div class="card-left pt-1 float-left">
                                         <h4 class="mb-0 fw-r">
-                                            <span>Verduras</span>
+                                            <span>#{msjInventario.Verduras}</span>
                                         </h4>
                                     </div>
                                 </div>
@@ -34,7 +34,7 @@
                                 <div class="card-body">
                                     <div class="card-left pt-1 float-left">
                                         <h4 class="mb-0 fw-r">
-                                            <span>Carnes</span>
+                                            <span>#{msjInventario.Carnes}</span>
                                         </h4>
                                     </div>
                                 </div>
@@ -49,7 +49,7 @@
                                 <div class="card-body">
                                     <div class="card-left pt-1 float-left">
                                         <h4 class="mb-0 fw-r">
-                                            <span>Harinas</span>
+                                            <span>#{msjInventario.Harinas}</span>
                                         </h4>
                                     </div>
                                 </div>
@@ -63,7 +63,7 @@
                                 <div class="card-body">
                                     <div class="card-left pt-1 float-left">
                                         <h4 class="mb-0 fw-r">
-                                            <span>Bebidas</span>
+                                            <span>#{msjInventario.Bebidas}</span>
                                         </h4>
                                     </div>
                                 </div>
@@ -80,8 +80,8 @@
         </div>
         <h:form prependId="false">
 
-            <h:commandLink class="btn btn-secundary" style="border: double #951010" title="Agregar Insumo" 
-                           value="Agregar Insumo"
+            <h:commandLink class="btn btn-secundary" style="border: double #951010" title="#{msjInventario.RegistrarInsumo}" 
+                           value="#{msjInventario.RegistrarInsumo}"
                            a:data-toggle="modal" a:data-target="#agregarInsumo"
                            >
                 <i class="fa fa-pencil"></i>
@@ -89,7 +89,7 @@
             </h:commandLink>
 
 
-            <h3 class="text-center"><b style="color: #951010">INVENTARIO GENERAL</b></h3>
+            <h3 class="text-center"><b style="color: #951010">#{msjInventario.INVENTARIOGENERAL}</b></h3>
             <br/>
             <p:dataTable class="table table-striped"
                          value="#{inventarioControlador.insumos}" 
@@ -98,19 +98,19 @@
                          rowsPerPageTemplate="5,10,15"
                          reflow="true"
                          var="insu">
-                <p:column headerText="ID" priority="2" style="width: 30px">
+                <p:column headerText="#{msjInventario.ID}" priority="2" style="width: 30px">
                     <h:outputText value="#{insu.id}"/>
                 </p:column>
-                <p:column headerText="NOMBRE" priority="2" style="width: 150px">
+                <p:column headerText="#{msjInventario.NOMBRE}" priority="2" style="width: 150px">
                     <h:outputText value="#{insu.nombre}"/>
                 </p:column>
-                <p:column headerText="CANTIDAD" priority="2" style="width: 70px">
+                <p:column headerText="#{msjInventario.CANTIDAD}" priority="2" style="width: 70px">
                     <h:outputText value="#{insu.cantidad} "/>
                 </p:column>
-                <p:column headerText="ESTADO" priority="2" style="width: 60px">
+                <p:column headerText="#{msjInventario.ESTADO}" priority="2" style="width: 60px">
                     <h:outputText value="#{insu.estado} "/>
                 </p:column>
-                <p:column headerText="OPCIONES" priority="2" style="width: 180px">
+                <p:column headerText="#{msjInventario.OPCIONES}" priority="2" style="width: 180px">
                     <h:commandLink class="btn" style="color: white; background: #580000; margin-left: 10px" title="Detalle" 
                                    a:data-toggle="modal" a:data-target="#verInfoInsumo"
                                    action="#{inventarioControlador.seleccionarInsumo(insu)}">
@@ -148,13 +148,12 @@
         </h:form>
 
         <h:form  id="verduras">
-            <h:commandLink class="btn btn-secundary" style="border: double #951010" title="Agregar Insumo" 
-                           value="Agregar Insumo"
+            <h:commandLink class="btn btn-secundary" style="border: double #951010" title="#{msjInventario.RegistrarInsumo}" 
+                           value="#{msjInventario.RegistrarInsumo}"
                            a:data-toggle="modal" a:data-target="#agregarInsumo"
                            >
                 <i class="fa fa-pencil"></i>
-                <f:ajax render=":agregarInfoInsumoContent" />
-            </h:commandLink>
+                <f:ajax render=":agregarInfoInsumoContent" /></h:commandLink>
             <br/> <br/>
             <h4 class="text-center" ><a href="#page-top"><b style="color: #580000" href="#page-top">VERDURAS</b></a></h4>
             <br/>
@@ -165,19 +164,19 @@
                          rowsPerPageTemplate="5,10,15"
                          reflow="true"
                          var="insu">
-                <p:column headerText="ID" priority="2" style="width: 30px">
+                <p:column headerText="#{msjInventario.ID}" priority="2" style="width: 30px">
                     <h:outputText value="#{insu.id}"/>
                 </p:column>
-                <p:column headerText="NOMBRE" priority="2" style="width: 150px">
+                <p:column headerText="#{msjInventario.NOMBRE}" priority="2" style="width: 150px">
                     <h:outputText value="#{insu.nombre}"/>
                 </p:column>
-                <p:column headerText="CANTIDAD" priority="2" style="width: 70px">
+                <p:column headerText="#{msjInventario.CANTIDAD}" priority="2" style="width: 70px">
                     <h:outputText value="#{insu.cantidad} "/>
                 </p:column>
-                <p:column headerText="ESTADO" priority="2" style="width: 60px">
+                <p:column headerText="#{msjInventario.ESTADO}" priority="2" style="width: 60px">
                     <h:outputText value="#{insu.estado} "/>
                 </p:column>
-                <p:column headerText="OPCIONES" priority="2" style="width: 180px">
+                <p:column headerText="#{msjInventario.OPCIONES}" priority="2" style="width: 180px">
                     <h:commandLink class="btn" style="color: white; background: #580000; margin-left: 10px" title="Detalle" 
                                    a:data-toggle="modal" a:data-target="#verInfoInsumo"
                                    action="#{inventarioControlador.seleccionarInsumo(insu)}">
@@ -215,13 +214,12 @@
         </h:form>
 
         <h:form id="carnes">
-            <h:commandLink class="btn btn-secundary" style="border: double #951010" title="Agregar Insumo" 
-                           value="Agregar Insumo"
+            <h:commandLink class="btn btn-secundary" style="border: double #951010" title="#{msjInventario.RegistrarInsumo}" 
+                           value="#{msjInventario.RegistrarInsumo}"
                            a:data-toggle="modal" a:data-target="#agregarInsumo"
                            >
                 <i class="fa fa-pencil"></i>
-                <f:ajax render=":agregarInfoInsumoContent" />
-            </h:commandLink>
+                <f:ajax render=":agregarInfoInsumoContent" /></h:commandLink>
             <br/> <br/>
             <h4 class="text-center" ><a href="#page-top"><b style="color: #951010" href="#page-top">CARNES</b></a></h4>
             <br/> 
@@ -232,19 +230,19 @@
                          rowsPerPageTemplate="5,10,15"
                          reflow="true"
                          var="insu">
-                <p:column headerText="ID" priority="2" style="width: 30px">
+                <p:column headerText="#{msjInventario.ID}" priority="2" style="width: 30px">
                     <h:outputText value="#{insu.id}"/>
                 </p:column>
-                <p:column headerText="NOMBRE" priority="2" style="width: 150px">
+                <p:column headerText="#{msjInventario.NOMBRE}" priority="2" style="width: 150px">
                     <h:outputText value="#{insu.nombre}"/>
                 </p:column>
-                <p:column headerText="CANTIDAD" priority="2" style="width: 70px">
+                <p:column headerText="#{msjInventario.CANTIDAD}" priority="2" style="width: 70px">
                     <h:outputText value="#{insu.cantidad} "/>
                 </p:column>
-                <p:column headerText="ESTADO" priority="2" style="width: 60px">
+                <p:column headerText="#{msjInventario.ESTADO}" priority="2" style="width: 60px">
                     <h:outputText value="#{insu.estado} "/>
                 </p:column>
-                <p:column headerText="OPCIONES" priority="2" style="width: 180px">
+                <p:column headerText="#{msjInventario.OPCIONES}" priority="2" style="width: 180px">
                     <h:commandLink class="btn" style="color: white; background: #580000; margin-left: 10px" title="Detalle" 
                                    a:data-toggle="modal" a:data-target="#verInfoInsumo"
                                    action="#{inventarioControlador.seleccionarInsumo(insu)}">
@@ -282,13 +280,12 @@
         </h:form>
 
         <h:form id="harinas">
-            <h:commandLink class="btn btn-secundary" style="border: double #951010" title="Agregar Insumo" 
-                           value="Agregar Insumo"
+            <h:commandLink class="btn btn-secundary" style="border: double #951010" title="#{msjInventario.RegistrarInsumo}" 
+                           value="#{msjInventario.RegistrarInsumo}"
                            a:data-toggle="modal" a:data-target="#agregarInsumo"
                            >
                 <i class="fa fa-pencil"></i>
-                <f:ajax render=":agregarInfoInsumoContent" />
-            </h:commandLink>
+                <f:ajax render=":agregarInfoInsumoContent" /></h:commandLink>
             <br/> <br/><br/>
             <h4 class="text-center" ><a href="#page-top"><b style="color: #727272" href="#page-top">HARINAS</b></a></h4>
             <br/>
@@ -299,19 +296,19 @@
                          rowsPerPageTemplate="5,10,15"
                          reflow="true"
                          var="insu">
-                <p:column headerText="ID" priority="2" style="width: 30px">
+                <p:column headerText="#{msjInventario.ID}" priority="2" style="width: 30px">
                     <h:outputText value="#{insu.id}"/>
                 </p:column>
-                <p:column headerText="NOMBRE" priority="2" style="width: 150px">
+                <p:column headerText="#{msjInventario.NOMBRE}" priority="2" style="width: 150px">
                     <h:outputText value="#{insu.nombre}"/>
                 </p:column>
-                <p:column headerText="CANTIDAD" priority="2" style="width: 70px">
+                <p:column headerText="#{msjInventario.CANTIDAD}" priority="2" style="width: 70px">
                     <h:outputText value="#{insu.cantidad} "/>
                 </p:column>
-                <p:column headerText="ESTADO" priority="2" style="width: 60px">
+                <p:column headerText="#{msjInventario.ESTADO}" priority="2" style="width: 60px">
                     <h:outputText value="#{insu.estado} "/>
                 </p:column>
-                <p:column headerText="OPCIONES" priority="2" style="width: 180px">
+                <p:column headerText="#{msjInventario.OPCIONES}" priority="2" style="width: 180px">
                     <h:commandLink class="btn" style="color: white; background: #580000; margin-left: 10px" title="Detalle" 
                                    a:data-toggle="modal" a:data-target="#verInfoInsumo"
                                    action="#{inventarioControlador.seleccionarInsumo(insu)}">
@@ -349,13 +346,12 @@
         </h:form>
 
         <h:form id="bebidas">
-            <h:commandLink class="btn btn-secundary" style="border: double #951010" title="Agregar Insumo" 
-                           value="Agregar Insumo"
+            <h:commandLink class="btn btn-secundary" style="border: double #951010" title="#{msjInventario.RegistrarInsumo}" 
+                           value="#{msjInventario.RegistrarInsumo}"
                            a:data-toggle="modal" a:data-target="#agregarInsumo"
                            >
                 <i class="fa fa-pencil"></i>
-                <f:ajax render=":agregarInfoInsumoContent" />
-            </h:commandLink>
+                <f:ajax render=":agregarInfoInsumoContent" /></h:commandLink>
             <br/> <br/>
             <h4 class="text-center" ><a href="#page-top"><b style="color: #9D9898">BEBIDAS</b></a></h4>
             <br/>
@@ -366,19 +362,19 @@
                          rowsPerPageTemplate="5,10,15"
                          reflow="true"
                          var="insu">
-                <p:column headerText="ID" priority="2" style="width: 30px">
+                <p:column headerText="#{msjInventario.ID}" priority="2" style="width: 30px">
                     <h:outputText value="#{insu.id}"/>
                 </p:column>
-                <p:column headerText="NOMBRE" priority="2" style="width: 150px">
+                <p:column headerText="#{msjInventario.NOMBRE}" priority="2" style="width: 150px">
                     <h:outputText value="#{insu.nombre}"/>
                 </p:column>
-                <p:column headerText="CANTIDAD" priority="2" style="width: 70px">
+                <p:column headerText="#{msjInventario.CANTIDAD}" priority="2" style="width: 70px">
                     <h:outputText value="#{insu.cantidad} "/>
                 </p:column>
-                <p:column headerText="ESTADO" priority="2" style="width: 60px">
+                <p:column headerText="#{msjInventario.ESTADO}" priority="2" style="width: 60px">
                     <h:outputText value="#{insu.estado} "/>
                 </p:column>
-                <p:column headerText="OPCIONES" priority="2" style="width: 180px">
+                <p:column headerText="#{msjInventario.OPCIONES}" priority="2" style="width: 180px">
                     <h:commandLink class="btn" style="color: white; background: #580000; margin-left: 10px" title="Detalle" 
                                    a:data-toggle="modal" a:data-target="#verInfoInsumo"
                                    action="#{inventarioControlador.seleccionarInsumo(insu)}">

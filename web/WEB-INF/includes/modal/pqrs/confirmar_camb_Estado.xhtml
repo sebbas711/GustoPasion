@@ -4,7 +4,8 @@
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <!-- modal mostrar usuarios-->
-    <div class="modal fade" id="cambiarEstadoPqrs" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="cambiarEstadoPqrs" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" 
+         aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <h:form prependId="false">
@@ -17,9 +18,9 @@
                             <span><center><img src="#{request.contextPath}/resource/img/LOgo.png" class="rounded-pill" target="_blank" style="height: 70px"/></center></span>             
                         </div>
                         <div class="modal-body">
-                            <h5>¿Esta seguro de #{pqrsControlador.btnValueEstado.toLowerCase()} la PQRS <strong>#{pqrsControlador.pqrsSeleccionada.id}</strong>? </h5>
+                            <h5>#{msjModales.Estasegurode} #{pqrsControlador.btnValueEstado.toLowerCase()} #{msjPQRS.PQRS} <strong>#{pqrsControlador.pqrsSeleccionada.id}</strong>? </h5>
                             <div class="modal-footer">
-                                <button class="btn" type="button" data-dismiss="modal" style="background: #951010; color: white">Cancelar</button>
+                                <button class="btn" type="button" data-dismiss="modal" style="background: #951010; color: white">#{msjModales.Cancelar}</button>
                                 <h:commandButton class="btn" value="#{pqrsControlador.btnValueEstado}" action="#{pqrsControlador.cambiarEstado()}" style="background: #727272; color: white"/>
                             </div>
                         </div>

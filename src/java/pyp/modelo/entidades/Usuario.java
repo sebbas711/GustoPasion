@@ -42,8 +42,12 @@ import javax.validation.constraints.Size;
     , @NamedQuery(name = "Usuario.findByEstado", query = "SELECT u FROM Usuario u WHERE u.estado = :estado")})
 public class Usuario implements Serializable {
 
+    public String toString(String Asunto) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
         public static enum EstadosUsuario{
-            ACTIVO,BLOQUEADO 
+            BLOQUEADO,ACTIVO
         }
     private static final long serialVersionUID = 1L;
     @Id

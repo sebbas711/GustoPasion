@@ -5,7 +5,8 @@
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 xmlns:f="http://xmlns.jcp.org/jsf/core">
     <!-- modal mostrar usuarios-->
-    <div class="modal fade" id="verInfoPqrs" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="verInfoPqrs" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" 
+         aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <h:panelGroup id="verInfoPqrsContent" layout="block">
@@ -13,17 +14,18 @@
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span class="text-light" aria-hidden="true">&times;</span>
                         </button>
-                        <span><center style="color: #fff"><img src="#{request.contextPath}/resource/img/LOgo.png" class="rounded-pill" target="_blank" style="height: 70px"/>ID: #{pqrsControlador.pqrsSeleccionada.id}</center></span>             
+                        <span><center style="color: #fff"><img src="#{request.contextPath}/resource/img/LOgo.png" 
+                                                               class="rounded-pill" target="_blank" style="height: 70px"/>ID: #{pqrsControlador.pqrsSeleccionada.id}</center></span>             
                     </div>
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="message-text" class="col-form-label">Tipo de PQRS:</label>
+                                    <label for="message-text" class="col-form-label">#{msjRadicarPQRS.TipodePQRS}</label>
                                     <span class="form-control">#{pqrsControlador.pqrsSeleccionada.tipoPQRS.nombre}</span>
                                 </div>
                                 <div class="form-group">
-                                    <label for="message-text" class="col-form-label">Fecha:</label>
+                                    <label for="message-text" class="col-form-label">#{msjModales.Fecha}</label>
                                     <h:outputText class="form-control" value="#{pqrsControlador.pqrsSeleccionada.fecha}">
                                         <f:convertDateTime pattern="YYYY/MM/dd"/>
                                     </h:outputText>
@@ -31,21 +33,21 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="message-text" class="col-form-label">Observaciones: </label>
+                                    <label for="message-text" class="col-form-label">#{msjModales.Observaciones} </label>
                                     <span class="form-control">#{pqrsControlador.pqrsSeleccionada.observaciones}</span>
                                 </div>
                                 <div class="form-group">
-                                    <label for="message-text" class="col-form-label">Administrador: </label>
+                                    <label for="message-text" class="col-form-label">#{msjModales.Administrador} </label>
                                     <span class="form-control">#{pqrsControlador.pqrsSeleccionada.administrador.usuario.primerNombre} #{pqrsControlador.pqrsSeleccionada.administrador.usuario.primerApellido}</span>
                                 </div>
                             </div>
                         </div>
                         <hr style="background-color: #951010"/>
-                        <center><h4 style="color: #951010"><b>DATOS CLIENTE</b></h4></center>
+                        <center><h4 style="color: #951010"><b>#{msjModales.DATOSCLIENTE}</b></h4></center>
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <h:outputLabel for="fr_nombre_cliente" class="col-form-label"><b>NOMBRE CLIENTE:</b></h:outputLabel>
+                                    <h:outputLabel for="fr_nombre_cliente" class="col-form-label"><b>#{msjModales.NOMBRECLIENTE} </b></h:outputLabel>
                                     <h:outputText class="form-control" id="fr_nombre_cliente"
                                                   value="#{pqrsControlador.pqrsSeleccionada.nombreCliente}"/>
                                 </div>
@@ -54,7 +56,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <h:outputLabel for="fr_correo_cliente" class="col-form-label"><b>CORREO CLIENTE:</b></h:outputLabel>
+                                    <h:outputLabel for="fr_correo_cliente" class="col-form-label"><b>#{msjModales.CORREOCLIENTE}</b></h:outputLabel>
                                     <h:outputText class="form-control" id="fr_correo_cliente"
                                                   value="#{pqrsControlador.pqrsSeleccionada.emailCliente}"/>
                                 </div>
@@ -63,7 +65,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <h:outputLabel for="fr_observacion" class="col-form-label"><b>OBSERVACIÓN:</b></h:outputLabel>
+                                    <h:outputLabel for="fr_observacion" class="col-form-label"><b>#{msjModales.OBSERVACIONES} </b></h:outputLabel>
                                     <h:outputText class="form-control" id="fr_observacion"
                                                   value="#{pqrsControlador.pqrsSeleccionada.observaciones}"/>
                                 </div>
@@ -71,7 +73,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal" style="background: #951010">Cancelar</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal" style="background: #951010">#{msjModales.Cancelar} </button>
                     </div>
                 </h:panelGroup>
             </div>

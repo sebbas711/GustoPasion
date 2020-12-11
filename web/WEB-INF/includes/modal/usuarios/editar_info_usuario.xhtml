@@ -28,7 +28,7 @@
                                     <label>#{msjModales.ROL}</label>
                                     <h:selectOneMenu class="form-control" 
                                                      value="#{usuarioControlador.usuarioSeleccionado.rol}">
-                                        <f:selectItem itemLabel="Seleccione un tipo de Rol" itemValue=""/>
+                                        <f:selectItem itemLabel="#{msjModales.SeleccioneuntipodRol}" itemValue=""/>
                                         <f:selectItems value="#{tipoRolControlador.roles}" var="rol" 
                                                        itemLabel="#{rol.descripcion}"/>
                                     </h:selectOneMenu>
@@ -83,7 +83,7 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn" data-dismiss="modal" style="background: #951010; color: white">Cancelar</button>
+                            <button type="button" class="btn" data-dismiss="modal" style="background: #951010; color: white">#{msjModales.Cancelar}</button>
                             <h:commandLink class="btn" value="#{msjModales.Actualizar}"
                                            action="#{usuarioControlador.actualizar}" 
                                            style="background: #727272; color: white">

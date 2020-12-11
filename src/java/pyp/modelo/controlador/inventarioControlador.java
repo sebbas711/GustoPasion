@@ -1,6 +1,8 @@
 package pyp.modelo.controlador;
 
 import java.io.Serializable;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -9,6 +11,7 @@ import javax.faces.view.ViewScoped;
 import org.primefaces.PrimeFaces;
 import pyp.modelo.DAO.IInsumoDAO;
 import pyp.modelo.entidades.Insumo;
+import pyp.modelo.util.MessageUtil;
 
 /**
  *
@@ -66,9 +69,22 @@ public class inventarioControlador implements Serializable {
     public void registrar() {
         String mensajeRequest = "";
         try {
-            nuevoInsumo.setEstado(Short.valueOf("1"));
-            IDAO.create(nuevoInsumo);
-            mensajeRequest = "swal('Registro Exitoso', '', 'success');";
+            Date fechaactual = new Date();
+            if (nuevoInsumo.getFechaVencimiento().after(fechaactual) && nuevoInsumo.getTipoInsumo() != null 
+                    && nuevoInsumo.getAuxCocina() != null && nuevoInsumo.getNombre() != null 
+                    && nuevoInsumo.getDescripcion()!= null) {
+                nuevoInsumo.setFechaIngreso(new Date());
+                nuevoInsumo.setEstado(Short.valueOf("1"));
+                insumos.clear();
+                insumos.addAll(IDAO.findAll());
+                IDAO.create(nuevoInsumo);
+                mensajeRequest = "swal('Registro Exitoso', '', 'success');";
+                MessageUtil.sendInfo(null, "Registro Exitoso",
+                        "Listado en Control de Insumos", Boolean.FALSE);
+            } else {
+                MessageUtil.sendInfo(null, "Fecha de Vencimiento debe ser superior a la fecha de registro",
+                        "Por favor diligencie todos los campos", Boolean.FALSE);
+            }
         } catch (Exception ex) {
             System.out.println("Error UsuarioControlador:registrar " + ex.getMessage());
             mensajeRequest = "swal('Verifique sus datos', 'Intente de nuevo', 'error');";
@@ -137,6 +153,14 @@ public class inventarioControlador implements Serializable {
             return "Bloquear";
         }
         return "";
+    }
+
+    private Date Date(int par, int par1, int par2) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private Date after(int i, int i0, int i1) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

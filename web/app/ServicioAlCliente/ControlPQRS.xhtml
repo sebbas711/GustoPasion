@@ -19,7 +19,7 @@
                                 <div class="card-body">
                                     <div class="card-left pt-1 float-left">
                                         <h4 class="mb-0 fw-r">
-                                            <span>PQRS NUEVAS</span>
+                                            <span>#{msjPQRS.PQRSNUEVAS}</span>
                                         </h4>
                                     </div>
                                 </div>
@@ -34,7 +34,7 @@
                                 <div class="card-body">
                                     <div class="card-left pt-1 float-left">
                                         <h4 class="mb-0 fw-r">
-                                            <span>PQRS PENDIENTES</span>
+                                            <span>#{msjPQRS.PQRSPENDIENTES}</span>
                                         </h4>
                                     </div>
                                 </div>
@@ -49,7 +49,7 @@
                                 <div class="card-body">
                                     <div class="card-left pt-1 float-left">
                                         <h4 class="mb-0 fw-r">
-                                            <span>PQRS RESUELTAS</span>
+                                            <span>#{msjPQRS.PQRSRESUELTAS}</span>
                                         </h4>
                                     </div>
                                 </div>
@@ -63,7 +63,7 @@
                                 <div class="card-body">
                                     <div class="card-left pt-1 float-left">
                                         <h4 class="mb-0 fw-r">
-                                            <span>PQRS GENERAL</span>
+                                            <span>#{msjPQRS.PQRSGENERAL}</span>
                                         </h4>
                                     </div>
                                 </div>
@@ -80,7 +80,7 @@
         </div>
         <h:form id="nuevas" prependId="false">
             <br/><br/><br/>
-            <h3 class="text-center"><b style="color: #951010">PQRS NUEVAS</b></h3>
+            <h3 class="text-center"><b style="color: #951010">#{msjPQRS.PQRSNUEVAS}</b></h3>
             <br/>
             <p:dataTable class="table table-striped"
                          value="#{pqrsControlador.pqrs}" 
@@ -89,24 +89,24 @@
                          rowsPerPageTemplate="5,10,15"
                          reflow="true"
                          var="pq">
-                <p:column headerText="ID" priority="2" style="width: 60px">
+                <p:column headerText="#{msjPQRS.ID}" priority="2" style="width: 60px">
                     <h:outputText value="#{pq.id}"/>
                 </p:column>
-                <p:column headerText="TIPO" priority="2" style="width: 70px">
+                <p:column headerText="#{msjPQRS.TIPO}" priority="2" style="width: 70px">
                     <h:outputText value="#{pq.tipoPQRS}"/>
                 </p:column>
-                <p:column headerText="ADMINISTRADOR" priority="2" style="width: 170px">
+                <p:column headerText="#{msjPQRS.ADMINISTRADOR}" priority="2" style="width: 170px">
                     <h:outputText value="#{pq.administrador.usuario.primerNombre} #{pq.administrador.usuario.primerApellido}"/>
                 </p:column>
-                <p:column headerText="FECHA" priority="2" style="width: 120px">
+                <p:column headerText="#{msjPQRS.FECHA}" priority="2" style="width: 120px">
                     <h:outputText value="#{pq.fecha}">
                         <f:convertDateTime pattern="yyyy-MM-dd"/>
                     </h:outputText>
                 </p:column>
-                <p:column headerText="CORREO ELECTRÓNICO" priority="2" style="width: 280px">
+                <p:column headerText="#{msjPQRS.CORREOELECTRÓNICO}" priority="2" style="width: 280px">
                     <h:outputText value="#{pq.emailCliente}"/>
                 </p:column>
-                <p:column headerText="OPCIONES" priority="2" style="width: 180px">
+                <p:column headerText="#{msjPQRS.OPCIONES}" priority="2" style="width: 180px">
                     <h:commandLink class="btn" style="color: white; background: #580000; 
                                    margin-left: 10px;display: inline-block" 
                                    title="Detalles" 
@@ -149,7 +149,7 @@
         <br/><br/>
         <h:form  id="pendientes">
             <br/><br/><br/>
-            <h4 class="text-center" ><a href="#page-top"><b style="color: #580000" href="#page-top">PQRS PENDIENTES</b></a></h4>
+            <h4 class="text-center" ><a href="#page-top"><b style="color: #580000" href="#page-top">#{msjPQRS.PQRSPENDIENTES}</b></a></h4>
             <br/>
             <p:dataTable class="table table-striped"
                          value="#{pqrsControlador.pqrs}" 
@@ -158,24 +158,24 @@
                          rowsPerPageTemplate="5,10,15"
                          reflow="true"
                          var="pq">
-                <p:column headerText="ID" priority="2" style="width: 60px">
+                                <p:column headerText="#{msjPQRS.ID}" priority="2" style="width: 60px">
                     <h:outputText value="#{pq.id}"/>
                 </p:column>
-                <p:column headerText="TIPO" priority="2" style="width: 70px">
+                <p:column headerText="#{msjPQRS.TIPO}" priority="2" style="width: 70px">
                     <h:outputText value="#{pq.tipoPQRS}"/>
                 </p:column>
-                <p:column headerText="ADMINISTRADOR" priority="2" style="width: 170px">
+                <p:column headerText="#{msjPQRS.ADMINISTRADOR}" priority="2" style="width: 170px">
                     <h:outputText value="#{pq.administrador.usuario.primerNombre} #{pq.administrador.usuario.primerApellido}"/>
                 </p:column>
-                <p:column headerText="FECHA" priority="2" style="width: 120px">
+                <p:column headerText="#{msjPQRS.FECHA}" priority="2" style="width: 120px">
                     <h:outputText value="#{pq.fecha}">
                         <f:convertDateTime pattern="yyyy-MM-dd"/>
                     </h:outputText>
                 </p:column>
-                <p:column headerText="CORREO ELECTRÓNICO" priority="2" style="width: 280px">
+                <p:column headerText="#{msjPQRS.CORREOELECTRÓNICO}" priority="2" style="width: 280px">
                     <h:outputText value="#{pq.emailCliente}"/>
                 </p:column>
-                <p:column headerText="OPCIONES" priority="2" style="width: 180px">
+                <p:column headerText="#{msjPQRS.OPCIONES}" priority="2" style="width: 180px">
                     <h:commandLink class="btn" style="color: white; background: #580000; 
                                    margin-left: 10px;display: inline-block" 
                                    title="Detalles" 
@@ -218,7 +218,7 @@
         <br/><br/>
         <h:form id="resueltas">
             <br/><br/><br/>
-            <h4 class="text-center" ><a href="#page-top"><b style="color: #951010" href="#page-top">PQRS RESUELTAS</b></a></h4>
+            <h4 class="text-center" ><a href="#page-top"><b style="color: #951010" href="#page-top">#{msjPQRS.PQRSRESUELTAS}</b></a></h4>
             <br/>
             <p:dataTable class="table table-striped"
                          value="#{pqrsControlador.pqrs}" 
@@ -227,24 +227,24 @@
                          rowsPerPageTemplate="5,10,15"
                          reflow="true"
                          var="pq">
-                <p:column headerText="ID" priority="2" style="width: 60px">
+                                <p:column headerText="#{msjPQRS.ID}" priority="2" style="width: 60px">
                     <h:outputText value="#{pq.id}"/>
                 </p:column>
-                <p:column headerText="TIPO" priority="2" style="width: 70px">
+                <p:column headerText="#{msjPQRS.TIPO}" priority="2" style="width: 70px">
                     <h:outputText value="#{pq.tipoPQRS}"/>
                 </p:column>
-                <p:column headerText="ADMINISTRADOR" priority="2" style="width: 170px">
+                <p:column headerText="#{msjPQRS.ADMINISTRADOR}" priority="2" style="width: 170px">
                     <h:outputText value="#{pq.administrador.usuario.primerNombre} #{pq.administrador.usuario.primerApellido}"/>
                 </p:column>
-                <p:column headerText="FECHA" priority="2" style="width: 120px">
+                <p:column headerText="#{msjPQRS.FECHA}" priority="2" style="width: 120px">
                     <h:outputText value="#{pq.fecha}">
                         <f:convertDateTime pattern="yyyy-MM-dd"/>
                     </h:outputText>
                 </p:column>
-                <p:column headerText="CORREO ELECTRÓNICO" priority="2" style="width: 280px">
+                <p:column headerText="#{msjPQRS.CORREOELECTRÓNICO}" priority="2" style="width: 280px">
                     <h:outputText value="#{pq.emailCliente}"/>
                 </p:column>
-                <p:column headerText="OPCIONES" priority="2" style="width: 180px">
+                <p:column headerText="#{msjPQRS.OPCIONES}" priority="2" style="width: 180px">
                     <h:commandLink class="btn" style="color: white; background: #580000; 
                                    margin-left: 10px;display: inline-block" 
                                    title="Detalles" 
@@ -259,6 +259,7 @@
                         <i class="fa fa-pencil"></i>
                         <f:ajax render=":responderPQRSContent" />
                     </h:commandLink>
+
                     <!--h:commandLink class="btn" style="background: #727272; color: white; margin-left: 10px;display: inline" title="Eliminar" 
                                    a:data-toggle="modal" a:data-target="#eliminarInsumo"
                                    action="#inventarioControlador.seleccionarInsumo(pq)}">
@@ -286,7 +287,7 @@
         <br/><br/>
         <h:form id="generales">
             <br/><br/><br/>
-            <h4 class="text-center" ><a href="#page-top"><b style="color: #727272" href="#page-top">PQRS GENERAL</b></a></h4>
+            <h4 class="text-center" ><a href="#page-top"><b style="color: #727272" href="#page-top">#{msjPQRS.PQRSGENERAL}</b></a></h4>
             <br/>
             <p:dataTable class="table table-striped"
                          value="#{pqrsControlador.pqrs}" 
@@ -295,24 +296,24 @@
                          rowsPerPageTemplate="5,10,15"
                          reflow="true"
                          var="pq">
-                <p:column headerText="ID" priority="2" style="width: 60px">
+                                <p:column headerText="#{msjPQRS.ID}" priority="2" style="width: 60px">
                     <h:outputText value="#{pq.id}"/>
                 </p:column>
-                <p:column headerText="TIPO" priority="2" style="width: 70px">
+                <p:column headerText="#{msjPQRS.TIPO}" priority="2" style="width: 70px">
                     <h:outputText value="#{pq.tipoPQRS}"/>
                 </p:column>
-                <p:column headerText="ADMINISTRADOR" priority="2" style="width: 170px">
+                <p:column headerText="#{msjPQRS.ADMINISTRADOR}" priority="2" style="width: 170px">
                     <h:outputText value="#{pq.administrador.usuario.primerNombre} #{pq.administrador.usuario.primerApellido}"/>
                 </p:column>
-                <p:column headerText="FECHA" priority="2" style="width: 120px">
+                <p:column headerText="#{msjPQRS.FECHA}" priority="2" style="width: 120px">
                     <h:outputText value="#{pq.fecha}">
                         <f:convertDateTime pattern="yyyy-MM-dd"/>
                     </h:outputText>
                 </p:column>
-                <p:column headerText="CORREO ELECTRÓNICO" priority="2" style="width: 280px">
+                <p:column headerText="#{msjPQRS.CORREOELECTRÓNICO}" priority="2" style="width: 280px">
                     <h:outputText value="#{pq.emailCliente}"/>
                 </p:column>
-                <p:column headerText="OPCIONES" priority="2" style="width: 180px">
+                <p:column headerText="#{msjPQRS.OPCIONES}" priority="2" style="width: 180px">
                     <h:commandLink class="btn" style="color: white; background: #580000; 
                                    margin-left: 10px;display: inline-block" 
                                    title="Detalles" 

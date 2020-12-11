@@ -5,16 +5,28 @@
  */
 package pyp.modelo.controlador;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
 import javax.servlet.http.Part;
+import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.primefaces.PrimeFaces;
+import org.primefaces.event.FileUploadEvent;
+import pyp.modelo.DAO.IRolDAO;
 import pyp.modelo.DAO.IUsuarioDAO;
+import pyp.modelo.entidades.Rol;
 import pyp.modelo.entidades.Usuario;
 import pyp.modelo.util.Email;
 import pyp.modelo.util.MessageUtil;
@@ -33,7 +45,9 @@ public class UsuarioControlador implements Serializable {
     private Usuario UsuarioSeleccionado;
     private Usuario nuevoUsuario;
     private String correo = "";
-    private Part imgPromocion;
+    private String imgPromocion;
+    private IRolDAO RolDAOLocal;
+    private String Asunto = "";
 
     public UsuarioControlador() {
     }
@@ -186,8 +200,8 @@ public class UsuarioControlador implements Serializable {
         String mensajeRequest = "";
         try {
             for (Usuario IUsuario : usuarioDAO.findAll()) {
-                Email.sendBienvenido(IUsuario.getEmail(), "Señor " + IUsuario.getPrimerNombre() + " " + IUsuario.getPrimerApellido(),
-                        IUsuario.getEmail(), IUsuario.getContraseña());
+                Email.sendBienvenido(IUsuario.getEmail(),  "Señor(a) " + IUsuario.getPrimerNombre() + " " +
+                        IUsuario.getPrimerApellido(), "Queremos invitarte a visitar nuestra pagina web" , "Restaurante gusto y Pasion");
             }
             mensajeRequest = "swal('Envio exitoso', 'Gracias', 'success');";
             MessageUtil.sendInfo(null, "Registro exitoso",
@@ -201,6 +215,103 @@ public class UsuarioControlador implements Serializable {
 
     }
 
+    public void insertarXLS(List cellDataList) {
+        try {
+            int filasContador = 0;
+            for (int i = 0; i < cellDataList.size(); i++) {
+                List cellTemp = (List) cellDataList.get(i);
+                Usuario newU = new Usuario();
+                for (int j = 0; j < cellTemp.size(); j++) {
+                    XSSFCell hssfCell = (XSSFCell) cellTemp.get(j);
+                    switch (filasContador) {
+                        case 0:
+                            newU.setIdUsuario((int) hssfCell.getNumericCellValue());
+                            filasContador++;
+                            break;
+                        case 1:
+                            newU.setTipoIdentificación(hssfCell.toString());
+                            filasContador++;
+                            break;
+                        case 2:
+                            newU.setPrimerNombre(hssfCell.toString());
+                            filasContador++;
+                            break;
+
+                        case 3:
+                            newU.setSegundoNombre(hssfCell.toString());
+                            filasContador++;
+                            break;
+                        case 4:
+                            newU.setPrimerApellido(hssfCell.toString());
+                            filasContador++;
+                            break;
+                        case 5:
+                            newU.setSegundoApellido(hssfCell.toString());
+                            filasContador++;
+                            break;
+                        case 6:
+                            newU.setDireccion(hssfCell.toString());
+                            filasContador++;
+                            break;
+                        case 7:
+                            newU.setEmail(hssfCell.toString());
+                            filasContador++;
+                            break;
+                        case 8:
+                            newU.setTelefono((int) hssfCell.getNumericCellValue());
+                            filasContador++;
+                            break;
+                        case 9:
+                            newU.setContraseña(hssfCell.toString());
+                            filasContador++;
+                            break;
+                        case 10:
+                            newU.setEstado((int) hssfCell.getNumericCellValue());
+                            filasContador++;
+                            break;
+                        case 11:
+                            Rol nueva = RolDAOLocal.find((int) Math.floor(hssfCell.getNumericCellValue()));
+                            newU.setRol(nueva);
+                            RolDAOLocal.create(nueva);
+                            filasContador = 0;
+                            break;
+
+                    }
+                }
+            }
+
+        } catch (Exception e) {
+        }
+    }
+
+    public void cargaListaUsuarios(FileUploadEvent event) throws IOException {
+        InputStream input = event.getFile().getInputStream();
+        List cellData = new ArrayList();
+        try {
+            XSSFWorkbook workBook = new XSSFWorkbook(input);
+            XSSFSheet hssfSheet = workBook.getSheetAt(0);
+            Iterator rowIterator = hssfSheet.rowIterator();
+            rowIterator.next();
+
+            while (rowIterator.hasNext()) {
+                XSSFRow hssfRow = (XSSFRow) rowIterator.next();
+                Iterator iterator = hssfRow.cellIterator();
+                List cellTemp = new ArrayList();
+                while (iterator.hasNext()) {
+                    XSSFCell hssfCell = (XSSFCell) iterator.next();
+                    cellTemp.add(hssfCell);
+                }
+                cellData.add(cellTemp);
+            }
+            insertarXLS(cellData);
+        } catch (Exception e) {
+            System.out.println("hola" + e.getMessage());
+            PrimeFaces.current().executeScript("swal('Problemas ingresando el archivo' , 'error');");
+        }
+        ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
+        context.redirect("Usuario.xhtml");
+    }
+
     public String getCorreo() {
         return correo;
     }
@@ -209,12 +320,19 @@ public class UsuarioControlador implements Serializable {
         this.correo = correo;
     }
 
-    public Part getImgPromocion() {
+    public String getImgPromocion() {
         return imgPromocion;
     }
 
-    public void setImgPromocion(Part imgPromocion) {
+    public void setImgPromocion(String imgPromocion) {
         this.imgPromocion = imgPromocion;
     }
 
+    public String getAsunto() {
+        return Asunto;
+    }
+
+    public void setAsunto(String Asunto) {
+        this.Asunto = Asunto;
+    }
 }

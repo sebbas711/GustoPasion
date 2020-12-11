@@ -14,5 +14,7 @@ import pyp.modelo.entidades.Rol;
  */
 @Local
 public interface IRolDAO extends DAO<Rol> {
-    
+
+
+
 }

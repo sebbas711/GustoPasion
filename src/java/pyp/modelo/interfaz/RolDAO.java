@@ -8,6 +8,7 @@ package pyp.modelo.interfaz;
 import javax.ejb.Stateless;
 import pyp.modelo.entidades.Rol;
 import pyp.modelo.DAO.IRolDAO;
+import pyp.modelo.entidades.Usuario;
 
 /**
  *
@@ -19,5 +20,5 @@ public class RolDAO extends AbstractDAO<Rol> implements IRolDAO {
     public RolDAO() {
         super(Rol.class);
     }
-    
+
 }

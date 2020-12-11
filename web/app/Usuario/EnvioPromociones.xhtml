@@ -12,20 +12,20 @@
             <br/>
             <br/>
             <center>
-                <h1>Envio de Promociones</h1>
+                <h1>#{msjTemplate.EnviarPromocion}</h1>
+
                 <h:form prependId="false"> 
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="asunto" class="control-label mb-1" style="color: #951010; font-size: 20px">
-                                <strong>Asunto</strong>
-                            </label>
+                            <h:outputLabel for="fr_rol" style="color: #951010"><strong>#{msjTemplate.Asunto}</strong></h:outputLabel>
                             <br/>
                             <br/>
-                            <h:inputText id="asunto" class="form-control" a:placeholder="Asunto"/>
+                            <h:inputText id="asunto" class="form-control" a:placeholder="#{msjTemplate.Asunto}" 
+                                         value="#{usuarioControlador.asunto}"/>
                         </div>
                         <div class="form-group">
                             <label for="imagen" class="control-label mb-1" style="color: #951010; font-size: 20px">
-                                <strong>Imagen</strong>
+                                <strong>#{msjTemplate.Imagen}</strong>
                             </label>
                             <br/>
                             <br/>
@@ -37,11 +37,13 @@
                 <h:form id="formId">
                     <br/>
                     <h:commandButton action="#{usuarioControlador.correoMasivo()}" 
-                                     class="btn" value="Enviar Promoción" style="background: #951010; color: white; width: 200px; height: 40px;"/>
+                                     class="btn" value="#{msjTemplate.EnviarPromocion}" style="background: #951010; color: white; width: 200px; height: 40px;"/>
                 </h:form>
-                <h:messages showDetail="true" layout="table"
-                            style="padding: 5px; border-radius: 5px; box-shadow: 0px, 0px, 4px #951010; display: block; color: white"
-                            errorStyle="background: #951010" infoClass="background: #951010"/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+
             </center>
         </f:view>
     </ui:define>
