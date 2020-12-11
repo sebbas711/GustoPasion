@@ -2,12 +2,16 @@ package pyp.modelo.controlador;
 
 import com.mysql.jdbc.Connection;
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.Serializable;
 import java.sql.DriverManager;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import javax.annotation.PostConstruct;
@@ -21,9 +25,18 @@ import javax.servlet.http.HttpServletResponse;
 import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
+import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.primefaces.PrimeFaces;
+import org.primefaces.event.FileUploadEvent;
+import pyp.modelo.DAO.IAuxCocinaDAO;
 import pyp.modelo.DAO.IInsumoDAO;
+import pyp.modelo.DAO.ITipoInsumoDAO;
+import pyp.modelo.entidades.AuxCocina;
 import pyp.modelo.entidades.Insumo;
+import pyp.modelo.entidades.TipoInsumo;
 import pyp.modelo.util.MessageUtil;
 
 /**
@@ -40,6 +53,12 @@ public class inventarioControlador implements Serializable {
     private List<Insumo> insumos;
     private Insumo insumoSeleccionado;
     private Insumo nuevoInsumo;
+
+    @EJB
+    private ITipoInsumoDAO ITipoDAO;
+
+    @EJB
+    private IAuxCocinaDAO AuxDAO;
 
     public inventarioControlador() {
     }
@@ -239,7 +258,7 @@ public class inventarioControlador implements Serializable {
 
         try {
             Map parametro = new HashMap();
-            parametro.put("idinsumo", idInsumos);
+            parametro.put("tipoInsumo", idInsumos);
             parametro.put("RutaImagen", context.getRealPath("/resource/imagenes/Report.jpg"));
             Connection conec = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/basededatos", "root", "");
 
@@ -257,6 +276,88 @@ public class inventarioControlador implements Serializable {
 
         } catch (Exception e) {
         }
+    }
+
+    public void insertarXLS(List cellDataList) {
+        try {
+            int filasContador = 0;
+            for (int i = 0; i < cellDataList.size(); i++) {
+                List cellTemp = (List) cellDataList.get(i);
+                Insumo newI = new Insumo();
+                for (int j = 0; j < cellTemp.size(); j++) {
+                    XSSFCell hssfCell = (XSSFCell) cellTemp.get(j);
+                    switch (j) {
+                        case 0:
+                            TipoInsumo nueva = ITipoDAO.find((int) Math.floor(hssfCell.getNumericCellValue()));
+                            newI.setTipoInsumo(nueva);
+                            filasContador++;
+                            break;
+                        case 1:
+                            AuxCocina nuevo = AuxDAO.find((int) Math.floor(hssfCell.getNumericCellValue()));
+                            newI.setAuxCocina(nuevo);
+                            filasContador++;
+                            break;
+                        case 2:
+                            newI.setFechaIngreso(hssfCell.getDateCellValue());
+                            filasContador++;
+                            break;
+
+                        case 3:
+                            newI.setFechaVencimiento(hssfCell.getDateCellValue());
+                            filasContador++;
+                            break;
+                        case 4:
+                            newI.setNombre(hssfCell.toString());
+                            filasContador++;
+                            break;
+                        case 5:
+                            newI.setDescripcion(hssfCell.toString());
+                            filasContador++;
+                            break;
+                        case 6:
+                            newI.setCantidad(hssfCell.getNumericCellValue());
+                            filasContador++;
+                            break;
+                        case 7:
+                            newI.setEstado((int) hssfCell.getNumericCellValue());
+                            filasContador++;
+                            break;
+                    }
+                }
+                IDAO.create(newI);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void cargaListaUsuarios(FileUploadEvent event) throws IOException {
+        InputStream input = event.getFile().getInputStream();
+        List cellData = new ArrayList();
+        try {
+            XSSFWorkbook workBook = new XSSFWorkbook(input);
+            XSSFSheet hssfSheet = workBook.getSheetAt(0);
+            Iterator rowIterator = hssfSheet.rowIterator();
+            rowIterator.next();
+
+            while (rowIterator.hasNext()) {
+                XSSFRow hssfRow = (XSSFRow) rowIterator.next();
+                Iterator iterator = hssfRow.cellIterator();
+                List cellTemp = new ArrayList();
+                while (iterator.hasNext()) {
+                    XSSFCell hssfCell = (XSSFCell) iterator.next();
+                    cellTemp.add(hssfCell);
+                }
+                cellData.add(cellTemp);
+            }
+            insertarXLS(cellData);
+        } catch (Exception e) {
+            System.out.println("hola" + e.getMessage());
+            PrimeFaces.current().executeScript("swal('Problemas ingresando el archivo' , 'error');");
+        }
+        ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
+        context.redirect("control_inventario.xhtml");
     }
 
 }

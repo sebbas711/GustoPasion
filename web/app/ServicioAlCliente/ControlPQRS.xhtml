@@ -142,14 +142,14 @@
                                    action="#{pqrsControlador.seleccionarPqrs(pq)}"
                                    a:data-toggle="modal" a:data-target="#cambiarEstadoPqrs"
                                    style="background: #9D9898; margin-left: 10px;display: inline-block" title="Cambia estado">
-                        <i class="fa fa-unlock" style="color: white"></i>
+                        <i class="fa fa-check" style="color: white"></i>
                         <f:ajax render=":confirmarCambioEstadoPqrs"/>
                     </h:commandLink>
                     <h:commandLink rendered="#{empty pq.estado or pq.estado eq 0}" class="btn"
                                    action="#{pqrsControlador.seleccionarPqrs(pq)}"
                                    a:data-toggle="modal" a:data-target="#cambiarEstadoPqrs"
                                    style="background: #9D9898; margin-left: 10px;display: inline-block" title="Cambia estado">
-                        <i class="fa fa-lock" style="color: white"></i>
+                        <i class="fa fa-times" style="color: white"></i>
                         <f:ajax render=":confirmarCambioEstadoPqrs"/>
                     </h:commandLink>
                     <h:commandLink class="btn"
@@ -172,7 +172,7 @@
                          rowsPerPageTemplate="5,10,15"
                          reflow="true"
                          var="pq">
-                <p:column headerText="#{msjPQRS.ID}" priority="2" style="width: 60px">
+                                <p:column headerText="#{msjPQRS.ID}" priority="2" style="width: 60px">
                     <h:outputText value="#{pq.id}"/>
                 </p:column>
                 <p:column headerText="#{msjPQRS.TIPO}" priority="2" style="width: 60px">
@@ -216,14 +216,14 @@
                                    action="#{pqrsControlador.seleccionarPqrs(pq)}"
                                    a:data-toggle="modal" a:data-target="#cambiarEstadoPqrs"
                                    style="background: #9D9898; margin-left: 10px;display: inline-block" title="Cambia estado">
-                        <i class="fa fa-unlock" style="color: white"></i>
+                        <i class="fa fa-check" style="color: white"></i>
                         <f:ajax render=":confirmarCambioEstadoPqrs"/>
                     </h:commandLink>
                     <h:commandLink rendered="#{empty pq.estado or pq.estado eq 0}" class="btn"
                                    action="#{pqrsControlador.seleccionarPqrs(pq)}"
                                    a:data-toggle="modal" a:data-target="#cambiarEstadoPqrs"
                                    style="background: #9D9898; margin-left: 10px;display: inline-block" title="Cambia estado">
-                        <i class="fa fa-lock" style="color: white"></i>
+                        <i class="fa fa-times" style="color: white"></i>
                         <f:ajax render=":confirmarCambioEstadoPqrs"/>
                     </h:commandLink>
                     <h:commandLink class="btn"
@@ -246,7 +246,7 @@
                          rowsPerPageTemplate="5,10,15"
                          reflow="true"
                          var="pq">
-                <p:column headerText="#{msjPQRS.ID}" priority="2" style="width: 60px">
+                                <p:column headerText="#{msjPQRS.ID}" priority="2" style="width: 60px">
                     <h:outputText value="#{pq.id}"/>
                 </p:column>
                 <p:column headerText="#{msjPQRS.TIPO}" priority="2" style="width: 60px">
@@ -290,14 +290,14 @@
                                    action="#{pqrsControlador.seleccionarPqrs(pq)}"
                                    a:data-toggle="modal" a:data-target="#cambiarEstadoPqrs"
                                    style="background: #9D9898; margin-left: 10px;display: inline-block" title="Cambia estado">
-                        <i class="fa fa-unlock" style="color: white"></i>
+                        <i class="fa fa-check" style="color: white"></i>
                         <f:ajax render=":confirmarCambioEstadoPqrs"/>
                     </h:commandLink>
                     <h:commandLink rendered="#{empty pq.estado or pq.estado eq 0}" class="btn"
                                    action="#{pqrsControlador.seleccionarPqrs(pq)}"
                                    a:data-toggle="modal" a:data-target="#cambiarEstadoPqrs"
                                    style="background: #9D9898; margin-left: 10px;display: inline-block" title="Cambia estado">
-                        <i class="fa fa-lock" style="color: white"></i>
+                        <i class="fa fa-times" style="color: white"></i>
                         <f:ajax render=":confirmarCambioEstadoPqrs"/>
                     </h:commandLink>
                     <h:commandLink class="btn"
@@ -320,7 +320,7 @@
                          rowsPerPageTemplate="5,10,15"
                          reflow="true"
                          var="pq">
-                <p:column headerText="#{msjPQRS.ID}" priority="2" style="width: 60px">
+                                <p:column headerText="#{msjPQRS.ID}" priority="2" style="width: 60px">
                     <h:outputText value="#{pq.id}"/>
                 </p:column>
                 <p:column headerText="#{msjPQRS.TIPO}" priority="2" style="width: 60px">
@@ -364,14 +364,14 @@
                                    action="#{pqrsControlador.seleccionarPqrs(pq)}"
                                    a:data-toggle="modal" a:data-target="#cambiarEstadoPqrs"
                                    style="background: #9D9898; margin-left: 10px;display: inline-block" title="Cambia estado">
-                        <i class="fa fa-unlock" style="color: white"></i>
+                        <i class="fa fa-check" style="color: white"></i>
                         <f:ajax render=":confirmarCambioEstadoPqrs"/>
                     </h:commandLink>
                     <h:commandLink rendered="#{empty pq.estado or pq.estado eq 0}" class="btn"
                                    action="#{pqrsControlador.seleccionarPqrs(pq)}"
                                    a:data-toggle="modal" a:data-target="#cambiarEstadoPqrs"
                                    style="background: #9D9898; margin-left: 10px;display: inline-block" title="Cambia estado">
-                        <i class="fa fa-lock" style="color: white"></i>
+                        <i class="fa fa-times" style="color: white"></i>
                         <f:ajax render=":confirmarCambioEstadoPqrs"/>
                     </h:commandLink>
                     <h:commandLink class="btn"

@@ -105,7 +105,8 @@
                          paginator="true"
                          rowsPerPageTemplate="5,10,15"
                          reflow="true"
-                         var="insu">
+                         var="insu"
+                         id="tabla">
                 <p:column headerText="#{msjInventario.ID}" priority="2" style="width: 30px">
                     <h:outputText value="#{insu.id}"/>
                 </p:column>
@@ -159,6 +160,32 @@
                 </p:column>
             </p:dataTable>
         </h:form>
+
+        <div class="row">
+
+            <h:form>
+
+                <p:growl id="messages" showDetail="true" />  
+                <p:fileUpload
+                    listener="#{inventarioControlador.cargaListaUsuarios}"
+                    mode="advanced"
+                    dragDropSupport="true"
+                    multiple="true"
+                    update=":tabla messages"
+                    sizeLimit="100000000"
+                    cancelLabel="Cancelar"
+                    fileLimitMessage="Cantidad de Archivos no permitida"
+                    invalidFileMessage="Archivo no valido"
+                    label="Escoger"
+                    uploadLabel="Subir"
+                    fileLimit="3"                                                                                          
+                    allowTypes="/(\.|\/)(xls|xlsx)$/" 
+                    style="margin-left: 350px">
+                </p:fileUpload>
+
+            </h:form>
+
+        </div>
 
         <h:form  id="verduras">
             <h:commandLink class="btn btn-secundary" style="border: double #951010" title="#{msjInventario.RegistrarInsumo}" 

@@ -234,7 +234,7 @@ public class UsuarioControlador implements Serializable {
                 Usuario newU = new Usuario();
                 for (int j = 0; j < cellTemp.size(); j++) {
                     XSSFCell hssfCell = (XSSFCell) cellTemp.get(j);
-                    switch (filasContador) {
+                    switch (j) {
                         case 0:
                             newU.setIdUsuario((int) hssfCell.getNumericCellValue());
                             filasContador++;
@@ -283,8 +283,7 @@ public class UsuarioControlador implements Serializable {
                         case 11:
                             Rol nueva = RolDAOLocal.find((int) Math.floor(hssfCell.getNumericCellValue()));
                             newU.setRol(nueva);
-                            RolDAOLocal.create(nueva);
-                            filasContador = 0;
+                            filasContador ++;
                             break;
 
                     }
@@ -292,6 +291,7 @@ public class UsuarioControlador implements Serializable {
             }
 
         } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
