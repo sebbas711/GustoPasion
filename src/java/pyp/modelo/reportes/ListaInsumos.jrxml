@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="0" uuid="40e8583c-4ddd-415e-9c52-7e7dba484fe8">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#FFFFFF" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     insumo.`tipo_insumo` AS insumo_tipo_insumo,
+     insumo.`fecha_ingreso` AS insumo_fecha_ingreso,
+     insumo.`fecha_vencimiento` AS insumo_fecha_vencimiento,
+     insumo.`nombre` AS insumo_nombre,
+     insumo.`descripcion` AS insumo_descripcion,
+     insumo.`cantidad` AS insumo_cantidad,
+     insumo.`estado` AS insumo_estado,
+     insumo.`id` AS insumo_id,
+     insumo.`auxCocina` AS insumo_auxCocina
+FROM
+     `insumo` insumo]]>
+	</queryString>
+	<field name="insumo_id" class="java.lang.Integer"/>
+	<field name="insumo_tipo_insumo" class="java.lang.Integer"/>
+	<field name="insumo_nombre" class="java.lang.String"/>
+	<field name="insumo_fecha_ingreso" class="java.sql.Timestamp"/>
+	<field name="insumo_fecha_vencimiento" class="java.sql.Timestamp"/>
+	<field name="insumo_cantidad" class="java.lang.Double"/>
+	<field name="insumo_descripcion" class="java.lang.String"/>
+	<field name="insumo_estado" class="java.lang.Integer"/>
+	<field name="insumo_auxCocina" class="java.lang.Integer"/>
+	<background>
+		<band height="575" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="475" width="105" height="100" backcolor="#666666" uuid="45caf02b-c50b-4a28-8638-05d71c0ffc20"/>
+				<textField>
+					<reportElement style="Column header" mode="Opaque" x="0" y="0" width="104" height="73" forecolor="#FFFFFF" backcolor="#660000" uuid="80d4b64f-e80b-485c-a05a-4ab2890561f4"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="58" isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" mode="Opaque" x="0" y="77" width="104" height="20" forecolor="#FFFFFF" backcolor="#660000" uuid="4e123f6a-4433-4651-bbf4-b824478c0ae1"/>
+					<box leftPadding="4" rightPadding="4"/>
+					<textElement textAlignment="Center">
+						<font size="16" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement mode="Transparent" x="42" y="73" width="20" height="1" backcolor="#FFFFFF" uuid="bbeb3474-51da-4de0-ae87-03a7cd43eefd"/>
+				</line>
+			</frame>
+			<image>
+				<reportElement x="643" y="433" width="177" height="142" uuid="2e6a6952-bfb4-48c9-8514-fea3f9604d94"/>
+				<imageExpression><![CDATA["C:\\Users\\PC\\Downloads\\Pizzas\\web\\resource\\imagenes\\Report.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</background>
+	<title>
+		<band height="104" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" x="0" y="0" width="802" height="67" forecolor="#660000" uuid="b775cf9e-c03f-411e-b1ee-fd8ae37b9ae5"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="54" isBold="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<text><![CDATA[Restaurante Gusto & Pasión]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="153" y="67" width="649" height="37" uuid="6e9e6cea-4238-44d8-b39d-a4c18b9dd9ec"/>
+				<textElement textAlignment="Right">
+					<font size="26"/>
+				</textElement>
+				<text><![CDATA[¡No dejes para mañana lo que puedes comer hoy!]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="97" y="5" width="705" height="20" backcolor="#660000" uuid="129c87b2-b5e1-4284-9a1c-89c4de60c4e5"/>
+				<staticText>
+					<reportElement style="Column header" x="0" y="0" width="28" height="15" uuid="9f89d243-29b3-47ae-b520-c93a68cf401f"/>
+					<text><![CDATA[ID]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="28" y="0" width="78" height="15" uuid="f168f85f-0127-4423-b65a-da0d6e982beb"/>
+					<text><![CDATA[Tipo Insumo]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="106" y="0" width="96" height="15" uuid="2abb72ed-0066-4c10-ae88-8fad5b8ad7e6"/>
+					<text><![CDATA[Nombre Insumo]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="202" y="0" width="84" height="15" uuid="0e120f58-2505-4856-8aa5-34e521deea9b"/>
+					<text><![CDATA[Fecha Ingreso]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="286" y="0" width="104" height="15" uuid="978fe249-0030-4ae9-a428-9dde8365b86f"/>
+					<text><![CDATA[Fecha Venciminto]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="390" y="0" width="78" height="15" uuid="309f056d-26d2-4573-a5e0-571416c8346b"/>
+					<text><![CDATA[Cantidad]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="468" y="0" width="78" height="15" uuid="3b4043cf-971b-4d99-9d0c-9ae6003de706"/>
+					<text><![CDATA[Descripcion]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="546" y="0" width="78" height="15" uuid="32e0e129-6bda-4d8a-9397-5e3a0bc03fa0"/>
+					<text><![CDATA[Estado]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="624" y="0" width="78" height="15" uuid="8287f244-da0b-4f56-b3eb-a0a61ae505ea"/>
+					<text><![CDATA[Aux.Cocina]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<frame>
+				<reportElement x="97" y="1" width="705" height="15" uuid="b3b6a8f7-c233-4d7a-8aaf-26ad17650860"/>
+				<textField>
+					<reportElement style="Detail" x="0" y="0" width="28" height="15" uuid="93a80590-496e-4aed-a38b-40b97b4c2f0e"/>
+					<textFieldExpression><![CDATA[$F{insumo_id}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Detail" x="28" y="0" width="78" height="15" uuid="bb9ced89-d259-47b8-b79b-e6f23947bc8f"/>
+					<textFieldExpression><![CDATA[$F{insumo_tipo_insumo}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Detail" x="202" y="0" width="84" height="15" uuid="ffbff625-4c67-4acc-bd98-e2e39f577957"/>
+					<textFieldExpression><![CDATA[$F{insumo_fecha_ingreso}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Detail" x="286" y="0" width="104" height="15" uuid="04551517-3e84-4ed1-a60b-04c912708ae0"/>
+					<textFieldExpression><![CDATA[$F{insumo_fecha_vencimiento}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Detail" x="390" y="0" width="78" height="15" uuid="1eb48768-cc98-407d-9695-b6a506013948"/>
+					<textFieldExpression><![CDATA[$F{insumo_cantidad}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Detail" x="468" y="0" width="78" height="15" uuid="06b84f25-a399-4825-bb8b-19022121b504"/>
+					<textFieldExpression><![CDATA[$F{insumo_descripcion}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Detail" x="546" y="0" width="78" height="15" uuid="35a65600-0b8c-4c03-98b2-010d32f462ee"/>
+					<textFieldExpression><![CDATA[$F{insumo_estado}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Detail" x="624" y="0" width="78" height="15" uuid="67ac8fe5-672a-4c78-bad2-4570657ab1df"/>
+					<textFieldExpression><![CDATA[$F{insumo_auxCocina}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="97" y="16" width="705" height="1" uuid="8723f37d-308a-4302-88f0-b5ab3662610a"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement style="Detail" x="203" y="0" width="96" height="15" uuid="c38cd4f8-e31a-45e3-9a4f-299b579071ec"/>
+				<textFieldExpression><![CDATA[$F{insumo_nombre}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="39" splitType="Stretch">
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement style="Column header" x="671" y="0" width="131" height="20" forecolor="#000000" uuid="1fdcd6d6-49b2-4854-a47a-545336cef6a7"/>
+				<textElement textAlignment="Right">
+					<font size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="96" y="0" width="267" height="20" uuid="ae17e2be-b639-46ee-b7eb-0182372df826"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Listado Insumos]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

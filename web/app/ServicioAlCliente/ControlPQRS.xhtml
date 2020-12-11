@@ -78,6 +78,15 @@
             </div>
             <!-- .animated -->
         </div>
+        <h:form>
+            <center>
+                <h:commandButton class="btn" value="Reporte Lista PQRS" 
+                                 style="background: #951010; color: white;"
+                                 action="#{pqrsControlador.descargaListado()}">
+                </h:commandButton>
+            </center>
+
+        </h:form>
         <h:form id="nuevas" prependId="false">
             <br/><br/><br/>
             <h3 class="text-center"><b style="color: #951010">#{msjPQRS.PQRSNUEVAS}</b></h3>
@@ -92,10 +101,10 @@
                 <p:column headerText="#{msjPQRS.ID}" priority="2" style="width: 60px">
                     <h:outputText value="#{pq.id}"/>
                 </p:column>
-                <p:column headerText="#{msjPQRS.TIPO}" priority="2" style="width: 70px">
+                <p:column headerText="#{msjPQRS.TIPO}" priority="2" style="width: 60px">
                     <h:outputText value="#{pq.tipoPQRS}"/>
                 </p:column>
-                <p:column headerText="#{msjPQRS.ADMINISTRADOR}" priority="2" style="width: 170px">
+                <p:column headerText="#{msjPQRS.ADMINISTRADOR}" priority="2" style="width: 140px">
                     <h:outputText value="#{pq.administrador.usuario.primerNombre} #{pq.administrador.usuario.primerApellido}"/>
                 </p:column>
                 <p:column headerText="#{msjPQRS.FECHA}" priority="2" style="width: 120px">
@@ -103,7 +112,7 @@
                         <f:convertDateTime pattern="yyyy-MM-dd"/>
                     </h:outputText>
                 </p:column>
-                <p:column headerText="#{msjPQRS.CORREOELECTRÓNICO}" priority="2" style="width: 280px">
+                <p:column headerText="#{msjPQRS.CORREOELECTRÓNICO}" priority="2" style="width: 200px">
                     <h:outputText value="#{pq.emailCliente}"/>
                 </p:column>
                 <p:column headerText="#{msjPQRS.OPCIONES}" priority="2" style="width: 180px">
@@ -142,6 +151,11 @@
                                    style="background: #9D9898; margin-left: 10px;display: inline-block" title="Cambia estado">
                         <i class="fa fa-lock" style="color: white"></i>
                         <f:ajax render=":confirmarCambioEstadoPqrs"/>
+                    </h:commandLink>
+                    <h:commandLink class="btn"
+                                   action="#{pqrsControlador.descargaCertificado(pq.id)}"
+                                   style="background: #727272;margin-left: 10px">
+                        <i class="fa fa-download" style="color: white;"></i>
                     </h:commandLink>
                 </p:column>
             </p:dataTable>
@@ -158,13 +172,13 @@
                          rowsPerPageTemplate="5,10,15"
                          reflow="true"
                          var="pq">
-                                <p:column headerText="#{msjPQRS.ID}" priority="2" style="width: 60px">
+                <p:column headerText="#{msjPQRS.ID}" priority="2" style="width: 60px">
                     <h:outputText value="#{pq.id}"/>
                 </p:column>
-                <p:column headerText="#{msjPQRS.TIPO}" priority="2" style="width: 70px">
+                <p:column headerText="#{msjPQRS.TIPO}" priority="2" style="width: 60px">
                     <h:outputText value="#{pq.tipoPQRS}"/>
                 </p:column>
-                <p:column headerText="#{msjPQRS.ADMINISTRADOR}" priority="2" style="width: 170px">
+                <p:column headerText="#{msjPQRS.ADMINISTRADOR}" priority="2" style="width: 140px">
                     <h:outputText value="#{pq.administrador.usuario.primerNombre} #{pq.administrador.usuario.primerApellido}"/>
                 </p:column>
                 <p:column headerText="#{msjPQRS.FECHA}" priority="2" style="width: 120px">
@@ -172,7 +186,7 @@
                         <f:convertDateTime pattern="yyyy-MM-dd"/>
                     </h:outputText>
                 </p:column>
-                <p:column headerText="#{msjPQRS.CORREOELECTRÓNICO}" priority="2" style="width: 280px">
+                <p:column headerText="#{msjPQRS.CORREOELECTRÓNICO}" priority="2" style="width: 200px">
                     <h:outputText value="#{pq.emailCliente}"/>
                 </p:column>
                 <p:column headerText="#{msjPQRS.OPCIONES}" priority="2" style="width: 180px">
@@ -211,6 +225,11 @@
                                    style="background: #9D9898; margin-left: 10px;display: inline-block" title="Cambia estado">
                         <i class="fa fa-lock" style="color: white"></i>
                         <f:ajax render=":confirmarCambioEstadoPqrs"/>
+                    </h:commandLink>
+                    <h:commandLink class="btn"
+                                   action="#{pqrsControlador.descargaCertificado(pq.id)}"
+                                   style="background: #727272;margin-left: 10px">
+                        <i class="fa fa-download" style="color: white;"></i>
                     </h:commandLink>
                 </p:column>
             </p:dataTable>
@@ -227,13 +246,13 @@
                          rowsPerPageTemplate="5,10,15"
                          reflow="true"
                          var="pq">
-                                <p:column headerText="#{msjPQRS.ID}" priority="2" style="width: 60px">
+                <p:column headerText="#{msjPQRS.ID}" priority="2" style="width: 60px">
                     <h:outputText value="#{pq.id}"/>
                 </p:column>
-                <p:column headerText="#{msjPQRS.TIPO}" priority="2" style="width: 70px">
+                <p:column headerText="#{msjPQRS.TIPO}" priority="2" style="width: 60px">
                     <h:outputText value="#{pq.tipoPQRS}"/>
                 </p:column>
-                <p:column headerText="#{msjPQRS.ADMINISTRADOR}" priority="2" style="width: 170px">
+                <p:column headerText="#{msjPQRS.ADMINISTRADOR}" priority="2" style="width: 140px">
                     <h:outputText value="#{pq.administrador.usuario.primerNombre} #{pq.administrador.usuario.primerApellido}"/>
                 </p:column>
                 <p:column headerText="#{msjPQRS.FECHA}" priority="2" style="width: 120px">
@@ -241,7 +260,7 @@
                         <f:convertDateTime pattern="yyyy-MM-dd"/>
                     </h:outputText>
                 </p:column>
-                <p:column headerText="#{msjPQRS.CORREOELECTRÓNICO}" priority="2" style="width: 280px">
+                <p:column headerText="#{msjPQRS.CORREOELECTRÓNICO}" priority="2" style="width: 200px">
                     <h:outputText value="#{pq.emailCliente}"/>
                 </p:column>
                 <p:column headerText="#{msjPQRS.OPCIONES}" priority="2" style="width: 180px">
@@ -280,6 +299,11 @@
                                    style="background: #9D9898; margin-left: 10px;display: inline-block" title="Cambia estado">
                         <i class="fa fa-lock" style="color: white"></i>
                         <f:ajax render=":confirmarCambioEstadoPqrs"/>
+                    </h:commandLink>
+                    <h:commandLink class="btn"
+                                   action="#{pqrsControlador.descargaCertificado(pq.id)}"
+                                   style="background: #727272;margin-left: 10px">
+                        <i class="fa fa-download" style="color: white;"></i>
                     </h:commandLink>
                 </p:column>
             </p:dataTable>
@@ -296,13 +320,13 @@
                          rowsPerPageTemplate="5,10,15"
                          reflow="true"
                          var="pq">
-                                <p:column headerText="#{msjPQRS.ID}" priority="2" style="width: 60px">
+                <p:column headerText="#{msjPQRS.ID}" priority="2" style="width: 60px">
                     <h:outputText value="#{pq.id}"/>
                 </p:column>
-                <p:column headerText="#{msjPQRS.TIPO}" priority="2" style="width: 70px">
+                <p:column headerText="#{msjPQRS.TIPO}" priority="2" style="width: 60px">
                     <h:outputText value="#{pq.tipoPQRS}"/>
                 </p:column>
-                <p:column headerText="#{msjPQRS.ADMINISTRADOR}" priority="2" style="width: 170px">
+                <p:column headerText="#{msjPQRS.ADMINISTRADOR}" priority="2" style="width: 140px">
                     <h:outputText value="#{pq.administrador.usuario.primerNombre} #{pq.administrador.usuario.primerApellido}"/>
                 </p:column>
                 <p:column headerText="#{msjPQRS.FECHA}" priority="2" style="width: 120px">
@@ -310,7 +334,7 @@
                         <f:convertDateTime pattern="yyyy-MM-dd"/>
                     </h:outputText>
                 </p:column>
-                <p:column headerText="#{msjPQRS.CORREOELECTRÓNICO}" priority="2" style="width: 280px">
+                <p:column headerText="#{msjPQRS.CORREOELECTRÓNICO}" priority="2" style="width: 200px">
                     <h:outputText value="#{pq.emailCliente}"/>
                 </p:column>
                 <p:column headerText="#{msjPQRS.OPCIONES}" priority="2" style="width: 180px">
@@ -349,6 +373,11 @@
                                    style="background: #9D9898; margin-left: 10px;display: inline-block" title="Cambia estado">
                         <i class="fa fa-lock" style="color: white"></i>
                         <f:ajax render=":confirmarCambioEstadoPqrs"/>
+                    </h:commandLink>
+                    <h:commandLink class="btn"
+                                   action="#{pqrsControlador.descargaCertificado(pq.id)}"
+                                   style="background: #727272;margin-left: 10px">
+                        <i class="fa fa-download" style="color: white;"></i>
                     </h:commandLink>
                 </p:column>
             </p:dataTable>

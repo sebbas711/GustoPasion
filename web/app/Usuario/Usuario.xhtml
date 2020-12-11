@@ -12,9 +12,17 @@
             <br/>
             <br/>
             <h:form prependId="false">
+                <h:form>
+                    <a class="btn" href="RegistroUsuario.xhtml" style="background: #951010; margin-left: 300px">
+                        <i class="fa fa-plus" style="color: white">#{msjUsuario.registrarUsuario}</i></a>
 
-                <center><a class="btn" href="RegistroUsuario.xhtml" style="background: #951010">
-                        <i class="fa fa-plus" style="color: white">#{msjUsuario.registrarUsuario}</i></a></center>
+
+                    <h:commandButton class="btn" value="Reporte Lista Usuarios" 
+                                     style="background: #951010; color: white; margin-left: 10px"
+                                     action="#{usuarioControlador.descargaListado()}">
+                    </h:commandButton>
+
+                </h:form>
                 <br/>
                 <h4 class="text-center"><b>#{msjUsuario.Usuarios}</b></h4>
                 <br/>
@@ -28,15 +36,15 @@
                         <f:facet name="header">#{msjUsuario.ID}</f:facet>
                         <h:outputText value="#{usuario.idUsuario}"/>
                     </p:column>
-                    <p:column style="width: 130px">
+                    <p:column style="width: 125px">
                         <f:facet name="header">#{msjUsuario.ROL}</f:facet>
                         <h:outputText value="#{usuario.rol.descripcion}"/>
                     </p:column>
-                    <p:column style="width: 250px">
+                    <p:column style="width: 150px">
                         <f:facet name="header">#{msjUsuario.NOMBRES}</f:facet>
                         <h:outputText value="#{usuario.primerNombre} #{usuario.segundoNombre} "/>
                     </p:column>
-                    <p:column style="width: 250px">
+                    <p:column style="width: 150px">
                         <f:facet name="header">#{msjUsuario.APELLIDOS}</f:facet>
                         <h:outputText value="#{usuario.primerApellido} #{usuario.segundoApellido} "/>
                     </p:column>
@@ -64,20 +72,27 @@
                         <h:commandLink rendered="#{usuarioControlador.renderedBtnBloquear(usuario)}" class="btn"
                                        action="#{usuarioControlador.seleccionarUsuario(usuario)}"
                                        a:data-toggle="modal" a:data-target="#bloquearUsuario"
-                                       style="background: #9D9898">
+                                       style="background: #9D9898; margin-right: 12px">
                             <i class="fa fa-unlock" style="color: white"></i>
                             <f:ajax render=":confirmarBloquearUsuario"/>
                         </h:commandLink>
                         <h:commandLink rendered="#{empty usuario.estado or usuario.estado eq 0}" class="btn"
                                        action="#{usuarioControlador.seleccionarUsuario(usuario)}"
                                        a:data-toggle="modal" a:data-target="#bloquearUsuario"
-                                       style="background: #9D9898">
+                                       style="background: #9D9898; margin-right: 12px">
                             <i class="fa fa-lock" style="color: white"></i>
                             <f:ajax render=":confirmarBloquearUsuario"/>
+                        </h:commandLink>
+                        <h:commandLink class="btn"
+                                       action="#{usuarioControlador.descargaCertificado(usuario.idUsuario)}"
+                                       style="background: #727272;">
+                            <i class="fa fa-download" style="color: white"></i>
                         </h:commandLink>
                     </p:column>
                 </p:dataTable>
             </h:form>
+            <br/>
+            <br/>
             <br/>
             <div class="row">
 
@@ -104,10 +119,6 @@
                 </h:form>
 
             </div>
-            <br/>
-            <br/>
-            <br/>
-
             <ui:include src="/WEB-INF/includes/modal/usuarios/ver_info_usuario.xhtml"></ui:include>
             <ui:include src="/WEB-INF/includes/modal/usuarios/confirmar_eliminar.xhtml"></ui:include>
             <ui:include src="/WEB-INF/includes/modal/usuarios/confirmar_bloquear.xhtml"></ui:include>

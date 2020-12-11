@@ -1,13 +1,26 @@
 package pyp.modelo.controlador;
 
+import com.mysql.jdbc.Connection;
+import java.io.File;
+import java.io.OutputStream;
 import java.io.Serializable;
+import java.sql.DriverManager;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
 import org.primefaces.PrimeFaces;
 import pyp.modelo.DAO.IInsumoDAO;
 import pyp.modelo.entidades.Insumo;
@@ -70,9 +83,34 @@ public class inventarioControlador implements Serializable {
         String mensajeRequest = "";
         try {
             Date fechaactual = new Date();
-            if (nuevoInsumo.getFechaVencimiento().after(fechaactual) && nuevoInsumo.getTipoInsumo() != null 
-                    && nuevoInsumo.getAuxCocina() != null && nuevoInsumo.getNombre() != null 
-                    && nuevoInsumo.getDescripcion()!= null) {
+            if (nuevoInsumo.getFechaVencimiento().after(fechaactual) && nuevoInsumo.getTipoInsumo() != null
+                    && nuevoInsumo.getAuxCocina() != null && nuevoInsumo.getNombre() != null
+                    && nuevoInsumo.getDescripcion() != null) {
+                nuevoInsumo.setFechaIngreso(new Date());
+                nuevoInsumo.setEstado(Short.valueOf("1"));
+                IDAO.create(nuevoInsumo);
+                mensajeRequest = "swal('Registro Exitoso', '', 'success');";
+                MessageUtil.sendInfo(null, "Registro Exitoso",
+                        "Listado en Control de Insumos", Boolean.FALSE);
+            } else {
+                MessageUtil.sendInfo(null, "Fecha de Vencimiento debe ser superior a la fecha de registro",
+                        "Por favor diligencie todos los campos", Boolean.FALSE);
+            }
+        } catch (Exception ex) {
+            System.out.println("Error UsuarioControlador:registrar " + ex.getMessage());
+            mensajeRequest = "swal('Verifique sus datos', 'Intente de nuevo', 'error');";
+        }
+        PrimeFaces.current().executeScript(mensajeRequest);
+        nuevoInsumo = new Insumo();
+    }
+
+    public void registrarmodal() {
+        String mensajeRequest = "";
+        try {
+            Date fechaactual = new Date();
+            if (nuevoInsumo.getFechaVencimiento().after(fechaactual) && nuevoInsumo.getTipoInsumo() != null
+                    && nuevoInsumo.getAuxCocina() != null && nuevoInsumo.getNombre() != null
+                    && nuevoInsumo.getDescripcion() != null) {
                 nuevoInsumo.setFechaIngreso(new Date());
                 nuevoInsumo.setEstado(Short.valueOf("1"));
                 insumos.clear();
@@ -161,6 +199,64 @@ public class inventarioControlador implements Serializable {
 
     private Date after(int i, int i0, int i1) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void descargaListado() {
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+        ExternalContext context = facesContext.getExternalContext();
+        HttpServletRequest request = (HttpServletRequest) context.getRequest();
+        HttpServletResponse response = (HttpServletResponse) context.getResponse();
+        response.setContentType("application/pdf");
+
+        try {
+            Map parametro = new HashMap();
+            parametro.put("UsuarioReporte", "Ana Maria Lopez");
+            parametro.put("RutaImagen", context.getRealPath("/resource/imagenes/Report.jpg"));
+            Connection conec = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/basededatos", "root", "");
+
+            File jasper = new File(context.getRealPath("/WEB-INF/classes/pyp/modelo/reportes/ListaInsumos.jasper"));
+
+            JasperPrint jp = JasperFillManager.fillReport(jasper.getPath(), parametro, conec);
+
+            HttpServletResponse hsr = (HttpServletResponse) context.getResponse();
+            hsr.addHeader("Content-disposition", "attachment; filename=Certificado.pdf");
+            OutputStream os = hsr.getOutputStream();
+            JasperExportManager.exportReportToPdfStream(jp, os);
+            os.flush();
+            os.close();
+            facesContext.responseComplete();
+
+        } catch (Exception e) {
+        }
+    }
+
+    public void descargaCertificado(String idInsumos) {
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+        ExternalContext context = facesContext.getExternalContext();
+        HttpServletRequest request = (HttpServletRequest) context.getRequest();
+        HttpServletResponse response = (HttpServletResponse) context.getResponse();
+        response.setContentType("application/pdf");
+
+        try {
+            Map parametro = new HashMap();
+            parametro.put("idinsumo", idInsumos);
+            parametro.put("RutaImagen", context.getRealPath("/resource/imagenes/Report.jpg"));
+            Connection conec = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/basededatos", "root", "");
+
+            File jasper = new File(context.getRealPath("/WEB-INF/classes/pyp/modelo/reportes/ReporteInsumos.jasper"));
+
+            JasperPrint jp = JasperFillManager.fillReport(jasper.getPath(), parametro, conec);
+
+            HttpServletResponse hsr = (HttpServletResponse) context.getResponse();
+            hsr.addHeader("Content-disposition", "attachment; filename=CertificadoIndividual.pdf");
+            OutputStream os = hsr.getOutputStream();
+            JasperExportManager.exportReportToPdfStream(jp, os);
+            os.flush();
+            os.close();
+            facesContext.responseComplete();
+
+        } catch (Exception e) {
+        }
     }
 
 }

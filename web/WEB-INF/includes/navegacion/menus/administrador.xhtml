@@ -14,6 +14,25 @@
                 <li><i class="fa fa-briefcase logit" style="color: #951010"></i>
                     <a href="../Inventario/control_inventario.xhtml">#{msjTemplate.ControldeInsumos}</a></li>
             </ul>
+            <li class="menu-item-has-children dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
+                    <i class="menu-icon fa fa-cutlery" style="color: #951010"></i>#{msjTemplate.ServicioAlcliente}</a>
+                <ul class="sub-menu children dropdown-menu" style="background-color: rgba(77,19,20,0.1)">
+                    <!--<li><i class="fa fa-pencil logit" style="color: #951010"></i>
+                        <a href="../ServicioAlCliente/GestionarPQRS.xhtml"></a></li>-->
+                    <li><i class="fa fa-briefcase logit" style="color: #951010"></i>
+                        <a href="../ServicioAlCliente/ControlPQRS.xhtml">#{msjTemplate.GestionarPQRS}</a></li>
+                </ul>
+            </li>
+            <li class="menu-item-has-children dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="menu-icon fa fa-cutlery" style="color: #951010"></i>#{msjTemplate.Usuarios} </a>
+                <ul class="sub-menu children dropdown-menu" style="background-color: rgba(77,19,20,0.1)">
+                    <li><i class="fa fa-pencil logit" style="color: #951010"></i><a href="../Usuario/Usuario.xhtml">#{msjTemplate.Usuarios} </a></li>
+                    <li><i class="fa fa-pencil logit" style="color: #951010"></i><a href="../Usuario/RegistroUsuario.xhtml">#{msjTemplate.RegistrarNuevoUsuario} </a></li>
+                    <li><i class="fa fa-pencil logit" style="color: #951010"></i><a href="../Usuario/EnvioPromociones.xhtml">#{msjTemplate.EnviarPromocion} </a></li>
+                </ul>
+            </li>
         </li>
         <li class="menu-item-has-children dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
@@ -23,38 +42,6 @@
                         #{msjTemplate.SolicitarPedido}</a></li>
                 <li><i class="fa fa-briefcase logit" style="color: #951010"></i><a href="../Pedidos/ControlPedidos.xhtml">
                         #{msjTemplate.ControldePedidos}</a></li>
-            </ul>
-        </li>
-        <li class="menu-item-has-children dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
-                <i class="menu-icon fa fa-cutlery" style="color: #951010"></i>#{msjTemplate.ServicioAlcliente}</a>
-            <ul class="sub-menu children dropdown-menu" style="background-color: rgba(77,19,20,0.1)">
-                <li><i class="fa fa-pencil logit" style="color: #951010"></i>
-                    <a href="../ServicioAlCliente/GestionarPQRS.xhtml">#{msjTemplate.GestionarPQRS}</a></li>
-                <li><i class="fa fa-briefcase logit" style="color: #951010"></i>
-                    <a href="../ServicioAlCliente/ControlPQRS.xhtml">#{msjTemplate.ControlPQRS}</a></li>
-            </ul>
-        </li>
-        <li class="menu-item-has-children dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
-                <i class="menu-icon fa fa-clipboard" style="color: #951010"></i>#{msjTemplate.Reportes}</a>
-            <ul class="sub-menu children dropdown-menu" style="background-color: rgba(77,19,20,0.1)">
-                <li><i class="fa fa-pencil logit" style="color: #951010"></i>
-                    <a href="../Inventario/ReportesInventario.xhtml">#{msjTemplate.ReportesInventario}</a></li>
-                <li><i class="fa fa-pencil logit" style="color: #951010"></i><a href="../Pedidos/ReportesPedidos.xhtml">
-                        #{msjTemplate.ReportesPedidos}</a></li>
-                <li><i class="fa fa-pencil logit" style="color: #951010"></i>
-                    <a href="../ServicioAlCliente/ReportesPQRS.xhtml">#{msjTemplate.ReportesPQRS} </a></li>
-            </ul>
-        </li>
-        <li class="menu-item-has-children dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="menu-icon fa fa-cutlery" style="color: #951010"></i>#{msjTemplate.Usuarios} </a>
-            <ul class="sub-menu children dropdown-menu" style="background-color: rgba(77,19,20,0.1)">
-                <li><i class="fa fa-pencil logit" style="color: #951010"></i><a href="../Usuario/Usuario.xhtml">#{msjTemplate.Usuarios} </a></li>
-                <li><i class="fa fa-pencil logit" style="color: #951010"></i><a href="../Usuario/RegistroUsuario.xhtml">#{msjTemplate.RegistrarNuevoUsuario} </a></li>
-                <li><i class="fa fa-pencil logit" style="color: #951010"></i><a href="../Usuario/EnvioPromociones.xhtml">#{msjTemplate.EnviarPromocion} </a></li>
-                <li><i class="fa fa-pencil logit" style="color: #951010"></i><a href="../Usuario/RegistrarProductos.xhtml">#{msjTemplate.RegistrarProductos} </a></li>
             </ul>
         </li>
     </f:view>
