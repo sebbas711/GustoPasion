@@ -26,7 +26,7 @@ import javax.validation.constraints.Size;
 
 /**
  *
- * @author PC
+ * @author alejo
  */
 @Entity
 @Table(name = "pqrs")
@@ -51,6 +51,8 @@ public class Pqrs implements Serializable {
     @Column(name = "fecha")
     @Temporal(TemporalType.DATE)
     private Date fecha;
+    @Basic(optional = false)
+    @NotNull
     @Size(min = 1, max = 45)
     @Column(name = "observaciones")
     private String observaciones;

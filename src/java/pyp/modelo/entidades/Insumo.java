@@ -44,9 +44,6 @@ import javax.validation.constraints.Size;
     , @NamedQuery(name = "Insumo.findByEstado", query = "SELECT i FROM Insumo i WHERE i.estado = :estado")})
 public class Insumo implements Serializable {
 
-    public static enum EstadosInsumo {
-        BLOQUEADO, ACTIVO
-    }
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -83,7 +80,7 @@ public class Insumo implements Serializable {
         @JoinColumn(name = "insumo", referencedColumnName = "id")}, inverseJoinColumns = {
         @JoinColumn(name = "proveedor", referencedColumnName = "id")})
     @ManyToMany(fetch = FetchType.LAZY)
-    private List<Proovedor> proovedores;
+    private List<Proovedor> proveedores;
     @JoinTable(name = "insumo_has_producto", joinColumns = {
         @JoinColumn(name = "insumo", referencedColumnName = "id")}, inverseJoinColumns = {
         @JoinColumn(name = "producto", referencedColumnName = "id")})
@@ -168,12 +165,12 @@ public class Insumo implements Serializable {
         this.estado = estado;
     }
 
-    public List<Proovedor> getProovedores() {
-        return proovedores;
+    public List<Proovedor> getProveedores() {
+        return proveedores;
     }
 
-    public void setProovedores(List<Proovedor> proovedores) {
-        this.proovedores = proovedores;
+    public void setProveedores(List<Proovedor> proveedores) {
+        this.proveedores = proveedores;
     }
 
     public List<Producto> getProductos() {
@@ -224,9 +221,5 @@ public class Insumo implements Serializable {
     public String toString() {
         return "pyp.modelo.entidades.Insumo[ id=" + id + " ]";
     }
-
-    public String estadoToString() {
-        return EstadosInsumo.values()[estado].name();
-    }
-
+    
 }

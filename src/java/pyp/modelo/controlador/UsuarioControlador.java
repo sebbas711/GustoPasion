@@ -101,17 +101,24 @@ public class UsuarioControlador implements Serializable {
     public void registrar() {
 
         String mensajeRequest = "";
+        
         try {
-            if (nuevoUsuario.getIdUsuario() != null && nuevoUsuario.getPrimerNombre() != null
-                    && nuevoUsuario.getPrimerApellido() != null && nuevoUsuario.getEmail() != null) {
+            for (Rol rol : nuevoUsuario.getRoles()) {
+                System.out.println(rol);
+            }
+            
+            if (nuevoUsuario.getId() != null
+                    && nuevoUsuario.getPrimerNombre() != null
+                    && nuevoUsuario.getPrimerApellido() != null 
+                    && nuevoUsuario.getEmail() != null
+                    && nuevoUsuario.getDireccion() != null
+                    && nuevoUsuario.getRoles() != null
+                    && nuevoUsuario.getContraseña() != null) {
                 nuevoUsuario.setEstado(Short.valueOf("1"));
                 usuarioDAO.create(nuevoUsuario);
                 mensajeRequest = "swal('Registro Exitoso', '', 'success');";
-                MessageUtil.sendInfo(null, "Registro exitoso",
-                        "", Boolean.FALSE);
             } else {
-                MessageUtil.sendInfo(null, "Los campos son obligatorios",
-                        "Por favor diligencie todos los campos", Boolean.FALSE);
+                mensajeRequest = "swal('Los campos son obligatorios', 'Por favor diligencie todos los campos', 'info');";
             }
 
         } catch (Exception e) {
@@ -236,7 +243,7 @@ public class UsuarioControlador implements Serializable {
                     XSSFCell hssfCell = (XSSFCell) cellTemp.get(j);
                     switch (j) {
                         case 0:
-                            newU.setIdUsuario((int) hssfCell.getNumericCellValue());
+                            newU.setId((int) hssfCell.getNumericCellValue());
                             filasContador++;
                             break;
                         case 1:
@@ -279,11 +286,6 @@ public class UsuarioControlador implements Serializable {
                         case 10:
                             newU.setEstado((int) hssfCell.getNumericCellValue());
                             filasContador++;
-                            break;
-                        case 11:
-                            Rol nueva = RolDAOLocal.find((int) Math.floor(hssfCell.getNumericCellValue()));
-                            newU.setRol(nueva);
-                            filasContador ++;
                             break;
 
                     }

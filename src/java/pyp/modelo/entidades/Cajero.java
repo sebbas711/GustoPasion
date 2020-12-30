@@ -43,7 +43,7 @@ public class Cajero implements Serializable {
         @JoinColumn(name = "Factura", referencedColumnName = "id")})
     @ManyToMany(fetch = FetchType.LAZY)
     private List<Factura> facturas;
-    @JoinColumn(name = "id", referencedColumnName = "Id_Usuario", insertable = false, updatable = false)
+    @JoinColumn(name = "id", referencedColumnName = "Id", insertable = false, updatable = false)
     @OneToOne(optional = false, fetch = FetchType.LAZY)
     private Usuario usuario;
 

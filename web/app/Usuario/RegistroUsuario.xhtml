@@ -9,75 +9,77 @@
                 xmlns:p="http://primefaces.org/ui">
     <ui:define name="contenido">
         <f:view locale="#{languagecontroller.locale}">
-            <br/>
-            <br/>
             <h:form prependId="false"> 
                 <br/>
-                <h3 class="text-center"><b style="color: #951010">#{msjRegistro.REGISTRARUSUARIOS}</b></h3>
-                <br/>
+                <h3 class="text-center"><b style="color: #951010;">#{msjRegistro.REGISTRARUSUARIOS}</b></h3>
+                <hr style="background: #951010"/>
                 <div class="row">
-                    <div class="col-md-5" style="margin-left: 100px">
+                    <div class="col-md-5" style="margin-left: 50px">
 
-                        <h:outputLabel for="fr_rol">#{msjRegistro.ROL}</h:outputLabel>
-                        <h:selectOneMenu id="fr_rol" class="form-control" value="#{usuarioControlador.nuevoUsuario.rol}">
+                        <h:outputLabel for="fr_rol"><b style="color: #951010">#{msjRegistro.ROL}</b> <b style="color: red">*</b> </h:outputLabel>
+                        <h:selectManyMenu id="fr_rol" class="form-control" value="#{usuarioControlador.nuevoUsuario.roles}">
                             <f:selectItem itemLabel="#{msjRegistro.SeleccioneuntipodeRol}" itemValue=""/>
-                            <f:selectItems value="#{tipoRolControlador.roles}" var="rol" itemLabel="#{rol.descripcion}"/>
-                        </h:selectOneMenu>
+                            <f:selectItems value="#{rolControlador.roles}" var="rol" itemLabel="#{rol.descripcion}" 
+                                           a:style="color: black"/>
+                        </h:selectManyMenu>
                         <br/>
-                        <h:outputLabel for="fr_tipoi">#{msjRegistro.TipodeIdentidicación}</h:outputLabel>
+                        <h:outputLabel for="fr_tipoi"><b style="color: #951010">#{msjRegistro.TipodeIdentidicación}</b> <b style="color: red">*</b> </h:outputLabel>
                         <h:selectOneMenu id="fr_tipoi" required="true" 
                                          requiredMessage="#{msjRegistro.Porfavoringrese}" class="form-control" 
                                          value="#{usuarioControlador.nuevoUsuario.tipoIdentificación}">
-                            <f:selectItem itemLabel="Cedula" itemValue="Cedula" a:style="color: black"></f:selectItem>                                       
-                            <f:selectItem itemLabel="Cedula Ex" itemValue="Cedula Ex" a:style="color: black"></f:selectItem>
+                            <f:selectItem itemLabel="Cédula" itemValue="Cédula" a:style="color: black"></f:selectItem>                                       
+                            <f:selectItem itemLabel="Cédula Ex" itemValue="Cédula Ex" a:style="color: black"></f:selectItem>
                             <f:selectItem itemLabel="T.Identidad" itemValue="T.Identidad" a:style="color: black"></f:selectItem>
                             <f:selectItem itemLabel="Pasaporte" itemValue="Pasaporte" a:style="color: black"></f:selectItem>
                         </h:selectOneMenu>
                         <br/>
-                        <h:outputLabel for="fr_numeroi">#{msjRegistro.Numerodeidentificación}</h:outputLabel>
+                        <h:outputLabel for="fr_numeroi"><b style="color: #951010">#{msjRegistro.Numerodeidentificación}</b> <b style="color: red">*</b> </h:outputLabel>
                         <h:inputText id="fr_numeroi" required="true" 
                                      requiredMessage="#{msjRegistro.Porfavoringreseelnumerodeidentificación}" 
                                      class="form-control" a:type="number" value="#{usuarioControlador.nuevoUsuario.idUsuario}" maxlength="15" 
                                      a:placeholder="#{msjRegistro.Numerodeidentificación}"/>
                         <br/>
-                        <h:outputLabel for="fr_pnombre">#{msjRegistro.PrimerNombre}</h:outputLabel>
+                        <h:outputLabel for="fr_pnombre"><b style="color: #951010">#{msjRegistro.PrimerNombre}</b> <b style="color: red">*</b> </h:outputLabel>
                         <h:inputText id="fr_pnombre" required="true" requiredMessage="#{msjRegistro.Porfavoringresesunombre}" 
                                      class="form-control" value="#{usuarioControlador.nuevoUsuario.primerNombre}" 
                                      maxlength="30" a:placeholder="#{msjRegistro.PrimerNombre}"/>
                         <br/>
-                        <h:outputLabel for="fr_snombre">#{msjRegistro.SegundoNombre}</h:outputLabel>
+                        <h:outputLabel for="fr_snombre"><b style="color: #951010">#{msjRegistro.SegundoNombre}</b></h:outputLabel>
                         <h:inputText id="fr_snombre" class="form-control" 
                                      value="#{usuarioControlador.nuevoUsuario.segundoNombre}" maxlength="30" 
                                      a:placeholder="#{msjRegistro.SegundoNombre}"/>
                         <br/>
-                        <h:outputLabel for="fr_papellido">#{msjRegistro.PrimerAprellido}</h:outputLabel>
+
+                    </div>
+                    <div class="col-md-5" style="margin-left: 50px">
+
+                        <h:outputLabel for="fr_papellido"><b style="color: #951010">#{msjRegistro.PrimerAprellido}</b> <b style="color: red">*</b> </h:outputLabel>
                         <h:inputText id="fr_papellido" required="true"  
                                      requiredMessage="#{msjRegistro.Porfavoringresesuprimerapellido}" class="form-control" 
                                      value="#{usuarioControlador.nuevoUsuario.primerApellido}" maxlength="30" 
                                      a:placeholder="#{msjRegistro.PrimerAprellido}"/>
-                    </div>
-                    <div class="col-md-5">
+                        <br/>
 
-                        <h:outputLabel for="fr_sapellido">#{msjRegistro.SegundoApellido}</h:outputLabel>
+                        <h:outputLabel for="fr_sapellido"><b style="color: #951010">#{msjRegistro.SegundoApellido}</b></h:outputLabel>
                         <h:inputText id="fr_sapellido" class="form-control" 
                                      value="#{usuarioControlador.nuevoUsuario.segundoApellido}" maxlength="30" 
                                      a:placeholder="#{msjRegistro.SegundoApellido}"/>
                         <br/>
-                        <h:outputLabel for="fr_direccion">#{msjRegistro.Dirección}</h:outputLabel>
+                        <h:outputLabel for="fr_direccion"><b style="color: #951010">#{msjRegistro.Dirección}</b> <b style="color: red">*</b> </h:outputLabel>
                         <h:inputText id="fr_direccion" class="form-control" 
                                      value="#{usuarioControlador.nuevoUsuario.direccion}" maxlength="45" 
                                      a:placeholder="#{msjRegistro.Dirección}"/>
                         <br/>
-                        <h:outputLabel for="fr_email">#{msjRegistro.CorreoElectronico}</h:outputLabel>
+                        <h:outputLabel for="fr_email"><b style="color: #951010">#{msjRegistro.CorreoElectronico}</b> <b style="color: red">*</b> </h:outputLabel>
                         <h:inputText a:type="email" id="fr_email" class="form-control" value="#{usuarioControlador.nuevoUsuario.email}" 
                                      maxlength="85" a:placeholder="#{msjRegistro.CorreoElectronico}"/>
                         <br/>
-                        <h:outputLabel for="fr_telefono">#{msjRegistro.Telefono}</h:outputLabel>
+                        <h:outputLabel for="fr_telefono"><b style="color: #951010">#{msjRegistro.Telefono}</b> <b style="color: red">*</b> </h:outputLabel>
                         <h:inputText id="fr_telefono" class="form-control" 
                                      value="#{usuarioControlador.nuevoUsuario.telefono}" maxlength="10" 
                                      a:placeholder="#{msjRegistro.Telefono}"/>
                         <br/>
-                        <h:outputLabel for="fr_contraseña">#{msjRegistro.Contraseña}</h:outputLabel>
+                        <h:outputLabel for="fr_contraseña"><b style="color: #951010">#{msjRegistro.Contraseña}</b> <b style="color: red">*</b> </h:outputLabel>
                         <h:inputSecret id="fr_contraseña" class="form-control" 
                                        value="#{usuarioControlador.nuevoUsuario.contraseña}" maxlength="20" 
                                        a:placeholder="#{msjRegistro.Contraseña}"/>
@@ -85,19 +87,26 @@
                     </div>
                 </div>
                 <br/>
-                <div class="col-sm-12">
-                    <center>
-                        <a class="btn" 
-                           href="RegistroUsuario.xhtml" style="margin-right: 10px; background: #951010; color: white">
-                            #{msjRegistro.Cancelar}
-                        </a>
-                        <h:commandButton class="btn"
-                                         style="margin-left: 10px; color: white; background: #727272" 
-                                         value="#{msjRegistro.Registrar}" action="#{usuarioControlador.registrar()}"/>
-                        <h:messages showDetail="false" layout="table"
-                                    style="padding: 5px; border-radius: 5px; box-shadow: 0px, 0px, 4px #951010; display: block; color: red;
-                                    margin-left: 50px"/>
-                    </center>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <center>
+                            <h:commandButton class="btn"
+                                             style="margin-left: 10px; color: white; background: #727272" 
+                                             value="#{msjRegistro.Registrar}" action="#{usuarioControlador.registrar()}"/>&nbsp;&nbsp;&nbsp;
+                            <a class="btn" 
+                               href="RegistroUsuario.xhtml" style="margin-right: 10px; background: #951010; color: white">
+                                #{msjRegistro.Cancelar}
+                            </a>
+                            <h:messages showDetail="false" layout="table"
+                                        style="padding: 5px; 
+                                        border-radius: 5px; 
+                                        box-shadow: 0px, 0px, 4px #951010; 
+                                        display: block; 
+                                        color: red;
+                                        margin-left: 50px">
+                            </h:messages>
+                        </center>
+                    </div>
                 </div>
                 <br/>
                 <br/>

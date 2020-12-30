@@ -40,7 +40,7 @@ public class Operario implements Serializable {
     private Integer id;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "operario", fetch = FetchType.LAZY)
     private List<Despacho> despachos;
-    @JoinColumn(name = "id", referencedColumnName = "Id_Usuario", insertable = false, updatable = false)
+    @JoinColumn(name = "id", referencedColumnName = "Id", insertable = false, updatable = false)
     @OneToOne(optional = false, fetch = FetchType.LAZY)
     private Usuario usuario;
 

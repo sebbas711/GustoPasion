@@ -8,16 +8,17 @@ package pyp.modelo.entidades;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -45,7 +46,10 @@ public class Rol implements Serializable {
     @Size(min = 1, max = 45)
     @Column(name = "descripcion")
     private String descripcion;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "rol", fetch = FetchType.LAZY)
+    @JoinTable(name = "rol_has_usuario", joinColumns = {
+        @JoinColumn(name = "rol", referencedColumnName = "id")}, inverseJoinColumns = {
+        @JoinColumn(name = "usuario", referencedColumnName = "Id")})
+    @ManyToMany(fetch = FetchType.LAZY)
     private List<Usuario> usuarios;
 
     public Rol() {
@@ -107,14 +111,6 @@ public class Rol implements Serializable {
     @Override
     public String toString() {
         return "pyp.modelo.entidades.Rol[ id=" + id + " ]";
-    }
-
-    public boolean isEmpty() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public Rol get(int i) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

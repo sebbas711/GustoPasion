@@ -96,11 +96,6 @@ public class Pedido implements Serializable {
         @JoinColumn(name = "Producto", referencedColumnName = "id")})
     @ManyToMany(fetch = FetchType.LAZY)
     private List<Producto> productos;
-    @JoinTable(name = "pedido_has_producto", joinColumns = {
-        @JoinColumn(name = "pedido", referencedColumnName = "Id")}, inverseJoinColumns = {
-        @JoinColumn(name = "producto", referencedColumnName = "id")})
-    @ManyToMany(fetch = FetchType.LAZY)
-    private List<Producto> productos1;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "pedidos", fetch = FetchType.LAZY)
     private List<Despacho> despachos;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "pedidos", fetch = FetchType.LAZY)
@@ -213,14 +208,6 @@ public class Pedido implements Serializable {
 
     public void setProductos(List<Producto> productos) {
         this.productos = productos;
-    }
-
-    public List<Producto> getProductos1() {
-        return productos1;
-    }
-
-    public void setProductos1(List<Producto> productos1) {
-        this.productos1 = productos1;
     }
 
     public List<Despacho> getDespachos() {

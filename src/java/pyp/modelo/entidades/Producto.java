@@ -79,11 +79,6 @@ public class Producto implements Serializable {
         @JoinColumn(name = "Pedido", referencedColumnName = "id")})
     @ManyToMany(fetch = FetchType.LAZY)
     private List<Pedido> pedidos;
-    @JoinTable(name = "pedido_has_producto", joinColumns = {
-        @JoinColumn(name = "producto", referencedColumnName = "Id")}, inverseJoinColumns = {
-        @JoinColumn(name = "pedido", referencedColumnName = "id")})
-    @ManyToMany(fetch = FetchType.LAZY)
-    private List<Pedido> pedidos1;
     @JoinTable(name = "insumo_has_producto", joinColumns = {
         @JoinColumn(name = "producto", referencedColumnName = "id")}, inverseJoinColumns = {
         @JoinColumn(name = "insumo", referencedColumnName = "id")})
@@ -174,14 +169,6 @@ public class Producto implements Serializable {
 
     public void setPedidos(List<Pedido> pedidos) {
         this.pedidos = pedidos;
-    }
-
-    public List<Pedido> getPedidos1() {
-        return pedidos1;
-    }
-
-    public void setPedidos1(List<Pedido> pedidos1) {
-        this.pedidos1 = pedidos1;
     }
 
     public List<Insumo> getInsumos() {
