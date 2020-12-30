@@ -57,7 +57,7 @@ public class Proovedor implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "documento")
-    private int documento;
+    private long documento;
     @Basic(optional = false)
     @NotNull
     @Column(name = "estado")
@@ -75,7 +75,7 @@ public class Proovedor implements Serializable {
         this.id = id;
     }
 
-    public Proovedor(Integer id, String nombre, String tipoDocumento, int documento, int estado) {
+    public Proovedor(Integer id, String nombre, String tipoDocumento, long documento, int estado) {
         this.id = id;
         this.nombre = nombre;
         this.tipoDocumento = tipoDocumento;
@@ -107,11 +107,11 @@ public class Proovedor implements Serializable {
         this.tipoDocumento = tipoDocumento;
     }
 
-    public int getDocumento() {
+    public long getDocumento() {
         return documento;
     }
 
-    public void setDocumento(int documento) {
+    public void setDocumento(long documento) {
         this.documento = documento;
     }
 

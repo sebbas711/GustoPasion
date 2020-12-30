@@ -6,6 +6,7 @@
 package pyp.modelo.entidades;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -13,7 +14,8 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
@@ -29,7 +31,7 @@ import javax.validation.constraints.Size;
 @Table(name = "usuario")
 @NamedQueries({
     @NamedQuery(name = "Usuario.findAll", query = "SELECT u FROM Usuario u")
-    , @NamedQuery(name = "Usuario.findByIdUsuario", query = "SELECT u FROM Usuario u WHERE u.idUsuario = :idUsuario")
+    , @NamedQuery(name = "Usuario.findById", query = "SELECT u FROM Usuario u WHERE u.id = :id")
     , @NamedQuery(name = "Usuario.findByTipoIdentificaci\u00f3n", query = "SELECT u FROM Usuario u WHERE u.tipoIdentificaci\u00f3n = :tipoIdentificaci\u00f3n")
     , @NamedQuery(name = "Usuario.findByPrimerNombre", query = "SELECT u FROM Usuario u WHERE u.primerNombre = :primerNombre")
     , @NamedQuery(name = "Usuario.findBySegundoNombre", query = "SELECT u FROM Usuario u WHERE u.segundoNombre = :segundoNombre")
@@ -42,19 +44,12 @@ import javax.validation.constraints.Size;
     , @NamedQuery(name = "Usuario.findByEstado", query = "SELECT u FROM Usuario u WHERE u.estado = :estado")})
 public class Usuario implements Serializable {
 
-    public String toString(String Asunto) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-        public static enum EstadosUsuario{
-            BLOQUEADO,ACTIVO
-        }
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
     @NotNull
-    @Column(name = "Id_Usuario")
-    private Integer idUsuario;
+    @Column(name = "Id")
+    private Integer id;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
@@ -88,7 +83,7 @@ public class Usuario implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "telefono")
-    private int telefono;
+    private long telefono;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 15)
@@ -98,6 +93,11 @@ public class Usuario implements Serializable {
     @NotNull
     @Column(name = "estado")
     private int estado;
+    @JoinTable(name = "rol_has_usuario", joinColumns = {
+        @JoinColumn(name = "usuario", referencedColumnName = "Id")}, inverseJoinColumns = {
+        @JoinColumn(name = "rol", referencedColumnName = "id")})
+    @ManyToMany(fetch = FetchType.LAZY)
+    private List<Rol> roles;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "usuario", fetch = FetchType.LAZY)
     private Administrador administrador;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "usuario", fetch = FetchType.LAZY)
@@ -108,19 +108,16 @@ public class Usuario implements Serializable {
     private Cliente cliente;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "usuario", fetch = FetchType.LAZY)
     private AuxCocina auxCocina;
-    @JoinColumn(name = "rol", referencedColumnName = "id")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private Rol rol;
 
     public Usuario() {
     }
 
-    public Usuario(Integer idUsuario) {
-        this.idUsuario = idUsuario;
+    public Usuario(Integer id) {
+        this.id = id;
     }
 
-    public Usuario(Integer idUsuario, String tipoIdentificación, String primerNombre, String primerApellido, String direccion, int telefono, String contraseña, int estado) {
-        this.idUsuario = idUsuario;
+    public Usuario(Integer id, String tipoIdentificación, String primerNombre, String primerApellido, String direccion, long telefono, String contraseña, int estado) {
+        this.id = id;
         this.tipoIdentificación = tipoIdentificación;
         this.primerNombre = primerNombre;
         this.primerApellido = primerApellido;
@@ -130,12 +127,12 @@ public class Usuario implements Serializable {
         this.estado = estado;
     }
 
-    public Integer getIdUsuario() {
-        return idUsuario;
+    public Integer getId() {
+        return id;
     }
 
-    public void setIdUsuario(Integer idUsuario) {
-        this.idUsuario = idUsuario;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getTipoIdentificación() {
@@ -194,11 +191,11 @@ public class Usuario implements Serializable {
         this.email = email;
     }
 
-    public int getTelefono() {
+    public long getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(int telefono) {
+    public void setTelefono(long telefono) {
         this.telefono = telefono;
     }
 
@@ -216,6 +213,14 @@ public class Usuario implements Serializable {
 
     public void setEstado(int estado) {
         this.estado = estado;
+    }
+
+    public List<Rol> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Rol> roles) {
+        this.roles = roles;
     }
 
     public Administrador getAdministrador() {
@@ -258,18 +263,10 @@ public class Usuario implements Serializable {
         this.auxCocina = auxCocina;
     }
 
-    public Rol getRol() {
-        return rol;
-    }
-
-    public void setRol(Rol rol) {
-        this.rol = rol;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (idUsuario != null ? idUsuario.hashCode() : 0);
+        hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
 
@@ -280,7 +277,7 @@ public class Usuario implements Serializable {
             return false;
         }
         Usuario other = (Usuario) object;
-        if ((this.idUsuario == null && other.idUsuario != null) || (this.idUsuario != null && !this.idUsuario.equals(other.idUsuario))) {
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
@@ -288,9 +285,7 @@ public class Usuario implements Serializable {
 
     @Override
     public String toString() {
-        return "pyp.modelo.entidades.Usuario[ idUsuario=" + idUsuario + " ]";
+        return "pyp.modelo.entidades.Usuario[ id=" + id + " ]";
     }
-    public String estadoToString(){
-        return EstadosUsuario.values()[estado].name();
-    }
+    
 }
