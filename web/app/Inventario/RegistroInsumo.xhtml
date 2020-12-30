@@ -20,7 +20,7 @@
                             <div class="form-group" >
                                 <label for="message-text" class="col-form-label">#{msjInventario.TipodeInsumo} 
                                     <b style="color: red">*</b></label>
-                                <h:selectOneMenu class="form-control" value="#{inventarioControlador.nuevoInsumo.tipoInsumo}">
+                                    <h:selectOneMenu class="form-control" value="#{inventarioControlador.nuevoInsumo.tipoInsumo}">
                                     <f:selectItem itemLabel="#{msjInventario.SeleccioneuntipodeInsumo}" itemValue=""/>
                                     <f:selectItems value="#{tipoInsumoControlador.tiposInsumo}" var="ti" itemLabel="#{ti.nombre}"/>
                                 </h:selectOneMenu>
