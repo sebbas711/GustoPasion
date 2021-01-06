@@ -57,7 +57,6 @@ public class UsuarioControlador implements Serializable {
     private Usuario nuevoUsuario;
     private String correo = "";
     private String imgPromocion;
-    private IRolDAO RolDAOLocal;
     private String Asunto = "";
 
     public UsuarioControlador() {
@@ -102,11 +101,10 @@ public class UsuarioControlador implements Serializable {
 
         String mensajeRequest = "";
         
-        try {
+        try { 
             for (Rol rol : nuevoUsuario.getRoles()) {
                 System.out.println(rol);
             }
-            
             if (nuevoUsuario.getId() != null
                     && nuevoUsuario.getPrimerNombre() != null
                     && nuevoUsuario.getPrimerApellido() != null 

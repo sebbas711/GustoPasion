@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package pyp.modelo.converters;
 
 import javax.enterprise.inject.spi.CDI;
@@ -8,31 +13,41 @@ import javax.faces.convert.FacesConverter;
 import pyp.modelo.DAO.IRolDAO;
 import pyp.modelo.entidades.Rol;
 
+/**
+ *
+ * @author alejo
+ */
 @FacesConverter(forClass = Rol.class)
-public class RolConverter implements Converter {
-
-    private IRolDAO rolDAO;
-
-    public RolConverter() {
-        rolDAO = CDI.current().select(IRolDAO.class).get();
+public class RolConverter implements Converter{
+    
+    private IRolDAO rDAO;
+    
+    public RolConverter(){
+        rDAO = CDI.current().select(IRolDAO.class).get();
     }
 
     @Override
     public Object getAsObject(FacesContext context, UIComponent component, String value) {
-        try {
-            return rolDAO.find(Integer.valueOf(value));
-        } catch (NumberFormatException numberFormatException) {
-            return null;
+        if (value != null) {
+            try {
+                Integer id = Integer.valueOf(value);
+                return rDAO.find(id);
+            }catch (NumberFormatException numberFormatException){
+                
+            }
+
         }
+        return null;
     }
 
     @Override
-    public String getAsString(FacesContext arg0, UIComponent arg1, Object obj) {
+    public String getAsString(FacesContext context, UIComponent component, Object obj) {
         if (obj != null && obj instanceof Rol) {
             Rol rol = (Rol) obj;
             return rol.getId().toString();
-        }
-        return "";
-    }
 
+        }
+        return null;
+    }
+    
 }

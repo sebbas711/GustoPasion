@@ -6,7 +6,6 @@
 package pyp.modelo.entidades;
 
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,9 +14,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.Lob;
-import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -33,7 +31,6 @@ import javax.validation.constraints.Size;
 @NamedQueries({
     @NamedQuery(name = "Producto.findAll", query = "SELECT p FROM Producto p")
     , @NamedQuery(name = "Producto.findById", query = "SELECT p FROM Producto p WHERE p.id = :id")
-    , @NamedQuery(name = "Producto.findByTipoProducto", query = "SELECT p FROM Producto p WHERE p.tipoProducto = :tipoProducto")
     , @NamedQuery(name = "Producto.findByNombre", query = "SELECT p FROM Producto p WHERE p.nombre = :nombre")
     , @NamedQuery(name = "Producto.findByPrecio", query = "SELECT p FROM Producto p WHERE p.precio = :precio")
     , @NamedQuery(name = "Producto.findByDescripcion", query = "SELECT p FROM Producto p WHERE p.descripcion = :descripcion")
@@ -49,11 +46,6 @@ public class Producto implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
-    @Column(name = "tipo_producto")
-    private String tipoProducto;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 45)
     @Column(name = "nombre")
     private String nombre;
     @Basic(optional = false)
@@ -65,8 +57,6 @@ public class Producto implements Serializable {
     @Size(min = 1, max = 45)
     @Column(name = "descripcion")
     private String descripcion;
-    @Basic(optional = false)
-    @NotNull
     @Lob
     @Column(name = "imagenP")
     private byte[] imagenP;
@@ -74,21 +64,9 @@ public class Producto implements Serializable {
     @NotNull
     @Column(name = "estado")
     private int estado;
-    @JoinTable(name = "producto_has_pedido", joinColumns = {
-        @JoinColumn(name = "Producto", referencedColumnName = "Id")}, inverseJoinColumns = {
-        @JoinColumn(name = "Pedido", referencedColumnName = "id")})
-    @ManyToMany(fetch = FetchType.LAZY)
-    private List<Pedido> pedidos;
-    @JoinTable(name = "insumo_has_producto", joinColumns = {
-        @JoinColumn(name = "producto", referencedColumnName = "id")}, inverseJoinColumns = {
-        @JoinColumn(name = "insumo", referencedColumnName = "id")})
-    @ManyToMany(fetch = FetchType.LAZY)
-    private List<Insumo> insumos;
-    @JoinTable(name = "factura_has_producto", joinColumns = {
-        @JoinColumn(name = "producto", referencedColumnName = "id")}, inverseJoinColumns = {
-        @JoinColumn(name = "factura", referencedColumnName = "id")})
-    @ManyToMany(fetch = FetchType.LAZY)
-    private List<Factura> facturas;
+    @JoinColumn(name = "categoria_producto", referencedColumnName = "id")
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    private CategoriaProducto categoriaProducto;
 
     public Producto() {
     }
@@ -97,13 +75,11 @@ public class Producto implements Serializable {
         this.id = id;
     }
 
-    public Producto(Integer id, String tipoProducto, String nombre, double precio, String descripcion, byte[] imagenP, int estado) {
+    public Producto(Integer id, String nombre, double precio, String descripcion, int estado) {
         this.id = id;
-        this.tipoProducto = tipoProducto;
         this.nombre = nombre;
         this.precio = precio;
         this.descripcion = descripcion;
-        this.imagenP = imagenP;
         this.estado = estado;
     }
 
@@ -113,14 +89,6 @@ public class Producto implements Serializable {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public String getTipoProducto() {
-        return tipoProducto;
-    }
-
-    public void setTipoProducto(String tipoProducto) {
-        this.tipoProducto = tipoProducto;
     }
 
     public String getNombre() {
@@ -163,28 +131,12 @@ public class Producto implements Serializable {
         this.estado = estado;
     }
 
-    public List<Pedido> getPedidos() {
-        return pedidos;
+    public CategoriaProducto getCategoriaProducto() {
+        return categoriaProducto;
     }
 
-    public void setPedidos(List<Pedido> pedidos) {
-        this.pedidos = pedidos;
-    }
-
-    public List<Insumo> getInsumos() {
-        return insumos;
-    }
-
-    public void setInsumos(List<Insumo> insumos) {
-        this.insumos = insumos;
-    }
-
-    public List<Factura> getFacturas() {
-        return facturas;
-    }
-
-    public void setFacturas(List<Factura> facturas) {
-        this.facturas = facturas;
+    public void setCategoriaProducto(CategoriaProducto categoriaProducto) {
+        this.categoriaProducto = categoriaProducto;
     }
 
     @Override
