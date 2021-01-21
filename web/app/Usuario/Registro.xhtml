@@ -38,12 +38,12 @@
                             <div class="row">
                                 <div class="col-md-5" style="margin-left: 100px">
 
-                                    <h:outputLabel for="fr_rol">#{msjRegistro.ROL}</h:outputLabel>
-                                    <h:selectOneMenu id="fr_rol" class="form-control" value="#{usuarioControlador.nuevoUsuario.rol}">
-                                        <f:selectItem itemLabel="#{msjRegistro.SeleccioneuntipodeRol}" itemValue="" a:style="color: black"/>
-                                        <f:selectItems value="#{tipoRolControlador.roles}" var="rol" itemLabel="#{rol.descripcion}" a:style="color: black"/>
+                                    <!--h:outputLabel for="fr_rol">#msjRegistro.ROL}</h:outputLabel>
+                                    <h:selectOneMenu id="fr_rol" class="form-control" value="#usuarioControlador.nuevoUsuario.roles}">
+                                        <f:selectItem itemLabel="#msjRegistro.SeleccioneuntipodeRol}" itemValue="" a:style="color: black"/>
+                                        <f:selectItems value="#tipoRolControlador.roles}" var="rol" itemLabel="#rol.descripcion}" a:style="color: black"/>
                                     </h:selectOneMenu>
-                                    <br/>
+                                    <br/-->
                                     <h:outputLabel for="fr_tipoi">#{msjRegistro.TipodeIdentidicación}</h:outputLabel>
                                     <h:selectOneMenu id="fr_tipoi" required="true" 
                                                      requiredMessage="#{msjRegistro.Porfavoringrese}" class="form-control" 
@@ -57,7 +57,7 @@
                                     <h:outputLabel for="fr_numeroi">#{msjRegistro.Numerodeidentificación}</h:outputLabel>
                                     <h:inputText id="fr_numeroi" required="true" 
                                                  requiredMessage="#{msjRegistro.Porfavoringreseelnumerodeidentificación}" 
-                                                 class="form-control" a:type="number" value="#{usuarioControlador.nuevoUsuario.idUsuario}" maxlength="15" 
+                                                 class="form-control" a:type="number" value="#{usuarioControlador.nuevoUsuario.id}" maxlength="15" 
                                                  a:placeholder="#{msjRegistro.Numerodeidentificación}"/>
                                     <br/>
                                     <h:outputLabel for="fr_pnombre">#{msjRegistro.PrimerNombre}</h:outputLabel>

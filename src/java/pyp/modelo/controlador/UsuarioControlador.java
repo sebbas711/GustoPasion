@@ -102,17 +102,13 @@ public class UsuarioControlador implements Serializable {
         String mensajeRequest = "";
         
         try { 
-            for (Rol rol : nuevoUsuario.getRoles()) {
-                System.out.println(rol);
-            }
             if (nuevoUsuario.getId() != null
                     && nuevoUsuario.getPrimerNombre() != null
                     && nuevoUsuario.getPrimerApellido() != null 
                     && nuevoUsuario.getEmail() != null
                     && nuevoUsuario.getDireccion() != null
-                    && nuevoUsuario.getRoles() != null
                     && nuevoUsuario.getContraseña() != null) {
-                nuevoUsuario.setEstado(Short.valueOf("1"));
+                nuevoUsuario.setEstado(Short.valueOf("1")); 
                 usuarioDAO.create(nuevoUsuario);
                 mensajeRequest = "swal('Registro Exitoso', '', 'success');";
             } else {
@@ -120,6 +116,7 @@ public class UsuarioControlador implements Serializable {
             }
 
         } catch (Exception e) {
+            System.out.println("pyp.modelo.controlador.UsuarioControlador.registrar()" + e.getMessage());
             mensajeRequest = "swal('Verifique sus datos', 'Intente de nuevo', 'error');";
         }
         PrimeFaces.current().executeScript(mensajeRequest);
