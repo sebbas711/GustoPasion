@@ -32,6 +32,7 @@ import javax.validation.constraints.Size;
     @NamedQuery(name = "CategoriaProducto.findAll", query = "SELECT c FROM CategoriaProducto c")
     , @NamedQuery(name = "CategoriaProducto.findById", query = "SELECT c FROM CategoriaProducto c WHERE c.id = :id")
     , @NamedQuery(name = "CategoriaProducto.findByNombreCategoria", query = "SELECT c FROM CategoriaProducto c WHERE c.nombreCategoria = :nombreCategoria")
+    , @NamedQuery(name = "CategoriaProducto.findByRutaImagen", query = "SELECT c FROM CategoriaProducto c WHERE c.rutaImagen = :rutaImagen")
     , @NamedQuery(name = "CategoriaProducto.findByDescripcion", query = "SELECT c FROM CategoriaProducto c WHERE c.descripcion = :descripcion")})
 public class CategoriaProducto implements Serializable {
 
@@ -46,6 +47,9 @@ public class CategoriaProducto implements Serializable {
     @Size(min = 1, max = 45)
     @Column(name = "nombre_categoria")
     private String nombreCategoria;
+    @Size(max = 255)
+    @Column(name = "ruta_imagen")
+    private String rutaImagen;
     @Size(max = 125)
     @Column(name = "descripcion")
     private String descripcion;
@@ -120,5 +124,5 @@ public class CategoriaProducto implements Serializable {
     public String toString() {
         return "pyp.modelo.entidades.CategoriaProducto[ id=" + id + " ]";
     }
-    
+
 }

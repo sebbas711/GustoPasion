@@ -6,7 +6,7 @@
 package pyp.modelo.controlador;
 
 import java.io.Serializable;
-import java.util.ArrayList;
+import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.inject.Named;
@@ -25,8 +25,7 @@ public class CategoriaViewControlador implements Serializable{
     @EJB
     private ICategoriaProductoDAO cateDAO;
     
-    private CategoriaProducto seleccionCategoria = new CategoriaProducto();
-    private ArrayList<CategoriaProducto> categoriasList = new ArrayList<>();
+    private List<CategoriaProducto> categorias;
 
     /**
      * Creates a new instance of CategoriaViewControlador
@@ -36,25 +35,19 @@ public class CategoriaViewControlador implements Serializable{
     
     @PostConstruct
     public void init(){
-        
+         categorias = cateDAO.findAll();
     }
 
-    public CategoriaProducto getSeleccionCategoria() {
-        return seleccionCategoria;
+    public List<CategoriaProducto> getCategorias() {
+        if (categorias == null || categorias.isEmpty()) {
+            categorias = cateDAO.findAll();
+        }
+        return categorias;
     }
 
-    public void setSeleccionCategoria(CategoriaProducto seleccionCategoria) {
-        this.seleccionCategoria = seleccionCategoria;
+    public void setCategorias(List<CategoriaProducto> categorias) {
+        this.categorias = categorias;
     }
-
-    public ArrayList<CategoriaProducto> getCategoriasList() {
-        return categoriasList;
-    }
-
-    public void setCategoriasList(ArrayList<CategoriaProducto> categoriasList) {
-        this.categoriasList = categoriasList;
-    }
-    
     
     
 }
