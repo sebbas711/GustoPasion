@@ -5,6 +5,7 @@
     xmlns="http://www.w3.org/1999/xhtml"
     xmlns:h="http://xmlns.jcp.org/jsf/html"
     xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
     xmlns:f="http://xmlns.jcp.org/jsf/core"
     xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <ui:define name="contenido">
@@ -94,22 +95,33 @@
                             margin-left: 120px;"><strong>MENÚ</strong></h1></a> 
                 </div>
             </main> 
-
-            <div class="row row-cols-1 row-cols-md-3">
-                <c:forEach items="#{categoriaViewControlador.categorias}" var="categ">
-
-                    <div class="col mb-4">
-                        <div class="card" style="border-color: #951010">
-                            <h5 class="card-title text-center" style="background-color: #B85F5F; color: white"><b>#{categ.nombreCategoria}</b></h5>
-                            <img src="#{request.contextPath}/resource/img/Raviolis/RavioliEspecial.jpg" class="card-img-top" alt="..."/>
-                            <div class="card-body">
-                            </div>
+            <h:form>
+                <div class="row row-cols-1 row-cols-md-3">
+                    <c:forEach items="#{categoriaViewControlador.categorias}" var="categ">
+                        <div class="col mb-4">
+                            <h:commandLink action="#{categoriaViewControlador.categoriaSeleccionada(categ.id)}" 
+                                           class="btn " 
+                                           a:data-toggle="modal" a:data-target="#verInfoCategoria"
+                                           style="background-color: #B85F5F; color: #fff; border-color: #951010">
+                                <h5 class="card-title text-center" 
+                                    style=" color: white; font-size: 25px">
+                                    <b>#{categ.nombreCategoria}</b>
+                                </h5>
+                                <div class="card">
+                                    <img src="#{request.contextPath}/resource/img/Raviolis/RavioliEspecial.jpg" 
+                                         class="card-img-top" 
+                                         alt="#{request.contextPath}/resource/img/Raviolis/RavioliEspecial.jpg"/>
+                                    <!--div class="card-body">
+                                    </div-->
+                                </div>
+                                <f:ajax render=":verInfoCategoriaContent"/>
+                            </h:commandLink>
                         </div>
-                    </div>
-
-
-                </c:forEach>
-            </div>
+                    </c:forEach>
+                </div> 
+            </h:form>
+            <ui:include src="/WEB-INF/includes/modal/pedidos/ver_info_categoria.xhtml"></ui:include>
+            <br/>
             <script src="#{request.contextPath}/resource/js/jquery-3.4.1.min.js"></script>
             <script src="#{request.contextPath}/resource/js/pedido.js"></script>
         </f:view>

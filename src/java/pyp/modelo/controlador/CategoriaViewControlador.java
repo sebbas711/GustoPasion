@@ -12,7 +12,9 @@ import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
 import pyp.modelo.DAO.ICategoriaProductoDAO;
+import pyp.modelo.DAO.IProductoDAO;
 import pyp.modelo.entidades.CategoriaProducto;
+import pyp.modelo.entidades.Producto;
 
 /**
  *
@@ -25,7 +27,11 @@ public class CategoriaViewControlador implements Serializable{
     @EJB
     private ICategoriaProductoDAO cateDAO;
     
+    @EJB
+    private IProductoDAO producDAO;
+    
     private List<CategoriaProducto> categorias;
+    private CategoriaProducto seleccionCategoria = new CategoriaProducto();
 
     /**
      * Creates a new instance of CategoriaViewControlador
@@ -35,7 +41,29 @@ public class CategoriaViewControlador implements Serializable{
     
     @PostConstruct
     public void init(){
-         categorias = cateDAO.findAll();
+         try {
+            categorias = cateDAO.findAll();
+            seleccionCategoria = cateDAO.find(1);
+        } catch (Exception e) {
+            System.out.println("pyp.modelo.controlador.CategoriaViewControlador()" + e.getMessage());
+        }
+    }
+    
+    public void categoriaSeleccionada(int id){
+        try {
+            seleccionCategoria = cateDAO.find(id);
+        } catch (Exception e) {
+            System.out.println("pyp.modelo.controlador.CategoriaViewControlador.categoriaSeleccionada()" + e.getMessage());
+        }
+    }
+    
+    public List<Producto> listaProductos(){
+        try {
+            return producDAO.listaProductosPorCategoria(seleccionCategoria.getId());
+        } catch (Exception e) {
+            System.out.println("pyp.modelo.controlador.CategoriaViewControlador.listaProductos()" + e.getMessage());
+            return null;
+        }
     }
 
     public List<CategoriaProducto> getCategorias() {
@@ -47,6 +75,14 @@ public class CategoriaViewControlador implements Serializable{
 
     public void setCategorias(List<CategoriaProducto> categorias) {
         this.categorias = categorias;
+    }
+
+    public CategoriaProducto getSeleccionCategoria() {
+        return seleccionCategoria;
+    }
+
+    public void setSeleccionCategoria(CategoriaProducto seleccionCategoria) {
+        this.seleccionCategoria = seleccionCategoria;
     }
     
     

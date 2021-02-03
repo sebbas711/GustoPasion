@@ -5,6 +5,7 @@
  */
 package pyp.modelo.DAO;
 
+import java.util.List;
 import javax.ejb.Local;
 import pyp.modelo.entidades.Producto;
 
@@ -15,4 +16,5 @@ import pyp.modelo.entidades.Producto;
 @Local
 public interface IProductoDAO extends DAO<Producto> {
     
+    public List<Producto> listaProductosPorCategoria(int fk_categoria);
 }

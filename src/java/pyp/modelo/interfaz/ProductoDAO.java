@@ -5,7 +5,9 @@
  */
 package pyp.modelo.interfaz;
 
+import java.util.List;
 import javax.ejb.Stateless;
+import javax.persistence.Query;
 import pyp.modelo.entidades.Producto;
 import pyp.modelo.DAO.IProductoDAO;
 
@@ -20,4 +22,14 @@ public class ProductoDAO extends AbstractDAO<Producto> implements IProductoDAO {
         super(Producto.class);
     }
     
+    @Override
+    public List<Producto> listaProductosPorCategoria(int fk_categoria){
+        try {
+            Query qt = em.createQuery("SELECT p FROM Producto p WHERE p.categoriaProducto.id = :fk_categoria");
+            qt.setParameter("fk_categoria", fk_categoria);
+            return qt.getResultList();
+        } catch (Exception e) {
+            return null;
+        }
+    }
 }
