@@ -1,4 +1,4 @@
-    /*
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -44,6 +44,9 @@ import javax.validation.constraints.Size;
     , @NamedQuery(name = "Insumo.findByEstado", query = "SELECT i FROM Insumo i WHERE i.estado = :estado")})
 public class Insumo implements Serializable {
 
+    public static enum EstadosInsumo {
+        BLOQUEADO, ACTIVO
+    }
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -221,5 +224,9 @@ public class Insumo implements Serializable {
     public String toString() {
         return "pyp.modelo.entidades.Insumo[ id=" + id + " ]";
     }
-    
+
+    public String estadoToString() {
+        return EstadosInsumo.values()[estado].name();
+    }
+
 }
