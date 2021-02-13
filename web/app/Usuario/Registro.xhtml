@@ -42,15 +42,15 @@
                     </h:form>
                 </div>
             </nav>
-            <div class="container pt-5">
+            <div class="container pt-3">
                 <div class="row justify-content-center pt-5 mt-5 m-1">
-                    <div class="col-lg-10 formulario" style="background: rgba(0,0,0,0.4)">
+                    <div class="col-lg-12 formulario" style="background: rgba(0,0,0,0.4)">
                         <h:form prependId="false"> 
-                            <h3 class="text-center"><b style="color: white; font-size: 35px">#{msjRegistro.REGISTRARSE}</b></h3>
+                            <h4 class="text-center"><i class="fa fa-address-book"> </i><b style="color: white; font-size: 30px"> #{msjRegistro.REGISTRARSE}</b></h4>
                             <br/>
                             <div class="row">
                                 <div class="col-md-5" style="margin-left: 50px">
-                                    <h:outputLabel for="fr_tipoi"><b>#{msjRegistro.TipodeIdentidicación}</b></h:outputLabel>
+                                    <h:outputLabel for="fr_tipoi"><b>#{msjRegistro.TipodeIdentidicación}</b><b class="text-warning"> *</b></h:outputLabel>
                                     <h:selectOneMenu id="fr_tipoi" required="true" 
                                                      requiredMessage="#{msjRegistro.Porfavoringrese}" class="form-control" 
                                                      value="#{usuarioControlador.nuevoUsuario.tipoIdentificación}">
@@ -60,13 +60,13 @@
                                         <f:selectItem itemLabel="Pasaporte" itemValue="Pasaporte" a:style="color: black"></f:selectItem>
                                     </h:selectOneMenu>
                                     <br/>
-                                    <h:outputLabel for="fr_numeroi"><b>#{msjRegistro.Numerodeidentificación}</b></h:outputLabel>
+                                    <h:outputLabel for="fr_numeroi"><b>#{msjRegistro.Numerodeidentificación}</b><b class="text-warning"> *</b></h:outputLabel>
                                     <h:inputText id="fr_numeroi" required="true" 
                                                  requiredMessage="#{msjRegistro.Porfavoringreseelnumerodeidentificación}" 
                                                  class="form-control" a:type="number" value="#{usuarioControlador.nuevoUsuario.id}" maxlength="15" 
                                                  a:placeholder="#{msjRegistro.Numerodeidentificación}"/>
                                     <br/>
-                                    <h:outputLabel for="fr_pnombre"><b>#{msjRegistro.PrimerNombre}</b></h:outputLabel>
+                                    <h:outputLabel for="fr_pnombre"><b>#{msjRegistro.PrimerNombre}</b><b class="text-warning"> *</b></h:outputLabel>
                                     <h:inputText id="fr_pnombre" required="true" requiredMessage="#{msjRegistro.Porfavoringresesunombre}" 
                                                  class="form-control" value="#{usuarioControlador.nuevoUsuario.primerNombre}" 
                                                  maxlength="30" a:placeholder="#{msjRegistro.PrimerNombre}"/>
@@ -76,12 +76,16 @@
                                                  value="#{usuarioControlador.nuevoUsuario.segundoNombre}" maxlength="30" 
                                                  a:placeholder="#{msjRegistro.SegundoNombre}"/>
                                     <br/>
-                                    <h:outputLabel for="fr_papellido"><b>#{msjRegistro.PrimerAprellido}</b></h:outputLabel>
+                                    <h:outputLabel for="fr_papellido"><b>#{msjRegistro.PrimerAprellido}</b><b class="text-warning"> *</b></h:outputLabel>
                                     <h:inputText id="fr_papellido" required="true"  
                                                  requiredMessage="#{msjRegistro.Porfavoringresesuprimerapellido}" class="form-control" 
                                                  value="#{usuarioControlador.nuevoUsuario.primerApellido}" maxlength="30" 
                                                  a:placeholder="#{msjRegistro.PrimerAprellido}"/>
+
                                 </div>
+                                
+                                <br/>
+                                
                                 <div class="col-md-5" style="margin-left: 50px">
 
                                     <h:outputLabel for="fr_sapellido"><b>#{msjRegistro.SegundoApellido}</b></h:outputLabel>
@@ -89,21 +93,21 @@
                                                  value="#{usuarioControlador.nuevoUsuario.segundoApellido}" maxlength="30" 
                                                  a:placeholder="#{msjRegistro.SegundoApellido}"/>
                                     <br/>
-                                    <h:outputLabel for="fr_direccion"><b>#{msjRegistro.Dirección}</b></h:outputLabel>
+                                    <h:outputLabel for="fr_direccion"><b>#{msjRegistro.Dirección}</b><b class="text-warning"> *</b></h:outputLabel>
                                     <h:inputText id="fr_direccion" class="form-control" 
                                                  value="#{usuarioControlador.nuevoUsuario.direccion}" maxlength="45" 
                                                  a:placeholder="#{msjRegistro.Dirección}"/>
                                     <br/>
-                                    <h:outputLabel for="fr_email"><b>#{msjRegistro.CorreoElectronico}</b></h:outputLabel>
+                                    <h:outputLabel for="fr_email"><b>#{msjRegistro.CorreoElectronico}</b><b class="text-warning"> *</b></h:outputLabel>
                                     <h:inputText id="fr_email" class="form-control" value="#{usuarioControlador.nuevoUsuario.email}" 
                                                  maxlength="85" a:placeholder="#{msjRegistro.CorreoElectronico}" a:type="email"/>
                                     <br/>
-                                    <h:outputLabel for="fr_telefono"><b>#{msjRegistro.Telefono}</b></h:outputLabel>
+                                    <h:outputLabel for="fr_telefono"><b>#{msjRegistro.Telefono}</b><b class="text-warning"> *</b></h:outputLabel>
                                     <h:inputText id="fr_telefono" class="form-control" 
                                                  value="#{usuarioControlador.nuevoUsuario.telefono}" maxlength="10" 
                                                  a:placeholder="#{msjRegistro.Telefono}"/>
                                     <br/>
-                                    <h:outputLabel for="fr_contraseña"><b>#{msjRegistro.Contraseña}</b></h:outputLabel>
+                                    <h:outputLabel for="fr_contraseña"><b>#{msjRegistro.Contraseña}</b><b class="text-warning"> *</b></h:outputLabel>
                                     <h:inputSecret id="fr_contraseña" class="form-control" 
                                                    value="#{usuarioControlador.nuevoUsuario.contraseña}" maxlength="20" 
                                                    a:placeholder="#{msjRegistro.Contraseña}"/>
@@ -112,14 +116,20 @@
                             </div>
                             <br/>
                             <div class="col-sm-12">
-                                <center>
+                                <div>
+                                   <center>
                                     <a class="btn" 
                                        href="#{request.contextPath}/index.xhtml"
                                        style="margin-right: 10px; background: #951010; color: white">Cancelar
                                     </a>
                                     <h:commandButton class="btn" style="margin-left: 10px; color: white; background: #727272" 
                                                      value="Registrar" action="#{usuarioControlador.registrar()}"/>
-                                </center>
+                                </center> 
+                                </div>
+                                 <div>
+                                     <p> Los campos con (<b class="text-warning">*</b>) son obligatorios.</p>
+                                </div>
+                                
                             </div>
                             <br/>
                         </h:form>
