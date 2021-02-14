@@ -12,7 +12,7 @@
                         aria-expanded="false" aria-label="Toggle navigation">
                     <ion-icon name="menu-outline" style="color: white"></ion-icon>
                 </button>
-                 <a class="navbar-brand" href="#{request.contextPath}/index.xhtml">
+                <a class="navbar-brand" href="#{request.contextPath}/index.xhtml">
                     <img src="#{request.contextPath}/resource/img/Logo2.png" class="logo-brand" 
                          alt="logo" style="height: 85px; margin-top: -20px"/>
                 </a>
@@ -21,32 +21,15 @@
                         <li class="nav-item" style="margin-top: 15px; ">
                             <a class="nav-link" href="#{request.contextPath}/index.xhtml">#{msjMenu.Inicio}</a>
                         </li>
-                        <!--li class="nav-item" style="margin-top: 15px;">
-                            <a class="nav-link" href="#{request.contextPath}/app/ServicioAlCliente/QuienesSomos1.xhtml">Nosotros</a>
-                        </li-->
-                        <li class="nav-item dropdown" style="margin-top: 15px;">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" 
-                               role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Menú</a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="dropdown-item" href="#Pizzas">Pizzas</a>
-                                <a class="dropdown-item" href="#Raviolis">Raviolis</a>
-                                <a class="dropdown-item" href="#Panzerotti">Panzerotti</a>
-                                <a class="dropdown-item" href="#Spaguetti">Spaguetti</a>
-                                <a class="dropdown-item" href="#Lasagna">Lasagnas</a>
-                                <a class="dropdown-item" href="#Carnes">#{msjMenu.Carnes}</a>
-                                <a class="dropdown-item" href="#Hamburguesa">#{msjMenu.Hamburguesas}</a>
-                                <a class="dropdown-item" href="#Perros">Perros</a>
-                                <a class="dropdown-item" href="#Papicar">Pa´Picar</a>
-                                <a class="dropdown-item" href="#Bebidas">#{msjMenu.Bebidas}</a>
-                            </div>
-                        </li>
-                        <li class="nav-item" style="margin-top: 15px">
-                            <a class="nav-link" href="#{request.contextPath}/app/ServicioAlCliente/RadicarPQRS.xhtml">#{msjMenu.PQRS}</a>
-                        </li>
                         <li class="nav-item" style="margin-top: 15px">
                             <a class="nav-link" href="#{request.contextPath}/app/ServicioAlCliente/QuienesSomos1.xhtml">Nosotros</a>
                             <!--a class="nav-link" href="#{request.contextPath}/app/ServicioAlCliente/Contactenos.xhtml">#{msjMenu.Contáctenos}</a-->
+                        </li>
+                        <li class="nav-item" style="margin-top: 15px">
+                            <a class="nav-link" href="#{request.contextPath}/app/ServicioAlCliente/Menu.xhtml">Menú</a>
+                        </li>
+                        <li class="nav-item" style="margin-top: 15px">
+                            <a class="nav-link" href="#{request.contextPath}/app/Usuario/InicioSesion.xhtml">#{msjMenu.PQRS}</a>
                         </li>
                         <li class="nav-item dropdown">
                             <i class="fas fa-cart-arrow-down nav-link dropdown-toggle" height="50px" width="50px" href="#" id="dropdown01" data-toggle="dropdown" 
@@ -64,7 +47,7 @@
                                     <tbody></tbody>
                                 </table>
                                 <a href="#" id="vaciar-carrito" class="btn btn-danger btn-block">#{msjMenu.VaciarCarrito}</a>
-                                <a href="../ServicioAlCliente/compra.xhtml" id="procesar-pedido" class="btn btn-success btn-block">#{msjMenu.RealizarPedido}</a>
+                                <a href="#{request.contextPath}/app/Usuario/InicioSesion.xhtml" id="procesar-pedido" class="btn btn-success btn-block">#{msjMenu.RealizarPedido}</a>
                             </div>
                         </li>&ensp;&ensp;
                         <!--li class="nav-item" style="margin-top: 15px">
