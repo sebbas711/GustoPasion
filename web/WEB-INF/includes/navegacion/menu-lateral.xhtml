@@ -3,7 +3,8 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-                xmlns:f="http://xmlns.jcp.org/jsf/core">
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
     <aside id="left-panel" class="left-panel">
         <nav class="navbar navbar-expand-sm navbar-default">
@@ -20,7 +21,12 @@
 
                         </a>
                     </li>
-                    <ui:include src="/WEB-INF/includes/navegacion/menus/administrador.xhtml"/>
+                    <c:if test="#{sessionControlador.admin}" >
+                        <ui:include src="/WEB-INF/includes/navegacion/menus/administrador.xhtml"/>
+                    </c:if>
+                    <c:if test="#{sessionControlador.cashier}" >
+                        <ui:include src="/WEB-INF/includes/navegacion/menus/cajero.xhtml"/>
+                    </c:if>
 
                     <!--h:panelGroup rendered="#sessionControlador.rolSeleccionado.id eq 3}">
                         <ui:include src="/WEB-INF/includes/navegacion/menus/auxCocina.xhtml"/>

@@ -6,90 +6,90 @@
                 xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <f:view locale="#{languagecontroller.locale}">
-        <nav class="navbar navbar-expand-lg fixed-top py-3" style="z-index: 1000">
-            <div class="container-fluid">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" 
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <ion-icon name="menu-outline" style="color: white"></ion-icon>
-                </button>
+        <h:form prependId="false">
+            <nav class="navbar navbar-expand-lg fixed-top py-3" style="z-index: 1000">
+                <div class="container-fluid">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" 
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <ion-icon name="menu-outline" style="color: white"></ion-icon>
+                    </button>
 
-                <a class="navbar-brand" href="#{request.contextPath}/index.xhtml">
-                    <img src="#{request.contextPath}/resource/img/Logo2.png" class="logo-brand" 
-                         alt="logo" style="height: 85px; margin-top: -20px"/>
-                </a>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item" style="margin-top: 15px; ">
-                            <a class="nav-link" href="#{request.contextPath}/index.xhtml">#{msjMenu.Inicio}</a>
-                        </li>
-                        <!--li class="nav-item" style="margin-top: 15px;">
-                            <a class="nav-link" href="#{request.contextPath}/app/ServicioAlCliente/QuienesSomos1.xhtml">Nosotros</a>
-                        </li-->
-                        <li class="nav-item dropdown" style="margin-top: 15px;">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" 
-                               role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Menú</a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="dropdown-item" href="#Pizzas">Pizzas</a>
-                                <a class="dropdown-item" href="#Raviolis">Raviolis</a>
-                                <a class="dropdown-item" href="#Panzerotti">Panzerotti</a>
-                                <a class="dropdown-item" href="#Spaguetti">Spaguetti</a>
-                                <a class="dropdown-item" href="#Lasagna">Lasagnas</a>
-                                <a class="dropdown-item" href="#Carnes">#{msjMenu.Carnes}</a>
-                                <a class="dropdown-item" href="#Hamburguesa">#{msjMenu.Hamburguesas}</a>
-                                <a class="dropdown-item" href="#Perros">Perros</a>
-                                <a class="dropdown-item" href="#Papicar">Pa´Picar</a>
-                                <a class="dropdown-item" href="#Bebidas">#{msjMenu.Bebidas}</a>
-                            </div>
-                        </li>
-                        <li class="nav-item" style="margin-top: 15px">
-                            <a class="nav-link" href="#{request.contextPath}/app/ServicioAlCliente/RadicarPQRS.xhtml">#{msjMenu.PQRS}</a>
-                        </li>
+                    <a class="navbar-brand" href="#{request.contextPath}/index.xhtml">
+                        <img src="#{request.contextPath}/resource/img/Logo2.png" class="logo-brand" 
+                             alt="logo" style="height: 85px; margin-top: -20px"/>
+                    </a>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item" style="margin-top: 15px; ">
+                                <a class="nav-link" href="#{request.contextPath}/index.xhtml">#{msjMenu.Inicio}</a>
+                            </li>
+                            <!--li class="nav-item" style="margin-top: 15px;">
+                                <a class="nav-link" href="#{request.contextPath}/app/ServicioAlCliente/QuienesSomos1.xhtml">Nosotros</a>
+                            </li-->
+                            <li class="nav-item dropdown" style="margin-top: 15px;">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" 
+                                   role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Menú</a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <a class="dropdown-item" href="#Pizzas">Pizzas</a>
+                                    <a class="dropdown-item" href="#Raviolis">Raviolis</a>
+                                    <a class="dropdown-item" href="#Panzerotti">Panzerotti</a>
+                                    <a class="dropdown-item" href="#Spaguetti">Spaguetti</a>
+                                    <a class="dropdown-item" href="#Lasagna">Lasagnas</a>
+                                    <a class="dropdown-item" href="#Carnes">#{msjMenu.Carnes}</a>
+                                    <a class="dropdown-item" href="#Hamburguesa">#{msjMenu.Hamburguesas}</a>
+                                    <a class="dropdown-item" href="#Perros">Perros</a>
+                                    <a class="dropdown-item" href="#Papicar">Pa´Picar</a>
+                                    <a class="dropdown-item" href="#Bebidas">#{msjMenu.Bebidas}</a>
+                                </div>
+                            </li>
+                            <li class="nav-item" style="margin-top: 15px">
+                                <a class="nav-link" href="#{request.contextPath}/app/ServicioAlCliente/RadicarPQRS.xhtml">#{msjMenu.PQRS}</a>
+                            </li>
 
-                        <li class="nav-item" style="margin-top: 15px">
-                            <a class="nav-link" href="#{request.contextPath}/app/ServicioAlCliente/QuienesSomos1.xhtml">Nosotros</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <i class="fas fa-cart-arrow-down nav-link dropdown-toggle" height="50px" width="50px" href="#" id="dropdown01" data-toggle="dropdown" 
-                               aria-haspopup="true" aria-expanded="false" style="font-size: 40px; margin-top: 10px;"></i>
-                            <div id="carrito" class="dropdown-menu" aria-labelledby="navbarCollapse">
-                                <table id="lista-carrito" class="table">
-                                    <thead>
-                                        <tr>
-                                            <th>#{msjMenu.Imagen}</th>
-                                            <th>#{msjMenu.Nombre}</th>
-                                            <th>#{msjMenu.Precio}</th>
-                                            <th></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody></tbody>
-                                </table>
-                                <a href="#" id="vaciar-carrito" class="btn btn-danger btn-block">#{msjMenu.VaciarCarrito}</a>
-                                <a href="../ServicioAlCliente/compra.xhtml" id="procesar-pedido" class="btn btn-success btn-block">#{msjMenu.RealizarPedido}</a>
-                            </div>
-                        </li>&ensp;&ensp;
-                        <li class="nav-item">
-                            <a class="nav-link  dropdown-toggle" href="../ServicioAlCliente/Perfil.xhtml" 
-                               id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" 
-                               aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-user" style="font-size: 20px;"></i></a>
-                            <h6 class="text-right" style="color: white;">${nombreUsuario}</h6>
-                            <div class="dropdown-menu col-lg-12" style="text-align: right;" 
-                                 aria-labelledby="navbarDropdownMenuLink">
-                                <a class="dropdown-item" href="Pagina1.xhtml">#{msjMenu.CerrarSesión}</a>
-                            </div>
-                        </li>
-                        <h:form prependId="false">
+                            <li class="nav-item" style="margin-top: 15px">
+                                <a class="nav-link" href="#{request.contextPath}/app/ServicioAlCliente/QuienesSomos1.xhtml">Nosotros</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <i class="fas fa-cart-arrow-down nav-link dropdown-toggle" height="50px" width="50px" href="#" id="dropdown01" data-toggle="dropdown" 
+                                   aria-haspopup="true" aria-expanded="false" style="font-size: 40px; margin-top: 10px;"></i>
+                                <div id="carrito" class="dropdown-menu" aria-labelledby="navbarCollapse">
+                                    <table id="lista-carrito" class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>#{msjMenu.Imagen}</th>
+                                                <th>#{msjMenu.Nombre}</th>
+                                                <th>#{msjMenu.Precio}</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody></tbody>
+                                    </table>
+                                    <a href="#" id="vaciar-carrito" class="btn btn-danger btn-block">#{msjMenu.VaciarCarrito}</a>
+                                    <a href="../ServicioAlCliente/compra.xhtml" id="procesar-pedido" class="btn btn-success btn-block">#{msjMenu.RealizarPedido}</a>
+                                </div>
+                            </li>&ensp;&ensp;
+                            <li class="nav-item">
+                                <a class="nav-link  dropdown-toggle" href="../ServicioAlCliente/Perfil.xhtml" 
+                                   id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" 
+                                   aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-user" style="font-size: 20px;"></i></a>
+                                <h6 class="text-right" style="color: white;">${nombreUsuario}</h6>
+                                <div class="dropdown-menu col-lg-12" style="text-align: right;" 
+                                     aria-labelledby="navbarDropdownMenuLink">
+                                    <h:commandLink class="dropdown-item" action="#{sessionControlador.cerrarSesion()}" value="#{msjMenu.CerrarSesión}" />
+                                </div>
+                            </li>
                             <h:selectOneMenu value="#{languagecontroller.lang}"
                                              onchange="submit();" style="background: #951010; color: white;margin-top: 50px">
                                 <f:selectItems value="#{languagecontroller.locales}"
                                                var="l" itemLabel="#{l.language}"/>
                             </h:selectOneMenu>
-                        </h:form>
-                    </ul>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-        </nav>
+            </nav>
+        </h:form>
     </f:view>
     <!--nav class="navbar navbar-expand-lg fixed-top py-3"  style="z-index: 1000">
         <div class="container-fluid">

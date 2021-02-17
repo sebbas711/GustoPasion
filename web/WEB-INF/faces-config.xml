@@ -6,80 +6,80 @@
               
     <application>
         <resource-bundle>
-            <base-name>pyp.modelo.language.Login</base-name>
+            <base-name>pyp.language.Login</base-name>
             <var>msjLogin</var>
         </resource-bundle>
         <resource-bundle>
-            <base-name>pyp.modelo.language.index</base-name>
+            <base-name>pyp.language.index</base-name>
             <var>msjIndex</var>
         </resource-bundle>
         <resource-bundle>
-            <base-name>pyp.modelo.language.Usuario</base-name>
+            <base-name>pyp.language.Usuario</base-name>
             <var>msjUsuario</var>
         </resource-bundle>
         <resource-bundle>
-            <base-name>pyp.modelo.language.RegistroUsuario</base-name>
+            <base-name>pyp.language.RegistroUsuario</base-name>
             <var>msjRegistro</var>
         </resource-bundle>
         <resource-bundle>
-            <base-name>pyp.modelo.language.OlvidoContr</base-name>
+            <base-name>pyp.language.OlvidoContr</base-name>
             <var>msjOlvContr</var>
         </resource-bundle>
         <resource-bundle>
-            <base-name>pyp.modelo.language.Compra</base-name>
+            <base-name>pyp.language.Compra</base-name>
             <var>msjOlvCompra</var>
         </resource-bundle>
         <resource-bundle>
-            <base-name>pyp.modelo.language.ReportesPQRS</base-name>
+            <base-name>pyp.language.ReportesPQRS</base-name>
             <var>msjOlvReportesPQRS</var>
         </resource-bundle>
         <resource-bundle>
-            <base-name>pyp.modelo.language.RadicarPQRS</base-name>
+            <base-name>pyp.language.RadicarPQRS</base-name>
             <var>msjRadicarPQRS</var>
         </resource-bundle>
         <resource-bundle>
-            <base-name>pyp.modelo.language.QuienesSomos</base-name>
+            <base-name>pyp.language.QuienesSomos</base-name>
             <var>msjQuienesSomos</var>
         </resource-bundle>
         <resource-bundle>
-            <base-name>pyp.modelo.language.PQRS</base-name>
+            <base-name>pyp.language.PQRS</base-name>
             <var>msjPQRS</var>
         </resource-bundle>
         <resource-bundle>
-            <base-name>pyp.modelo.language.Menu</base-name>
+            <base-name>pyp.language.Menu</base-name>
             <var>msjMenu</var>
         </resource-bundle>
         <resource-bundle>
-            <base-name>pyp.modelo.language.Contactenos</base-name>
+            <base-name>pyp.language.Contactenos</base-name>
             <var>msjContactenos</var>
         </resource-bundle>
         <resource-bundle>
-            <base-name>pyp.modelo.language.Pedidos</base-name>
+            <base-name>pyp.language.Pedidos</base-name>
             <var>msjPedidos</var>
         </resource-bundle>
         <resource-bundle>
-            <base-name>pyp.modelo.language.Inventario</base-name>
+            <base-name>pyp.language.Inventario</base-name>
             <var>msjInventario</var>
         </resource-bundle>
         <resource-bundle>
-            <base-name>pyp.modelo.language.Footer</base-name>
+            <base-name>pyp.language.Footer</base-name>
             <var>msjFooter</var>
         </resource-bundle>
         <resource-bundle>
-            <base-name>pyp.modelo.language.Template</base-name>
+            <base-name>pyp.language.Template</base-name>
             <var>msjTemplate</var>
         </resource-bundle>
         <resource-bundle>
-            <base-name>pyp.modelo.language.Modales</base-name>
+            <base-name>pyp.language.Modales</base-name>
             <var>msjModales</var>
         </resource-bundle>
         <resource-bundle>
-            <base-name>pyp.modelo.language.ReportesPQRS</base-name>
+            <base-name>pyp.language.ReportesPQRS</base-name>
             <var>msjReportes</var>
         </resource-bundle>
         
                 <resource-bundle>
-            <base-name>pyp.modelo.language.Cliente</base-name>
+            <base-name>pyp.language.Cliente</base-name>
             <var>msjRCliente</var>
         </resource-bundle>
     </application>

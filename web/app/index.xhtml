@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="/WEB-INF/includes/template.xhtml" 
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+    <ui:define name="contenido">
+        <div class="content">
+            <!-- Animated -->
+            <div class="animated fadeIn" id="page-top">
+                <!-- Widgets  -->
+                <div class="row">
+                    <div class="col-sm-6 col-lg-3">
+                        <div class="card text-white colorverde" style="background: #580000">
+                            <a class="hovcard" href="#verduras">
+                                <div class="card-body">
+                                    <div class="card-left pt-1 float-left">
+                                        <h4 class="mb-0 fw-r">
+                                            <span>#{msjInventario.Verduras}</span>
+                                        </h4>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/.col-->
+
+    </ui:define>
+
+</ui:composition>
