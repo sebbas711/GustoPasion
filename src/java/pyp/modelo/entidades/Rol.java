@@ -35,6 +35,9 @@ import javax.validation.constraints.Size;
     , @NamedQuery(name = "Rol.findByDescripcion", query = "SELECT r FROM Rol r WHERE r.descripcion = :descripcion")})
 public class Rol implements Serializable {
 
+    @ManyToMany(mappedBy = "rolList", fetch = FetchType.LAZY)
+    private List<Permiso> permisos;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -111,6 +114,14 @@ public class Rol implements Serializable {
     @Override
     public String toString() {
         return "pyp.modelo.entidades.Rol[ id=" + id + " ]";
+    }
+
+    public List<Permiso> getPermisos() {
+        return permisos;
+    }
+
+    public void setPermisos(List<Permiso> permisos) {
+        this.permisos = permisos;
     }
     
 }
