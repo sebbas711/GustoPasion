@@ -4,6 +4,9 @@ import java.io.IOException;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
@@ -13,8 +16,10 @@ import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import pyp.excepciones.BusinessException;
+import pyp.modelo.entidades.Permiso;
 import pyp.modelo.entidades.Rol;
 import pyp.modelo.entidades.Usuario;
+import pyp.servicios.IPermissionService;
 import pyp.servicios.ISessionService;
 import pyp.util.MessageUtil;
 import pyp.util.RedirectUtil;
@@ -23,8 +28,12 @@ import pyp.util.RedirectUtil;
 @SessionScoped
 public class SessionControlador implements Serializable {
 
+    private static final String URL_INDEX = "/app/index.xhtml";
+
     @EJB
     private ISessionService sessionService;
+    @EJB
+    private IPermissionService permissionService;
 
     private String email;
     private String password;
@@ -42,6 +51,7 @@ public class SessionControlador implements Serializable {
         if (datosDeLoginValidos()) {
             try {
                 user = sessionService.login(email, password);
+                rolSeleccionado = user.getRoles().get(0);
                 redirectUser();
             } catch (BusinessException ex) {
                 showMessageStarSession(ex);
@@ -79,6 +89,7 @@ public class SessionControlador implements Serializable {
                 break;
             case BE_USUARIO_NO_EXISTE:
                 MessageUtil.sendInfo(null, ex.getMessage(), ex.getDetails(), Boolean.FALSE);
+                break;
             default:
                 MessageUtil.sendInfo(null, ex.getMessage(), ex.getDetails(), Boolean.FALSE);
         }
@@ -92,8 +103,6 @@ public class SessionControlador implements Serializable {
         if (!isStartSession()) {
             FacesContext fc = FacesContext.getCurrentInstance();
             ExternalContext ec = fc.getExternalContext();
-            String val1 = ec.getRequestPathInfo();
-            String val2 = ((HttpServletRequest)ec.getRequest()).getRequestURI();
             ec.redirect(ec.getRequestContextPath() + "/app/Usuario/InicioSesion.xhtml");
         }
     }
@@ -103,56 +112,61 @@ public class SessionControlador implements Serializable {
         FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
         RedirectUtil.redirectTo("/index.xhtml");
     }
-    
-    public boolean isAdmin(){
+
+    public boolean isAdmin() {
         return sessionService.isAdmin(user);
     }
-    
-    public boolean isCashier(){
+
+    public boolean isCashier() {
         return sessionService.isCashier(user);
     }
-    
-    public void validaPaginasAdmin(){
-        if(!isAdmin()){
-            RedirectUtil.redirectTo("/app/index.xhtml");
+
+    public void validarPermisos() {
+        FacesContext fc = FacesContext.getCurrentInstance();
+        ExternalContext ec = fc.getExternalContext();
+        String urlRecursoSolicitado = ((HttpServletRequest) ec.getRequest()).getRequestURI();
+        if (!permissionService.hasPermission(rolSeleccionado, urlRecursoSolicitado)) {
+            RedirectUtil.redirectTo(URL_INDEX);
         }
     }
-    public void validaPaginasCashier(){
-        if(!isCashier()){
-            RedirectUtil.redirectTo("/app/index.xhtml");
-        }
+
+    public List<Permiso> getPermisosSuperiores() {
+        return permissionService.getTopPermissions(rolSeleccionado);
     }
-    
+
+    public List<Permiso> getSubPermisos(Permiso permisoSuperior) {
+        return permissionService.getSubPermissions(rolSeleccionado, permisoSuperior);
+    }
+
     //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
-    
     public String getEmail() {
         return email;
     }
-    
+
     public void setEmail(String email) {
         this.email = email;
     }
-    
+
     public String getPassword() {
         return password;
     }
-    
+
     public void setPassword(String password) {
         this.password = password;
     }
-    
+
     public Usuario getUser() {
         return user;
     }
-    
+
     public void setUser(Usuario user) {
         this.user = user;
     }
-    
+
     public Rol getRolSeleccionado() {
         return rolSeleccionado;
     }
-    
+
     public void setRolSeleccionado(Rol rolSeleccionado) {
         this.rolSeleccionado = rolSeleccionado;
     }

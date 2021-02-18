@@ -57,10 +57,7 @@ public class Permiso implements Serializable {
     @Size(max = 255)
     @Column(name = "icono")
     private String icono;
-    @JoinTable(name = "rol_has_permiso", joinColumns = {
-        @JoinColumn(name = "Permiso", referencedColumnName = "id")}, inverseJoinColumns = {
-        @JoinColumn(name = "rol", referencedColumnName = "id")})
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(mappedBy = "permisos", fetch = FetchType.LAZY)
     private List<Rol> roles;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "permisoSuperiorId", fetch = FetchType.LAZY)
     private List<Permiso> permisos;

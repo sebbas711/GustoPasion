@@ -35,9 +35,6 @@ import javax.validation.constraints.Size;
     , @NamedQuery(name = "Rol.findByDescripcion", query = "SELECT r FROM Rol r WHERE r.descripcion = :descripcion")})
 public class Rol implements Serializable {
 
-    @ManyToMany(mappedBy = "rolList", fetch = FetchType.LAZY)
-    private List<Permiso> permisos;
-
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -54,6 +51,11 @@ public class Rol implements Serializable {
         @JoinColumn(name = "usuario", referencedColumnName = "Id")})
     @ManyToMany(fetch = FetchType.LAZY)
     private List<Usuario> usuarios;
+    @JoinTable(name = "rol_has_permiso", joinColumns = {
+        @JoinColumn(name = "rol", referencedColumnName = "id")}, inverseJoinColumns = {
+        @JoinColumn(name = "permiso", referencedColumnName = "id")})
+    @ManyToMany(fetch = FetchType.LAZY)
+    private List<Permiso> permisos;
 
     public Rol() {
     }

@@ -21,13 +21,37 @@
 
                         </a>
                     </li>
-                    <c:if test="#{sessionControlador.admin}" >
+
+
+                    <ui:repeat value="#{sessionControlador.permisosSuperiores}" var="ps">
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
+                            <i class="menu-icon #{ps.icono}" style="color: #951010"></i>
+                            #{msjTemplate[ps.nombre]}
+                        </a>
+                        <ul class="sub-menu children dropdown-menu" style="background-color: rgba(77,19,20,0.1)">
+                            <ui:repeat value="#{sessionControlador.getSubPermisos(ps)}" var="p">
+                                <li>
+                                    <i class="#{p.icono} logit" style="color: #951010"></i>
+                                    <a href="#{request.contextPath}#{p.url}">#{msjTemplate[p.nombre]}</a>
+                                </li>
+                            </ui:repeat>
+                        </ul>
+                    </li>
+                    </ui:repeat>
+
+
+
+
+
+                    <!--
+                    <c:if test="#sessionControlador.admin}" >
                         <ui:include src="/WEB-INF/includes/navegacion/menus/administrador.xhtml"/>
                     </c:if>
-                    <c:if test="#{sessionControlador.cashier}" >
+                    <c:if test="#sessionControlador.cashier}" >
                         <ui:include src="/WEB-INF/includes/navegacion/menus/cajero.xhtml"/>
                     </c:if>
-
+                    -->
                     <!--h:panelGroup rendered="#sessionControlador.rolSeleccionado.id eq 3}">
                         <ui:include src="/WEB-INF/includes/navegacion/menus/auxCocina.xhtml"/>
                     </h:panelGroup>
