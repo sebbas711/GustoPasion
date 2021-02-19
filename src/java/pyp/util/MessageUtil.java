@@ -7,6 +7,8 @@ package pyp.util;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import pyp.excepciones.BusinessException;
+import pyp.excepciones.ExceptionType;
 
 /**
  *
@@ -16,7 +18,26 @@ public class MessageUtil {
 
     public static void sendMessage(String clientID, String message, String detail, FacesMessage.Severity severity, Boolean prop){
         FacesMessage fm = new FacesMessage(severity, message, detail);
-        FacesContext.getCurrentInstance().addMessage(clientID, fm);
+        FacesContext fc = FacesContext.getCurrentInstance();
+        fc.addMessage(clientID, fm);
+        fc.getExternalContext().getFlash().setKeepMessages(prop);
+    }
+
+    public static void sendBusinessException(String clientID, BusinessException businessException){
+        sendMessage(clientID, businessException.getMessage(), businessException.getDetails(), getSevetiry(businessException.getType()), Boolean.TRUE);
+    }
+    
+    private static FacesMessage.Severity getSevetiry(ExceptionType exceptionType){
+        switch (exceptionType) {
+            case ERROR:
+                return FacesMessage.SEVERITY_ERROR;
+            case INFO:
+                return FacesMessage.SEVERITY_INFO;
+            case WARNING:
+                return FacesMessage.SEVERITY_WARN;
+            default:
+                return FacesMessage.SEVERITY_FATAL;
+        }
     }
 
     public static void sendInfo(String clientID, String message, String detail, Boolean prop) {

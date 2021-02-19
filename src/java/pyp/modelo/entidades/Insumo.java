@@ -41,7 +41,8 @@ import javax.validation.constraints.Size;
     , @NamedQuery(name = "Insumo.findByNombre", query = "SELECT i FROM Insumo i WHERE i.nombre = :nombre")
     , @NamedQuery(name = "Insumo.findByDescripcion", query = "SELECT i FROM Insumo i WHERE i.descripcion = :descripcion")
     , @NamedQuery(name = "Insumo.findByCantidad", query = "SELECT i FROM Insumo i WHERE i.cantidad = :cantidad")
-    , @NamedQuery(name = "Insumo.findByEstado", query = "SELECT i FROM Insumo i WHERE i.estado = :estado")})
+    , @NamedQuery(name = "Insumo.findByEstado", query = "SELECT i FROM Insumo i WHERE i.estado = :estado")
+    , @NamedQuery(name = "Insumo.findByTipoInsumo", query = "SELECT i FROM Insumo i WHERE i.tipoInsumo.id = :tipoInsumoId")})
 public class Insumo implements Serializable {
 
     public static enum EstadosInsumo {

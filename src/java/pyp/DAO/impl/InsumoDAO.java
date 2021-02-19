@@ -5,9 +5,12 @@
  */
 package pyp.DAO.impl;
 
+import java.util.List;
 import javax.ejb.Stateless;
+import javax.persistence.TypedQuery;
 import pyp.modelo.entidades.Insumo;
 import pyp.DAO.IInsumoDAO;
+import pyp.modelo.entidades.TipoInsumo;
 
 /**
  *
@@ -20,4 +23,10 @@ public class InsumoDAO extends AbstractDAO<Insumo> implements IInsumoDAO {
         super(Insumo.class);
     }
     
+    @Override
+    public List<Insumo> findByTipoInsumo(TipoInsumo tipoInsumoFiltro){
+        TypedQuery<Insumo> query = getEntityManager().createNamedQuery("Insumo.findByTipoInsumo", Insumo.class);
+        query.setParameter("tipoInsumoId", tipoInsumoFiltro.getId());
+        return query.getResultList();
+    }
 }

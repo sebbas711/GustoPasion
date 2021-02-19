@@ -5,8 +5,10 @@
  */
 package pyp.DAO;
 
+import java.util.List;
 import javax.ejb.Local;
 import pyp.modelo.entidades.Insumo;
+import pyp.modelo.entidades.TipoInsumo;
 
 /**
  *
@@ -14,5 +16,7 @@ import pyp.modelo.entidades.Insumo;
  */
 @Local
 public interface IInsumoDAO extends DAO<Insumo> {
+
+    List<Insumo> findByTipoInsumo(TipoInsumo tipoInsumoFiltro);
     
 }
