@@ -74,7 +74,13 @@ public class SessionControlador implements Serializable {
                 ec.redirect(ec.getRequestContextPath() + "/app/ServicioAlCliente/Pagina.xhtml");
             } else if (sessionService.isAdmin(user)) {
                 ec.redirect(ec.getRequestContextPath() + "/app/index.xhtml");
-            } else {
+            } else if (sessionService.isCashier(user)) {
+                ec.redirect(ec.getRequestContextPath() + "/app/index.xhtml");
+            }else if (sessionService.isAuxCo(user)) {
+                ec.redirect(ec.getRequestContextPath() + "/app/index.xhtml");
+            }else if (sessionService.isOperario(user)) {
+                ec.redirect(ec.getRequestContextPath() + "/app/index.xhtml");
+            }else {
                 ec.redirect(ec.getRequestContextPath() + "/app/index.xhtml");
             }
         } catch (IOException ex) {
@@ -119,6 +125,18 @@ public class SessionControlador implements Serializable {
 
     public boolean isCashier() {
         return sessionService.isCashier(user);
+    }
+
+    public boolean isAuxCo() {
+        return sessionService.isAuxCo(user);
+    }
+
+    public boolean isOperario() {
+        return sessionService.isOperario(user);
+    }
+
+    public boolean isCustomer() {
+        return sessionService.isCustomer(user);
     }
 
     public void validarPermisos() {

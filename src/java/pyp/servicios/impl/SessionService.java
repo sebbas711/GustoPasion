@@ -24,6 +24,8 @@ public class SessionService implements ISessionService {
     private static final int USUARIO_INACTIVO = 2;
     private static final int ID_ROL_ADMIN = 1;
     private static final int ID_ROL_CASHIER = 2;
+    private static final int ID_ROL_AUXCO = 3;
+    private static final int ID_ROL_OPER = 4;
     private static final int ID_ROL_CUSTOMER = 5;
 
     @EJB
@@ -50,11 +52,6 @@ public class SessionService implements ISessionService {
     }
 
     @Override
-    public boolean isCustomer(Usuario user) {
-        return userHasRol(user, ID_ROL_CUSTOMER);
-    }
-
-    @Override
     public boolean isAdmin(Usuario user) {
         return userHasRol(user, ID_ROL_ADMIN);
     }
@@ -62,6 +59,21 @@ public class SessionService implements ISessionService {
     @Override
     public boolean isCashier(Usuario user) {
         return userHasRol(user, ID_ROL_CASHIER);
+    }
+
+    @Override
+    public boolean isAuxCo(Usuario user) {
+        return userHasRol(user, ID_ROL_AUXCO);
+    }
+
+    @Override
+    public boolean isOperario(Usuario user) {
+        return userHasRol(user, ID_ROL_OPER);
+    }
+
+    @Override
+    public boolean isCustomer(Usuario user) {
+        return userHasRol(user, ID_ROL_CUSTOMER);
     }
 
     private boolean userHasRoles(Usuario user) {

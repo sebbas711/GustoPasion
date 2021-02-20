@@ -18,10 +18,14 @@ public interface ISessionService {
     
     Usuario login(String email, String password) throws BusinessException;
     
-    boolean isCustomer(Usuario user);
-    
     boolean isAdmin(Usuario user);
 
     boolean isCashier(Usuario user);
+    
+    boolean isAuxCo(Usuario user);
+    
+    boolean isOperario(Usuario user);
+    
+    boolean isCustomer(Usuario user);
     
 }
