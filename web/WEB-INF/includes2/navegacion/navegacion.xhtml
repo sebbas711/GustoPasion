@@ -53,14 +53,27 @@
                         <!--li class="nav-item" style="margin-top: 15px">
                             <a class="nav-link" href="#{request.contextPath}/app/ServicioAlCliente/Menu.xhtml">#{msjMenu.HaztusPedidos}</a>
                         </li-->
-                        <li style="margin-top:-10px; margin-right:30px;">
-                            <a class="reg" type="button" href="#{request.contextPath}/app/Usuario/Registro.xhtml" 
-                               style="color: white">#{msjMenu.Registrarse}
-                            </a>
-                        </li><br/>
-                        <li style="margin-top:-10px">
-                            <a href="#{request.contextPath}/app/Usuario/InicioSesion.xhtml" style="color: white" >#{msjMenu.Ingresar}</a>
-                        </li>
+                        <h:form prependId="false">
+                            <li style="margin-top:-10px; margin-right:30px;">
+                                <h:commandLink class="reg" type="button" rendered="#{sessionControlador.startSession() eq false}"
+                                               action="../../../app/Usuario/Registro.xhtml" 
+                                               style="color: white"
+                                               value="#{msjMenu.Registrarse}">
+                                </h:commandLink>
+                            </li><br/>
+                            <li style="margin-top:-10px">
+                                <h:commandLink action="../../../app/Usuario/InicioSesion.xhtml" rendered="#{sessionControlador.startSession() eq false }"
+                                               style="color: white" value="#{msjMenu.Ingresar}">
+                                    
+                                </h:commandLink>
+                            </li>
+                            <li style="margin-top:-10px">
+                            <h:commandLink class="dropdown-item" rendered="#{sessionControlador.startSession() eq true}"
+                                           action="#{sessionControlador.cerrarSesion()}" 
+                                            style="color: white"
+                                           value="#{msjMenu.CerrarSesión}" />
+                            </li>
+                        </h:form>
                         <h:form prependId="false">
                             <h:selectOneMenu value="#{languagecontroller.lang}"
                                              onchange="submit();" style="background: #951010; color: white;margin-top: 50px">
