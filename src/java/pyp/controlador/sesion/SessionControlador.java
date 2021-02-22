@@ -115,8 +115,15 @@ public class SessionControlador implements Serializable {
 
     public void cerrarSesion() {
         user = null;
-        FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
-        RedirectUtil.redirectTo("/index.xhtml");
+        ExternalContext ext = FacesContext.getCurrentInstance().getExternalContext();
+        String ctxPath = ext.getRequestContextPath();
+
+        try {
+            ((HttpSession) ext.getSession(false)).invalidate();
+            ext.redirect(ctxPath + "/index.xhtml");
+        } catch (Exception e) {
+            System.out.println("Error UsuarioSesion:cerraSesion" + e.getMessage());
+        }
     }
 
     public boolean isAdmin() {

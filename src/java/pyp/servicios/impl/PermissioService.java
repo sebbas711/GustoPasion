@@ -13,10 +13,7 @@ import pyp.modelo.entidades.Permiso;
 import pyp.modelo.entidades.Rol;
 import pyp.servicios.IPermissionService;
 
-/**
- *
- * @author Ismael
- */
+
 @Stateless
 public class PermissioService implements IPermissionService {
 

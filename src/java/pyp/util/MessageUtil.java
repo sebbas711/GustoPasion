@@ -10,10 +10,7 @@ import javax.faces.context.FacesContext;
 import pyp.excepciones.BusinessException;
 import pyp.excepciones.ExceptionType;
 
-/**
- *
- * @author PC
- */
+
 public class MessageUtil {
 
     public static void sendMessage(String clientID, String message, String detail, FacesMessage.Severity severity, Boolean prop){

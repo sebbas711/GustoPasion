@@ -5,10 +5,7 @@
  */
 package pyp.excepciones;
 
-/**
- *
- * @author Ismael
- */
+
 public class PypException extends Exception{
     
     private String details;

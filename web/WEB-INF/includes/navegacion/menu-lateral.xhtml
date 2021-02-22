@@ -15,9 +15,11 @@
                         <a href="#" class="dropdown-toggle" 
                            data-toggle="dropdown" 
                            aria-haspopup="true" 
-                           style="color: #444; font-family: arial">
-                            <!--#sessionControlador.user.rol.descripcion} <br/>
-                            <b>#sessionControlador.user.primerNombre} #sessionControlador.user.primerApellido}</b-->
+                           style="color: #444; font-family: arial"
+                           title="#{sessionControlador.rolSeleccionado.descripcion}">
+                            
+                            <b>#{sessionControlador.rolSeleccionado.descripcion}</b><br/>
+                            #{sessionControlador.user.primerNombre} #{sessionControlador.user.primerApellido}<b/>
 
                         </a>
                     </li>
@@ -39,28 +41,6 @@
                         </ul>
                     </li>
                     </ui:repeat>
-
-
-
-
-
-                    <!--
-                    <c:if test="#sessionControlador.admin}" >
-                        <ui:include src="/WEB-INF/includes/navegacion/menus/administrador.xhtml"/>
-                    </c:if>
-                    <c:if test="#sessionControlador.cashier}" >
-                        <ui:include src="/WEB-INF/includes/navegacion/menus/cajero.xhtml"/>
-                    </c:if>
-                    -->
-                    <!--h:panelGroup rendered="#sessionControlador.rolSeleccionado.id eq 3}">
-                        <ui:include src="/WEB-INF/includes/navegacion/menus/auxCocina.xhtml"/>
-                    </h:panelGroup>
-                    <h:panelGroup rendered="#sessionControlador.rolSeleccionado.id eq 2}">
-                        <ui:include src="/WEB-INF/includes/navegacion/menus/cajero.xhtml"/>
-                    </h:panelGroup>
-                    <h:panelGroup rendered="#sessionControlador.rolSeleccionado.id eq 4}">
-                        <ui:include src="/WEB-INF/includes/navegacion/menus/mesero.xhtml"/>
-                    </h:panelGroup-->
                     <br/>
                     <br/>
                     <br/>

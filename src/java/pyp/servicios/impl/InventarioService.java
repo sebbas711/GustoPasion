@@ -17,10 +17,7 @@ import pyp.modelo.entidades.Insumo;
 import pyp.modelo.entidades.TipoInsumo;
 import pyp.servicios.IInventarioService;
 
-/**
- *
- * @author Ismael
- */
+
 @Stateless
 public class InventarioService implements IInventarioService {
 
