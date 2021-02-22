@@ -37,7 +37,9 @@ import javax.validation.constraints.Size;
     , @NamedQuery(name = "Permiso.findById", query = "SELECT p FROM Permiso p WHERE p.id = :id")
     , @NamedQuery(name = "Permiso.findByNombre", query = "SELECT p FROM Permiso p WHERE p.nombre = :nombre")
     , @NamedQuery(name = "Permiso.findByUrl", query = "SELECT p FROM Permiso p WHERE p.url = :url")
-    , @NamedQuery(name = "Permiso.findByIcono", query = "SELECT p FROM Permiso p WHERE p.icono = :icono")})
+    , @NamedQuery(name = "Permiso.findByIcono", query = "SELECT p FROM Permiso p WHERE p.icono = :icono")
+    , @NamedQuery(name = "Permiso.findByShowInLeftMenu", query = "SELECT p FROM Permiso p WHERE p.showInLeftMenu = :showInLeftMenu")
+    , @NamedQuery(name = "Permiso.findByEnable", query = "SELECT p FROM Permiso p WHERE p.enable = :enable")})
 public class Permiso implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -57,6 +59,10 @@ public class Permiso implements Serializable {
     @Size(max = 255)
     @Column(name = "icono")
     private String icono;
+    @Column(name = "show_in_left_menu")
+    private Boolean showInLeftMenu;
+    @Column(name = "enable")
+    private Boolean enable;
     @ManyToMany(mappedBy = "permisos", fetch = FetchType.LAZY)
     private List<Rol> roles;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "permisoSuperiorId", fetch = FetchType.LAZY)
@@ -109,6 +115,22 @@ public class Permiso implements Serializable {
         this.icono = icono;
     }
 
+    public Boolean getShowInLeftMenu() {
+        return showInLeftMenu;
+    }
+
+    public void setShowInLeftMenu(Boolean showInLeftMenu) {
+        this.showInLeftMenu = showInLeftMenu;
+    }
+
+    public Boolean getEnable() {
+        return enable;
+    }
+
+    public void setEnable(Boolean enable) {
+        this.enable = enable;
+    }
+
     public List<Rol> getRoles() {
         return roles;
     }
@@ -157,5 +179,5 @@ public class Permiso implements Serializable {
     public String toString() {
         return "pyp.modelo.entidades.Permiso[ id=" + id + " ]";
     }
-    
+
 }
