@@ -12,10 +12,10 @@
             </a>
             <ul class="sub-menu children dropdown-menu" style="background-color: rgba(77,19,20,0.1)">
                 <li><i class="fa fa-edit logit" style="color: #951010"></i>
-                    <a href="../Inventario/RegistroInsumo.xhtml">#{msjTemplate.RegistrodeInsumos}</a>
+                    <a href="#{request.contextPath}/app/Inventario/RegistroInsumo.xhtml">#{msjTemplate.RegistrodeInsumos}</a>
                 </li>
                 <li><i class="fa fa-file-text-o logit" style="color: #951010"></i>
-                    <a href="../Inventario/control_inventario.xhtml">#{msjTemplate.ControldeInsumos}</a>
+                    <a href="#{request.contextPath}/app/Inventario/control_inventario.xhtml">#{msjTemplate.ControldeInsumos}</a>
                 </li>
             </ul>
         </li>
@@ -26,9 +26,10 @@
             </a>
             <ul class="sub-menu children dropdown-menu" style="background-color: rgba(77,19,20,0.1)">
                 <!--<li><i class="fa fa-pencil logit" style="color: #951010"></i>
-                    <a href="../ServicioAlCliente/GestionarPQRS.xhtml"></a></li>-->
+                    <a href="../ServicioAlCliente/GestionarPQRS.xhtml"></a>
+                </li>-->
                 <li><i class="	fa fa-commenting-o logit" style="color: #951010"></i>
-                    <a href="../ServicioAlCliente/ControlPQRS.xhtml">#{msjTemplate.GestionarPQRS}</a>
+                    <a href="#{request.contextPath}/app/ServicioAlCliente/ControlPQRS.xhtml">#{msjTemplate.GestionarPQRS}</a>
                 </li>
             </ul>
         </li>
@@ -36,18 +37,18 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="menu-icon fa fa-group" style="color: #951010"></i>#{msjTemplate.Usuarios} </a>
             <ul class="sub-menu children dropdown-menu" style="background-color: rgba(77,19,20,0.1)">
-                <li><i class="fa fa-users logit" style="color: #951010"></i><a href="../Usuario/Usuario.xhtml">#{msjTemplate.Usuarios} </a></li>
-                <li><i class="fa fa-pencil-square-o logit" style="color: #951010"></i><a href="../Usuario/RegistroUsuario.xhtml">#{msjTemplate.RegistrarNuevoUsuario} </a></li>
-                <li><i class="fa fa-mail-forward logit" style="color: #951010"></i><a href="../Usuario/EnvioPromociones.xhtml">#{msjTemplate.EnviarPromocion} </a></li>
+                <li><i class="fa fa-users logit" style="color: #951010"></i><a href="#{request.contextPath}/app/Usuario/Usuario.xhtml">#{msjTemplate.Usuarios} </a></li>
+                <li><i class="fa fa-pencil-square-o logit" style="color: #951010"></i><a href="#{request.contextPath}/app/Usuario/RegistroUsuario.xhtml">#{msjTemplate.RegistrarNuevoUsuario} </a></li>
+                <li><i class="fa fa-mail-forward logit" style="color: #951010"></i><a href="#{request.contextPath}/app/Usuario/EnvioPromociones.xhtml">#{msjTemplate.EnviarPromocion} </a></li>
             </ul>
         </li>
         <li class="menu-item-has-children dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
                 <i class="menu-icon fa fa-cart-plus" style="color: #951010"></i>#{msjTemplate.Pedidos}</a>
             <ul class="sub-menu children dropdown-menu" style="background-color: rgba(77,19,20,0.1)">
-                <li><i class="fa fa-cutlery logit" style="color: #951010"></i><a href="../Pedidos/SolicitarPedido.xhtml">
+                <li><i class="fa fa-cutlery logit" style="color: #951010"></i><a href="#{request.contextPath}/app/Pedidos/SolicitarPedido.xhtml">
                         #{msjTemplate.SolicitarPedido}</a></li>
-                <li><i class="fa fa-file-text-o logit" style="color: #951010"></i><a href="../Pedidos/ControlPedidos.xhtml">
+                <li><i class="fa fa-file-text-o logit" style="color: #951010"></i><a href="#{request.contextPath}/app/Pedidos/ControlPedidos.xhtml">
                         #{msjTemplate.ControldePedidos}</a></li>
             </ul>
         </li>
