@@ -3,65 +3,70 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+                xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+                xmlns:p="http://primefaces.org/ui">
 
 
     <!-- Modal -->
 
 
     <div class="modal" id="verInfoCategoria" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog  modal-xl">
-            <h:panelGroup id="verInfoCategoriaContent" layout="block">
-                <div class="modal-dialog modal-dialog-scrollable">
-                    <div class="modal-content">
-                        <div class="modal-header" style="background-color: #951010;">
-                            <span>
-                                <img src="#{request.contextPath}/resource/img/LOgo.png" class="rounded-pill" 
-                                     target="_blank" style="height: 70px"/>
-                            </span>
-                            <h4 style="text-align: center;color: #fff; font-family: cursive"><b>GUSTO Y PASIÓN</b></h4>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span class="text-light" aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="jumbotron" style="background: url(#{request.contextPath}/resource/img/Menu.jpg); opacity: 0.7;
-                             height: 0px;"><h1 id="categoria" class="display-3 mb-3" style="font-family: Gabriola; font-size: 70px; 
-                              color: yellow; text-align: center;"><b>#{categoriaViewControlador.seleccionCategoria.nombreCategoria}</b></h1> 
-                        </div>
-                        <div class="modal-body">
-                            <div class="row">
-                                <c:forEach items="#{categoriaViewControlador.listaProductos()}" var="pt">
-                                    <div class="col-sm-6">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <h4 class="my-0 font-weight-bold text-center" 
-                                                    style="background-color: #951010;color: #fff">#{pt.nombre}
-                                                </h4>
-                                                <hr style="background-color: #951010"/>
-                                                <img src="#{request.contextPath}/resource/img/Pizzas/PizzaEspecial.jpg" 
-                                                     class="card-img-top" style="height: 180px;"/>
-                                                <h1 class="btn  pricing-btn  precio"><b style="color: #951010">$</b><b> #{pt.precio}</b></h1>
-                                                <hr style="background-color: #951010"/>
-                                                <p class="card-text">#{pt.descripcion}.</p>
-                                                <br/>
-                                                <a href="" class="btn btn-block  agregar-carrito" 
-                                                   style="background: #951010; 
-                                                   color: white" data-id="50">#{msjMenu.AgregaralCarro}
-                                                </a>
+        <div class="modal-dialog  modal-lg">
+            <h:form prependId="false">
+                <h:panelGroup id="verInfoCategoriaContent" layout="block">
+                    <div class="modal-dialog modal-dialog-scrollable">
+                        <div class="modal-content">
+                            <div class="modal-header" style="background-color: #951010;">
+                                <span>
+                                    <img src="#{request.contextPath}/resource/img/LOgo.png" class="rounded-pill" 
+                                         target="_blank" style="height: 70px"/>
+                                </span>
+                                <h4 style="text-align: center;color: #fff; font-family: cursive"><b>GUSTO Y PASIÓN</b></h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span class="text-light" aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="jumbotron" style="background: url(#{request.contextPath}/resource/img/Menu.jpg); opacity: 0.7;
+                                 height: 0px;"><h1 id="categoria" class="display-3 mb-3" style="font-family: Gabriola; font-size: 70px; 
+                                  color: yellow; text-align: center;"><b>#{categoriaViewControlador.seleccionCategoria.nombreCategoria}</b></h1> 
+                            </div>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <ui:repeat value="#{categoriaViewControlador.listaProductos()}" var="pt">
+                                        <div class="col-sm-4">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <h4 class="my-0 font-weight-bold text-center" 
+                                                        style="background-color: #951010;color: #fff">#{pt.nombre}
+                                                    </h4>
+                                                    <hr style="background-color: #951010"/>
+                                                    <img src="#{request.contextPath}/resource/img/Pizzas/PizzaEspecial.jpg" 
+                                                         class="card-img-top" style="height: 180px;"/>
+                                                    <h1 class="btn  pricing-btn  precio"><b style="color: #951010">$</b><b> #{pt.precio}</b></h1>
+                                                    <hr style="background-color: #951010"/>
+                                                    <p class="card-text">#{pt.descripcion}.</p>
+                                                    <br/>
+                                                    <p:commandLink actionListener="#{carritoController.agregarProducto(pt)}"
+                                                                   update=":shopCar"
+                                                                   class="btn btn-block  agregar-carrito" 
+                                                                   style="background: #951010; color: white"
+                                                                   a:data-id="50" value="#{msjMenu.AgregaralCarro}"/>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </c:forEach>
+                                    </ui:repeat>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal" 
+                                        style="background: #951010">#{msjModales.Cancelar}</button>
+                                <button type="button" class="btn btn-success">Registrar</button>
                             </div>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" data-dismiss="modal" 
-                                    style="background: #951010">#{msjModales.Cancelar}</button>
-                            <button type="button" class="btn btn-success">Registrar</button>
-                        </div>
                     </div>
-                </div>
-            </h:panelGroup>
+                </h:panelGroup>
+            </h:form>
         </div>
     </div>
 

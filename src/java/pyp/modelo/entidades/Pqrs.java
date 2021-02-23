@@ -37,7 +37,8 @@ import javax.validation.constraints.Size;
     , @NamedQuery(name = "Pqrs.findByObservaciones", query = "SELECT p FROM Pqrs p WHERE p.observaciones = :observaciones")
     , @NamedQuery(name = "Pqrs.findByNombreCliente", query = "SELECT p FROM Pqrs p WHERE p.nombreCliente = :nombreCliente")
     , @NamedQuery(name = "Pqrs.findByEmailCliente", query = "SELECT p FROM Pqrs p WHERE p.emailCliente = :emailCliente")
-    , @NamedQuery(name = "Pqrs.findByEstado", query = "SELECT p FROM Pqrs p WHERE p.estado = :estado")})
+    , @NamedQuery(name = "Pqrs.findByEstado", query = "SELECT p FROM Pqrs p WHERE p.estado = :estado")
+    , @NamedQuery(name = "Pqrs.findByUser", query = "SELECT p FROM Pqrs p WHERE p.administrador.id = :estado")})
 public class Pqrs implements Serializable {
 
     private static final long serialVersionUID = 1L;

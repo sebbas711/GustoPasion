@@ -1,0 +1,87 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition 
+    template="/WEB-INF/includes2/template.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+    <ui:define name="contenido">
+        <f:event type="preRenderView" listener="#{sessionControlador.validarSesion()}"/>
+        <f:view locale="#{languagecontroller.locale}">
+            <br/>        
+            <br/>
+            <br/>
+            <br/>
+            <div class="jumbotron" style="background-image: url(#{request.contextPath}/resource/img/Quienessomos.jpg); 
+                 background-size: 100%"><h1 class="display-3 mb-3" style="font-family: Garamond; font-size: 40px; 
+                  color: white; margin-top: 10px; margin-left: 120px;">#{msjPQRS.PQRS}</h1> 
+            </div>
+            <div class="container">
+                <h:form prependId="false">
+                    <div class="row mt-3">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+                            <br/>
+                            <div class="card" style="background: #980505; opacity: 0.9">
+                                <div class="card-body pqrs">
+                                    <p:commandLink actionListener="#{pqrsControlador.showFromRadicar()}"  style="text-decoration: none"
+                                                   update=":contentPqrs">
+                                        <center>
+                                            <h3 class="card-tittle" style="font-family: Gabriola; font-size: 50px; 
+                                                color: white">
+                                                <strong>#{msjPQRS.RadicarPQRS} </strong>
+                                            </h3>
+                                        </center>
+                                    </p:commandLink>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+                            <br/>
+                            <div class="card" style="background: #980505; opacity: 0.9">
+                                <div class="card-body pqrs">
+                                    <p:commandLink actionListener="#{pqrsControlador.showTablaPqrs()}"  style="text-decoration: none"
+                                                   update=":contentPqrs">
+                                        <center>
+                                            <h3 class="card-tittle" style="font-family: Gabriola; font-size: 50px; 
+                                                color: white">
+                                                <strong>#{msjPQRS.ConsultarPQRS}</strong>
+                                            </h3>
+                                        </center>
+                                    </p:commandLink>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </h:form>
+                <br/>
+                <h:panelGroup layout="block" id="contentPqrs">
+                    <h:panelGroup layout="block" id="formRadicarPQRS" rendered="#{pqrsControlador.formRadicarEnable}">
+                        <ui:include src="/app/ServicioAlCliente/pqrs/RadicarPQRS.xhtml" />
+                    </h:panelGroup>
+                    <h:panelGroup layout="block" id="consultarPQRS" rendered="#{pqrsControlador.tablaPqrsEnable}">
+                        <ui:include src="/app/ServicioAlCliente/pqrs/ConsultarPQRS.xhtml" />
+                    </h:panelGroup>
+                </h:panelGroup>
+                <br/>
+                <hr style="background: green"/>
+                <h4>#{msjPQRS.Petición}</h4>
+                <p>#{msjPQRS.Esunaactuaciónpormedio}</p>
+                <hr style="background: green"/>
+                <h4>#{msjPQRS.Queja}</h4>
+                <p>#{msjPQRS.Eslaexpresiónomanifestación}</p>
+                <hr style="background: green"/>
+                <h4>#{msjPQRS.Reclamo}</h4>
+                <p>#{msjPQRS.Eslaoposiciónocontrariedad}</p>
+                <hr style="background: green"/>
+                <h4>#{msjPQRS.Sugerencia}</h4>
+                <p> #{msjPQRS.Esunapropuestapresentadapor}</p>
+                <hr style="background: green"/>
+            </div>
+            <br/>
+            <br/>
+        </f:view>
+    </ui:define>
+</ui:composition>
+

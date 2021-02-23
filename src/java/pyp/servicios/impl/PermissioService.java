@@ -31,7 +31,7 @@ public class PermissioService implements IPermissionService {
     public List<Permiso> getTopPermissions(Rol rol) {
         List<Permiso> permisosSuperiores = new ArrayList<>();
         for (Permiso permiso : rol.getPermisos()) {
-            if (permiso.getPermisoSuperiorId() == null) {
+            if (permiso.getPermisoSuperior() == null) {
                 permisosSuperiores.add(permiso);
             }
         }
@@ -42,8 +42,8 @@ public class PermissioService implements IPermissionService {
     public List<Permiso> getSubPermissions(Rol rol, Permiso topPermission){
         List<Permiso> subPermisos = new ArrayList<>();
         for (Permiso permission : rol.getPermisos()) {
-            if (Objects.nonNull(permission.getPermisoSuperiorId()) && Objects.nonNull(topPermission)
-                    && Objects.equals(permission.getPermisoSuperiorId().getId(), topPermission.getId())) {
+            if (Objects.nonNull(permission.getPermisoSuperior()) && Objects.nonNull(topPermission)
+                    && Objects.equals(permission.getPermisoSuperior().getId(), topPermission.getId())) {
                 subPermisos.add(permission);
             }
         }

@@ -100,6 +100,14 @@ public class CategoriaProducto implements Serializable {
         this.productos = productos;
     }
 
+    public String getRutaImagen() {
+        return rutaImagen;
+    }
+
+    public void setRutaImagen(String rutaImagen) {
+        this.rutaImagen = rutaImagen;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;

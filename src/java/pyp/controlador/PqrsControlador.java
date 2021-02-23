@@ -20,6 +20,7 @@ import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
+import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import net.sf.jasperreports.engine.JasperExportManager;
@@ -27,6 +28,7 @@ import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import org.primefaces.PrimeFaces;
 import pyp.DAO.IPqrsDAO;
+import pyp.controlador.sesion.SessionControlador;
 import pyp.modelo.entidades.Pqrs;
 
 /**
@@ -37,12 +39,16 @@ import pyp.modelo.entidades.Pqrs;
 @ViewScoped
 public class PqrsControlador implements Serializable {
 
+    @Inject
+    private SessionControlador session;
     @EJB
-
     private IPqrsDAO pqDAO;
     private List<Pqrs> pqrs;
     private Pqrs pqrsSeleccionada;
     private Pqrs nuevaPqrs;
+
+    private boolean formRadicarEnable;
+    private boolean tablaPqrsEnable;
 
     /**
      * Creates a new instance of PqrsControlador
@@ -53,11 +59,13 @@ public class PqrsControlador implements Serializable {
     @PostConstruct
     public void init() {
         nuevaPqrs = new Pqrs();
+        formRadicarEnable = false;
+        tablaPqrsEnable = false;
     }
 
     public List<Pqrs> getPqrs() {
         if (pqrs == null || pqrs.isEmpty()) {
-            pqrs = pqDAO.findAll();
+            pqrs = pqDAO.finByCustomer(session.getUser().getCliente());
         }
         return pqrs;
     }
@@ -80,6 +88,14 @@ public class PqrsControlador implements Serializable {
 
     public void setNuevaPqrs(Pqrs nuevaPqrs) {
         this.nuevaPqrs = nuevaPqrs;
+    }
+
+    public boolean isFormRadicarEnable() {
+        return formRadicarEnable;
+    }
+
+    public boolean isTablaPqrsEnable() {
+        return tablaPqrsEnable;
     }
 
     public void seleccionarPqrs(Pqrs pqrs) {
@@ -105,7 +121,6 @@ public class PqrsControlador implements Serializable {
     }
 
     public void actualizar() {
-
         String mensajeRequest = "";
         try {
             if (pqrsSeleccionada != null) {
@@ -184,8 +199,8 @@ public class PqrsControlador implements Serializable {
         } catch (Exception e) {
         }
     }
-    
-     public void descargaCertificado(String idPQRS) {
+
+    public void descargaCertificado(String idPQRS) {
         FacesContext facesContext = FacesContext.getCurrentInstance();
         ExternalContext context = facesContext.getExternalContext();
         HttpServletRequest request = (HttpServletRequest) context.getRequest();
@@ -212,5 +227,15 @@ public class PqrsControlador implements Serializable {
 
         } catch (Exception e) {
         }
+    }
+
+    public void showFromRadicar() {
+        tablaPqrsEnable = false;
+        formRadicarEnable = true;
+    }
+
+    public void showTablaPqrs() {
+        formRadicarEnable = false;
+        tablaPqrsEnable = true;
     }
 }

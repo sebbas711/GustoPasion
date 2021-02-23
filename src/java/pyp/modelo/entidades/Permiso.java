@@ -16,7 +16,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
@@ -65,11 +64,11 @@ public class Permiso implements Serializable {
     private Boolean enable;
     @ManyToMany(mappedBy = "permisos", fetch = FetchType.LAZY)
     private List<Rol> roles;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "permisoSuperiorId", fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "permisoSuperior", fetch = FetchType.LAZY)
     private List<Permiso> permisos;
     @JoinColumn(name = "permiso_superior_id", referencedColumnName = "id")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private Permiso permisoSuperiorId;
+    private Permiso permisoSuperior;
 
     public Permiso() {
     }
@@ -147,12 +146,12 @@ public class Permiso implements Serializable {
         this.permisos = permisos;
     }
 
-    public Permiso getPermisoSuperiorId() {
-        return permisoSuperiorId;
+    public Permiso getPermisoSuperior() {
+        return permisoSuperior;
     }
 
-    public void setPermisoSuperiorId(Permiso permisoSuperiorId) {
-        this.permisoSuperiorId = permisoSuperiorId;
+    public void setPermisoSuperior(Permiso permisoSuperior) {
+        this.permisoSuperior = permisoSuperior;
     }
 
     @Override

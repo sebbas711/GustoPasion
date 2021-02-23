@@ -5,7 +5,9 @@
  */
 package pyp.DAO;
 
+import java.util.List;
 import javax.ejb.Local;
+import pyp.modelo.entidades.Cliente;
 import pyp.modelo.entidades.Pqrs;
 
 /**
@@ -14,5 +16,7 @@ import pyp.modelo.entidades.Pqrs;
  */
 @Local
 public interface IPqrsDAO extends DAO<Pqrs> {
+
+    public List<Pqrs> finByCustomer(Cliente user);
     
 }

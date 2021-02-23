@@ -34,9 +34,9 @@
                                         <b>#{categ.nombreCategoria}</b>
                                     </h5>
                                     <div class="card">
-                                        <img src="#{request.contextPath}/resource/img/Perros/PerroSencillo.jpg" 
+                                        <img src="#{menuControlador.getImageCagegoria(categ)}" 
                                              class="card-img-top" 
-                                             alt="#{request.contextPath}/resource/img/Perros/PerroSencillo.jpg"/>
+                                             alt="#{categ.nombreCategoria}"/>
                                         <!--div class="card-body">
                                         </div-->
                                     </div>
