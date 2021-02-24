@@ -11,9 +11,7 @@
     <ui:define name="contenido">
         <div class="content">
             <h:form prependId="false">
-                <!-- Animated -->
                 <div class="animated fadeIn" id="page-top">
-                    <!-- Widgets  -->
                     <div class="row">
                         <div class="col-sm-6 col-lg">
                             <div class="card text-white colorverde" style="background: #580000">
@@ -30,8 +28,6 @@
                                 </p:commandLink>
                             </div>
                         </div>
-                        <!--/.col-->
-
                         <ui:repeat value="#{controlInventarioView.tiposInsumosHabilitados}" var="tipoInsumo">
                             <div class="col-sm-6 col-lg">
                                 <div class="card text-white coloramarillo" style="background: #{controlInventarioView.getColorByTipoInsumo(tipoInsumo)}">
@@ -48,14 +44,9 @@
                                     </p:commandLink>
                                 </div>
                             </div>
-                            <!--/.col-->
                         </ui:repeat>
-
-
                     </div>
-                    <!-- /#add-category -->
                 </div>
-                <!-- .animated -->
                 <center>
                     <h:commandLink class="btn btn-secundary" style="border: double #951010" title="#{msjInventario.RegistrarInsumo}" 
                                    value="#{msjInventario.RegistrarInsumo}"

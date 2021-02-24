@@ -31,7 +31,7 @@ import javax.validation.constraints.Size;
 
 /**
  *
- * @author alejo
+ * @author PC
  */
 @Entity
 @Table(name = "pedido")
@@ -46,7 +46,7 @@ import javax.validation.constraints.Size;
     , @NamedQuery(name = "Pedido.findByTelefono", query = "SELECT p FROM Pedido p WHERE p.telefono = :telefono")
     , @NamedQuery(name = "Pedido.findByPuntoEntrega", query = "SELECT p FROM Pedido p WHERE p.puntoEntrega = :puntoEntrega")
     , @NamedQuery(name = "Pedido.findByObservaciones", query = "SELECT p FROM Pedido p WHERE p.observaciones = :observaciones")
-    , @NamedQuery(name = "Pedido.findByEstado", query = "SELECT p FROM Pedido p WHERE p.estado = :estado")})
+    , @NamedQuery(name = "Pedido.findByEstadoPedido", query = "SELECT p FROM Pedido p WHERE p.estadoPedido.id = :estadoPedidoId")})
 public class Pedido implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -87,10 +87,6 @@ public class Pedido implements Serializable {
     @Size(max = 95)
     @Column(name = "observaciones")
     private String observaciones;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "Estado")
-    private int estado;
     @JoinTable(name = "producto_has_pedido", joinColumns = {
         @JoinColumn(name = "Pedido", referencedColumnName = "Id")}, inverseJoinColumns = {
         @JoinColumn(name = "Producto", referencedColumnName = "id")})
@@ -103,6 +99,9 @@ public class Pedido implements Serializable {
     @JoinColumn(name = "cliente", referencedColumnName = "id")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Cliente cliente;
+    @JoinColumn(name = "estadoPedido", referencedColumnName = "id")
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    private Estadopedido estadoPedido;
 
     public Pedido() {
     }
@@ -111,7 +110,7 @@ public class Pedido implements Serializable {
         this.id = id;
     }
 
-    public Pedido(Integer id, Date fecha, int cantidad, double valorUnitario, double valorTotal, String tipoPedido, String puntoEntrega, int estado) {
+    public Pedido(Integer id, Date fecha, int cantidad, double valorUnitario, double valorTotal, String tipoPedido, String puntoEntrega) {
         this.id = id;
         this.fecha = fecha;
         this.cantidad = cantidad;
@@ -119,7 +118,6 @@ public class Pedido implements Serializable {
         this.valorTotal = valorTotal;
         this.tipoPedido = tipoPedido;
         this.puntoEntrega = puntoEntrega;
-        this.estado = estado;
     }
 
     public Integer getId() {
@@ -193,15 +191,7 @@ public class Pedido implements Serializable {
     public void setObservaciones(String observaciones) {
         this.observaciones = observaciones;
     }
-
-    public int getEstado() {
-        return estado;
-    }
-
-    public void setEstado(int estado) {
-        this.estado = estado;
-    }
-
+    
     public List<Producto> getProductos() {
         return productos;
     }
@@ -226,12 +216,21 @@ public class Pedido implements Serializable {
         this.facturas = facturas;
     }
 
+
     public Cliente getCliente() {
         return cliente;
     }
 
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
+    }
+
+    public Estadopedido getEstadoPedido() {
+        return estadoPedido;
+    }
+
+    public void setEstadoPedido(Estadopedido estadoPedido) {
+        this.estadoPedido = estadoPedido;
     }
 
     @Override

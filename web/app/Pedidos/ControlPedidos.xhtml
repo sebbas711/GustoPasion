@@ -1,327 +1,90 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<ui:composition template="/WEB-INF/includes/template.xhtml"
+<ui:composition template="/WEB-INF/includes/template.xhtml" 
                 xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 xmlns:f="http://xmlns.jcp.org/jsf/core"
-                xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+                xmlns:p="http://primefaces.org/ui">
     <ui:define name="contenido">
-        <f:view locale="#{languagecontroller.locale}">
-            <div class="breadcrumbs">
-                <div class="breadcrumbs-inner">
-                    <div class="row m-0">
-                        <div class="col-sm-4">
-                            <div class="page-header float-left">
-                                <div class="page-title">
-                                    <h1>#{msjPedidos.ControldePedidos}</h1>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-8">
-                            <div class="page-header float-right">
-                                <div class="page-title">
-                                    <ol class="breadcrumb text-right">
-                                        <li><a href="#">#{msjPedidos.Pedidos}</a></li>
-                                        <li class="active">#{msjPedidos.ControldePedidos}</li>
-                                    </ol>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="content">
-                <div class="animated fadeIn">
+        <div class="content">
+            <h:form prependId="false">
+                <div class="animated fadeIn" id="page-top">
                     <div class="row">
-                        <div class="col-sm-6 col-lg-3">
+                        <div class="col-sm-6 col-lg">
                             <div class="card text-white colorverde" style="background: #580000">
-                                <a class="hovcard" href="#Nuevos">
+                                <p:commandLink class="hovcard"
+                                               actionListener="#{controlPedidoView.limpiarFiltroEstadoPedido()}"
+                                               update="tablaPedidos">
                                     <div class="card-body">
                                         <div class="card-left pt-1 float-left">
-                                            <h3 class="mb-0 fw-r">
-                                                <span class="count">5</span>
-                                            </h3>
-                                            <p class="text-light mt-1 m-0 cardsordenpedido">#{msjPedidos.Nuevos}</p>
-                                        </div>
-                                        <div class="card-right float-right text-right">
-                                            <i class="icon fade-5 icon-lg pe-7s-magic-wand"></i>
-                                        </div><!-- /.card-right -->
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-lg-3">
-                            <div class="card text-white coloramarillo" style="background: #951010">
-                                <a class="hovcard" href="#EnProceso">
-                                    <div class="card-body">
-                                        <div class="card-left pt-1 float-left">
-                                            <h3 class="mb-0 fw-r">
-                                                <span class="count">5</span>
-                                            </h3>
-                                            <p class="text-light mt-1 m-0 cardsordenpedido">#{msjPedidos.EnProceso}</p>
-                                        </div><!-- /.card-left -->
-
-                                        <div class="card-right float-right text-right">
-                                            <i class="icon fade-5 icon-lg pe-7s-stopwatch"></i>
-                                        </div><!-- /.card-right -->
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <!--/.col-->
-
-                        <div class="col-sm-6 col-lg-3">
-                            <div class="card text-white colorcancel" style="background: #727272 ">
-                                <a class="hovcard" href="#Anulados">
-                                    <div class="card-body">
-                                        <div class="card-left pt-1 float-left">
-                                            <h3 class="mb-0 fw-r">
-                                                <span class="count">5</span>
-                                            </h3>
-                                            <p class="text-light mt-1 m-0 cardsordenpedido">#{msjPedidos.Anulados}</p>
-                                        </div><!--/.card-left -->
-
-                                        <div class="card-right float-right text-right">
-                                            <i class="icon fade-5 icon-lg pe-7s-junk"></i>
+                                            <h4 class="mb-0 fw-r">
+                                                <span>Todos</span>
+                                            </h4>
                                         </div>
                                     </div>
-                                </a>
+                                </p:commandLink>
                             </div>
                         </div>
-
-                        <div class="col-sm-6 col-lg-3">
-                            <div class="card text-white colorred" style="background: #9D9898">
-                                <a class="hovcard" href="#Finalizados">
-                                    <div class="card-body">
-                                        <div class="card-left pt-1 float-left">
-                                            <h3 class="mb-0 fw-r">
-                                                <span class="count">5</span>
-                                            </h3>
-                                            <p class="text-light mt-1 m-0 cardsordenpedido">#{msjPedidos.Finalizados}</p>
-                                        </div><!-- /.card-left -->
-
-                                        <div class="card-right float-right text-right">
-                                            <i class="icon fade-5 icon-lg pe-7s-lock"></i>
-                                        </div><!-- /.card-right -->
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <!--/.col-->
-
-
-                        <div class="col-md-12">
-                            <div class="card">
-                                <div class="card-header">
-                                    <strong class="card-title" id="Nuevos">#{msjPedidos.Nuevos}</strong>
-                                </div>
-                                <div class="card-body">
-                                    <h:form prependId="false">
-                                        <h:dataTable class="table table-striped" value="#{pedidosControlador.pedidos}"
-                                                     var="pedidos">
-                                            <h:column>
-                                                <f:facet name="header">#{msjPedidos.ID}</f:facet>
-                                                <h:outputText value="#{pedidos.id}"/>
-                                            </h:column>
-                                            <h:column>
-                                                <f:facet name="header">#{msjPedidos.FECHA}</f:facet>
-                                                <h:outputText value="#{pedidos.fecha}"/>
-                                            </h:column>
-                                            <h:column>
-                                                <f:facet name="header">#{msjPedidos.CANTIDAD} </f:facet>
-                                                <h:outputText value="#{pedidos.cantidad}"/>
-                                            </h:column>
-                                            <h:column>
-                                                <f:facet name="header">#{msjPedidos.ValorUnitario}</f:facet>
-                                                <h:outputText value="#{pedidos.valorUnitario}"/>
-                                            </h:column>
-                                            <h:column>
-                                                <f:facet name="header">#{msjPedidos.ESTADO}</f:facet>
-                                                <h:outputText value="#{pedidos.estado}"/>
-                                            </h:column>
-                                            <h:column>
-                                                <f:facet name="header">#{msjPedidos.OPCIONES}</f:facet>
-                                                <h:commandLink class="btn" a:data-toggle="modal" a:data-target="#verInfoPedidos"
-                                                               action="#{pedidosControlador.seleccionarPedido(pedidos)}" style="background: #580000">
-                                                    <i class="fa fa-eye" style="color: white"></i>
-                                                    <f:ajax render=":verInfoPedidosContent"/>
-                                                </h:commandLink>
-                                                <a class="btn" style="background: #951010"><i class="fa fa-pencil" style="color: white"></i></a>
-                                                <a class="btn" style="background: #727272"><i class="fa fa-trash" style="color: white"></i></a>
-                                                <a class="btn" style="background: #9D9898"><i class="fa fa-lock" style="color: white"></i></a>
-
-                                            </h:column>
-
-                                        </h:dataTable> 
-                                    </h:form>
-
+                        <ui:repeat value="#{controlPedidoView.estadoPedidosHabilitados}" var="estadoPedido">
+                            <div class="col-sm-6 col-lg">
+                                <div class="card text-white coloramarillo" style="background: #{controlPedidoView.getColorByEstadoPedido(estadoPedido)}">
+                                    <p:commandLink class="hovcard" 
+                                                   actionListener="#{controlPedidoView.filtrarPorEstadoPedido(estadoPedido)}"
+                                                   update="tablaPedidos">
+                                        <div class="card-body">
+                                            <div class="card-left pt-1 float-left">
+                                                <h4 class="mb-0 fw-r">
+                                                    <span>#{estadoPedido.descripcion}</span>
+                                                </h4>
+                                            </div>
+                                        </div>
+                                    </p:commandLink>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <!-- /#add-category -->
-                </div>
-                <!-- .animated -->
-            </div>
-            <!-- /.content -->
-
-            <div class="clearfix"></div>
-
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header">
-                        <strong class="card-title" id="EnProceso">#{msjPedidos.EnProceso}</strong>
-                    </div>
-                    <div class="card-body">
-                        <h:form prependId="false">
-                            <h:dataTable class="table table-striped" value="#{pedidosControlador.pedidos}"
-                                         var="pedidos">
-                                <h:column>
-                                    <f:facet name="header">#{msjPedidos.ID}</f:facet>
-                                    <h:outputText value="#{pedidos.id}"/>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">#{msjPedidos.FECHA}</f:facet>
-                                    <h:outputText value="#{pedidos.fecha}"/>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">#{msjPedidos.CANTIDAD} </f:facet>
-                                    <h:outputText value="#{pedidos.cantidad}"/>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">#{msjPedidos.ValorUnitario}</f:facet>
-                                    <h:outputText value="#{pedidos.valorUnitario}"/>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">#{msjPedidos.ESTADO}</f:facet>
-                                    <h:outputText value="#{pedidos.estado}"/>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">#{msjPedidos.OPCIONES}</f:facet>
-                                    <h:commandLink class="btn" a:data-toggle="modal" a:data-target="#verInfoPedidos"
-                                                   action="#{pedidosControlador.seleccionarPedido(pedidos)}" style="background: #580000">
-                                        <i class="fa fa-eye" style="color: white"></i>
-                                        <f:ajax render=":verInfoPedidosContent"/>
-                                    </h:commandLink>
-                                    <a class="btn" style="background: #951010"><i class="fa fa-pencil" style="color: white"></i></a>
-                                    <a class="btn" style="background: #727272"><i class="fa fa-trash" style="color: white"></i></a>
-                                    <a class="btn" style="background: #9D9898"><i class="fa fa-lock" style="color: white"></i></a>
-
-                                </h:column>
-
-                            </h:dataTable> 
-                        </h:form>
+                        </ui:repeat>
                     </div>
                 </div>
-            </div>
-
-            <!-- /#add-category -->
-
-            <!-- .animated -->
-
-            <!-- /.content -->
-            <div class="clearfix"></div>
-
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header">
-                        <strong class="card-title" id="Anulados">#{msjPedidos.Anulados}</strong>
-                    </div>
-                    <div class="card-body">
-                        <h:form prependId="false">
-                            <h:dataTable class="table table-striped" value="#{pedidosControlador.pedidos}"
-                                         var="pedidos">
-                                <h:column>
-                                    <f:facet name="header">#{msjPedidos.ID}</f:facet>
-                                    <h:outputText value="#{pedidos.id}"/>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">#{msjPedidos.FECHA}</f:facet>
-                                    <h:outputText value="#{pedidos.fecha}"/>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">#{msjPedidos.CANTIDAD} </f:facet>
-                                    <h:outputText value="#{pedidos.cantidad}"/>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">#{msjPedidos.ValorUnitario}</f:facet>
-                                    <h:outputText value="#{pedidos.valorUnitario}"/>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">#{msjPedidos.ESTADO}</f:facet>
-                                    <h:outputText value="#{pedidos.estado}"/>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">#{msjPedidos.OPCIONES}</f:facet>
-                                    <h:commandLink class="btn" a:data-toggle="modal" a:data-target="#verInfoPedidos"
-                                                   action="#{pedidosControlador.seleccionarPedido(pedidos)}" style="background: #580000">
-                                        <i class="fa fa-eye" style="color: white"></i>
-                                        <f:ajax render=":verInfoPedidosContent"/>
-                                    </h:commandLink>
-                                    <a class="btn" style="background: #951010"><i class="fa fa-pencil" style="color: white"></i></a>
-                                    <a class="btn" style="background: #727272"><i class="fa fa-trash" style="color: white"></i></a>
-                                    <a class="btn" style="background: #9D9898"><i class="fa fa-lock" style="color: white"></i></a>
-
-                                </h:column>
-
-                            </h:dataTable> 
-                        </h:form>
-                    </div>
+                <div class="col-md-12">
+                    <h3 class="text-center"><b style="color: #951010">#{controlPedidoView.estadoPedidoFiltro.descripcion}</b></h3>
+                    <br/>
+                    <p:dataTable class="table table-striped" 
+                                 value="#{controlPedidoView.pedidos}"
+                                 rows="5"
+                                 paginator="true"
+                                 paginatorPosition="bottom"
+                                 rowsPerPageTemplate="5,10,15"
+                                 reflow="true"
+                                 var="pedidos"
+                                 id="tablaPedidos">
+                        <p:column headerText="#{msjPedidos.ID}" priority="2" style="width: 60px">
+                            <h:outputText value="#{pedidos.id}"/>
+                        </p:column>
+                        <p:column headerText="#{msjPedidos.FECHA}" priority="2" style="width: 150px">
+                            <h:outputText value="#{pedidos.fecha}"/>
+                        </p:column>
+                        <p:column headerText="#{msjPedidos.CANTIDAD}" priority="2" style="width: 60px">
+                            <h:outputText value="#{pedidos.cantidad}"/>
+                        </p:column>
+                        <p:column headerText="#{msjPedidos.ValorUnitario}" priority="2" style="width: 60px">
+                            <h:outputText value="#{pedidos.valorUnitario}"/>
+                        </p:column>
+                        <p:column headerText="#{msjPedidos.OPCIONES}" priority="2" style="width: 180px">
+                            <h:commandLink class="btn" a:data-toggle="modal" a:data-target="#verInfoPedidos"
+                                           action="#{pedidosControlador.seleccionarPedido(pedidos)}" style="background: #580000">
+                                <i class="fa fa-eye" style="color: white"></i>
+                                <f:ajax render=":verInfoPedidosContent"/>
+                            </h:commandLink>
+                            <a class="btn" style="background: #951010"><i class="fa fa-pencil" style="color: white"></i></a>
+                            <a class="btn" style="background: #727272"><i class="fa fa-trash" style="color: white"></i></a>
+                            <a class="btn" style="background: #9D9898"><i class="fa fa-lock" style="color: white"></i></a>
+                        </p:column>
+                    </p:dataTable>
                 </div>
-            </div>
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header">
-                        <strong class="card-title" id="Finalizados">#{msjPedidos.Finalizados}</strong>
-                    </div>
-                    <div class="card-body">
-                        <h:form prependId="false">
-                            <h:dataTable class="table table-striped" value="#{pedidosControlador.pedidos}"
-                                         var="pedidos">
-                                <h:column>
-                                    <f:facet name="header">#{msjPedidos.ID}</f:facet>
-                                    <h:outputText value="#{pedidos.id}"/>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">#{msjPedidos.FECHA}</f:facet>
-                                    <h:outputText value="#{pedidos.fecha}"/>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">#{msjPedidos.CANTIDAD} </f:facet>
-                                    <h:outputText value="#{pedidos.cantidad}"/>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">#{msjPedidos.ValorUnitario}</f:facet>
-                                    <h:outputText value="#{pedidos.valorUnitario}"/>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">#{msjPedidos.ESTADO}</f:facet>
-                                    <h:outputText value="#{pedidos.estado}"/>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">#{msjPedidos.OPCIONES}</f:facet>
-                                    <h:commandLink class="btn" a:data-toggle="modal" a:data-target="#verInfoPedidos"
-                                                   action="#{pedidosControlador.seleccionarPedido(pedidos)}" style="background: #580000">
-                                        <i class="fa fa-eye" style="color: white"></i>
-                                        <f:ajax render=":verInfoPedidosContent"/>
-                                    </h:commandLink>
-                                    <a class="btn" style="background: #951010"><i class="fa fa-pencil" style="color: white"></i></a>
-                                    <a class="btn" style="background: #727272"><i class="fa fa-trash" style="color: white"></i></a>
-                                    <a class="btn" style="background: #9D9898"><i class="fa fa-lock" style="color: white"></i></a>
-
-                                </h:column>
-
-                            </h:dataTable> 
-                        </h:form>
-                        <ui:include src="/WEB-INF/includes/modal/pedidos/ver_info_pedidos.xhtml"/>
-                    </div>
-                </div>
-            </div>
-
-            <div class="clearfix"></div>
-        </f:view>
+        </h:form>
+        </div>
     </ui:define>
+
 </ui:composition>
 

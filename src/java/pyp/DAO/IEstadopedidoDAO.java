@@ -8,15 +8,12 @@ package pyp.DAO;
 import java.util.List;
 import javax.ejb.Local;
 import pyp.modelo.entidades.Estadopedido;
-import pyp.modelo.entidades.Pedido;
 
 /**
  *
- * @GAES 5
+ * @author PC
  */
 @Local
-public interface IPedidoDAO extends DAO<Pedido> {
-
-    List<Pedido> findByEstadoPedido(Estadopedido estadoPedidoFiltro);
+public interface IEstadopedidoDAO extends DAO<Estadopedido>{
     
 }

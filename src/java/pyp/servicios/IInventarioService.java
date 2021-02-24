@@ -11,10 +11,6 @@ import pyp.excepciones.BusinessException;
 import pyp.modelo.entidades.Insumo;
 import pyp.modelo.entidades.TipoInsumo;
 
-/**
- *
- * @author Ismael
- */
 @Local
 public interface IInventarioService {
     

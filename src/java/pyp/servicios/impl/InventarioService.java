@@ -17,7 +17,6 @@ import pyp.modelo.entidades.Insumo;
 import pyp.modelo.entidades.TipoInsumo;
 import pyp.servicios.IInventarioService;
 
-
 @Stateless
 public class InventarioService implements IInventarioService {
 

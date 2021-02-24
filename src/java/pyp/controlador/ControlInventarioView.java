@@ -7,8 +7,6 @@ package pyp.controlador;
 
 import java.io.Serializable;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.view.ViewScoped;
@@ -19,10 +17,6 @@ import pyp.modelo.entidades.TipoInsumo;
 import pyp.servicios.IInventarioService;
 import pyp.util.MessageUtil;
 
-/**
- *
- * @author Ismael
- */
 @Named
 @ViewScoped
 public class ControlInventarioView implements Serializable {
