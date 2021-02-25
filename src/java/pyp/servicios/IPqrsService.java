@@ -3,21 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pyp.DAO;
+package pyp.servicios;
 
 import java.util.List;
 import javax.ejb.Local;
-import pyp.modelo.entidades.Cliente;
+import pyp.excepciones.BusinessException;
 import pyp.modelo.entidades.Estadopqrs;
 import pyp.modelo.entidades.Pqrs;
 
-/**
- *
- * @GAES 5
- */
 @Local
-public interface IPqrsDAO extends DAO<Pqrs> {
+public interface IPqrsService {
+    
+    List<Estadopqrs> getEstadoPqrsHabilitados() throws BusinessException;
 
-    List<Pqrs> findByEstadoPqrs(Estadopqrs estadoPqrsFiltro);
+    public List<Pqrs> findPqrsByFilter(Estadopqrs estadoPqrsFiltro) throws BusinessException;
     
 }

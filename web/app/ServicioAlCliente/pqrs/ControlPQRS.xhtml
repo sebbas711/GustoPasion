@@ -7,387 +7,115 @@
                 xmlns:f="http://xmlns.jcp.org/jsf/core"
                 xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
                 xmlns:p="http://primefaces.org/ui">
+
     <ui:define name="contenido">
         <div class="content">
-            <!-- Animated -->
-            <div class="animated fadeIn" id="page-top">
-                <!-- Widgets  -->
-                <div class="row">
-                    <div class="col-sm-6 col-lg-3">
-                        <div class="card text-white colorverde" style="background: #580000">
-                            <a class="hovcard" href="#nuevas">
-                                <div class="card-body">
-                                    <div class="card-left pt-1 float-left">
-                                        <h4 class="mb-0 fw-r">
-                                            <span>#{msjPQRS.PQRSNUEVAS}</span>
-                                        </h4>
+            <h:form prependId="false">
+                <div class="animated fadeIn" id="page-top">
+                    <div class="row">
+                        <div class="col-sm-6 col-lg">
+                            <div class="card text-white colorverde" style="background: #580000">
+                                <p:commandLink class="hovcard"
+                                               actionListener="#{controlPqrsView.limpiarFiltroEstadoPqrs()}"
+                                               update="tablaPqrs">
+                                    <div class="card-body">
+                                        <div class="card-left pt-1 float-left">
+                                            <h4 class="mb-0 fw-r">
+                                                <span>#{msjInventario.Todos}</span>
+                                            </h4>
+                                        </div>
                                     </div>
-                                </div>
-                            </a>
+                                </p:commandLink>
+                            </div>
                         </div>
-                    </div>
-                    <!--/.col-->
-
-                    <div class="col-sm-6 col-lg-3">
-                        <div class="card text-white coloramarillo" style="background: #951010">
-                            <a class="hovcard" href="#pendientes">
-                                <div class="card-body">
-                                    <div class="card-left pt-1 float-left">
-                                        <h4 class="mb-0 fw-r">
-                                            <span>#{msjPQRS.PQRSPENDIENTES}</span>
-                                        </h4>
-                                    </div>
+                        <ui:repeat value="#{controlPqrsView.estadoPqrsHabilitados}" var="estadoPqrs">
+                            <div class="col-sm-6 col-lg">
+                                <div class="card text-white coloramarillo" style="background: #{controlPqrsView.getColorByEstadoPqrs(estadoPqrs)}">
+                                    <p:commandLink class="hovcard" 
+                                                   actionListener="#{controlPqrsView.filtrarPorEstadoPqrs(estadoPqrs)}"
+                                                   update="tablaPqrs">
+                                        <div class="card-body">
+                                            <div class="card-left pt-1 float-left">
+                                                <h4 class="mb-0 fw-r">
+                                                    <span>#{estadoPqrs.descripcion}</span>
+                                                </h4>
+                                            </div>
+                                        </div>
+                                    </p:commandLink>
                                 </div>
-                            </a>
-                        </div>
+                            </div>
+                        </ui:repeat>
                     </div>
-                    <!--/.col-->
-
-                    <div class="col-sm-6 col-lg-3">
-                        <div class="card text-white colorcancel" style="background: #727272">
-                            <a class="hovcard" href="#resueltas">
-                                <div class="card-body">
-                                    <div class="card-left pt-1 float-left">
-                                        <h4 class="mb-0 fw-r">
-                                            <span>#{msjPQRS.PQRSRESUELTAS}</span>
-                                        </h4>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-6 col-lg-3">
-                        <div class="card text-white colorred" style="background: #9D9898">
-                            <a class="hovcard" href="#generales">
-                                <div class="card-body">
-                                    <div class="card-left pt-1 float-left">
-                                        <h4 class="mb-0 fw-r">
-                                            <span>#{msjPQRS.PQRSGENERAL}</span>
-                                        </h4>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <!--/.col-->
-
-
                 </div>
-                <!-- /#add-category -->
-            </div>
-            <!-- .animated -->
+                <center>
+                    <h:commandButton class="btn" value="Reporte Lista PQRS" 
+                                     style="background: #951010; color: white;"
+                                     action="#{pqrsControlador.descargaListado()}">
+                    </h:commandButton>
+                </center>
+                <br/>
+                <br/>
+                <br/>
+                <p:dataTable class="table table-striped"
+                             value="#{controlPqrsView.pqrs}" 
+                             rows="5"
+                             paginator="true"
+                             rowsPerPageTemplate="5,10,15"
+                             reflow="true"
+                             var="pq"
+                             id="tablaPqrs">
+                    <p:column headerText="#{msjPQRS.ID}" priority="2" style="width: 60px">
+                        <h:outputText value="#{pq.id}"/>
+                    </p:column>
+                    <p:column headerText="#{msjPQRS.TIPO}" priority="2" style="width: 60px">
+                        <h:outputText value="#{pq.tipoPQRS}"/>
+                    </p:column>
+                    <p:column headerText="#{msjPQRS.ADMINISTRADOR}" priority="2" style="width: 140px">
+                        <h:outputText value="#{pq.administrador.usuario.primerNombre} #{pq.administrador.usuario.primerApellido}"/>
+                    </p:column>
+                    <p:column headerText="#{msjPQRS.FECHA}" priority="2" style="width: 120px">
+                        <h:outputText value="#{pq.fecha}">
+                            <f:convertDateTime pattern="yyyy-MM-dd"/>
+                        </h:outputText>
+                    </p:column>
+                    <p:column headerText="#{msjPQRS.OPCIONES}" priority="2" style="width: 180px">
+                        <h:commandLink class="btn" style="color: white; background: #580000; 
+                                       margin-left: 10px;display: inline-block" 
+                                       title="Detalles" 
+                                       a:data-toggle="modal" a:data-target="#verInfoPqrs"
+                                       action="#{pqrsControlador.seleccionarPqrs(pq)}">
+                            <i class="fa fa-eye"></i>
+                            <f:ajax render=":verInfoPqrsContent" />
+                        </h:commandLink>
+                        <h:commandLink class="btn" style="background: #951010; color: white; margin-left: 10px;display: inline-block" title="Modificar" 
+                                       a:data-toggle="modal" a:data-target="#responderInfoPQRS"
+                                       action="#{pqrsControlador.seleccionarPqrs(pq)}">
+                            <i class="fa fa-pencil"></i>
+                            <f:ajax render=":responderPQRSContent" />
+                        </h:commandLink>
+
+                        <h:commandLink class="btn" style="background: #727272; color: white; margin-left: 10px;display: inline" title="Eliminar" 
+                                       a:data-toggle="modal" a:data-target="#eliminarInsumo"
+                                       action="#inventarioControlador.seleccionarInsumo(pq)}">
+                            <i class="fa fa-trash"></i>
+                            <f:ajax render=":confirmEliminarInsumo" />
+                        </h:commandLink>
+
+                        <h:commandLink class="btn"
+                                       action="#{pqrsControlador.descargaCertificado(pq.id)}"
+                                       style="background: #727272;margin-left: 10px">
+                            <i class="fa fa-download" style="color: white;"></i>
+                        </h:commandLink>
+                    </p:column>
+                </p:dataTable>
+
+
+            <!--<ui:include src="/WEB-INF/includes/modal/pqrs/ver_info_pqrs.xhtml"></ui:include>
+            <ui:include src="/WEB-INF/includes/modal/pqrs/responder_pqrs.xhtml"></ui:include>
+            <ui:include src="/WEB-INF/includes/modal/pqrs/confirmar_camb_Estado.xhtml"></ui:include>-->
+
+            </h:form>
         </div>
-        <h:form>
-            <center>
-                <h:commandButton class="btn" value="Reporte Lista PQRS" 
-                                 style="background: #951010; color: white;"
-                                 action="#{pqrsControlador.descargaListado()}">
-                </h:commandButton>
-            </center>
-
-        </h:form>
-        <h:form id="nuevas" prependId="false">
-            <br/><br/><br/>
-            <h3 class="text-center"><b style="color: #951010">#{msjPQRS.PQRSNUEVAS}</b></h3>
-            <br/>
-            <p:dataTable class="table table-striped"
-                         value="#{pqrsControlador.pqrs}" 
-                         rows="5"
-                         paginator="true"
-                         rowsPerPageTemplate="5,10,15"
-                         reflow="true"
-                         var="pq">
-                <p:column headerText="#{msjPQRS.ID}" priority="2" style="width: 60px">
-                    <h:outputText value="#{pq.id}"/>
-                </p:column>
-                <p:column headerText="#{msjPQRS.TIPO}" priority="2" style="width: 60px">
-                    <h:outputText value="#{pq.tipoPQRS}"/>
-                </p:column>
-                <p:column headerText="#{msjPQRS.ADMINISTRADOR}" priority="2" style="width: 140px">
-                    <h:outputText value="#{pq.administrador.usuario.primerNombre} #{pq.administrador.usuario.primerApellido}"/>
-                </p:column>
-                <p:column headerText="#{msjPQRS.FECHA}" priority="2" style="width: 120px">
-                    <h:outputText value="#{pq.fecha}">
-                        <f:convertDateTime pattern="yyyy-MM-dd"/>
-                    </h:outputText>
-                </p:column>
-                <p:column headerText="#{msjPQRS.CORREOELECTRÓNICO}" priority="2" style="width: 200px">
-                    <h:outputText value="#{pq.emailCliente}"/>
-                </p:column>
-                <p:column headerText="#{msjPQRS.OPCIONES}" priority="2" style="width: 180px">
-                    <h:commandLink class="btn" style="color: white; background: #580000; 
-                                   margin-left: 10px;display: inline-block" 
-                                   title="Detalles" 
-                                   a:data-toggle="modal" a:data-target="#verInfoPqrs"
-                                   action="#{pqrsControlador.seleccionarPqrs(pq)}">
-                        <i class="fa fa-eye"></i>
-                        <f:ajax render=":verInfoPqrsContent" />
-                    </h:commandLink>
-                    <h:commandLink class="btn" style="background: #951010; color: white; margin-left: 10px;display: inline-block" title="Modificar" 
-                                   a:data-toggle="modal" a:data-target="#responderInfoPQRS"
-                                   action="#{pqrsControlador.seleccionarPqrs(pq)}">
-                        <i class="fa fa-pencil"></i>
-                        <f:ajax render=":responderPQRSContent" />
-                    </h:commandLink>
-
-                    <!--h:commandLink class="btn" style="background: #727272; color: white; margin-left: 10px;display: inline" title="Eliminar" 
-                                   a:data-toggle="modal" a:data-target="#eliminarInsumo"
-                                   action="#inventarioControlador.seleccionarInsumo(pq)}">
-                        <i class="fa fa-trash"></i>
-                        <f:ajax render=":confirmEliminarInsumo" />
-                    </h:commandLink-->
-
-                    <h:commandLink rendered="#{pqrsControlador.renderedBtnEstado(pq)}" class="btn"
-                                   action="#{pqrsControlador.seleccionarPqrs(pq)}"
-                                   a:data-toggle="modal" a:data-target="#cambiarEstadoPqrs"
-                                   style="background: #9D9898; margin-left: 10px;display: inline-block" title="Cambia estado">
-                        <i class="fa fa-check" style="color: white"></i>
-                        <f:ajax render=":confirmarCambioEstadoPqrs"/>
-                    </h:commandLink>
-                    <h:commandLink rendered="#{empty pq.estado or pq.estado eq 0}" class="btn"
-                                   action="#{pqrsControlador.seleccionarPqrs(pq)}"
-                                   a:data-toggle="modal" a:data-target="#cambiarEstadoPqrs"
-                                   style="background: #9D9898; margin-left: 10px;display: inline-block" title="Cambia estado">
-                        <i class="fa fa-times" style="color: white"></i>
-                        <f:ajax render=":confirmarCambioEstadoPqrs"/>
-                    </h:commandLink>
-                    <h:commandLink class="btn"
-                                   action="#{pqrsControlador.descargaCertificado(pq.id)}"
-                                   style="background: #727272;margin-left: 10px">
-                        <i class="fa fa-download" style="color: white;"></i>
-                    </h:commandLink>
-                </p:column>
-            </p:dataTable>
-        </h:form>
-        <br/><br/>
-        <h:form  id="pendientes">
-            <br/><br/><br/>
-            <h4 class="text-center" ><a href="#page-top"><b style="color: #580000" href="#page-top">#{msjPQRS.PQRSPENDIENTES}</b></a></h4>
-            <br/>
-            <p:dataTable class="table table-striped"
-                         value="#{pqrsControlador.pqrs}" 
-                         rows="5"
-                         paginator="true"
-                         rowsPerPageTemplate="5,10,15"
-                         reflow="true"
-                         var="pq">
-                                <p:column headerText="#{msjPQRS.ID}" priority="2" style="width: 60px">
-                    <h:outputText value="#{pq.id}"/>
-                </p:column>
-                <p:column headerText="#{msjPQRS.TIPO}" priority="2" style="width: 60px">
-                    <h:outputText value="#{pq.tipoPQRS}"/>
-                </p:column>
-                <p:column headerText="#{msjPQRS.ADMINISTRADOR}" priority="2" style="width: 140px">
-                    <h:outputText value="#{pq.administrador.usuario.primerNombre} #{pq.administrador.usuario.primerApellido}"/>
-                </p:column>
-                <p:column headerText="#{msjPQRS.FECHA}" priority="2" style="width: 120px">
-                    <h:outputText value="#{pq.fecha}">
-                        <f:convertDateTime pattern="yyyy-MM-dd"/>
-                    </h:outputText>
-                </p:column>
-                <p:column headerText="#{msjPQRS.CORREOELECTRÓNICO}" priority="2" style="width: 200px">
-                    <h:outputText value="#{pq.emailCliente}"/>
-                </p:column>
-                <p:column headerText="#{msjPQRS.OPCIONES}" priority="2" style="width: 180px">
-                    <h:commandLink class="btn" style="color: white; background: #580000; 
-                                   margin-left: 10px;display: inline-block" 
-                                   title="Detalles" 
-                                   a:data-toggle="modal" a:data-target="#verInfoPqrs"
-                                   action="#{pqrsControlador.seleccionarPqrs(pq)}">
-                        <i class="fa fa-eye"></i>
-                        <f:ajax render=":verInfoPqrsContent" />
-                    </h:commandLink>
-                    <h:commandLink class="btn" style="background: #951010; color: white; margin-left: 10px;display: inline-block" title="Modificar" 
-                                   a:data-toggle="modal" a:data-target="#responderInfoPQRS"
-                                   action="#{pqrsControlador.seleccionarPqrs(pq)}">
-                        <i class="fa fa-pencil"></i>
-                        <f:ajax render=":responderPQRSContent" />
-                    </h:commandLink>
-
-                    <!--h:commandLink class="btn" style="background: #727272; color: white; margin-left: 10px;display: inline" title="Eliminar" 
-                                   a:data-toggle="modal" a:data-target="#eliminarInsumo"
-                                   action="#inventarioControlador.seleccionarInsumo(pq)}">
-                        <i class="fa fa-trash"></i>
-                        <f:ajax render=":confirmEliminarInsumo" />
-                    </h:commandLink-->
-
-                    <h:commandLink rendered="#{pqrsControlador.renderedBtnEstado(pq)}" class="btn"
-                                   action="#{pqrsControlador.seleccionarPqrs(pq)}"
-                                   a:data-toggle="modal" a:data-target="#cambiarEstadoPqrs"
-                                   style="background: #9D9898; margin-left: 10px;display: inline-block" title="Cambia estado">
-                        <i class="fa fa-check" style="color: white"></i>
-                        <f:ajax render=":confirmarCambioEstadoPqrs"/>
-                    </h:commandLink>
-                    <h:commandLink rendered="#{empty pq.estado or pq.estado eq 0}" class="btn"
-                                   action="#{pqrsControlador.seleccionarPqrs(pq)}"
-                                   a:data-toggle="modal" a:data-target="#cambiarEstadoPqrs"
-                                   style="background: #9D9898; margin-left: 10px;display: inline-block" title="Cambia estado">
-                        <i class="fa fa-times" style="color: white"></i>
-                        <f:ajax render=":confirmarCambioEstadoPqrs"/>
-                    </h:commandLink>
-                    <h:commandLink class="btn"
-                                   action="#{pqrsControlador.descargaCertificado(pq.id)}"
-                                   style="background: #727272;margin-left: 10px">
-                        <i class="fa fa-download" style="color: white;"></i>
-                    </h:commandLink>
-                </p:column>
-            </p:dataTable>
-        </h:form>
-        <br/><br/>
-        <h:form id="resueltas">
-            <br/><br/><br/>
-            <h4 class="text-center" ><a href="#page-top"><b style="color: #951010" href="#page-top">#{msjPQRS.PQRSRESUELTAS}</b></a></h4>
-            <br/>
-            <p:dataTable class="table table-striped"
-                         value="#{pqrsControlador.pqrs}" 
-                         rows="5"
-                         paginator="true"
-                         rowsPerPageTemplate="5,10,15"
-                         reflow="true"
-                         var="pq">
-                                <p:column headerText="#{msjPQRS.ID}" priority="2" style="width: 60px">
-                    <h:outputText value="#{pq.id}"/>
-                </p:column>
-                <p:column headerText="#{msjPQRS.TIPO}" priority="2" style="width: 60px">
-                    <h:outputText value="#{pq.tipoPQRS}"/>
-                </p:column>
-                <p:column headerText="#{msjPQRS.ADMINISTRADOR}" priority="2" style="width: 140px">
-                    <h:outputText value="#{pq.administrador.usuario.primerNombre} #{pq.administrador.usuario.primerApellido}"/>
-                </p:column>
-                <p:column headerText="#{msjPQRS.FECHA}" priority="2" style="width: 120px">
-                    <h:outputText value="#{pq.fecha}">
-                        <f:convertDateTime pattern="yyyy-MM-dd"/>
-                    </h:outputText>
-                </p:column>
-                <p:column headerText="#{msjPQRS.CORREOELECTRÓNICO}" priority="2" style="width: 200px">
-                    <h:outputText value="#{pq.emailCliente}"/>
-                </p:column>
-                <p:column headerText="#{msjPQRS.OPCIONES}" priority="2" style="width: 180px">
-                    <h:commandLink class="btn" style="color: white; background: #580000; 
-                                   margin-left: 10px;display: inline-block" 
-                                   title="Detalles" 
-                                   a:data-toggle="modal" a:data-target="#verInfoPqrs"
-                                   action="#{pqrsControlador.seleccionarPqrs(pq)}">
-                        <i class="fa fa-eye"></i>
-                        <f:ajax render=":verInfoPqrsContent" />
-                    </h:commandLink>
-                    <h:commandLink class="btn" style="background: #951010; color: white; margin-left: 10px;display: inline-block" title="Modificar" 
-                                   a:data-toggle="modal" a:data-target="#responderInfoPQRS"
-                                   action="#{pqrsControlador.seleccionarPqrs(pq)}">
-                        <i class="fa fa-pencil"></i>
-                        <f:ajax render=":responderPQRSContent" />
-                    </h:commandLink>
-
-                    <!--h:commandLink class="btn" style="background: #727272; color: white; margin-left: 10px;display: inline" title="Eliminar" 
-                                   a:data-toggle="modal" a:data-target="#eliminarInsumo"
-                                   action="#inventarioControlador.seleccionarInsumo(pq)}">
-                        <i class="fa fa-trash"></i>
-                        <f:ajax render=":confirmEliminarInsumo" />
-                    </h:commandLink-->
-
-                    <h:commandLink rendered="#{pqrsControlador.renderedBtnEstado(pq)}" class="btn"
-                                   action="#{pqrsControlador.seleccionarPqrs(pq)}"
-                                   a:data-toggle="modal" a:data-target="#cambiarEstadoPqrs"
-                                   style="background: #9D9898; margin-left: 10px;display: inline-block" title="Cambia estado">
-                        <i class="fa fa-check" style="color: white"></i>
-                        <f:ajax render=":confirmarCambioEstadoPqrs"/>
-                    </h:commandLink>
-                    <h:commandLink rendered="#{empty pq.estado or pq.estado eq 0}" class="btn"
-                                   action="#{pqrsControlador.seleccionarPqrs(pq)}"
-                                   a:data-toggle="modal" a:data-target="#cambiarEstadoPqrs"
-                                   style="background: #9D9898; margin-left: 10px;display: inline-block" title="Cambia estado">
-                        <i class="fa fa-times" style="color: white"></i>
-                        <f:ajax render=":confirmarCambioEstadoPqrs"/>
-                    </h:commandLink>
-                    <h:commandLink class="btn"
-                                   action="#{pqrsControlador.descargaCertificado(pq.id)}"
-                                   style="background: #727272;margin-left: 10px">
-                        <i class="fa fa-download" style="color: white;"></i>
-                    </h:commandLink>
-                </p:column>
-            </p:dataTable>
-        </h:form>
-        <br/><br/>
-        <h:form id="generales">
-            <br/><br/><br/>
-            <h4 class="text-center" ><a href="#page-top"><b style="color: #727272" href="#page-top">#{msjPQRS.PQRSGENERAL}</b></a></h4>
-            <br/>
-            <p:dataTable class="table table-striped"
-                         value="#{pqrsControlador.pqrs}" 
-                         rows="5"
-                         paginator="true"
-                         rowsPerPageTemplate="5,10,15"
-                         reflow="true"
-                         var="pq">
-                                <p:column headerText="#{msjPQRS.ID}" priority="2" style="width: 60px">
-                    <h:outputText value="#{pq.id}"/>
-                </p:column>
-                <p:column headerText="#{msjPQRS.TIPO}" priority="2" style="width: 60px">
-                    <h:outputText value="#{pq.tipoPQRS}"/>
-                </p:column>
-                <p:column headerText="#{msjPQRS.ADMINISTRADOR}" priority="2" style="width: 140px">
-                    <h:outputText value="#{pq.administrador.usuario.primerNombre} #{pq.administrador.usuario.primerApellido}"/>
-                </p:column>
-                <p:column headerText="#{msjPQRS.FECHA}" priority="2" style="width: 120px">
-                    <h:outputText value="#{pq.fecha}">
-                        <f:convertDateTime pattern="yyyy-MM-dd"/>
-                    </h:outputText>
-                </p:column>
-                <p:column headerText="#{msjPQRS.CORREOELECTRÓNICO}" priority="2" style="width: 200px">
-                    <h:outputText value="#{pq.emailCliente}"/>
-                </p:column>
-                <p:column headerText="#{msjPQRS.OPCIONES}" priority="2" style="width: 180px">
-                    <h:commandLink class="btn" style="color: white; background: #580000; 
-                                   margin-left: 10px;display: inline-block" 
-                                   title="Detalles" 
-                                   a:data-toggle="modal" a:data-target="#verInfoPqrs"
-                                   action="#{pqrsControlador.seleccionarPqrs(pq)}">
-                        <i class="fa fa-eye"></i>
-                        <f:ajax render=":verInfoPqrsContent" />
-                    </h:commandLink>
-                    <h:commandLink class="btn" style="background: #951010; color: white; margin-left: 10px;display: inline-block" title="Modificar" 
-                                   a:data-toggle="modal" a:data-target="#responderInfoPQRS"
-                                   action="#{pqrsControlador.seleccionarPqrs(pq)}">
-                        <i class="fa fa-pencil"></i>
-                        <f:ajax render=":responderPQRSContent" />
-                    </h:commandLink>
-
-                    <!--h:commandLink class="btn" style="background: #727272; color: white; margin-left: 10px;display: inline" title="Eliminar" 
-                                   a:data-toggle="modal" a:data-target="#eliminarInsumo"
-                                   action="#inventarioControlador.seleccionarInsumo(pq)}">
-                        <i class="fa fa-trash"></i>
-                        <f:ajax render=":confirmEliminarInsumo" />
-                    </h:commandLink-->
-
-                    <h:commandLink rendered="#{pqrsControlador.renderedBtnEstado(pq)}" class="btn"
-                                   action="#{pqrsControlador.seleccionarPqrs(pq)}"
-                                   a:data-toggle="modal" a:data-target="#cambiarEstadoPqrs"
-                                   style="background: #9D9898; margin-left: 10px;display: inline-block" title="Cambia estado">
-                        <i class="fa fa-check" style="color: white"></i>
-                        <f:ajax render=":confirmarCambioEstadoPqrs"/>
-                    </h:commandLink>
-                    <h:commandLink rendered="#{empty pq.estado or pq.estado eq 0}" class="btn"
-                                   action="#{pqrsControlador.seleccionarPqrs(pq)}"
-                                   a:data-toggle="modal" a:data-target="#cambiarEstadoPqrs"
-                                   style="background: #9D9898; margin-left: 10px;display: inline-block" title="Cambia estado">
-                        <i class="fa fa-times" style="color: white"></i>
-                        <f:ajax render=":confirmarCambioEstadoPqrs"/>
-                    </h:commandLink>
-                    <h:commandLink class="btn"
-                                   action="#{pqrsControlador.descargaCertificado(pq.id)}"
-                                   style="background: #727272;margin-left: 10px">
-                        <i class="fa fa-download" style="color: white;"></i>
-                    </h:commandLink>
-                </p:column>
-            </p:dataTable>
-        </h:form>
-
-        <ui:include src="/WEB-INF/includes/modal/pqrs/ver_info_pqrs.xhtml"></ui:include>
-        <ui:include src="/WEB-INF/includes/modal/pqrs/responder_pqrs.xhtml"></ui:include>
-        <ui:include src="/WEB-INF/includes/modal/pqrs/confirmar_camb_Estado.xhtml"></ui:include>
-
-
 
     </ui:define>
 </ui:composition>

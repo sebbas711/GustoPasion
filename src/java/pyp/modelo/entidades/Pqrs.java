@@ -26,19 +26,16 @@ import javax.validation.constraints.Size;
 
 /**
  *
- * @author alejo
+ * @author PC
  */
 @Entity
-@Table(name = "pqrs")
-@NamedQueries({
+        @Table(name = "pqrs")
+        @NamedQueries({
     @NamedQuery(name = "Pqrs.findAll", query = "SELECT p FROM Pqrs p")
     , @NamedQuery(name = "Pqrs.findById", query = "SELECT p FROM Pqrs p WHERE p.id = :id")
     , @NamedQuery(name = "Pqrs.findByFecha", query = "SELECT p FROM Pqrs p WHERE p.fecha = :fecha")
     , @NamedQuery(name = "Pqrs.findByObservaciones", query = "SELECT p FROM Pqrs p WHERE p.observaciones = :observaciones")
-    , @NamedQuery(name = "Pqrs.findByNombreCliente", query = "SELECT p FROM Pqrs p WHERE p.nombreCliente = :nombreCliente")
-    , @NamedQuery(name = "Pqrs.findByEmailCliente", query = "SELECT p FROM Pqrs p WHERE p.emailCliente = :emailCliente")
-    , @NamedQuery(name = "Pqrs.findByEstado", query = "SELECT p FROM Pqrs p WHERE p.estado = :estado")
-    , @NamedQuery(name = "Pqrs.findByUser", query = "SELECT p FROM Pqrs p WHERE p.administrador.id = :estado")})
+    , @NamedQuery(name = "Pqrs.findByEstadoPqrs", query = "SELECT p FROM Pqrs p WHERE p.estadoPqrs.id = :estadoPqrsId")})
 public class Pqrs implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -57,26 +54,18 @@ public class Pqrs implements Serializable {
     @Size(min = 1, max = 45)
     @Column(name = "observaciones")
     private String observaciones;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 55)
-    @Column(name = "nombre_cliente")
-    private String nombreCliente;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 85)
-    @Column(name = "email_cliente")
-    private String emailCliente;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "estado")
-    private int estado;
     @JoinColumn(name = "administrador", referencedColumnName = "id")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Administrador administrador;
     @JoinColumn(name = "tipoPQRS", referencedColumnName = "id")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Tipopqrs tipoPQRS;
+    @JoinColumn(name = "cliente", referencedColumnName = "id")
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    private Cliente cliente;
+    @JoinColumn(name = "estadoPqrs", referencedColumnName = "id")
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    private Estadopqrs estadoPqrs;
 
     public Pqrs() {
     }
@@ -85,13 +74,10 @@ public class Pqrs implements Serializable {
         this.id = id;
     }
 
-    public Pqrs(Integer id, Date fecha, String observaciones, String nombreCliente, String emailCliente, int estado) {
+    public Pqrs(Integer id, Date fecha, String observaciones) {
         this.id = id;
         this.fecha = fecha;
         this.observaciones = observaciones;
-        this.nombreCliente = nombreCliente;
-        this.emailCliente = emailCliente;
-        this.estado = estado;
     }
 
     public Integer getId() {
@@ -118,30 +104,6 @@ public class Pqrs implements Serializable {
         this.observaciones = observaciones;
     }
 
-    public String getNombreCliente() {
-        return nombreCliente;
-    }
-
-    public void setNombreCliente(String nombreCliente) {
-        this.nombreCliente = nombreCliente;
-    }
-
-    public String getEmailCliente() {
-        return emailCliente;
-    }
-
-    public void setEmailCliente(String emailCliente) {
-        this.emailCliente = emailCliente;
-    }
-
-    public int getEstado() {
-        return estado;
-    }
-
-    public void setEstado(int estado) {
-        this.estado = estado;
-    }
-
     public Administrador getAdministrador() {
         return administrador;
     }
@@ -156,6 +118,22 @@ public class Pqrs implements Serializable {
 
     public void setTipoPQRS(Tipopqrs tipoPQRS) {
         this.tipoPQRS = tipoPQRS;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public Estadopqrs getEstadoPqrs() {
+        return estadoPqrs;
+    }
+
+    public void setEstadoPqrs(Estadopqrs estadoPqrs) {
+        this.estadoPqrs = estadoPqrs;
     }
 
     @Override
@@ -182,5 +160,5 @@ public class Pqrs implements Serializable {
     public String toString() {
         return "pyp.modelo.entidades.Pqrs[ id=" + id + " ]";
     }
-    
+
 }

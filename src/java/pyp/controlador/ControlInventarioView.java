@@ -69,8 +69,6 @@ public class ControlInventarioView implements Serializable {
     public TipoInsumo getTipoInsumoFiltro() {
         return tipoInsumoFiltro;
     }
-        
-    
 
     public List<TipoInsumo> getTiposInsumosHabilitados() {
         return tiposInsumosHabilitados;

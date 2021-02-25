@@ -6,43 +6,49 @@
 package pyp.modelo.entidades;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 /**
  *
  * @author PC
  */
 @Entity
-@Table(name = "cliente")
+@Table(name = "estadopqrs")
 @NamedQueries({
-    @NamedQuery(name = "Cliente.findAll", query = "SELECT c FROM Cliente c")
-    , @NamedQuery(name = "Cliente.findById", query = "SELECT c FROM Cliente c WHERE c.id = :id")})
-public class Cliente implements Serializable {
+    @NamedQuery(name = "Estadopqrs.findAll", query = "SELECT e FROM Estadopqrs e")
+    , @NamedQuery(name = "Estadopqrs.findById", query = "SELECT e FROM Estadopqrs e WHERE e.id = :id")
+    , @NamedQuery(name = "Estadopqrs.findByDescripcion", query = "SELECT e FROM Estadopqrs e WHERE e.descripcion = :descripcion")})
+public class Estadopqrs implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @NotNull
     @Column(name = "id")
     private Integer id;
-    @JoinColumn(name = "id", referencedColumnName = "Id", insertable = false, updatable = false)
-    @OneToOne(optional = false, fetch = FetchType.LAZY)
-    private Usuario usuario;
+    @Size(max = 45)
+    @Column(name = "descripcion")
+    private String descripcion;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "estadoPqrs", fetch = FetchType.LAZY)
+    private List<Pqrs> pqrsList;
 
-    public Cliente() {
+    public Estadopqrs() {
     }
 
-    public Cliente(Integer id) {
+    public Estadopqrs(Integer id) {
         this.id = id;
     }
 
@@ -54,12 +60,20 @@ public class Cliente implements Serializable {
         this.id = id;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
+    public String getDescripcion() {
+        return descripcion;
     }
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public List<Pqrs> getPqrsList() {
+        return pqrsList;
+    }
+
+    public void setPqrsList(List<Pqrs> pqrsList) {
+        this.pqrsList = pqrsList;
     }
 
     @Override
@@ -72,10 +86,10 @@ public class Cliente implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Cliente)) {
+        if (!(object instanceof Estadopqrs)) {
             return false;
         }
-        Cliente other = (Cliente) object;
+        Estadopqrs other = (Estadopqrs) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -84,7 +98,7 @@ public class Cliente implements Serializable {
 
     @Override
     public String toString() {
-        return "pyp.modelo.entidades.Cliente[ id=" + id + " ]";
+        return "pyp.modelo.entidades.Estadopqrs[ id=" + id + " ]";
     }
     
 }

@@ -7,17 +7,14 @@ package pyp.DAO;
 
 import java.util.List;
 import javax.ejb.Local;
-import pyp.modelo.entidades.Cliente;
 import pyp.modelo.entidades.Estadopqrs;
-import pyp.modelo.entidades.Pqrs;
 
 /**
  *
- * @GAES 5
+ * @author PC
  */
 @Local
-public interface IPqrsDAO extends DAO<Pqrs> {
+public interface IEstadopqrsDAO extends DAO<Estadopqrs> {
 
-    List<Pqrs> findByEstadoPqrs(Estadopqrs estadoPqrsFiltro);
     
 }

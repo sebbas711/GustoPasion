@@ -63,12 +63,12 @@ public class PqrsControlador implements Serializable {
         tablaPqrsEnable = false;
     }
 
-    public List<Pqrs> getPqrs() {
+    /*public List<Pqrs> getPqrs() {
         if (pqrs == null || pqrs.isEmpty()) {
             pqrs = pqDAO.finByCustomer(session.getUser().getCliente());
         }
         return pqrs;
-    }
+    }*/
 
     public void setPqrs(List<Pqrs> pqrs) {
         this.pqrs = pqrs;
@@ -110,7 +110,6 @@ public class PqrsControlador implements Serializable {
         try {
             nuevaPqrs.setId(pqDAO.count() + 1);
             nuevaPqrs.setFecha(new Date());
-            nuevaPqrs.setEstado(Short.valueOf("0"));
             pqDAO.create(nuevaPqrs);
             mensajeRequest = "swal('Registro Exitoso', '', 'success');";
         } catch (Exception e) {
@@ -135,7 +134,7 @@ public class PqrsControlador implements Serializable {
         PrimeFaces.current().executeScript(mensajeRequest);
     }
 
-    public void cambiarEstado() {
+    /*public void cambiarEstado() {
         String mensajeRequest = "";
         FacesContext fc = FacesContext.getCurrentInstance();
         try {
@@ -169,7 +168,7 @@ public class PqrsControlador implements Serializable {
             return "En espera";
         }
         return "";
-    }
+    }*/
 
     public void descargaListado() {
         FacesContext facesContext = FacesContext.getCurrentInstance();
