@@ -14,7 +14,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -34,6 +33,7 @@ import javax.validation.constraints.Size;
     , @NamedQuery(name = "Producto.findByNombre", query = "SELECT p FROM Producto p WHERE p.nombre = :nombre")
     , @NamedQuery(name = "Producto.findByPrecio", query = "SELECT p FROM Producto p WHERE p.precio = :precio")
     , @NamedQuery(name = "Producto.findByDescripcion", query = "SELECT p FROM Producto p WHERE p.descripcion = :descripcion")
+    , @NamedQuery(name = "Producto.findByimagenP", query = "SELECT p FROM Producto p WHERE p.imagenP = :imagenP")
     , @NamedQuery(name = "Producto.findByEstado", query = "SELECT p FROM Producto p WHERE p.estado = :estado")})
 public class Producto implements Serializable {
 
@@ -57,9 +57,9 @@ public class Producto implements Serializable {
     @Size(min = 1, max = 45)
     @Column(name = "descripcion")
     private String descripcion;
-    @Lob
+    @Size(max = 255)
     @Column(name = "imagenP")
-    private byte[] imagenP;
+    private String imagenP;
     @Basic(optional = false)
     @NotNull
     @Column(name = "estado")
@@ -115,12 +115,12 @@ public class Producto implements Serializable {
         this.descripcion = descripcion;
     }
 
-    public byte[] getImagenP() {
+    public String getImagenP() {
         return imagenP;
     }
 
-    public void setImagenP(byte[] imagenP) {
-        this.imagenP = imagenP;
+    public void setImagenP(String rutaImagen) {
+       this.imagenP = imagenP;
     }
 
     public int getEstado() {
@@ -163,5 +163,5 @@ public class Producto implements Serializable {
     public String toString() {
         return "pyp.modelo.entidades.Producto[ id=" + id + " ]";
     }
-    
+
 }
