@@ -11,11 +11,12 @@
     <!-- Modal -->
 
 
-    <div class="modal" id="verInfoCategoria" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal fade" role="dialog" id="verInfoCategoria"  data-keyboard="false" 
+         tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <h:form prependId="false">
                 <h:panelGroup id="verInfoCategoriaContent" layout="block">
-                    <div class="modal-dialog modal-lg">
+                    <div class="modal-header modal-lg">
                         <div class="modal-content">
                             <div class="modal-header" style="background-color: #951010; opacity: 0.9">
                                 <span>
@@ -34,11 +35,11 @@
                             <div class="modal-body">
                                 <div class="row">
                                     <ui:repeat value="#{categoriaViewControlador.listaProductos()}" var="pt">
-                                        <div class="col-sm-4">
-                                            <div class="card">
+                                        <div class="col-sm-6">
+                                            <div class="card" style="height: 500px">
                                                 <div class="card-body">
                                                     <h4 class="my-0 font-weight-bold text-center" 
-                                                        style="background-color: #951010;color: #fff">#{pt.nombre}
+                                                        style="color: black">#{pt.nombre}
                                                     </h4>
                                                     <hr style="background-color: #951010"/>
                                                     <img src="#{request.contextPath}/resource/img/#{pt.imagenP}" 
@@ -57,11 +58,6 @@
                                         </div>
                                     </ui:repeat>
                                 </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-danger" data-dismiss="modal" 
-                                        style="background: #951010">#{msjModales.Cancelar}</button>
-                                <button type="button" class="btn btn-success">Registrar</button>
                             </div>
                         </div>
                     </div>

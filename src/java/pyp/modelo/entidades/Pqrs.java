@@ -35,7 +35,9 @@ import javax.validation.constraints.Size;
     , @NamedQuery(name = "Pqrs.findById", query = "SELECT p FROM Pqrs p WHERE p.id = :id")
     , @NamedQuery(name = "Pqrs.findByFecha", query = "SELECT p FROM Pqrs p WHERE p.fecha = :fecha")
     , @NamedQuery(name = "Pqrs.findByObservaciones", query = "SELECT p FROM Pqrs p WHERE p.observaciones = :observaciones")
-    , @NamedQuery(name = "Pqrs.findByEstadoPqrs", query = "SELECT p FROM Pqrs p WHERE p.estadoPqrs.id = :estadoPqrsId")})
+    , @NamedQuery(name = "Pqrs.findByEstadoPqrs", query = "SELECT p FROM Pqrs p WHERE p.estadoPqrs.id = :estadoPqrsId")
+    , @NamedQuery(name = "Pqrs.findByCustomerPqrs", query = "SELECT p FROM Pqrs p WHERE p.cliente.id = :cliente")})
+
 public class Pqrs implements Serializable {
 
     private static final long serialVersionUID = 1L;

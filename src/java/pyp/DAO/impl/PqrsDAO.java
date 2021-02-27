@@ -31,12 +31,12 @@ public class PqrsDAO extends AbstractDAO<Pqrs> implements IPqrsDAO {
         return query.getResultList();
     }
 
-   /* @Override
+   @Override
     public List<Pqrs> finByCustomer(Cliente customer) {
-        TypedQuery<Pqrs> query = getEntityManager().createNamedQuery("Pqrs.findByUser", Pqrs.class);
+        TypedQuery<Pqrs> query = getEntityManager().createNamedQuery("Pqrs.findByCustomerPqrs", Pqrs.class);
         query.setParameter("userId", customer.getId());
         return query.getResultList();
-    }*/
+    }
 
     
     }

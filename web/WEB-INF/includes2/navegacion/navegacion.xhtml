@@ -56,9 +56,9 @@
                             </c:if>
                             <c:if test="#{sessionControlador.isStartSession()}">
                                 <li style="margin-top:-10px">
-                                    <h:commandLink class="dropdown-item"
+                                    <h:commandLink 
                                                    action="#{sessionControlador.cerrarSesion()}" 
-                                                   style="color: white"
+                                                   style="color: white; "
                                                    value="#{msjMenu.CerrarSesión}" />
                                 </li>
                             </c:if>

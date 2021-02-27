@@ -63,12 +63,12 @@ public class PqrsControlador implements Serializable {
         tablaPqrsEnable = false;
     }
 
-    /*public List<Pqrs> getPqrs() {
+    public List<Pqrs> getPqrs() {
         if (pqrs == null || pqrs.isEmpty()) {
             pqrs = pqDAO.finByCustomer(session.getUser().getCliente());
         }
         return pqrs;
-    }*/
+    }
 
     public void setPqrs(List<Pqrs> pqrs) {
         this.pqrs = pqrs;
