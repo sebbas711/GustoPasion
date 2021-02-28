@@ -39,7 +39,7 @@ public class CarritoController implements Serializable {
         
         
         pedido = new Pedido();
-        pedido.setProductos(productosPedido);
+        //pedido.setDetallesPedido(productosPedido);
         //pedido.setDetallesPedido(detallesPedido);
     }
     

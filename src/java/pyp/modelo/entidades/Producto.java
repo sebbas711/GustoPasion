@@ -6,7 +6,9 @@
 package pyp.modelo.entidades;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -17,6 +19,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -37,6 +40,11 @@ import javax.validation.constraints.Size;
     , @NamedQuery(name = "Producto.findByEstado", query = "SELECT p FROM Producto p WHERE p.estado = :estado")})
 public class Producto implements Serializable {
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "producto", fetch = FetchType.LAZY)
+    private List<InsumosDelProducto> insumosDelProductoList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "producto", fetch = FetchType.LAZY)
+    private List<DetallePedido> detallePedidoList;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -53,8 +61,7 @@ public class Producto implements Serializable {
     @Column(name = "precio")
     private double precio;
     @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 45)
+    @Size(max = 255)
     @Column(name = "descripcion")
     private String descripcion;
     @Size(max = 255)
@@ -162,6 +169,22 @@ public class Producto implements Serializable {
     @Override
     public String toString() {
         return "pyp.modelo.entidades.Producto[ id=" + id + " ]";
+    }
+
+    public List<InsumosDelProducto> getInsumosDelProductoList() {
+        return insumosDelProductoList;
+    }
+
+    public void setInsumosDelProductoList(List<InsumosDelProducto> insumosDelProductoList) {
+        this.insumosDelProductoList = insumosDelProductoList;
+    }
+
+    public List<DetallePedido> getDetallePedidoList() {
+        return detallePedidoList;
+    }
+
+    public void setDetallePedidoList(List<DetallePedido> detallePedidoList) {
+        this.detallePedidoList = detallePedidoList;
     }
 
 }

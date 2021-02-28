@@ -17,8 +17,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -39,8 +37,7 @@ import javax.validation.constraints.Size;
     @NamedQuery(name = "Pedido.findAll", query = "SELECT p FROM Pedido p")
     , @NamedQuery(name = "Pedido.findById", query = "SELECT p FROM Pedido p WHERE p.id = :id")
     , @NamedQuery(name = "Pedido.findByFecha", query = "SELECT p FROM Pedido p WHERE p.fecha = :fecha")
-    , @NamedQuery(name = "Pedido.findByCantidad", query = "SELECT p FROM Pedido p WHERE p.cantidad = :cantidad")
-    , @NamedQuery(name = "Pedido.findByValorUnitario", query = "SELECT p FROM Pedido p WHERE p.valorUnitario = :valorUnitario")
+    , @NamedQuery(name = "Pedido.findBySubTotal", query = "SELECT p FROM Pedido p WHERE p.subTotal = :subTotal")
     , @NamedQuery(name = "Pedido.findByValorTotal", query = "SELECT p FROM Pedido p WHERE p.valorTotal = :valorTotal")
     , @NamedQuery(name = "Pedido.findByTipoPedido", query = "SELECT p FROM Pedido p WHERE p.tipoPedido = :tipoPedido")
     , @NamedQuery(name = "Pedido.findByTelefono", query = "SELECT p FROM Pedido p WHERE p.telefono = :telefono")
@@ -62,12 +59,8 @@ public class Pedido implements Serializable {
     private Date fecha;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "cantidad")
-    private int cantidad;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "valor_unitario")
-    private double valorUnitario;
+    @Column(name = "sub_total")
+    private double subTotal;
     @Basic(optional = false)
     @NotNull
     @Column(name = "valor_total")
@@ -87,15 +80,8 @@ public class Pedido implements Serializable {
     @Size(max = 95)
     @Column(name = "observaciones")
     private String observaciones;
-    @JoinTable(name = "producto_has_pedido", joinColumns = {
-        @JoinColumn(name = "Pedido", referencedColumnName = "Id")}, inverseJoinColumns = {
-        @JoinColumn(name = "Producto", referencedColumnName = "id")})
-    @ManyToMany(fetch = FetchType.LAZY)
-    private List<Producto> productos;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "pedidos", fetch = FetchType.LAZY)
-    private List<Despacho> despachos;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "pedidos", fetch = FetchType.LAZY)
-    private List<Factura> facturas;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "pedido", fetch = FetchType.LAZY)
+    private List<DetallePedido> detallesPedido;
     @JoinColumn(name = "cliente", referencedColumnName = "id")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Cliente cliente;
@@ -110,11 +96,10 @@ public class Pedido implements Serializable {
         this.id = id;
     }
 
-    public Pedido(Integer id, Date fecha, int cantidad, double valorUnitario, double valorTotal, String tipoPedido, String puntoEntrega) {
+    public Pedido(Integer id, Date fecha, double subTotal, double valorTotal, String tipoPedido, String puntoEntrega) {
         this.id = id;
         this.fecha = fecha;
-        this.cantidad = cantidad;
-        this.valorUnitario = valorUnitario;
+        this.subTotal = subTotal;
         this.valorTotal = valorTotal;
         this.tipoPedido = tipoPedido;
         this.puntoEntrega = puntoEntrega;
@@ -136,20 +121,12 @@ public class Pedido implements Serializable {
         this.fecha = fecha;
     }
 
-    public int getCantidad() {
-        return cantidad;
+    public double getSubTotal() {
+        return subTotal;
     }
 
-    public void setCantidad(int cantidad) {
-        this.cantidad = cantidad;
-    }
-
-    public double getValorUnitario() {
-        return valorUnitario;
-    }
-
-    public void setValorUnitario(double valorUnitario) {
-        this.valorUnitario = valorUnitario;
+    public void setSubTotal(double subTotal) {
+        this.subTotal = subTotal;
     }
 
     public double getValorTotal() {
@@ -191,31 +168,14 @@ public class Pedido implements Serializable {
     public void setObservaciones(String observaciones) {
         this.observaciones = observaciones;
     }
-    
-    public List<Producto> getProductos() {
-        return productos;
+
+    public List<DetallePedido> getDetallesPedido() {
+        return detallesPedido;
     }
 
-    public void setProductos(List<Producto> productos) {
-        this.productos = productos;
+    public void setDetallesPedido(List<DetallePedido> detallesPedido) {
+        this.detallesPedido = detallesPedido;
     }
-
-    public List<Despacho> getDespachos() {
-        return despachos;
-    }
-
-    public void setDespachos(List<Despacho> despachos) {
-        this.despachos = despachos;
-    }
-
-    public List<Factura> getFacturas() {
-        return facturas;
-    }
-
-    public void setFacturas(List<Factura> facturas) {
-        this.facturas = facturas;
-    }
-
 
     public Cliente getCliente() {
         return cliente;
@@ -257,5 +217,5 @@ public class Pedido implements Serializable {
     public String toString() {
         return "pyp.modelo.entidades.Pedido[ id=" + id + " ]";
     }
-    
+
 }

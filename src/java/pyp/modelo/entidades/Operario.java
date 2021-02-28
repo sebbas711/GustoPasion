@@ -6,9 +6,7 @@
 package pyp.modelo.entidades;
 
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -16,14 +14,13 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 /**
  *
- * @author alejo
+ * @author PC
  */
 @Entity
 @Table(name = "operario")
@@ -38,8 +35,6 @@ public class Operario implements Serializable {
     @NotNull
     @Column(name = "id")
     private Integer id;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "operario", fetch = FetchType.LAZY)
-    private List<Despacho> despachos;
     @JoinColumn(name = "id", referencedColumnName = "Id", insertable = false, updatable = false)
     @OneToOne(optional = false, fetch = FetchType.LAZY)
     private Usuario usuario;
@@ -57,14 +52,6 @@ public class Operario implements Serializable {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public List<Despacho> getDespachos() {
-        return despachos;
-    }
-
-    public void setDespachos(List<Despacho> despachos) {
-        this.despachos = despachos;
     }
 
     public Usuario getUsuario() {

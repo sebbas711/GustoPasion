@@ -64,11 +64,11 @@
                         <p:column headerText="#{msjPedidos.FECHA}" priority="2" style="width: 150px">
                             <h:outputText value="#{pedidos.fecha}"/>
                         </p:column>
-                        <p:column headerText="#{msjPedidos.CANTIDAD}" priority="2" style="width: 60px">
-                            <h:outputText value="#{pedidos.cantidad}"/>
+                        <p:column headerText="Punto de Entrega" priority="2" style="width: 150px">
+                            <h:outputText value="#{pedidos.puntoEntrega}"/>
                         </p:column>
-                        <p:column headerText="#{msjPedidos.ValorUnitario}" priority="2" style="width: 60px">
-                            <h:outputText value="#{pedidos.valorUnitario}"/>
+                        <p:column headerText="Tipo de pedido" priority="2" style="width: 150px">
+                            <h:outputText value="#{pedidos.tipoPedido}"/>
                         </p:column>
                         <p:column headerText="#{msjPedidos.OPCIONES}" priority="2" style="width: 180px">
                             <h:commandLink class="btn" a:data-toggle="modal" a:data-target="#verInfoPedidos"
@@ -82,7 +82,7 @@
                         </p:column>
                     </p:dataTable>
                 </div>
-        </h:form>
+            </h:form>
         </div>
     </ui:define>
 

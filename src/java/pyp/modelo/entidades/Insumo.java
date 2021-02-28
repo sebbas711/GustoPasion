@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -21,6 +22,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -29,7 +31,7 @@ import javax.validation.constraints.Size;
 
 /**
  *
- * @author alejo
+ * @author PC
  */
 @Entity
 @Table(name = "insumo")
@@ -85,17 +87,17 @@ public class Insumo implements Serializable {
         @JoinColumn(name = "proveedor", referencedColumnName = "id")})
     @ManyToMany(fetch = FetchType.LAZY)
     private List<Proovedor> proveedores;
-    @JoinTable(name = "insumo_has_producto", joinColumns = {
-        @JoinColumn(name = "insumo", referencedColumnName = "id")}, inverseJoinColumns = {
-        @JoinColumn(name = "producto", referencedColumnName = "id")})
-    @ManyToMany(fetch = FetchType.LAZY)
-    private List<Producto> productos;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "insumo", fetch = FetchType.LAZY)
+    private List<InsumosDelProducto> insumosDelProducto;
     @JoinColumn(name = "auxCocina", referencedColumnName = "id")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private AuxCocina auxCocina;
     @JoinColumn(name = "tipo_insumo", referencedColumnName = "id")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private TipoInsumo tipoInsumo;
+    @JoinColumn(name = "unidad_de_medida", referencedColumnName = "id")
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    private UnidadDeMedida unidadDeMedida;
 
     public Insumo() {
     }
@@ -177,12 +179,12 @@ public class Insumo implements Serializable {
         this.proveedores = proveedores;
     }
 
-    public List<Producto> getProductos() {
-        return productos;
+    public List<InsumosDelProducto> getInsumosDelProducto() {
+        return insumosDelProducto;
     }
 
-    public void setProductos(List<Producto> productos) {
-        this.productos = productos;
+    public void setInsumosDelProducto(List<InsumosDelProducto> insumosDelProducto) {
+        this.insumosDelProducto = insumosDelProducto;
     }
 
     public AuxCocina getAuxCocina() {
@@ -199,6 +201,14 @@ public class Insumo implements Serializable {
 
     public void setTipoInsumo(TipoInsumo tipoInsumo) {
         this.tipoInsumo = tipoInsumo;
+    }
+
+    public UnidadDeMedida getUnidadDeMedida() {
+        return unidadDeMedida;
+    }
+
+    public void setUnidadDeMedida(UnidadDeMedida unidadDeMedida) {
+        this.unidadDeMedida = unidadDeMedida;
     }
 
     @Override
