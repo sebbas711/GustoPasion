@@ -48,7 +48,7 @@ public class Rol implements Serializable {
     private String descripcion;
     @JoinTable(name = "rol_has_usuario", joinColumns = {
         @JoinColumn(name = "rol", referencedColumnName = "id")}, inverseJoinColumns = {
-        @JoinColumn(name = "usuario", referencedColumnName = "id")})
+        @JoinColumn(name = "usuario", referencedColumnName = "Id")})
     @ManyToMany(fetch = FetchType.LAZY)
     private List<Usuario> usuarios;
     @JoinTable(name = "rol_has_permiso", joinColumns = {

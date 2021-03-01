@@ -50,7 +50,7 @@ public class Pedido implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "id")
+    @Column(name = "Id")
     private Integer id;
     @Basic(optional = false)
     @NotNull

@@ -43,7 +43,7 @@ public class Estadopedido implements Serializable {
     @Column(name = "descripcion")
     private String descripcion;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "estadoPedido", fetch = FetchType.LAZY)
-    private List<Pedido> pedidos;
+    private List<Pedido> pedidoList;
 
     public Estadopedido() {
     }
@@ -68,12 +68,12 @@ public class Estadopedido implements Serializable {
         this.descripcion = descripcion;
     }
 
-    public List<Pedido> getPedidos() {
-        return pedidos;
+    public List<Pedido> getPedidoList() {
+        return pedidoList;
     }
 
-    public void setPedidos(List<Pedido> pedidos) {
-        this.pedidos = pedidos;
+    public void setPedidoList(List<Pedido> pedidos) {
+        this.pedidoList = pedidoList;
     }
 
     @Override

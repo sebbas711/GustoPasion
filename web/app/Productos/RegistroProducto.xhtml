@@ -10,51 +10,58 @@
 
     <ui:define name="contenido">
         <f:view locale="#{languagecontroller.locale}">
-            <div class="container">
-                <h:form prependId="false"> 
+            <h:form prependId="false"> 
+                <div class="container">
                     <br/>
-                    <h3 class="text-center"><b style="color: #951010;font-family: inherit">#{msjInventario.REGISTRARINSUMOS}</b></h3>
+                    <h3 class="text-center"><b style="color: #951010;font-family: inherit">REGISTRAR PRODUCTOS</b></h3>
                     <br/>
                     <div class="row">
                         <div class="col-md-5"  style="margin-left:40px">
                             <div class="form-group" >
-                                <label for="message-text" class="col-form-label">#{msjInventario.TipodeInsumo} 
+                                <label for="message-text" class="col-form-label"> Categoria del Producto: 
                                     <b style="color: red">*</b></label>
-                                    <h:selectOneMenu class="form-control" value="#{inventarioControlador.nuevoInsumo.tipoInsumo}">
-                                    <f:selectItem itemLabel="#{msjInventario.SeleccioneuntipodeInsumo}" itemValue=""/>
-                                    <f:selectItems value="#{tipoInsumoControlador.tiposInsumo}" var="ti" itemLabel="#{ti.nombre}"/>
+                                <h:selectOneMenu class="form-control" value="#{productoController.producto.categoriaProducto}">
+                                    <f:selectItem itemLabel="Seleccione una categorio de producto" itemValue=""/>
+                                    <f:selectItems value="#{categoriaViewControlador.categorias}" var="ti" itemLabel="#{ti.nombreCategoria}"/>
                                 </h:selectOneMenu>
                             </div>
-                            <div class="form-group">
-                                <label for="message-text" class="col-form-label">#{msjInventario.AuxiliarCocina} <b style="color: red">*</b></label>
-                                <h:selectOneMenu class="form-control" value="#{inventarioControlador.nuevoInsumo.auxCocina}">
-                                    <f:selectItem itemLabel="#{msjInventario.SeleccioneAuxiliarCocina}" itemValue=""/>
-                                    <f:selectItems value="#{auxCocinaControlador.auxCocina}" var="aux" itemLabel="#{aux.usuario.primerNombre} #{aux.usuario.primerApellido}"/>
-                                </h:selectOneMenu>
-                            </div> 
-                            <div class="form-group">
-                                <label for="message-text" class="col-form-label">#{msjInventario.FECHADEVENCIMIENTO} <b style="color: red">*</b></label>
-                                <h:inputText a:type="date" class="form-control" value="#{inventarioControlador.nuevoInsumo.fechaVencimiento}">
-                                    <f:convertDateTime pattern="yyyy-MM-dd"/>
-                                </h:inputText>
-                            </div>
-                        </div>
-                        <div class="col-md-6" style="margin-left:40px">
-                            <div class="form-group">
-                                <label for="message-text" class="col-form-label">#{msjInventario.NOMBRE} <b style="color: red">*</b></label>
-                                <h:inputText class="form-control" value="#{inventarioControlador.nuevoInsumo.nombre}" a:placeholder="#{msjInventario.NombredelInsumo}" maxlength="20"/>
-                            </div> 
-                            <div class="form-group">
-                                <label for="message-text" class="col-form-label">#{msjInventario.DESCRIPCION} <b style="color: red">*</b></label>
-                                <h:inputText class="form-control" value="#{inventarioControlador.nuevoInsumo.descripcion}" a:placeholder="#{msjInventario.Descripción}" maxlength="70"/>
-                            </div>
-                            <div class="form-group">
-                                <label for="message-text"  class="col-form-label">#{msjInventario.CANTIDAD} <b style="color: red">*</b></label>
-                                <h:inputText class="form-control"  a:type="number" value="#{inventarioControlador.nuevoInsumo.cantidad}"/>
-                            </div>
+                        </div> 
+                        <div class="form-group col-md-5">
+                            <label for="message-text" class="col-form-label">Nombre:<b style="color: red">*</b></label>
+                            <h:inputText class="form-control" value="#{productoController.producto.nombre}" a:placeholder="Nombre del producto"/>
+                        </div> 
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5" style="margin-left:40px">
+                            <label for="message-text" class="col-form-label">Precio:<b style="color: red">*</b></label>
+                            <h:inputText class="form-control" value="#{productoController.producto.precio}" a:placeholder="Ingrese Precio" maxlength="20"/>
+                        </div> 
+                        <div class="form-group col-md-5">
+                            <label for="message-text" class="col-form-label">Descripción:<b style="color: red">*</b></label>
+                            <h:inputText class="form-control" value="#{productoController.producto.descripcion}" a:placeholder="Descripción" maxlength="20"/>
+                        </div> 
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5" style="margin-left:40px">
+                            <label for="message-text" class="col-form-label">Precio:<b style="color: red">*</b></label>
+                            <h:inputText class="form-control" value="#{productoController.producto.precio}" a:placeholder="Ingrese Precio" maxlength="20"/>
+                        </div> 
+                        <div class="form-group col-md-5">
+                            <label for="message-text" class="col-form-label">Descripción:<b style="color: red">*</b></label>
+                            <h:inputText class="form-control" value="#{productoController.producto.descripcion}" a:placeholder="Descripción" maxlength="20"/>
+                        </div> 
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-5" style="margin-left:40px">
+                            <label for="imagen" class="control-label mb-1">
+                                <strong>#{msjTemplate.Imagen}</strong>
+                            </label>
+                            <br/>
+                            <br/>
+                            <h:inputFile id="imagen" class="control-label mb-1" value="#{productoController.producto.imagenP}"
+                                         a:aria-required="true" a:aria-invalid="false"/>
                         </div>
                     </div>
-                    <br/>
                     <div class="col-sm-12">
                         <center>
                             <h:commandLink class="btn" 
@@ -70,8 +77,10 @@
                     <h:messages showDetail="false" layout="table"
                                 style="padding: 5px; border-radius: 5px; box-shadow: 0px, 0px, 4px #951010; display: block; color: red;
                                 margin-left: 50px"/>
-                </h:form>
-            </div>
+
+
+                </div>
+            </h:form>
         </f:view>
     </ui:define>
 </ui:composition>

@@ -48,7 +48,7 @@ public class Usuario implements Serializable {
     @Id
     @Basic(optional = false)
     @NotNull
-    @Column(name = "id")
+    @Column(name = "Id")
     private Integer id;
     @Basic(optional = false)
     @NotNull
@@ -94,7 +94,7 @@ public class Usuario implements Serializable {
     @Column(name = "estado")
     private int estado;
     @JoinTable(name = "rol_has_usuario", joinColumns = {
-        @JoinColumn(name = "usuario", referencedColumnName = "id")}, inverseJoinColumns = {
+        @JoinColumn(name = "usuario", referencedColumnName = "Id")}, inverseJoinColumns = {
         @JoinColumn(name = "rol", referencedColumnName = "id")})
     @ManyToMany(fetch = FetchType.LAZY)
     private List<Rol> roles;

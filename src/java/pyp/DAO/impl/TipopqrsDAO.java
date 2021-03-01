@@ -21,3 +21,4 @@ public class TipopqrsDAO extends AbstractDAO<Tipopqrs> implements ITipopqrsDAO {
     }
     
 }
+

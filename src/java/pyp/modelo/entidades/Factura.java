@@ -57,7 +57,7 @@ public class Factura implements Serializable {
     private double precioUnitario;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "Iva")
+    @Column(name = "iva")
     private int iva;
     @Basic(optional = false)
     @NotNull
@@ -73,8 +73,8 @@ public class Factura implements Serializable {
     @ManyToMany(fetch = FetchType.LAZY)
     private List<MetodoDePago> metodosDePago;
     @JoinTable(name = "cajero_has_factura", joinColumns = {
-        @JoinColumn(name = "factura", referencedColumnName = "id")}, inverseJoinColumns = {
-        @JoinColumn(name = "cajero", referencedColumnName = "id")})
+        @JoinColumn(name = "Factura", referencedColumnName = "id")}, inverseJoinColumns = {
+        @JoinColumn(name = "Cajero", referencedColumnName = "id")})
     @ManyToMany(fetch = FetchType.LAZY)
     private List<Cajero> cajeros;
     @JoinTable(name = "factura_has_producto", joinColumns = {
@@ -82,7 +82,7 @@ public class Factura implements Serializable {
         @JoinColumn(name = "producto", referencedColumnName = "id")})
     @ManyToMany(fetch = FetchType.LAZY)
     private List<Producto> productos;
-    @JoinColumn(name = "pedidos", referencedColumnName = "id")
+    @JoinColumn(name = "pedidos", referencedColumnName = "Id")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Pedido pedidos;
     @JoinColumn(name = "cliente", referencedColumnName = "id")

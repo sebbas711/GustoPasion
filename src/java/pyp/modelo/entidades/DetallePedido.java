@@ -47,10 +47,10 @@ public class DetallePedido implements Serializable {
     @NotNull
     @Column(name = "valor_unitario")
     private double valorUnitario;
-    @JoinColumn(name = "pedido", referencedColumnName = "id")
+    @JoinColumn(name = "pedido", referencedColumnName = "Id")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Pedido pedido;
-    @JoinColumn(name = "producto", referencedColumnName = "id")
+    @JoinColumn(name = "Producto", referencedColumnName = "id")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Producto producto;
 

@@ -109,5 +109,9 @@ public class InsumosDelProducto implements Serializable {
     public String toString() {
         return "pyp.modelo.entidades.InsumosDelProducto[ id=" + id + " ]";
     }
+
+    public void setCantidadInsumo(Integer cantidad) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

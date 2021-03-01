@@ -39,11 +39,11 @@ public class Cajero implements Serializable {
     @Column(name = "id")
     private Integer id;
     @JoinTable(name = "cajero_has_factura", joinColumns = {
-        @JoinColumn(name = "cajero", referencedColumnName = "id")}, inverseJoinColumns = {
-        @JoinColumn(name = "factura", referencedColumnName = "id")})
+        @JoinColumn(name = "Cajero", referencedColumnName = "id")}, inverseJoinColumns = {
+        @JoinColumn(name = "Factura", referencedColumnName = "id")})
     @ManyToMany(fetch = FetchType.LAZY)
     private List<Factura> facturas;
-    @JoinColumn(name = "id", referencedColumnName = "id", insertable = false, updatable = false)
+    @JoinColumn(name = "id", referencedColumnName = "Id", insertable = false, updatable = false)
     @OneToOne(optional = false, fetch = FetchType.LAZY)
     private Usuario usuario;
 
