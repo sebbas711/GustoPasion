@@ -73,8 +73,8 @@ public class Factura implements Serializable {
     @ManyToMany(fetch = FetchType.LAZY)
     private List<MetodoDePago> metodosDePago;
     @JoinTable(name = "cajero_has_factura", joinColumns = {
-        @JoinColumn(name = "Factura", referencedColumnName = "id")}, inverseJoinColumns = {
-        @JoinColumn(name = "Cajero", referencedColumnName = "id")})
+        @JoinColumn(name = "factura", referencedColumnName = "id")}, inverseJoinColumns = {
+        @JoinColumn(name = "cajero", referencedColumnName = "id")})
     @ManyToMany(fetch = FetchType.LAZY)
     private List<Cajero> cajeros;
     @JoinTable(name = "factura_has_producto", joinColumns = {
@@ -82,7 +82,7 @@ public class Factura implements Serializable {
         @JoinColumn(name = "producto", referencedColumnName = "id")})
     @ManyToMany(fetch = FetchType.LAZY)
     private List<Producto> productos;
-    @JoinColumn(name = "pedidos", referencedColumnName = "Id")
+    @JoinColumn(name = "pedidos", referencedColumnName = "id")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Pedido pedidos;
     @JoinColumn(name = "cliente", referencedColumnName = "id")
