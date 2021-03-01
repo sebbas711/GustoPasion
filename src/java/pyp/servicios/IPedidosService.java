@@ -17,5 +17,7 @@ public interface IPedidosService {
     List<Estadopedido> getEstadoPedidosHabilitados() throws BusinessException;
 
     public List<Pedido> findPedidosByFilter(Estadopedido estadoPedidoFiltro) throws BusinessException;
+
+    public void realizarPedido(Pedido pedido) throws BusinessException;
     
 }

@@ -16,9 +16,9 @@ import javax.persistence.PersistenceContext;
 public abstract class AbstractDAO<T> {
     
     @PersistenceContext(unitName = "PizzasPU")
-     EntityManager em;
+    protected EntityManager em;
 
-    private Class<T> entityClass;
+    protected Class<T> entityClass;
 
     public AbstractDAO(Class<T> entityClass) {
         this.entityClass = entityClass;

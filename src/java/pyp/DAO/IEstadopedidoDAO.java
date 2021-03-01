@@ -15,5 +15,7 @@ import pyp.modelo.entidades.Estadopedido;
  */
 @Local
 public interface IEstadopedidoDAO extends DAO<Estadopedido>{
+
+    public Estadopedido findEstadoSolicitado();
     
 }

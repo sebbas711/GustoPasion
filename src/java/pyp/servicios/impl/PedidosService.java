@@ -5,6 +5,7 @@
  */
 package pyp.servicios.impl;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 import javax.ejb.EJB;
@@ -13,6 +14,7 @@ import pyp.DAO.IEstadopedidoDAO;
 import pyp.DAO.IPedidoDAO;
 import pyp.excepciones.BusinessException;
 import pyp.excepciones.MessageException;
+import pyp.modelo.entidades.DetallePedido;
 import pyp.modelo.entidades.Estadopedido;
 import pyp.modelo.entidades.Pedido;
 import pyp.servicios.IPedidosService;
@@ -45,6 +47,50 @@ public class PedidosService implements IPedidosService {
             throw new BusinessException(MessageException.BE_ESTADO_PEDIDO_ERROR, e);
         }
 
+    }
+
+    @Override
+    public void realizarPedido(Pedido pedido) throws BusinessException {
+        validaPedidoNoEstaVacio(pedido);
+        validaDetallePedidoNoEstaVacio(pedido);
+        registrarPedido(pedido);
+    }
+    
+    private void validaPedidoNoEstaVacio(Pedido pedido) throws BusinessException{
+        if(Objects.isNull(pedido)){
+            throw new BusinessException(MessageException.BE_PEDIDO_VACIO);
+        }
+    }
+    
+    private void validaDetallePedidoNoEstaVacio(Pedido pedido) throws BusinessException{
+        if(Objects.isNull(pedido.getDetallesPedido()) && !pedido.getDetallesPedido().isEmpty()){
+            throw new BusinessException(MessageException.BE_PEDIDO_SIN_PRODUCTOS);
+        }
+    }
+    
+    private void registrarPedido(Pedido pedido) throws BusinessException{
+        try {
+            pedido.setFecha(new Date());
+            double subtotal = calcularSubTotalPedido(pedido);
+            pedido.setSubTotal(subtotal);
+            pedido.setValorTotal(calcularTotalPedido(subtotal));
+            pedido.setEstadoPedido(estadoPedidoDao.findEstadoSolicitado());
+            pedidoDao.create(pedido);
+        } catch(Exception e){
+            throw new BusinessException(MessageException.BE_ERROR_REGISTRAR_PEDIDO, e);
+        }
+    }
+    
+    private double calcularSubTotalPedido(Pedido pedido){
+        double subtotal = 0;
+        for(DetallePedido detalle: pedido.getDetallesPedido()){
+            subtotal += detalle.getCantidad() * detalle.getValorUnitario();
+        }
+        return subtotal;
+    }
+    
+    private double calcularTotalPedido(double subtotal){
+        return subtotal + (subtotal*0.16);
     }
 
 }

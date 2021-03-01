@@ -17,7 +17,7 @@ import pyp.modelo.entidades.Rol;
  *
  * @author alejo
  */
-@FacesConverter(forClass = Rol.class)
+@FacesConverter(value = "rolConverter")
 public class RolConverter implements Converter{
     
     private IRolDAO rDAO;

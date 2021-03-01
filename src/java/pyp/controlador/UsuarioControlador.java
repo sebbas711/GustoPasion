@@ -17,6 +17,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.context.ExternalContext;
@@ -39,6 +40,7 @@ import pyp.DAO.IRolDAO;
 import pyp.DAO.IUsuarioDAO;
 import pyp.modelo.entidades.Rol;
 import pyp.modelo.entidades.Usuario;
+import pyp.servicios.usuarios.IRegistroUsuarioService;
 import pyp.util.Email;
 import pyp.util.MessageUtil;
 
@@ -52,6 +54,8 @@ public class UsuarioControlador implements Serializable {
 
     @EJB
     private IUsuarioDAO usuarioDAO;
+    @EJB
+    private IRegistroUsuarioService registroUsuarioService;
     private List<Usuario> usuarios;
     private Usuario UsuarioSeleccionado;
     private Usuario nuevoUsuario;
@@ -65,6 +69,7 @@ public class UsuarioControlador implements Serializable {
     @PostConstruct
     public void init() {
         nuevoUsuario = new Usuario();
+        nuevoUsuario.setRoles(new ArrayList<>());
     }
 
     public List<Usuario> getUsuarios() {
@@ -98,7 +103,6 @@ public class UsuarioControlador implements Serializable {
     }
 
     public void registrar() {
-
         String mensajeRequest = "";
         
         try { 
@@ -108,8 +112,11 @@ public class UsuarioControlador implements Serializable {
                     && nuevoUsuario.getEmail() != null
                     && nuevoUsuario.getDireccion() != null
                     && nuevoUsuario.getContraseña() != null) {
-                nuevoUsuario.setEstado(Short.valueOf("1")); 
-                usuarioDAO.create(nuevoUsuario);
+                if(Objects.isNull(nuevoUsuario.getRoles()) || nuevoUsuario.getRoles().isEmpty()){
+                    registroUsuarioService.registrarCliente(nuevoUsuario);
+                } else {
+                    registroUsuarioService.registrarUsuario(nuevoUsuario);
+                }
                 mensajeRequest = "swal('Registro Exitoso', '', 'success');";
             } else {
                 mensajeRequest = "swal('Los campos son obligatorios', 'Por favor diligencie todos los campos', 'info');";

@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:fragment 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+    xmlns:p="http://primefaces.org/ui">
+
+    <h:panelGroup layout="block" rendered="#{menuControlador.renderAgregarProducto()}">
+        <main>
+            <div class="jumbotron" style="background: url(#{request.contextPath}/resource/img/Menu.jpg); 
+                 opacity: 0.7; height: 10px;"><a href="Menu.xhtml" style="text-decoration: none;">
+                    <h1 class="display-3 mb-3" style="font-family: Gabriola; font-size: 50px; color: yellow; 
+                        margin-left: 120px;"><strong>MENÚ - #{menuControlador.categoriaSeleccionada.nombreCategoria} - #{menuControlador.productoSeleccionado.nombre}</strong></h1></a> 
+            </div>
+        </main>
+        <div class="container" id="lista-productos">
+            <h:form prependId="false">
+                <p:commandLink actionListener="#{menuControlador.deseleccionarProducto()}"
+                               update=":containerMenu"
+                               class="btn btn-block  agregar-carrito" 
+                               style="background: #951010; color: white"
+                               value="Volver a la categoría (#{menuControlador.categoriaSeleccionada.nombreCategoria})"/>
+                <div class="row  justify-content-center">
+                    <div class="col-xs-12 col-sm-6 col-md-4">
+                        <h:panelGroup id="agregarProductoCarritoContent" class="card" layout="block">
+                            <div class="card-body">
+                                <h4 class="my-0 font-weight-bold text-center" 
+                                    style="color: black">#{menuControlador.productoSeleccionado.nombre}
+                                </h4>
+                                <hr style="background-color: #951010"/>
+                                <img src="#{request.contextPath}/resource/img/#{menuControlador.productoSeleccionado.imagenP}" 
+                                     class="card-img-top" style="height: 180px;"/>
+                                <p class="card-text">#{menuControlador.productoSeleccionado.descripcion}.</p>
+                                <hr style="background-color: #951010"/>
+                                <div><b style="color: #951010">Precio unitatio: $</b><b> #{menuControlador.productoSeleccionado.precio}</b></div>
+                                <div>
+                                    <b style="color: #951010">Cantidad: </b>
+                                    <div class="btn-group btn-group-sm mb-2" role="group" aria-label="Basic example">
+                                        <p:commandLink  class="btn btn-secondary" value="-"
+                                                        update="agregarProductoCarritoContent"
+                                                        actionListener="#{menuControlador.disminuirCantidadProducto()}"/>
+                                        <h:panelGroup id="cantidadProductoSeleccionado" class="form-control form-control-sm" style="width: 50px; text-align: center;">#{menuControlador.cantidadProducto}</h:panelGroup>
+                                        <p:commandLink class="btn btn-secondary" value="+" 
+                                                       update="agregarProductoCarritoContent"
+                                                       actionListener="#{menuControlador.incrementarCantidadProducto()}"/>
+                                    </div>
+                                </div>
+                                <div class="mb-2"><b style="color: #951010">Subtotal: $</b><b> #{menuControlador.getSubtotalAgregarCarrito()}</b></div>
+                                <p:commandLink actionListener="#{menuControlador.agregarProductoAlCarrito()}"
+                                               update=":containerMenu :shopCar"
+                                               class="btn btn-block  agregar-carrito" 
+                                               style="background: #951010; color: white"
+                                               a:data-id="50" value="#{msjMenu.AgregaralCarro}"/>
+                            </div>
+                        </h:panelGroup>
+                    </div>
+                </div>
+            </h:form>
+        </div>
+    </h:panelGroup>
+</ui:fragment>
+

@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <div class="modal fade" role="dialog" id="agregarProductoCarritoModal"  data-keyboard="false" 
+         tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <h:form prependId="false">
+                <h:panelGroup id="agregarProductoCarritoContent" layout="block">
+                    <div class="modal-header modal-sm">
+                        <div class="modal-content">
+                            <div class="modal-header" style="background-color: #951010; opacity: 0.9">
+                                <span>
+                                    <img src="#{request.contextPath}/resource/img/LOgo.png" class="rounded-pill" 
+                                         target="_blank" style="height: 70px"/>
+                                </span>
+                                <h4 style="text-align: center; color: #fff; font-family: cursive"><b>GUSTO Y PASIÓN</b></h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span class="text-light" aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="card" >
+                                            <div class="card-body">
+                                                <h4 class="my-0 font-weight-bold text-center" 
+                                                    style="color: black">#{carritoController.productoSeleccionado.nombre}
+                                                </h4>
+                                                <hr style="background-color: #951010"/>
+                                                <img src="#{request.contextPath}/resource/img/#{carritoController.productoSeleccionado.imagenP}" 
+                                                     class="card-img-top" style="height: 180px;"/>
+                                                <p class="card-text">#{carritoController.productoSeleccionado.descripcion}.</p>
+                                                <hr style="background-color: #951010"/>
+                                                <div><b style="color: #951010">Precio unitatio: $</b><b> #{carritoController.productoSeleccionado.precio}</b></div>
+                                                <div>
+                                                    <b style="color: #951010">Cantidad: </b>
+                                                    <div class="btn-group btn-group-sm mb-2" role="group" aria-label="Basic example">
+                                                        <button type="button" class="btn btn-secondary">-</button>
+                                                        <h:panelGroup class="form-control form-control-sm" style="width: 50px; text-align: center;" id="cantidadProductoSeleccionado">#{carritoController.cantidad}</h:panelGroup>
+                                                        <button type="button" class="btn btn-secondary">+</button>
+                                                    </div>
+                                                </div>
+                                                <p:commandLink actionListener="#{carritoController.agregarProducto(pt)}"
+                                                               update=":shopCar"
+                                                               class="btn btn-block  agregar-carrito" 
+                                                               style="background: #951010; color: white"
+                                                               a:data-id="50" value="#{msjMenu.AgregaralCarro}"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </h:panelGroup>
+            </h:form>
+        </div>
+    </div>
+
+</ui:composition>
+

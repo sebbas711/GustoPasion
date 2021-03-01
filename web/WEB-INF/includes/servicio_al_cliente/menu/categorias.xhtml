@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:fragment 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+    xmlns:p="http://primefaces.org/ui">
+
+    <h:panelGroup layout="block" rendered="#{menuControlador.renderCategorias()}">
+        <main>
+            <div class="jumbotron" style="background: url(#{request.contextPath}/resource/img/Menu.jpg); 
+                 opacity: 0.7; height: 10px;"><a href="Menu.xhtml" style="text-decoration: none;">
+                    <h1 class="display-3 mb-3" style="font-family: Gabriola; font-size: 50px; color: yellow; 
+                        margin-left: 120px;"><strong>MENÚ</strong></h1></a> 
+            </div>
+        </main>
+        <div class="container" id="lista-categorias">
+            <h:form>
+                <div class="row row-cols-1 row-cols-md-3">
+                    <ui:repeat value="#{menuControlador.categorias}" var="categ">
+                        <div class="col mb-4">
+                            <p:commandLink action="#{menuControlador.seleccionarCategoria(categ)}"
+                                           update=":containerMenu"
+                                           class="btn " 
+                                           style="background: rgba(154, 32, 16,0.1); color: #B85F5F; border-color: #951010">
+                                <h5 class="card-title text-center" 
+                                    style=" color: #B85F5F; font-size: 25px; border-color: #951010">
+                                    <b>#{categ.nombreCategoria}</b>
+                                </h5>
+                                <div class="card">
+                                    <img src="#{menuControlador.getImageCagegoria(categ)}" 
+                                         class="card-img-top" 
+                                         alt="#{categ.nombreCategoria}"/>
+                                    <!--div class="card-body">
+                                    </div-->
+                                </div>
+                            </p:commandLink>
+                        </div>
+                    </ui:repeat>
+                </div> 
+            </h:form>
+        </div>
+    </h:panelGroup>
+</ui:fragment>
+

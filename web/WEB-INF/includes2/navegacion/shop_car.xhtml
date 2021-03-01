@@ -12,26 +12,33 @@
                aria-haspopup="true" aria-expanded="false" style="font-size: 25px; margin-top: 10px; margin-right: 8px;"></i>
                <span class="badge badge-danger" style="position: absolute; bottom: 0px; right: 15px;">#{carritoController.cantidadItems}</span>
         </div>   
-        <div id="carrito" class="dropdown-menu" aria-labelledby="navbarCollapse">
-            <h:dataTable class="table" value="#{carritoController.productosPedido}" var="p">
+        <div id="carrito" class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarCollapse">
+            <h:dataTable class="table" value="#{carritoController.pedido.detallesPedido}" var="dp">
                 <h:column>
                     <f:facet name="header">#{msjMenu.Imagen}</f:facet>
-                        #{p.id}
+                    #{dp.producto.id}
                 </h:column>
                 <h:column>
                     <f:facet name="header">#{msjMenu.Nombre}</f:facet>
-                        #{p.nombre}
+                    #{dp.producto.nombre}
                 </h:column>
                 <h:column>
                     <f:facet name="header">#{msjMenu.Precio}</f:facet>
-                        #{p.precio}
+                    #{dp.producto.precio}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">#{msjMenu.Cantidad}</f:facet>
+                    #{dp.cantidad}
                 </h:column>
             </h:dataTable>
             <p:commandLink actionListener="#{carritoController.vaciar()}"
                            update="shopCar"
                            id="vaciar-carrito" class="btn btn-danger btn-block" 
                            value="#{msjMenu.VaciarCarrito}"/>
-            <a href="#{request.contextPath}/app/Usuario/InicioSesion.xhtml" id="procesar-pedido" class="btn btn-success btn-block">#{msjMenu.RealizarPedido}</a>
+            <p:commandLink actionListener="#{carritoController.realizarPedido()}"
+                           update=":shopCar :globalMessages"
+                           id="procesar-pedido" class="btn btn-success btn-block" 
+                           value="#{msjMenu.RealizarPedido}"/>
         </div>
     </h:form>
 </ui:fragment>

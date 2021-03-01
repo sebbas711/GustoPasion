@@ -6,7 +6,6 @@
 package pyp.DAO;
 
 import java.util.List;
-import pyp.modelo.entidades.Usuario;
 
 /**
  *

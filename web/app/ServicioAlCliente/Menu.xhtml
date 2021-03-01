@@ -10,44 +10,12 @@
     xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <ui:define name="contenido">
         <f:view locale="#{languagecontroller.locale}">
-
-            <br/><br/><br/><br/>
-
-            <main>
-                <div class="jumbotron" style="background: url(#{request.contextPath}/resource/img/Menu.jpg); 
-                     opacity: 0.7; height: 10px;"><a href="Menu.xhtml" style="text-decoration: none;">
-                        <h1 class="display-3 mb-3" style="font-family: Gabriola; font-size: 50px; color: yellow; 
-                            margin-left: 120px;"><strong>MENÚ</strong></h1></a> 
-                </div>
-            </main>
-            <div class="container" id="lista-productos">
-                <h:form>
-                    <div class="row row-cols-1 row-cols-md-3">
-                        <c:forEach items="#{categoriaViewControlador.categorias}" var="categ">
-                            <div class="col mb-4">
-                                <h:commandLink action="#{categoriaViewControlador.categoriaSeleccionada(categ.id)}" 
-                                               class="btn " 
-                                               a:data-toggle="modal" a:data-target="#verInfoCategoria"
-                                               style="background: rgba(154, 32, 16,0.1); color: #B85F5F; border-color: #951010">
-                                    <h5 class="card-title text-center" 
-                                        style=" color: #B85F5F; font-size: 25px; border-color: #951010">
-                                        <b>#{categ.nombreCategoria}</b>
-                                    </h5>
-                                    <div class="card">
-                                        <img src="#{menuControlador.getImageCagegoria(categ)}" 
-                                             class="card-img-top" 
-                                             alt="#{categ.nombreCategoria}"/>
-                                        <!--div class="card-body">
-                                        </div-->
-                                    </div>
-                                    <f:ajax render=":verInfoCategoriaContent"/>
-                                </h:commandLink>
-                            </div>
-                        </c:forEach>
-                    </div> 
-                </h:form>
-            </div>
-            <ui:include src="/WEB-INF/includes/modal/pedidos/ver_info_categoria.xhtml"></ui:include>
+            <br/><br/>
+            <h:panelGroup id="containerMenu" layout="block">
+            <ui:include src="/WEB-INF/includes/servicio_al_cliente/menu/categorias.xhtml"/>
+            <ui:include src="/WEB-INF/includes/servicio_al_cliente/menu/productos_categoria.xhtml"/>
+            <ui:include src="/WEB-INF/includes/servicio_al_cliente/menu/agregar_producto_carrito.xhtml"/>
+            </h:panelGroup>
             <br/>
             <script src="#{request.contextPath}/resource/js/jquery-3.4.1.min.js"></script>
             <script src="#{request.contextPath}/resource/js/pedido.js"></script>

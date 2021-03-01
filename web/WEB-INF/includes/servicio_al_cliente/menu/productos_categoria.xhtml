@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:fragment 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+    xmlns:p="http://primefaces.org/ui">
+
+    <h:panelGroup layout="block" rendered="#{menuControlador.renderProductosCategoria()}">
+        <main>
+            <div class="jumbotron" style="background: url(#{request.contextPath}/resource/img/Menu.jpg); 
+                 opacity: 0.7; height: 10px;"><a href="Menu.xhtml" style="text-decoration: none;">
+                    <h1 class="display-3 mb-3" style="font-family: Gabriola; font-size: 50px; color: yellow; 
+                        margin-left: 120px;"><strong>MENÚ - #{menuControlador.categoriaSeleccionada.nombreCategoria}</strong></h1></a> 
+            </div>
+        </main>
+        <div class="container" id="lista-productos">
+            <h:form prependId="false">
+                <p:commandLink actionListener="#{menuControlador.deseleccionarCategoria()}"
+                               update=":containerMenu"
+                               class="btn btn-block  agregar-carrito" 
+                               style="background: #951010; color: white"
+                               value="Volver a categorías"/>
+                <h:panelGroup id="verInfoCategoriaContent" layout="block">
+                    <div class="row">
+                        <ui:repeat value="#{menuControlador.categoriaSeleccionada.productos}" var="pt">
+                            <div class="col-sm-6 col-md-4">
+                                <div class="card" style="height: 500px">
+                                    <div class="card-body">
+                                        <h4 class="my-0 font-weight-bold text-center" 
+                                            style="color: black">#{pt.nombre}
+                                        </h4>
+                                        <hr style="background-color: #951010"/>
+                                        <img src="#{request.contextPath}/resource/img/#{pt.imagenP}" 
+                                             class="card-img-top" style="height: 180px;"/>
+                                        <h1 class="btn  pricing-btn  precio"><b style="color: #951010">$</b><b> #{pt.precio}</b></h1>
+                                        <hr style="background-color: #951010"/>
+                                        <p class="card-text">#{pt.descripcion}.</p>
+                                        <br/>
+                                        <p:commandLink actionListener="#{menuControlador.seleccionarProducto(pt)}"
+                                                       update=":containerMenu"
+                                                       class="btn btn-block  agregar-carrito" 
+                                                       style="background: #951010; color: white"
+                                                       value="Seleccionar producto"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </ui:repeat>
+                    </div>
+                </h:panelGroup>
+            </h:form>
+        </div>
+    </h:panelGroup>
+</ui:fragment>
+

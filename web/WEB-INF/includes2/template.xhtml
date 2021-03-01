@@ -11,6 +11,9 @@
     </h:head>
     <h:body id="page-top">
         <ui:include src="/WEB-INF/includes2/navegacion/navegacion.xhtml"></ui:include>
+        <h:messages id="globalMessages" showDetail="false" layout="table"
+                    style="padding: 5px; border-radius: 5px; box-shadow: 0px, 0px, 4px #951010; display: block; color: white;
+                    margin-left: 50px; position: absolute; top: 200px; background: red;"/>
         <ui:insert name="contenido">
         </ui:insert>
 

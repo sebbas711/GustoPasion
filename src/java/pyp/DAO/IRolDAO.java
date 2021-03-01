@@ -14,6 +14,12 @@ import pyp.modelo.entidades.Rol;
  */
 @Local
 public interface IRolDAO extends DAO<Rol> {
+    
+    public static final int ID_ROL_ADMIN = 1;
+    public static final int ID_ROL_CAJERO = 2;
+    public static final int ID_ROL_CLIENTE = 5;
+
+    public Rol findRolCliente();
 
 
 

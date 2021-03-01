@@ -88,7 +88,8 @@
                         <center>
                             <h:outputLabel for="fr_rol"><b style="color: #951010">#{msjRegistro.ROL}</b> <b style="color: red">*</b> </h:outputLabel>
                             <h:selectManyCheckbox id="fr_rol" class="form-control" value="#{usuarioControlador.nuevoUsuario.roles}">
-                                <f:selectItems value="#{rolControlador.roles}" var="rol"  itemLabel="#{rol.descripcion} &ensp; &ensp; &ensp; &ensp; &ensp; &ensp; &ensp; &ensp; &ensp; &ensp; "/>
+                                <f:converter converterId="rolConverter"/>
+                                <f:selectItems value="#{rolControlador.roles}" var="rol" itemValue="#{rol}" itemLabel="#{rol.descripcion} &ensp; &ensp; &ensp; &ensp; &ensp; &ensp; &ensp; &ensp; &ensp; &ensp; "/>
                             </h:selectManyCheckbox>
                         </center>
                     </div>

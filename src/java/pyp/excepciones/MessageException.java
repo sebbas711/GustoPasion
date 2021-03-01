@@ -10,14 +10,18 @@ package pyp.excepciones;
  * @author Ismael
  */
 public enum MessageException {
-    
+
     BE_USUARIO_NO_EXISTE("0001", "Datos Incorrectos", "Verifique sus datos y vuelva a intentarlo", ExceptionType.WARNING),
     BE_USUARIO_INACTIVO("0002", "Usuario Inactivo", "Debe contactar al administrador para activar su usuario.", ExceptionType.WARNING),
     
     BE_TIPO_INVENTARIO_ERROR("0012", "Error buscando tipo de inventario", "Debe contactar al administrador para activar su usuario.", ExceptionType.ERROR),
     BE_ESTADO_PEDIDO_ERROR("0012", "Error buscando estado", "Contactese con el Administrador", ExceptionType.ERROR),
-    BE_ESTADO_PQRS_ERROR("0012", "Error buscando estado", "Contactese con el Administrador", ExceptionType.ERROR);
+    BE_ESTADO_PQRS_ERROR("0012", "Error buscando estado", "Contactese con el Administrador", ExceptionType.ERROR),
     
+    BE_PEDIDO_VACIO("0021", "Error validación", "El pedido no puede estar vacio", ExceptionType.WARNING),
+    BE_PEDIDO_SIN_PRODUCTOS("0022", "Error validación", "El pedido debe contener por lo menos un producto", ExceptionType.WARNING),
+    BE_ERROR_REGISTRAR_PEDIDO("0023", "Error registrar pedido", "Se ha presentado un error al registar el pedio", ExceptionType.ERROR);
+
     String code;
     String message;
     String detail;
@@ -45,5 +49,5 @@ public enum MessageException {
     public ExceptionType getType() {
         return type;
     }
-    
+
 }

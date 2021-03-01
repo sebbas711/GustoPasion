@@ -16,8 +16,16 @@ import pyp.modelo.entidades.Estadopedido;
 @Stateless
 public class EstadopedidoDAO extends AbstractDAO<Estadopedido> implements IEstadopedidoDAO {
 
+    public static final Integer ID_ESTADO_SOLICITADO = 1;
+
     public EstadopedidoDAO() {
         super(Estadopedido.class);
+    }
+
+    @Override
+    public Estadopedido findEstadoSolicitado() {
+        return getEntityManager()
+                .find(entityClass, ID_ESTADO_SOLICITADO);
     }
 
 }
