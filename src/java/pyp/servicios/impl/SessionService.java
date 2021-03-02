@@ -5,6 +5,7 @@
  */
 package pyp.servicios.impl;
 
+import java.util.Objects;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import pyp.DAO.IUsuarioDAO;
@@ -37,6 +38,9 @@ public class SessionService implements ISessionService {
         if (userIsInavtive(user)) {
             throw new BusinessException(MessageException.BE_USUARIO_INACTIVO);
         }
+        if (userNotHasRoles(user)) {
+            throw new BusinessException(MessageException.BE_USUARIO_NOT_HAS_ROLES);
+        }
         return user;
     }
 
@@ -46,6 +50,10 @@ public class SessionService implements ISessionService {
 
     private boolean userExists(Usuario user) {
         return user != null;
+    }
+    
+    private boolean userNotHasRoles(Usuario user){
+        return Objects.isNull(user.getRoles()) || user.getRoles().isEmpty();
     }
 
     @Override

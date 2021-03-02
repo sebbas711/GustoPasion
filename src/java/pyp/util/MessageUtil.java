@@ -7,6 +7,7 @@ package pyp.util;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import org.primefaces.PrimeFaces;
 import pyp.excepciones.BusinessException;
 import pyp.excepciones.ExceptionType;
 
@@ -51,6 +52,28 @@ public class MessageUtil {
 
     public static void sendMessageInfo(Object object, String usuario_Incativo, String debe_contactar_al_administrador_para_acti, Boolean FALSE) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    public static void sendInfoModal(String title, String detail){
+        PrimeFaces.current().executeScript(buildMessageModal(title, detail, "info"));
+    }
+    
+    public static void sendSuccessModal(String title, String detail){
+        PrimeFaces.current().executeScript(buildMessageModal(title, detail, "success"));
+    }
+    
+    public static void sendErrorModal(String title, String detail){
+        PrimeFaces.current().executeScript(buildMessageModal(title, detail, "error"));
+    }
+    
+    private static String buildMessageModal(String title, String detail, String type){
+        return "swal('"
+                .concat(title)
+                .concat("','")
+                .concat(detail)
+                .concat("','")
+                .concat(type)
+                .concat("');");
     }
 
 }

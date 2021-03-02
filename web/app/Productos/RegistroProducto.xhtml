@@ -3,76 +3,171 @@
 <ui:composition template="/WEB-INF/includes/template.xhtml" 
                 xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
-                xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
                 xmlns:p="http://primefaces.org/ui">
 
     <ui:define name="contenido">
         <f:view locale="#{languagecontroller.locale}">
-            <div class="container">
-                <h:form prependId="false"> 
-                    <br/>
-                    <h3 class="text-center"><b style="color: #951010;font-family: inherit">REGISTRAR PRODUCTOS</b></h3>
-                    <br/>
+            <h:panelGroup id="contentRegistroProducto" class="content">
+                <div class="animated fadeIn">
                     <div class="row">
-                        <div class="col-md-5"  style="margin-left:40px">
-                            <div class="form-group" >
-                                <label for="message-text" class="col-form-label"> Categoria del Producto: 
-                                    <b style="color: red">*</b></label>
-                                <h:selectOneMenu class="form-control" value="#{productoController.producto.categoriaProducto}">
-                                    <f:selectItem itemLabel="Seleccione una categorio de producto" itemValue=""/>
-                                    <f:selectItems value="#{categoriaViewControlador.categorias}" var="ti" itemLabel="#{ti.nombreCategoria}"/>
-                                </h:selectOneMenu>
-                            </div>
-                        </div> 
-                        <div class="form-group col-md-5">
-                            <label for="message-text" class="col-form-label">Nombre:<b style="color: red">*</b></label>
-                            <h:inputText class="form-control" value="#{productoController.producto.nombre}" a:placeholder="Nombre del producto"/>
-                        </div> 
-                    </div>
-                    <div class="row">
-                        <div class="col-md-5" style="margin-left:40px">
-                            <label for="message-text" class="col-form-label">Precio:<b style="color: red">*</b></label>
-                            <h:inputText class="form-control" value="#{productoController.producto.precio}" a:placeholder="Ingrese Precio" maxlength="20"/>
-                        </div> 
-                        <div class="form-group col-md-5">
-                            <label for="message-text" class="col-form-label">Descripción:<b style="color: red">*</b></label>
-                            <h:inputText class="form-control" value="#{productoController.producto.descripcion}" a:placeholder="Descripción" maxlength="20"/>
-                        </div> 
-                    </div>
-                    <form>
-                        <div class="row">
-                            <div class="form-group col-md-5" style="margin-left:40px">
-                                <label for="imagen" class="control-label mb-1">
-                                    <strong>#{msjTemplate.Imagen}</strong>
-                                </label>
-                                <br/>
-                                <br/>
-                                <h:inputFile id="imagen" class="control-label mb-1" value="#{productoController.producto.imagenP}"
-                                             a:aria-required="true" a:aria-invalid="false"/>
-                            </div>
-                        </div>
-                    </form>
-                    <div class="col-sm-12">
-                        <center>
-                            <h:commandLink class="btn" 
-                                           action="RegistroInsumo.xhtml" style="margin-right: 10px; background: #951010;
-                                           color: white" value="#{msjModales.Cancelar}">
-                            </h:commandLink>
-                            <h:commandButton class="btn"
-                                             value="#{msjRegistro.Registrar}" action="#{inventarioControlador.registrar()}" 
-                                             style="margin-right: 10px; background: #727272; color: white"/>
-                        </center>
-                        <br/>
-                    </div>
-                    <h:messages showDetail="false" layout="table"
-                                style="padding: 5px; border-radius: 5px; box-shadow: 0px, 0px, 4px #951010; display: block; color: red;
-                                margin-left: 50px"/>
+                        <div class="col-lg-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <strong>#{msjProductos.RegistroProductos}</strong>
+                                </div>
+                                <div class="card-body card-block">
+                                    <h:form id="formRegistroProductos" prependId="false" enctype="multipart/form-data" 
+                                            class="form-horizontal">
+                                        <div class="row form-group">
+                                            <div class="col col-md-2">
+                                                <label for="nombre" class="form-control-label">#{msjProductos.NombreProducto}</label>
+                                            </div>
+                                            <div class="col-12 col-md-4">
+                                                <h:inputText id="nombre" a:placeholder="Pizza" class="form-control"
+                                                             value="#{registroProductoControlador.producto.nombre}"/>
+                                            </div>
+                                            <div class="col col-md-2">
+                                                <label for="precio" class="form-control-label">#{msjProductos.Precio}</label>
+                                            </div>
+                                            <div class="col-12 col-md-4">
+                                                <h:inputText id="precio" a:placeholder="$50000" class="form-control"
+                                                             value="#{registroProductoControlador.producto.precio}"/>
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-2">
+                                                <label for="descripcion" class="form-control-label">#{msjProductos.Descripcion}</label>
+                                            </div>
+                                            <div class="col-12 col-md-4">
+                                                <h:inputText id="descripcion" a:placeholder="Piza de carnes con queso" class="form-control"
+                                                             value="#{registroProductoControlador.producto.descripcion}"/>
+                                            </div>
+                                            <div class="col col-md-2">
+                                                <label for="imagen" class="form-control-label">#{msjProductos.Imagen}</label>
+                                            </div>
+                                            <div class="col-12 col-md-4">
+                                                <h:inputText id="imagen" a:placeholder="" class="form-control"
+                                                             value="#{registroProductoControlador.producto.imagenP}"/>
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-2">
+                                                <label for="estado" class="form-control-label">#{msjProductos.Estado}</label>
+                                            </div>
+                                            <div class="col-12 col-md-4">
+                                                <h:selectOneMenu id="estado"
+                                                                 value="#{registroProductoControlador.producto.estado}"
+                                                                 class="form-control">
+                                                    <f:selectItems value="#{registroProductoControlador.estadosPedido}" var="ep" itemValue="#{ep.ordinal()}" itemLabel="#{ep.name()}"/>
+                                                </h:selectOneMenu>
+                                            </div>
+                                            <div class="col col-md-2">
+                                                <label for="categoria" class="form-control-label">#{msjProductos.Categoria}</label>
+                                            </div>
+                                            <div class="col-12 col-md-4">
+                                                <h:selectOneMenu id="categoria"
+                                                                 value="#{registroProductoControlador.producto.categoriaProducto}"
+                                                                 class="form-control">
+                                                    <f:selectItems value="#{registroProductoControlador.categorias}" var="cat" itemValue="#{cat}" itemLabel="#{cat.nombreCategoria}"/>
+                                                </h:selectOneMenu>
+                                            </div>
+                                        </div>
 
-                </h:form>
-            </div>
+                                        <div class="accordion" id="accordionExample">
+                                            <div class="card">
+                                                <div class="card-header" id="headingOne">
+                                                    <h2 class="mb-0">
+                                                        <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                            #{msjProductos.Insumos}
+                                                        </button>
+                                                    </h2>
+                                                </div>
 
+                                                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                                    <h:panelGroup id="infoInsumoProducto" layout="block" class="card-body">
+                                                        <div class="row form-group">
+                                                            <div class="col col-md-2">
+                                                                <label for="insumo" class=" form-control-label">#{msjProductos.Insumo}</label></div>
+                                                            <div class="col-12 col-md-10">
+                                                                <h:selectOneMenu id="insumo"
+                                                                                 value="#{registroProductoControlador.insumoProducto.insumo}"
+                                                                                 class="form-control">
+                                                                    <f:selectItems value="#{registroProductoControlador.insumos}" var="insumo" itemValue="#{insumo}" itemLabel="#{insumo.nombre}"/>
+                                                                </h:selectOneMenu>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="row form-group">
+                                                            <div class="col col-md-2">
+                                                                <label for="cantidadInsumo" class="form-control-label">#{msjProductos.CantidadInsumo}</label>
+                                                            </div>
+                                                            <div class="col-12 col-md-4">
+                                                                <h:inputText id="cantidadInsumo" a:placeholder="Cantidad requerida para preparar el producto" class="form-control"
+                                                                             value="#{registroProductoControlador.insumoProducto.cantidadInsumo}"/>
+                                                            </div>
+                                                            <div class="col col-md-2">
+                                                            </div>
+                                                            <div class="col-12 col-md-4">
+                                                                <p:commandLink id="anadirInsumo" type="submit" class="btn btn-block" 
+                                                                               style="background: #951010; color: white"
+                                                                               process="infoInsumoProducto"
+                                                                               update="infoInsumoProducto"
+                                                                               actionListener="#{registroProductoControlador.agregarInsumoAlProducto()}">
+                                                                    <span id="Añadir Producto">#{msjProductos.AgregarInsumo}</span>
+                                                                </p:commandLink>
+                                                            </div>
+                                                        </div>
+
+                                                        <hr/>
+                                                        <h:panelGroup id="panelTablaInsumosProducto" layout="block" class="table-stats order-table ov-h">
+                                                            <h:dataTable value="#{registroProductoControlador.producto.insumosDelProducto}" var="insumoProducto"
+                                                                         class="table">
+                                                                <h:column >
+                                                                    <f:facet name="header">Nombre Insumo</f:facet>
+                                                                        #{insumoProducto.insumo.nombre}
+                                                                </h:column>
+                                                                <h:column>
+                                                                    <f:facet name="header">Tipo Insumo</f:facet>
+                                                                        #{insumoProducto.insumo.tipoInsumo.nombre}
+                                                                </h:column>
+                                                                <h:column>
+                                                                    <f:facet name="header">Cantidad</f:facet>
+                                                                        #{insumoProducto.cantidadInsumo}
+                                                                </h:column>
+                                                                <h:column>
+                                                                    <f:facet name="header">Acción</f:facet>
+                                                                    <button class="btn btn-danger btn-sm">#{msjPedidos.Eliminar}</button>
+                                                                </h:column>
+                                                            </h:dataTable>
+                                                        </h:panelGroup>
+
+                                                    </h:panelGroup>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row form-group">
+                                            <div class="col-12 col-md-12" id="Añadir Producto">
+                                                <p:commandLink id="registrarProducto"  class="btn btn-block" 
+                                                        style="background: #951010; color: white"
+                                                        update="contentRegistroProducto"
+                                                        actionListener="#{registroProductoControlador.registrarProducto()}">
+                                                    <span id="Enviar Pedido">#{msjProductos.RegistrarProducto}</span>
+                                                </p:commandLink>
+                                            </div>
+                                        </div>
+                                    </h:form>
+                                </div>
+                            </div>
+                        </div>    
+                    </div>
+                </div>
+            </h:panelGroup>
+            <!-- .content -->
+            <div class="clearfix"></div>
         </f:view>
     </ui:define>
 </ui:composition>

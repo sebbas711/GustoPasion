@@ -40,11 +40,6 @@ import javax.validation.constraints.Size;
     , @NamedQuery(name = "Producto.findByEstado", query = "SELECT p FROM Producto p WHERE p.estado = :estado")})
 public class Producto implements Serializable {
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "producto", fetch = FetchType.LAZY)
-    private List<InsumosDelProducto> insumosDelProductoList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "producto", fetch = FetchType.LAZY)
-    private List<DetallePedido> detallePedidoList;
-
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -74,6 +69,10 @@ public class Producto implements Serializable {
     @JoinColumn(name = "categoria_producto", referencedColumnName = "id")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private CategoriaProducto categoriaProducto;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "producto", fetch = FetchType.LAZY)
+    private List<InsumosDelProducto> insumosDelProducto;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "producto", fetch = FetchType.LAZY)
+    private List<DetallePedido> detallePedidoList;
 
     public Producto() {
     }
@@ -127,7 +126,7 @@ public class Producto implements Serializable {
     }
 
     public void setImagenP(String rutaImagen) {
-       this.imagenP = imagenP;
+       this.imagenP = rutaImagen;
     }
 
     public int getEstado() {
@@ -171,12 +170,12 @@ public class Producto implements Serializable {
         return "pyp.modelo.entidades.Producto[ id=" + id + " ]";
     }
 
-    public List<InsumosDelProducto> getInsumosDelProductoList() {
-        return insumosDelProductoList;
+    public List<InsumosDelProducto> getInsumosDelProducto() {
+        return insumosDelProducto;
     }
 
-    public void setInsumosDelProductoList(List<InsumosDelProducto> insumosDelProductoList) {
-        this.insumosDelProductoList = insumosDelProductoList;
+    public void setInsumosDelProducto(List<InsumosDelProducto> insumosDelProducto) {
+        this.insumosDelProducto = insumosDelProducto;
     }
 
     public List<DetallePedido> getDetallePedidoList() {

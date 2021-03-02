@@ -36,7 +36,7 @@ public class ProductoController implements Serializable{
         insumoDelProducto = new ArrayList<>();
         
         producto = new Producto();
-        producto.setInsumosDelProductoList(insumoDelProducto);
+        producto.setInsumosDelProducto(insumoDelProducto);
     }
     
     public void agregarInsumo(InsumosDelProducto insumoProducto){

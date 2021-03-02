@@ -58,6 +58,10 @@
             <var>msjPedidos</var>
         </resource-bundle>
         <resource-bundle>
+            <base-name>pyp.language.Productos</base-name>
+            <var>msjProductos</var>
+        </resource-bundle>
+        <resource-bundle>
             <base-name>pyp.language.Inventario</base-name>
             <var>msjInventario</var>
         </resource-bundle>

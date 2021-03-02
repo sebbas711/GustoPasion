@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="/WEB-INF/includes/template.xhtml" 
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <ui:define name="contenido">
+        <f:view locale="#{languagecontroller.locale}">
+            <div class="container">
+                <h:form prependId="false"> 
+                    <br/>
+                    <h3 class="text-center"><b style="color: #951010;font-family: inherit">REGISTRAR PRODUCTOS</b></h3>
+                    <br/>
+                    <div class="row">
+                        <div class="col-md-5"  style="margin-left:40px">
+                            <div class="form-group" >
+                                <label for="message-text" class="col-form-label"> Categoria del Producto: 
+                                    <b style="color: red">*</b></label>
+                                <h:selectOneMenu class="form-control" value="#{productoController.producto.categoriaProducto}">
+                                    <f:selectItem itemLabel="Seleccione una categorio de producto" itemValue=""/>
+                                    <f:selectItems value="#{categoriaViewControlador.categorias}" var="ti" itemLabel="#{ti.nombreCategoria}"/>
+                                </h:selectOneMenu>
+                            </div>
+                        </div> 
+                        <div class="form-group col-md-5">
+                            <label for="message-text" class="col-form-label">Nombre:<b style="color: red">*</b></label>
+                            <h:inputText class="form-control" value="#{productoController.producto.nombre}" a:placeholder="Nombre del producto"/>
+                        </div> 
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5" style="margin-left:40px">
+                            <label for="message-text" class="col-form-label">Precio:<b style="color: red">*</b></label>
+                            <h:inputText class="form-control" value="#{productoController.producto.precio}" a:placeholder="Ingrese Precio" maxlength="20"/>
+                        </div> 
+                        <div class="form-group col-md-5">
+                            <label for="message-text" class="col-form-label">Descripción:<b style="color: red">*</b></label>
+                            <h:inputText class="form-control" value="#{productoController.producto.descripcion}" a:placeholder="Descripción" maxlength="20"/>
+                        </div> 
+                    </div>
+                    <form>
+                        <div class="row">
+                            <div class="form-group col-md-5" style="margin-left:40px">
+                                <label for="imagen" class="control-label mb-1">
+                                    <strong>#{msjTemplate.Imagen}</strong>
+                                </label>
+                                <br/>
+                                <br/>
+                                <h:inputFile id="imagen" class="control-label mb-1" value="#{productoController.producto.imagenP}"
+                                             a:aria-required="true" a:aria-invalid="false"/>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="col-sm-12">
+                        <center>
+                            <h:commandLink class="btn" 
+                                           action="RegistroInsumo.xhtml" style="margin-right: 10px; background: #951010;
+                                           color: white" value="#{msjModales.Cancelar}">
+                            </h:commandLink>
+                            <h:commandButton class="btn"
+                                             value="#{msjRegistro.Registrar}" action="#{inventarioControlador.registrar()}" 
+                                             style="margin-right: 10px; background: #727272; color: white"/>
+                        </center>
+                        <br/>
+                    </div>
+                    <h:messages showDetail="false" layout="table"
+                                style="padding: 5px; border-radius: 5px; box-shadow: 0px, 0px, 4px #951010; display: block; color: red;
+                                margin-left: 50px"/>
+
+                </h:form>
+            </div>
+
+        </f:view>
+    </ui:define>
+</ui:composition>
+

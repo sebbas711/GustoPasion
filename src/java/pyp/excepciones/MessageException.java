@@ -13,6 +13,7 @@ public enum MessageException {
 
     BE_USUARIO_NO_EXISTE("0001", "Datos Incorrectos", "Verifique sus datos y vuelva a intentarlo", ExceptionType.WARNING),
     BE_USUARIO_INACTIVO("0002", "Usuario Inactivo", "Debe contactar al administrador para activar su usuario.", ExceptionType.WARNING),
+    BE_USUARIO_NOT_HAS_ROLES("0003", "Usuario sin roles", "Debe esperar que se le asigne un rol.", ExceptionType.WARNING),
     
     BE_TIPO_INVENTARIO_ERROR("0012", "Error buscando tipo de inventario", "Debe contactar al administrador para activar su usuario.", ExceptionType.ERROR),
     BE_ESTADO_PEDIDO_ERROR("0012", "Error buscando estado", "Contactese con el Administrador", ExceptionType.ERROR),
