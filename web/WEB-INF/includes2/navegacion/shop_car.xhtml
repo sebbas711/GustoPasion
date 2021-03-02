@@ -15,8 +15,8 @@
         <div id="carrito" class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarCollapse">
             <h:dataTable class="table" value="#{carritoController.pedido.detallesPedido}" var="dp">
                 <h:column>
-                    <f:facet name="header">#{msjMenu.Imagen}</f:facet>
-                    #{dp.producto.id}
+                    <f:facet name="header">Categoria</f:facet>
+                    #{dp.producto.categoriaProducto.nombreCategoria}
                 </h:column>
                 <h:column>
                     <f:facet name="header">#{msjMenu.Nombre}</f:facet>

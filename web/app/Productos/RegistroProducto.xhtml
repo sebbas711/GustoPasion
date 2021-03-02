@@ -10,8 +10,8 @@
 
     <ui:define name="contenido">
         <f:view locale="#{languagecontroller.locale}">
-            <h:form prependId="false"> 
-                <div class="container">
+            <div class="container">
+                <h:form prependId="false"> 
                     <br/>
                     <h3 class="text-center"><b style="color: #951010;font-family: inherit">REGISTRAR PRODUCTOS</b></h3>
                     <br/>
@@ -41,27 +41,19 @@
                             <h:inputText class="form-control" value="#{productoController.producto.descripcion}" a:placeholder="Descripción" maxlength="20"/>
                         </div> 
                     </div>
-                    <div class="row">
-                        <div class="col-md-5" style="margin-left:40px">
-                            <label for="message-text" class="col-form-label">Precio:<b style="color: red">*</b></label>
-                            <h:inputText class="form-control" value="#{productoController.producto.precio}" a:placeholder="Ingrese Precio" maxlength="20"/>
-                        </div> 
-                        <div class="form-group col-md-5">
-                            <label for="message-text" class="col-form-label">Descripción:<b style="color: red">*</b></label>
-                            <h:inputText class="form-control" value="#{productoController.producto.descripcion}" a:placeholder="Descripción" maxlength="20"/>
-                        </div> 
-                    </div>
-                    <div class="row">
-                        <div class="form-group col-md-5" style="margin-left:40px">
-                            <label for="imagen" class="control-label mb-1">
-                                <strong>#{msjTemplate.Imagen}</strong>
-                            </label>
-                            <br/>
-                            <br/>
-                            <h:inputFile id="imagen" class="control-label mb-1" value="#{productoController.producto.imagenP}"
-                                         a:aria-required="true" a:aria-invalid="false"/>
+                    <form>
+                        <div class="row">
+                            <div class="form-group col-md-5" style="margin-left:40px">
+                                <label for="imagen" class="control-label mb-1">
+                                    <strong>#{msjTemplate.Imagen}</strong>
+                                </label>
+                                <br/>
+                                <br/>
+                                <h:inputFile id="imagen" class="control-label mb-1" value="#{productoController.producto.imagenP}"
+                                             a:aria-required="true" a:aria-invalid="false"/>
+                            </div>
                         </div>
-                    </div>
+                    </form>
                     <div class="col-sm-12">
                         <center>
                             <h:commandLink class="btn" 
@@ -78,9 +70,9 @@
                                 style="padding: 5px; border-radius: 5px; box-shadow: 0px, 0px, 4px #951010; display: block; color: red;
                                 margin-left: 50px"/>
 
+                </h:form>
+            </div>
 
-                </div>
-            </h:form>
         </f:view>
     </ui:define>
 </ui:composition>

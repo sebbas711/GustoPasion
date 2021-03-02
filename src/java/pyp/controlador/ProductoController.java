@@ -44,7 +44,6 @@ public class ProductoController implements Serializable{
          nuevoInsumoProducto.setInsumo(insumoSeleccionado);
          nuevoInsumoProducto.setCantidadInsumo(cantidad);
          insumoDelProducto.add(insumoProducto);
-         
     }
 
     public Producto getProducto() {
