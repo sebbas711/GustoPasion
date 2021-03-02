@@ -2,6 +2,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:fragment xmlns="http://www.w3.org/1999/xhtml"
              xmlns:h="http://xmlns.jcp.org/jsf/html"
+             xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
              xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
              xmlns:f="http://xmlns.jcp.org/jsf/core"
              xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
@@ -10,32 +11,33 @@
         <div class="btnShopCar nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown"  style="position: relative; cursor: pointer">
             <i class="fas fa-cart-arrow-down " height="50px" width="50px" href="#" 
                aria-haspopup="true" aria-expanded="false" style="font-size: 25px; margin-top: 10px; margin-right: 8px;"></i>
-               <span class="badge badge-danger" style="position: absolute; bottom: 0px; right: 15px;">#{carritoController.cantidadItems}</span>
+            <span class="badge badge-danger" style="position: absolute; bottom: 0px; right: 15px;">#{carritoController.cantidadItems}</span>
         </div>   
         <div id="carrito" class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarCollapse">
+
             <h:dataTable class="table" value="#{carritoController.pedido.detallesPedido}" var="dp">
                 <h:column>
                     <f:facet name="header">Categoria</f:facet>
-                    #{dp.producto.categoriaProducto.nombreCategoria}
+                        #{dp.producto.categoriaProducto.nombreCategoria}
                 </h:column>
                 <h:column>
                     <f:facet name="header">#{msjMenu.Nombre}</f:facet>
-                    #{dp.producto.nombre}
+                        #{dp.producto.nombre}
                 </h:column>
                 <h:column>
                     <f:facet name="header">#{msjMenu.Precio}</f:facet>
-                    #{dp.producto.precio}
+                        #{dp.producto.precio}
                 </h:column>
                 <h:column>
                     <f:facet name="header">#{msjMenu.Cantidad}</f:facet>
-                    #{dp.cantidad}
+                        #{dp.cantidad}
                 </h:column>
             </h:dataTable>
             <p:commandLink actionListener="#{carritoController.vaciar()}"
                            update="shopCar"
-                           id="vaciar-carrito" class="btn btn-danger btn-block" 
+                           id="vaciar-carrito" class="btn btn-block" style="background: #951010; color: white"
                            value="#{msjMenu.VaciarCarrito}"/>
-            <p:commandLink actionListener="#{carritoController.realizarPedido()}"
+            <p:commandLink actionListener="#{carritoController.btnCarroCompras()}"
                            update=":shopCar :globalMessages"
                            id="procesar-pedido" class="btn btn-success btn-block" 
                            value="#{msjMenu.RealizarPedido}"/>

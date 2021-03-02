@@ -5,6 +5,7 @@
  */
 package pyp.controlador;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +13,8 @@ import java.util.Objects;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 import pyp.controlador.sesion.SessionControlador;
@@ -87,6 +90,14 @@ public class CarritoController implements Serializable {
             }
         } catch (BusinessException be) {
             MessageUtil.sendBusinessException(null, be);
+        }
+    }
+
+    public void btnCarroCompras() throws IOException {
+        ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+        if (setValoresDelUsuarioEnPedido()) {
+            ec.redirect(ec.getRequestContextPath() + "/app/ServicioAlCliente/compra.xhtml");
+            vaciar();
         }
     }
 

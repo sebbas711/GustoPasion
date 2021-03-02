@@ -1,11 +1,13 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition 
-    template="/WEB-INF/includes3/template.xhtml"
+    template="/WEB-INF/includes2/template.xhtml"
     xmlns="http://www.w3.org/1999/xhtml"
     xmlns:h="http://xmlns.jcp.org/jsf/html"
     xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-    xmlns:f="http://xmlns.jcp.org/jsf/core">
+    xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
     <ui:define name="contenido">
         <f:view locale="#{languagecontroller.locale}">
             <br/>
@@ -15,73 +17,75 @@
             <main>
                 <div class="container">
                     <div class="row mt-3">
-                        <div class="col">
+                        <div class="col-md-12">
                             <br/><br/>
                             <h2 class="d-flex justify-content-center mb-3" style="color: #951010">#{msjOlvCompra.RealizarPedido}</h2>
-                            <form id="procesar-pago" action="#" method="post">
+                            <h:form id="shopWindow">
                                 <div class="form-group row">
-                                    <label for="Dirección" class="col-12 col-md-2 col-form-label h2 needs-validation" 
-                                           action= "procesar.php">#{msjOlvCompra.Dirección}</label>
-                                    <div class="col-12 col-md-10">
-                                        <input type="text" class="form-control" id="Dirección"
-                                               placeholder="#{msjOlvCompra.Ingresadireccióndedestino}" 
-                                               name="destinatario" maxlength="45"/>
+                                    <label for="Dirección" class="col-md-2 col-form-label h2"
+                                           >#{msjOlvCompra.Dirección}</label>
+                                    <div class="col-md-10">
+                                        <h:inputText class="form-control" id="Dirección"
+                                                     a:placeholder="#{msjOlvCompra.Ingresadireccióndedestino}" 
+                                                     maxlength="255" value="#{carritoController.pedido.puntoEntrega}"/>
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="Telefono" class="col-12 col-md-2 col-form-label h2">#{msjOlvCompra.Telefono}</label>
-                                    <div class="col-12 col-md-10">
-                                        <input type="text" class="form-control" id="Telefono" maxlength="10" 
-                                               placeholder="#{msjOlvCompra.Telefono}" name="cc_to"/>
+                                    <label for="Telefono" class="col-md-2 col-form-label h2">
+                                        #{msjOlvCompra.Telefono}</label>
+                                    <div class="col-md-10">
+                                        <h:inputText class="form-control" id="Telefono" maxlength="10" 
+                                                     a:placeholder="#{msjOlvCompra.Telefono}"
+                                                     value="#{carritoController.pedido.telefono}"/>
                                     </div>
                                 </div>
-                                <div id="carrito" class="form-group table-responsive" >
-                                    <table class="table" id="lista-compra" >
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">#{msjOlvCompra.Imagen}</th>
-                                                <th scope="col">#{msjOlvCompra.Nombre}</th>
-                                                <th scope="col">#{msjOlvCompra.Precio}</th>
-                                                <th scope="col">#{msjOlvCompra.Cantidad}</th>
-                                                <th scope="col">#{msjOlvCompra.SubTotal}</th>
-                                                <th scope="col">#{msjOlvCompra.Eliminar}</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody >
-                                        </tbody>
-                                        <tr>
-                                            <th colspan="4" scope="col" class="text-right">#{msjOlvCompra.SUBTOTAL}</th>
-                                            <th scope="col">
-                                                <p id="subtotal"></p>
-                                            </th>
-                                            <!-- <th scope="col"></th> -->
-                                        </tr>
-                                        <tr>
-                                            <th colspan="4" scope="col" class="text-right">IGV :</th>
-                                            <th scope="col">
-                                                <p id="igv"></p>
-                                            </th>
-                                            <!-- <th scope="col"></th> -->
-                                        </tr>
-                                        <tr>
-                                            <th colspan="4" scope="col" class="text-right">#{msjOlvCompra.TOTAL}</th>
-                                            <th scope="col">
-                                                <input id="total" name="monto" class="font-weight-bold border-0" 
-                                                       readonly="" style="background-color: white;"></input>
-                                            </th>
-                                            <!-- <th scope="col"></th> -->
-                                        </tr>
-                                    </table>
-                                </div>
-                                <div class="row justify-content-between">
-                                    <div class="col-md-4 mb-2">
-                                        <a href="MenuCliente.xhtml" class="btn btn-block" style="background: #951010; color: white">#{msjOlvCompra.Seguircomprando}</a>
-                                    </div>
-                                    <div class="col-xs-12 col-md-4">
-                                        <button href="#" class="btn btn-block" id="procesar-compra" style="background: #727272; color: white">#{msjOlvCompra.RealizarPedido}</button>
+                                <div class="form-group row">
+                                    <label for="Observaciones" class="col-md-2 col-form-label h2">#{msjMenu.Observaciones}:</label>
+                                    <div >
+                                        <h:inputTextarea  rows="3" cols="128" style="margin-left: 16px"
+                                                          value="#{carritoController.pedido.observaciones}"/>
                                     </div>
                                 </div>
-                            </form>
+                                <div id="carrito">
+                                    <h:dataTable class="table" value="#{carritoController.pedido.detallesPedido}" var="dp">
+                                        <h:column>
+                                            <f:facet name="header">Categoria</f:facet>
+                                                #{dp.producto.categoriaProducto.nombreCategoria}
+                                        </h:column>
+                                        <h:column>
+                                            <f:facet name="header">#{msjMenu.Nombre}</f:facet>
+                                                #{dp.producto.nombre}
+                                        </h:column>
+                                        <h:column>
+                                            <f:facet name="header">#{msjMenu.Precio}</f:facet>
+                                                #{dp.producto.precio}
+                                        </h:column>
+                                        <h:column>
+                                            <f:facet name="header">#{msjMenu.Cantidad}</f:facet>
+                                                #{dp.cantidad}
+                                        </h:column>
+                                        <h:column>
+                                            <f:facet name="header">#{msjMenu.subTotal}</f:facet>
+                                                #{dp.pedido.subTotal}
+                                        </h:column>
+                                        <h:column>
+                                            <f:facet name="header">#{msjMenu.valorTotal}</f:facet>
+                                                #{dp.pedido.valorTotal}
+                                        </h:column>
+                                    </h:dataTable>
+                                    <p:commandLink actionListener="#{carritoController.realizarPedido()}"
+                                                   update=":shopWindow :globalMessages"
+                                                   id="procesar-pedido" class="btn btn-success btn-block" 
+                                                   value="#{msjMenu.RealizarPedido}"/>
+                                    <br/>
+                                    <div class="row justify-content-between">
+                                        <div class="col-md-12">
+                                            <a href="Menu.xhtml" class="btn btn-block" style="background: #951010; color: white">Cancelar</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </h:form>
                         </div>
                     </div>
                 </div>

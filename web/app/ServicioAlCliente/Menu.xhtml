@@ -9,12 +9,14 @@
     xmlns:f="http://xmlns.jcp.org/jsf/core"
     xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <ui:define name="contenido">
+        <br/>
+        <br/>
         <f:view locale="#{languagecontroller.locale}">
             <br/><br/>
             <h:panelGroup id="containerMenu" layout="block">
-            <ui:include src="/WEB-INF/includes/servicio_al_cliente/menu/categorias.xhtml"/>
-            <ui:include src="/WEB-INF/includes/servicio_al_cliente/menu/productos_categoria.xhtml"/>
-            <ui:include src="/WEB-INF/includes/servicio_al_cliente/menu/agregar_producto_carrito.xhtml"/>
+                <ui:include src="/WEB-INF/includes/servicio_al_cliente/menu/categorias.xhtml"/>
+                <ui:include src="/WEB-INF/includes/servicio_al_cliente/menu/productos_categoria.xhtml"/>
+                <ui:include src="/WEB-INF/includes/servicio_al_cliente/menu/agregar_producto_carrito.xhtml"/>
             </h:panelGroup>
             <br/>
             <script src="#{request.contextPath}/resource/js/jquery-3.4.1.min.js"></script>

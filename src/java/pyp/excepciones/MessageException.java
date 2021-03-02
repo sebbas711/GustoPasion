@@ -21,6 +21,7 @@ public enum MessageException {
     
     BE_PEDIDO_VACIO("0021", "Error validación", "El pedido no puede estar vacio", ExceptionType.WARNING),
     BE_PEDIDO_SIN_PRODUCTOS("0022", "Error validación", "El pedido debe contener por lo menos un producto", ExceptionType.WARNING),
+    BE_PEDIDO_SIN_CANTIDAD("0022", "Error validación", "El pedido debe tener cantidad", ExceptionType.WARNING),
     BE_ERROR_REGISTRAR_PEDIDO("0023", "Error registrar pedido", "Se ha presentado un error al registar el pedio", ExceptionType.ERROR);
 
     String code;
