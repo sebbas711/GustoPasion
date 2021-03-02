@@ -73,7 +73,7 @@ public class PedidosService implements IPedidosService {
         if (Objects.isNull(detallePedido.getCantidad())) {
             throw new BusinessException(MessageException.BE_PEDIDO_SIN_CANTIDAD);
         }
-    }*/
+    }*/ 
 
     private void registrarPedido(Pedido pedido) throws BusinessException {
         try {
