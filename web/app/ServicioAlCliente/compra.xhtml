@@ -12,8 +12,6 @@
         <f:view locale="#{languagecontroller.locale}">
             <br/>
             <br/>
-            <br/>
-            <br/>
             <main>
                 <div class="container">
                     <div class="row mt-3">
@@ -58,7 +56,7 @@
                                         </h:column>
                                         <h:column>
                                             <f:facet name="header">#{msjMenu.Precio}</f:facet>
-                                                #{dp.producto.precio}
+                                                #{dp.valorUnitario}
                                         </h:column>
                                         <h:column>
                                             <f:facet name="header">#{msjMenu.Cantidad}</f:facet>
@@ -66,15 +64,45 @@
                                         </h:column>
                                         <h:column>
                                             <f:facet name="header">#{msjMenu.subTotal}</f:facet>
-                                                #{dp.pedido.subTotal}
-                                        </h:column>
-                                        <h:column>
-                                            <f:facet name="header">#{msjMenu.valorTotal}</f:facet>
-                                                #{dp.pedido.valorTotal}
+                                                #{dp.valorUnitario * dp.cantidad}
                                         </h:column>
                                     </h:dataTable>
+                                    <hr/>
+                                    <table style="width: 100%" class="table">
+                                        <thead>
+                                            <tr>
+                                                <th width="85%"></th>
+                                                <th></th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th colspan="1" scope="col" class="text-right">#{msjOlvCompra.SUBTOTAL}</th>
+                                                <th scope="col">
+                                                    #{carritoController.pedido.subTotal}
+                                                </th>
+                                                <!-- <th scope="col"></th> -->
+                                            </tr>
+                                            <tr>
+                                                <th colspan="1" scope="col" class="text-right">IGV :</th>
+                                                <th scope="col">
+                                                    16%
+                                                </th>
+                                                <!-- <th scope="col"></th> -->
+                                            </tr>
+                                            <tr>
+                                                <th colspan="1" scope="col" class="text-right">#{msjOlvCompra.TOTAL}</th>
+                                                <th scope="col">
+                                                    #{carritoController.pedido.valorTotal}
+                                                </th>
+                                                <!-- <th scope="col"></th> -->
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
                                     <p:commandLink actionListener="#{carritoController.realizarPedido()}"
-                                                   update=":shopWindow :globalMessages"
+                                                   update=":shopCar :shopWindow :globalMessages"
                                                    id="procesar-pedido" class="btn btn-success btn-block" 
                                                    value="#{msjMenu.RealizarPedido}"/>
                                     <br/>

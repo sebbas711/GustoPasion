@@ -29,4 +29,5 @@ public class InsumoDAO extends AbstractDAO<Insumo> implements IInsumoDAO {
         query.setParameter("tipoInsumoId", tipoInsumoFiltro.getId());
         return query.getResultList();
     }
+
 }

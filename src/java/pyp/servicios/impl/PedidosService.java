@@ -17,6 +17,7 @@ import pyp.excepciones.MessageException;
 import pyp.modelo.entidades.DetallePedido;
 import pyp.modelo.entidades.Estadopedido;
 import pyp.modelo.entidades.Pedido;
+import pyp.servicios.IDescuentoInsumoService;
 import pyp.servicios.IPedidosService;
 
 @Stateless
@@ -26,6 +27,8 @@ public class PedidosService implements IPedidosService {
     private IEstadopedidoDAO estadoPedidoDao;
     @EJB
     private IPedidoDAO pedidoDao;
+    @EJB
+    private IDescuentoInsumoService descuentoInsumoService;
 
     @Override
     public List<Estadopedido> getEstadoPedidosHabilitados() throws BusinessException {
@@ -53,8 +56,9 @@ public class PedidosService implements IPedidosService {
     public void realizarPedido(Pedido pedido) throws BusinessException {
         validaPedidoNoEstaVacio(pedido);
         validaDetallePedidoNoEstaVacio(pedido);
-        /*pedido.getDetallesPedido();*/
+        validaDetallesPedido(pedido.getDetallesPedido());
         registrarPedido(pedido);
+        descuentoInsumoService.descontarDelInventario(pedido.getDetallesPedido());
     }
 
     private void validaPedidoNoEstaVacio(Pedido pedido) throws BusinessException {
@@ -68,36 +72,34 @@ public class PedidosService implements IPedidosService {
             throw new BusinessException(MessageException.BE_PEDIDO_SIN_PRODUCTOS);
         }
     }
-
-    /*private void validaCantidadPedido(DetallePedido detallePedido) throws BusinessException {
-        if (Objects.isNull(detallePedido.getCantidad())) {
-            throw new BusinessException(MessageException.BE_PEDIDO_SIN_CANTIDAD);
+    
+    private void validaDetallesPedido(List<DetallePedido> detallesPedido) throws BusinessException{
+        for(DetallePedido detallePedido: detallesPedido){
+            validaCantidadDetallePedido(detallePedido);
+            validaValorUnitarioDetallePedido(detallePedido);
         }
-    }*/ 
+    }
+
+    private void validaCantidadDetallePedido(DetallePedido detallePedido) throws BusinessException {
+        if (Objects.isNull(detallePedido.getCantidad()) || detallePedido.getCantidad() <= 0) {
+            throw new BusinessException(MessageException.BE_PEDIDO_SIN_CANTIDAD, detallePedido.getProducto().getNombre());
+        }
+    }
+    
+    private void validaValorUnitarioDetallePedido(DetallePedido detallePedido) throws BusinessException {
+        if (Objects.isNull(detallePedido.getValorUnitario()) || detallePedido.getValorUnitario() <= 0) {
+            throw new BusinessException(MessageException.BE_PEDIDO_SIN_VALOR_UNITARIO, detallePedido.getProducto().getNombre());
+        }
+    }
 
     private void registrarPedido(Pedido pedido) throws BusinessException {
         try {
             pedido.setFecha(new Date());
-            double subtotal = calcularSubTotalPedido(pedido);
-            pedido.setSubTotal(subtotal);
-            pedido.setValorTotal(calcularTotalPedido(subtotal));
             pedido.setEstadoPedido(estadoPedidoDao.findEstadoSolicitado());
             pedidoDao.create(pedido);
         } catch (Exception e) {
             throw new BusinessException(MessageException.BE_ERROR_REGISTRAR_PEDIDO, e);
         }
-    }
-
-    private double calcularSubTotalPedido(Pedido pedido) {
-        double subtotal = 0;
-        for (DetallePedido detalle : pedido.getDetallesPedido()) {
-            subtotal += detalle.getCantidad() * detalle.getValorUnitario();
-        }
-        return subtotal;
-    }
-
-    private double calcularTotalPedido(double subtotal) {
-        return subtotal + (subtotal * 0.16);
     }
 
 }

@@ -5,10 +5,13 @@
  */
 package pyp.excepciones;
 
+import javax.ejb.ApplicationException;
+
 /**
  *
  * @author Ismael
  */
+@ApplicationException(rollback=true, inherited=false)
 public class BusinessException extends PypException {
     
     private static final String BASE_CODE = "BE-";
@@ -20,8 +23,18 @@ public class BusinessException extends PypException {
         this.messageException = messageException;
     }
     
+    public BusinessException(MessageException messageException, Object... params) {
+        super(String.format(messageException.message, params), messageException.detail, BASE_CODE.concat(messageException.code), messageException.type);
+        this.messageException = messageException;
+    }
+    
     public BusinessException(MessageException messageException, Throwable throwable) {
         super(messageException.message, messageException.detail, BASE_CODE.concat(messageException.code), messageException.type, throwable);
+        this.messageException = messageException;
+    }
+    
+    public BusinessException(MessageException messageException, Throwable throwable, Object... params) {
+        super(String.format(messageException.message, params), messageException.detail, BASE_CODE.concat(messageException.code), messageException.type, throwable);
         this.messageException = messageException;
     }
 

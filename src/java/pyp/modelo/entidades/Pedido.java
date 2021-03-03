@@ -105,101 +105,110 @@ public class Pedido implements Serializable {
         this.puntoEntrega = puntoEntrega;
     }
 
+    public void calcularTotales() {
+        subTotal = 0;
+        for(DetallePedido detallePedido: detallesPedido){
+            subTotal += detallePedido.getCantidad() * detallePedido.getValorUnitario();
+        }
+        valorTotal = subTotal + (subTotal * 0.16);
+    }
+    
+    //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
     public Integer getId() {
         return id;
     }
-
+    
     public void setId(Integer id) {
         this.id = id;
     }
-
+    
     public Date getFecha() {
         return fecha;
     }
-
+    
     public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
-
+    
     public double getSubTotal() {
         return subTotal;
     }
-
+    
     public void setSubTotal(double subTotal) {
         this.subTotal = subTotal;
     }
-
+    
     public double getValorTotal() {
         return valorTotal;
     }
-
+    
     public void setValorTotal(double valorTotal) {
         this.valorTotal = valorTotal;
     }
-
+    
     public String getTipoPedido() {
         return tipoPedido;
     }
-
+    
     public void setTipoPedido(String tipoPedido) {
         this.tipoPedido = tipoPedido;
     }
-
+    
     public Integer getTelefono() {
         return telefono;
     }
-
+    
     public void setTelefono(Integer telefono) {
         this.telefono = telefono;
     }
-
+    
     public String getPuntoEntrega() {
         return puntoEntrega;
     }
-
+    
     public void setPuntoEntrega(String puntoEntrega) {
         this.puntoEntrega = puntoEntrega;
     }
-
+    
     public String getObservaciones() {
         return observaciones;
     }
-
+    
     public void setObservaciones(String observaciones) {
         this.observaciones = observaciones;
     }
-
+    
     public List<DetallePedido> getDetallesPedido() {
         return detallesPedido;
     }
-
+    
     public void setDetallesPedido(List<DetallePedido> detallesPedido) {
         this.detallesPedido = detallesPedido;
     }
-
+    
     public Cliente getCliente() {
         return cliente;
     }
-
+    
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
-
+    
     public Estadopedido getEstadoPedido() {
         return estadoPedido;
     }
-
+    
     public void setEstadoPedido(Estadopedido estadoPedido) {
         this.estadoPedido = estadoPedido;
     }
-
+    
     @Override
     public int hashCode() {
         int hash = 0;
         hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
-
+    
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
@@ -212,10 +221,11 @@ public class Pedido implements Serializable {
         }
         return true;
     }
-
+    
     @Override
     public String toString() {
         return "pyp.modelo.entidades.Pedido[ id=" + id + " ]";
     }
-
+    //</editor-fold>
+    
 }

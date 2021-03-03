@@ -79,6 +79,7 @@ public class CarritoController implements Serializable {
         nuevoDetalle.setCantidad(cantidadProducto);
         nuevoDetalle.setValorUnitario(productoSeleccionado.getPrecio());
         detallesPedido.add(nuevoDetalle);
+        pedido.calcularTotales();
     }
 
     public void realizarPedido() {
@@ -97,7 +98,6 @@ public class CarritoController implements Serializable {
         ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
         if (setValoresDelUsuarioEnPedido()) {
             ec.redirect(ec.getRequestContextPath() + "/app/ServicioAlCliente/compra.xhtml");
-            vaciar();
         }
     }
 
