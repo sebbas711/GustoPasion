@@ -95,9 +95,6 @@ public class Insumo implements Serializable {
     @JoinColumn(name = "tipo_insumo", referencedColumnName = "id")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private TipoInsumo tipoInsumo;
-    @JoinColumn(name = "unidad_de_medida", referencedColumnName = "id")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private UnidadDeMedida unidadDeMedida;
 
     public Insumo() {
     }
@@ -201,14 +198,6 @@ public class Insumo implements Serializable {
 
     public void setTipoInsumo(TipoInsumo tipoInsumo) {
         this.tipoInsumo = tipoInsumo;
-    }
-
-    public UnidadDeMedida getUnidadDeMedida() {
-        return unidadDeMedida;
-    }
-
-    public void setUnidadDeMedida(UnidadDeMedida unidadDeMedida) {
-        this.unidadDeMedida = unidadDeMedida;
     }
 
     @Override
