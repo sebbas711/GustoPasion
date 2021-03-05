@@ -10,7 +10,7 @@
 
     <ui:define name="contenido">
         <f:view locale="#{languagecontroller.locale}">
-            <h:panelGroup id="contentRegistroProducto" class="content">
+            <h:panelGroup id="contentRegistroPedido" class="content">
                 <div class="animated fadeIn">
                     <div class="row">
                         <div class="col-lg-12">
@@ -91,7 +91,7 @@
                                                         <div class="row form-group">
                                                             <div class="col col-md-2">
                                                                 <label for="insumo" class=" form-control-label">#{msjProductos.Insumo}</label></div>
-                                                            <div class="col-12 col-md-10">
+                                                            <div class="col-12 col-md-4">
                                                                 <h:selectOneMenu id="insumo"
                                                                                  value="#{registroProductoControlador.insumoProducto.insumo}"
                                                                                  class="form-control">
@@ -151,10 +151,10 @@
 
                                         <div class="row form-group">
                                             <div class="col-12 col-md-12" id="Añadir Producto">
-                                                <p:commandLink id="registrarProducto"  class="btn btn-block" 
+                                                <p:commandLink id="registrarPedido"  class="btn btn-block" 
                                                         style="background: #951010; color: white"
-                                                        update="contentRegistroProducto"
-                                                        actionListener="#{registroProductoControlador.registrarProducto()}">
+                                                        update="contentRegistroPedido"
+                                                        actionListener="#{registroPedidoControlador.registrarPedido()}">
                                                     <span id="Enviar Pedido">#{msjProductos.RegistrarProducto}</span>
                                                 </p:commandLink>
                                             </div>
