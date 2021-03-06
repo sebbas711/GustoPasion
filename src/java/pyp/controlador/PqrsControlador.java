@@ -98,10 +98,10 @@ public class PqrsControlador implements Serializable {
         return tablaPqrsEnable;
     }
 
-    public void seleccionarPqrs(Pqrs pqrs) {
-        System.out.println("Se ha seleccionado un Usuario");
-        System.out.println(pqrs);
-        this.pqrsSeleccionada = pqrs;
+    public void seleccionarPqrs(Pqrs pq) {
+        System.out.println("Se ha seleccionado una pqrs");
+        System.out.println(pq);
+        this.pqrsSeleccionada = pq;
 
     }
 

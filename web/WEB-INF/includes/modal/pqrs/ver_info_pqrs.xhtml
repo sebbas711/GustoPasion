@@ -14,31 +14,28 @@
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span class="text-light" aria-hidden="true">&times;</span>
                         </button>
-                        <span><center style="color: #fff"><img src="#{request.contextPath}/resource/img/LOgo.png" 
-                                                               class="rounded-pill" target="_blank" style="height: 70px"/>ID: #{pqrsControlador.pqrsSeleccionada.id}</center></span>             
+                        <span><center style="color: #fff">
+                                <img src="#{request.contextPath}/resource/img/LOgo.png" 
+                                     class="rounded-pill" target="_blank" 
+                                     style="height: 70px"/>
+                                ID: #{pqrsControlador.pqrsSeleccionada.id}
+                            </center>
+                        </span>             
                     </div>
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="message-text" class="col-form-label">#{msjRadicarPQRS.TipodePQRS}</label>
-                                    <span class="form-control">#{pqrsControlador.pqrsSeleccionada.tipoPQRS.nombre}</span>
-                                </div>
-                                <div class="form-group">
-                                    <label for="message-text" class="col-form-label">#{msjModales.Fecha}</label>
-                                    <h:outputText class="form-control" value="#{pqrsControlador.pqrsSeleccionada.fecha}">
-                                        <f:convertDateTime pattern="YYYY/MM/dd"/>
-                                    </h:outputText>
+                                    <label for="message-text" class="col-form-label"><b>#{msjRadicarPQRS.TipodePQRS}</b></label>
+                                    <h:outputText class="form-control" value="#{pqrsControlador.pqrsSeleccionada.tipoPQRS.nombre}"></h:outputText>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="message-text" class="col-form-label">#{msjModales.Observaciones} </label>
-                                    <span class="form-control">#{pqrsControlador.pqrsSeleccionada.observaciones}</span>
-                                </div>
-                                <div class="form-group">
-                                    <label for="message-text" class="col-form-label">#{msjModales.Administrador} </label>
-                                    <span class="form-control">#{pqrsControlador.pqrsSeleccionada.administrador.usuario.primerNombre} #{pqrsControlador.pqrsSeleccionada.administrador.usuario.primerApellido}</span>
+                                    <label for="message-text" class="col-form-label"><b>#{msjModales.Fecha}</b></label>
+                                    <h:outputText class="form-control" value="#{pqrsControlador.pqrsSeleccionada.fecha}">
+                                        <f:convertDateTime pattern="YYYY/MM/dd"/>
+                                    </h:outputText>
                                 </div>
                             </div>
                         </div>
@@ -49,23 +46,14 @@
                                 <div class="form-group">
                                     <h:outputLabel for="fr_nombre_cliente" class="col-form-label"><b>#{msjModales.NOMBRECLIENTE} </b></h:outputLabel>
                                     <h:outputText class="form-control" id="fr_nombre_cliente"
-                                                  value="#{pqrsControlador.pqrsSeleccionada.nombreCliente}"/>
+                                                  value="#{pqrsControlador.pqrsSeleccionada.cliente.usuario.primerNombre} #{pqrsControlador.pqrsSeleccionada.cliente.usuario.primerApellido}"/>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <h:outputLabel for="fr_correo_cliente" class="col-form-label"><b>#{msjModales.CORREOCLIENTE}</b></h:outputLabel>
-                                    <h:outputText class="form-control" id="fr_correo_cliente"
-                                                  value="#{pqrsControlador.pqrsSeleccionada.emailCliente}"/>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <h:outputLabel for="fr_observacion" class="col-form-label"><b>#{msjModales.OBSERVACIONES} </b></h:outputLabel>
+                                    <h:outputLabel for="fr_observacion" class="col-form-label"><b>#{msjModales.Observaciones} </b></h:outputLabel>
                                     <h:outputText class="form-control" id="fr_observacion"
                                                   value="#{pqrsControlador.pqrsSeleccionada.observaciones}"/>
                                 </div>

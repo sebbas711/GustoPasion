@@ -68,7 +68,7 @@
                         <h:outputText value="#{pq.id}"/>
                     </p:column>
                     <p:column headerText="#{msjPQRS.TIPO}" priority="2" style="width: 60px">
-                        <h:outputText value="#{pq.tipoPQRS}"/>
+                        <h:outputText value="#{pq.tipoPQRS.nombre}"/>
                     </p:column>
                     <p:column headerText="#{msjPQRS.ADMINISTRADOR}" priority="2" style="width: 140px">
                         <h:outputText value="#{pq.administrador.usuario.primerNombre} #{pq.administrador.usuario.primerApellido}"/>
@@ -108,14 +108,13 @@
                         </h:commandLink>
                     </p:column>
                 </p:dataTable>
-
-
-            <!--<ui:include src="/WEB-INF/includes/modal/pqrs/ver_info_pqrs.xhtml"></ui:include>
-            <ui:include src="/WEB-INF/includes/modal/pqrs/responder_pqrs.xhtml"></ui:include>
-            <ui:include src="/WEB-INF/includes/modal/pqrs/confirmar_camb_Estado.xhtml"></ui:include>-->
-
             </h:form>
+
         </div>
+
+            <ui:include src="/WEB-INF/includes/modal/pqrs/ver_info_pqrs.xhtml"></ui:include>
+            <ui:include src="/WEB-INF/includes/modal/pqrs/responder_pqrs.xhtml"></ui:include>
+            <!--<ui:include src="/WEB-INF/includes/modal/pqrs/confirmar_camb_Estado.xhtml"></ui:include>-->
 
     </ui:define>
 </ui:composition>
