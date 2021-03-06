@@ -36,6 +36,13 @@
                                                 <h:inputText id="LugarDeEntrega" a:placeholder="Mesa # / Dirección" class="form-control" value="#{registroPedidoControlador.pedidos.puntoEntrega}" />
                                             </div>
                                         </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-2">
+                                                <label for="Telefono" class=" form-control-label">Telefono:</label></div>
+                                            <div class="col col-md-4">
+                                                <h:inputText id="Telefono" a:placeholder="Celular / Phone" class="form-control" value="#{registroPedidoControlador.pedidos.telefono}" />
+                                            </div>
+                                        </div>
                                         <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
                                             <h:panelGroup id="infoPedidoProducto" layout="block" class="card-body">
                                                 <hr/>                                                
@@ -46,7 +53,7 @@
                                                         <h:selectOneMenu id="producto"
                                                                          class="form-control" 
                                                                          value="#{registroPedidoControlador.detallePedido.producto}">
-                                                            <f:selectItems value="#{registroPedidoControlador.productos}" var="ped" itemValue="#{ped}" itemLabel="#{ped.nombre}"  />
+                                                            <f:selectItems value="#{registroPedidoControlador.productos}" var="ped" itemValue="#{ped}" itemLabel="#{ped.id}-#{ped.categoriaProducto.nombreCategoria}-#{ped.nombre}"  />
                                                         </h:selectOneMenu>
                                                     </div>
                                                     <div class="col col-md-2">
@@ -76,7 +83,7 @@
                                                     <h:dataTable class="table" value="#{registroPedidoControlador.pedidos.detallesPedido}" var="pedidoProducto">
                                                         <h:column>
                                                             <f:facet name="header">Categoria</f:facet>
-                                                                #{pedidoProducto.producto.categoriaProducto}
+                                                                #{pedidoProducto.producto.categoriaProducto.nombreCategoria}
                                                         </h:column>
                                                         <h:column>
                                                             <f:facet name="header">#{msjMenu.Nombre}</f:facet>
@@ -84,7 +91,7 @@
                                                         </h:column>
                                                         <h:column>
                                                             <f:facet name="header">#{msjMenu.Precio}</f:facet>
-                                                                #{pedidoProducto.valorUnitario}
+                                                                #{pedidoProducto.producto.precio}
 
                                                         </h:column>
                                                         <h:column>
@@ -93,7 +100,7 @@
                                                         </h:column>
                                                         <h:column>
                                                             <f:facet name="header">#{msjMenu.subTotal}</f:facet>
-                                                                #{pedidoProducto.pedido.subTotal}
+                                                            #{pedidoProducto.producto.precio * pedidoProducto.cantidad}
                                                         </h:column>
                                                     </h:dataTable>
                                                     <hr/>
@@ -109,7 +116,7 @@
                                                             <tr>
                                                                 <th colspan="1" scope="col" class="text-right" style="background: white">#{msjOlvCompra.SUBTOTAL}</th>
                                                                 <th scope="col" style="background: white">
-                                                                    #{carritoController.pedido.subTotal}
+                                                                    #{registroPedidoControlador.pedidos.subTotal}
                                                                 </th>
                                                                 <!-- <th scope="col"></th> -->
                                                             </tr>
@@ -123,7 +130,7 @@
                                                             <tr>
                                                                 <th colspan="1" scope="col" class="text-right" style="background: white">#{msjOlvCompra.TOTAL}</th>
                                                                 <th scope="col" style="background: white">
-                                                                    #{carritoController.pedido.valorTotal}
+                                                                    #{registroPedidoControlador.pedidos.valorTotal}
                                                                 </th>
                                                                 <!-- <th scope="col"></th> -->
                                                             </tr>
@@ -140,9 +147,11 @@
                                         </div>
                                         <div class="row form-group">
                                             <div class="col-12 col-md-12" id="Añadir Producto">
-                                                <p:commandLink id="registrarPedido"  class="btn btn-block" 
+                                                <p:commandLink actionListener="#{registroPedidoControlador.registrarPedido()}"
+                                                               id="registrarPedido"  class="btn btn-block" 
                                                                style="background: #951010; color: white"
-                                                               update="contentRealizarPedido">
+                                                               update="contentRealizarPedido"
+                                                               >
                                                     <span id="EnviarPedido">Realizar Pedido</span>
                                                 </p:commandLink>
                                             </div>

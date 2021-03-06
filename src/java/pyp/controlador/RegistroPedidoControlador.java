@@ -7,6 +7,7 @@ package pyp.controlador;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 import javax.annotation.PostConstruct;
@@ -18,6 +19,8 @@ import pyp.DAO.IEstadopedidoDAO;
 import pyp.DAO.IPedidoDAO;
 import pyp.DAO.IPedidoDAO;
 import pyp.DAO.IProductoDAO;
+import pyp.excepciones.BusinessException;
+import pyp.excepciones.MessageException;
 import pyp.modelo.entidades.CategoriaProducto;
 import pyp.modelo.entidades.DetallePedido;
 import pyp.modelo.entidades.Insumo;
@@ -81,9 +84,15 @@ public class RegistroPedidoControlador implements Serializable {
                 && detallePedido.getCantidad() > 0;
     }
 
-    public void registrarPedido() {
-        pedidoDAO.create(pedidos);
-        init();
+    public void registrarPedido() throws BusinessException {
+        try {
+            pedidos.setFecha(new Date());
+            pedidos.setEstadoPedido(estadoPedidoDAO.findEstadoSolicitado());
+            pedidoDAO.create(pedidos);
+            init();
+        } catch (Exception e) {
+            throw new BusinessException(MessageException.BE_ERROR_REGISTRAR_PEDIDO, e);
+        }
     }
 
     //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
