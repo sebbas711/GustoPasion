@@ -90,7 +90,7 @@
                             <i class="fa fa-eye"></i>
                             <f:ajax render=":verInfoPqrsContent" />
                         </h:commandLink>
-                        <h:commandLink rendered="#{controlPqrsView.renderEditButton(pqrs)}"
+                        <h:commandLink 
                                        class="btn" style="background: #951010; color: white; margin-left: 10px;display: inline-block" title="Modificar" 
                                        a:data-toggle="modal" a:data-target="#responderInfoPQRS"
                                        action="#{controlPqrsView.seleccionarPqrs(pq)}">

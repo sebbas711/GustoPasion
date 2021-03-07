@@ -29,7 +29,7 @@
                             </div>
                         </div>
                         <ui:repeat value="#{controlInventarioView.tiposInsumosHabilitados}" var="tipoInsumo">
-                            <div class="col-sm-6 col-lg">
+                            <div class="col-md-6 col-lg-4">
                                 <div class="card text-white coloramarillo" style="background: #{controlInventarioView.getColorByTipoInsumo(tipoInsumo)}">
                                     <p:commandLink class="hovcard" 
                                                    actionListener="#{controlInventarioView.filtrarPorTipoInsumo(tipoInsumo)}"
@@ -58,7 +58,7 @@
                     <h:commandLink class="btn" value="Reporte Lista Insumos" 
                                      style="background: #951010; color: white; margin-left: 10px"
                                      action="#{inventarioControlador.descargaListado()}">
-                    </h:commandLink>>
+                    </h:commandLink>
                 </center>
                 <br/>
                 <br/>

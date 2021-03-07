@@ -53,8 +53,8 @@
                                                 <label for="tipoDePedido" class=" form-control-label">Tipo de Pedido:</label></div>
                                             <div class="col col-md-4">
                                                 <h:selectOneMenu id="tipoDePedido" required="true" class="form-control" value="#{registroPedidoControlador.pedido.tipoPedido}">
-                                                    <f:selectItem itemLabel="Domicilio" itemValue="Cédula" a:style="color: black"></f:selectItem>                                       
-                                                    <f:selectItem itemLabel="Restaurante" itemValue="Cédula Ex" a:style="color: black"></f:selectItem>
+                                                    <f:selectItem itemLabel="Domicilio" itemValue="Domicilio" a:style="color: black"></f:selectItem>                                       
+                                                    <f:selectItem itemLabel="Restaurante" itemValue="Restaurante" a:style="color: black"></f:selectItem>
                                                 </h:selectOneMenu>
                                             </div>
                                             <div class="col col-md-2">
@@ -168,7 +168,7 @@
                                             <div class="form-group row">
                                                 <label for="Observaciones" class="col-md-2 col-form-label h2">#{msjMenu.Observaciones}:</label>
                                                 <div>
-                                                    <h:inputTextarea  rows="3" cols="115" style="margin-left: 16px"/>
+                                                    <h:inputTextarea  rows="3" cols="115" style="margin-left: 16px" value="#{registroPedidoControlador.pedido.observaciones}"/>
                                                 </div>
                                             </div>
                                         </div>
