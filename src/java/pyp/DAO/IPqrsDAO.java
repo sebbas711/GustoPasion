@@ -19,6 +19,11 @@ import pyp.modelo.entidades.Pqrs;
 public interface IPqrsDAO extends DAO<Pqrs> {
 
     List<Pqrs> findByEstadoPqrs(Estadopqrs estadoPqrsFiltro);
-    public List<Pqrs> finByCustomer(Cliente customer);
+    
+    List<Pqrs> findByAdmin(Integer idAdministrador);
+    
+    List<Pqrs> findByAdminAndEstado(Integer idAdministrador, Estadopqrs estadoPqrs);
+    
+    List<Pqrs> finByCustomer(Cliente customer);
     
 }

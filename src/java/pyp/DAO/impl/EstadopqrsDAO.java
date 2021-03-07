@@ -6,8 +6,6 @@
 package pyp.DAO.impl;
 
 import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import pyp.DAO.IEstadopqrsDAO;
 import pyp.modelo.entidades.Estadopqrs;
 
@@ -20,6 +18,16 @@ public class EstadopqrsDAO extends AbstractDAO<Estadopqrs> implements IEstadopqr
 
     public EstadopqrsDAO() {
         super(Estadopqrs.class);
+    }
+
+    @Override
+    public Estadopqrs findEstadoNueva() {
+        return find(IEstadopqrsDAO.ID_ESTADO_NUEVA);
+    }
+
+    @Override
+    public Estadopqrs findEstadoFinalizada() {
+        return find(IEstadopqrsDAO.ID_ESTADO_FINALIZADA);
     }
     
 }

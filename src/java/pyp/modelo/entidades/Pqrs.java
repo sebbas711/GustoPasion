@@ -39,12 +39,11 @@ import javax.validation.constraints.Size;
     , @NamedQuery(name = "Pqrs.findByFecha", query = "SELECT p FROM Pqrs p WHERE p.fecha = :fecha")
     , @NamedQuery(name = "Pqrs.findByObservaciones", query = "SELECT p FROM Pqrs p WHERE p.observaciones = :observaciones")
     , @NamedQuery(name = "Pqrs.findByEstadoPqrs", query = "SELECT p FROM Pqrs p WHERE p.estadoPqrs.id = :estadoPqrsId")
+    , @NamedQuery(name = "Pqrs.findByAdmin", query = "SELECT p FROM Pqrs p WHERE p.administrador.id = :idAdministrador")
+    , @NamedQuery(name = "Pqrs.findByAdminAndEstado", query = "SELECT p FROM Pqrs p WHERE p.administrador.id = :idAdministrador AND p.estadoPqrs.id = :estadoPqrsId")
     , @NamedQuery(name = "Pqrs.findByCustomerPqrs", query = "SELECT p FROM Pqrs p WHERE p.cliente.id = :cliente")})
 
 public class Pqrs implements Serializable {
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "pqrs", fetch = FetchType.LAZY)
-    private List<Respuestapqrs> respuestapqrsList;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -74,6 +73,8 @@ public class Pqrs implements Serializable {
     @JoinColumn(name = "estadoPqrs", referencedColumnName = "id")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Estadopqrs estadoPqrs;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "pqrs", fetch = FetchType.LAZY)
+    private List<Respuestapqrs> respuestapqrsList;
 
     public Pqrs() {
     }

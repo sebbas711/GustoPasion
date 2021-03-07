@@ -20,16 +20,21 @@
                                 <center style="color: #fff">
                                     <img src="#{request.contextPath}/resource/img/LOgo.png" class="rounded-pill" 
                                          target="_blank" style="height: 70px"/>
-                                    #{msjModales.ID} #{pqrsControlador.pqrsSeleccionada.id}
+                                    #{msjModales.ID} #{controlPqrsView.pqrsSeleccionada.id}
                                 </center>
                             </span>             
                         </div>
                          <div class="modal-body row">
+                             <div class="col-md-12">
+                                 <div class="form-control">
+                                     #{controlPqrsView.pqrsSeleccionada.observaciones}
+                                 </div>
+                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="message-text" class="col-form-label">#{msjModales.Respuesta} 
                                         <b style="color: red">*</b></label>
-                                    <h:inputTextarea class="form-control" 
+                                        <h:inputTextarea class="form-control" value="#{controlPqrsView.respuestaPqrs.respuesta}"
                                                      />
                                 </div>
                             </div>
@@ -38,7 +43,7 @@
                             <button type="button" class="btn btn-danger" data-dismiss="modal" 
                                     style="background: #951010">#{msjModales.Cancelar}</button>
                             <h:commandLink class="btn" value="#{msjModales.Actualizar}" style="background: #727272; color: white"
-                                           action="#{pqrsControlador.actualizar()}">
+                                           action="#{controlPqrsView.responder()}">
                                 <i class="fa fa-save"></i>
                             </h:commandLink>
                         </div>

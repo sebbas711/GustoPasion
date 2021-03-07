@@ -15,6 +15,12 @@ import pyp.modelo.entidades.Estadopqrs;
  */
 @Local
 public interface IEstadopqrsDAO extends DAO<Estadopqrs> {
+    
+    static final Integer ID_ESTADO_NUEVA = 1;
+    static final Integer ID_ESTADO_FINALIZADA = 3;
 
+    Estadopqrs findEstadoNueva();
+
+    Estadopqrs findEstadoFinalizada();
     
 }

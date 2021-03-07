@@ -7,56 +7,52 @@ package pyp.controlador;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.view.ViewScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 import pyp.DAO.ICategoriaProductoDAO;
-import pyp.DAO.IEstadopedidoDAO;
-import pyp.DAO.IPedidoDAO;
-import pyp.DAO.IPedidoDAO;
 import pyp.DAO.IProductoDAO;
 import pyp.excepciones.BusinessException;
 import pyp.excepciones.MessageException;
 import pyp.modelo.entidades.CategoriaProducto;
 import pyp.modelo.entidades.DetallePedido;
-import pyp.modelo.entidades.Insumo;
-import pyp.modelo.entidades.DetallePedido;
 import pyp.modelo.entidades.Estadopedido;
 import pyp.modelo.entidades.Pedido;
 import pyp.modelo.entidades.Producto;
 import pyp.modelo.entidades.enums.EstadoPedidoEnum;
+import pyp.servicios.IPedidosService;
 import pyp.util.MessageUtil;
 
 @Named
 @ViewScoped
 public class RegistroPedidoControlador implements Serializable {
 
-    @EJB
-    private ICategoriaProductoDAO categoriaProductoDAO;
+    @Inject
+    private BuscarClienteControlador buscarClienteControlador;
 
     @EJB
-    private IEstadopedidoDAO estadoPedidoDAO;
+    private ICategoriaProductoDAO categoriaProductoDAO;
 
     @EJB
     private IProductoDAO productoDAO;
 
     @EJB
-    private IPedidoDAO pedidoDAO;
+    private IPedidosService pedidosService;
 
     private List<CategoriaProducto> categorias;
     private List<Estadopedido> estados;
     private List<Producto> productos;
-    private Pedido pedidos;
+    private Pedido pedido;
     private DetallePedido detallePedido;
 
     @PostConstruct
     public void init() {
-        this.pedidos = new Pedido();
-        this.pedidos.setDetallesPedido(new ArrayList<>());
+        this.pedido = new Pedido();
+        this.pedido.setDetallesPedido(new ArrayList<>());
 
         inicialializarPedidoProducto();
 
@@ -66,12 +62,14 @@ public class RegistroPedidoControlador implements Serializable {
 
     private void inicialializarPedidoProducto() {
         this.detallePedido = new DetallePedido();
-        this.detallePedido.setPedido(pedidos);
+        this.detallePedido.setPedido(pedido);
     }
 
     public void agregarProductoAlPedido() {
         if (detallePedidoValido()) {
-            pedidos.getDetallesPedido().add(detallePedido);
+            detallePedido.setValorUnitario(detallePedido.getProducto().getPrecio());
+            pedido.getDetallesPedido().add(detallePedido);
+            pedido.calcularTotales();
             inicialializarPedidoProducto();
         } else {
             MessageUtil.sendErrorModal("Error validación insumo", "Verifice la sección de pedidos, todos los campos son obligaotrios");
@@ -86,13 +84,18 @@ public class RegistroPedidoControlador implements Serializable {
 
     public void registrarPedido() throws BusinessException {
         try {
-            pedidos.setFecha(new Date());
-            pedidos.setEstadoPedido(estadoPedidoDAO.findEstadoSolicitado());
-            pedidoDAO.create(pedidos);
-            init();
+            pedido.setCliente(buscarClienteControlador.getCliente());
+            pedidosService.realizarPedido(pedido);
+            limpiarForm();
+            MessageUtil.sendInfo(null, "Pedido realizado", "Gracias por utilizar nuestro servicio de pedido a domicilio", Boolean.TRUE);
         } catch (Exception e) {
             throw new BusinessException(MessageException.BE_ERROR_REGISTRAR_PEDIDO, e);
         }
+    }
+
+    private void limpiarForm() {
+        init();
+        buscarClienteControlador.limpiar();
     }
 
     //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
@@ -103,14 +106,13 @@ public class RegistroPedidoControlador implements Serializable {
     public List<Estadopedido> getEstados() {
         return estados;
     }
-    
 
     public List<Producto> getProductos() {
         return productos;
     }
 
-    public Pedido getPedidos() {
-        return pedidos;
+    public Pedido getPedido() {
+        return pedido;
     }
 
     public DetallePedido getDetallePedido() {
@@ -120,7 +122,6 @@ public class RegistroPedidoControlador implements Serializable {
     public EstadoPedidoEnum[] getEstadosPedido() {
         return EstadoPedidoEnum.values();
     }
-    
-    //</editor-fold>
 
+    //</editor-fold>
 }

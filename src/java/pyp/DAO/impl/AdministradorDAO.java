@@ -24,8 +24,8 @@ public class AdministradorDAO extends AbstractDAO<Administrador> implements IAdm
     @Override
     public Administrador buscarAdminConMenosPqrs() {
         Query q = em.createNativeQuery("select a.* from administrador a " 
-                + "left join pqrs pq on pq.administrador = a.id"
-                + "group by a.id"
+                + "left join pqrs pq on pq.administrador = a.id "
+                + "group by a.id "
                 + "order by count(pq.id) asc "
                 + "limit 1", Administrador.class);
         return (Administrador) q.getResultList()

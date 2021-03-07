@@ -46,4 +46,16 @@ public class PqrsService implements IPqrsService {
         }
     }
 
+    @Override
+    public List<Pqrs> findPqrsByAdmin(Integer idAdministrador, Estadopqrs estadoPqrs) throws BusinessException {
+        try {
+            if (Objects.isNull(estadoPqrs)) {
+                return pqrsDao.findByAdmin(idAdministrador);
+            }
+            return pqrsDao.findByAdminAndEstado(idAdministrador, estadoPqrs);
+        } catch (Exception e) {
+            throw new BusinessException(MessageException.BE_ESTADO_PEDIDO_ERROR, e);
+        }
+    }
+
 }

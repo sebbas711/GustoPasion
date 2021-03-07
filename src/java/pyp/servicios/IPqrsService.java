@@ -8,6 +8,7 @@ package pyp.servicios;
 import java.util.List;
 import javax.ejb.Local;
 import pyp.excepciones.BusinessException;
+import pyp.modelo.entidades.Administrador;
 import pyp.modelo.entidades.Estadopqrs;
 import pyp.modelo.entidades.Pqrs;
 
@@ -16,6 +17,8 @@ public interface IPqrsService {
     
     List<Estadopqrs> getEstadoPqrsHabilitados() throws BusinessException;
 
-    public List<Pqrs> findPqrsByFilter(Estadopqrs estadoPqrsFiltro) throws BusinessException;
+    List<Pqrs> findPqrsByFilter(Estadopqrs estadoPqrsFiltro) throws BusinessException;
+    
+    List<Pqrs> findPqrsByAdmin(Integer idAdministrador, Estadopqrs estadoPqrs) throws BusinessException;
     
 }

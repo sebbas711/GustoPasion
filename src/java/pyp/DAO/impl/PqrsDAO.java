@@ -30,6 +30,23 @@ public class PqrsDAO extends AbstractDAO<Pqrs> implements IPqrsDAO {
         query.setParameter("estadoPqrsId", estadoPqrsFiltro.getId());
         return query.getResultList();
     }
+    
+    @Override
+    public List<Pqrs> findByAdmin(Integer idAdministrador) {
+        getEntityManager().getEntityManagerFactory().getCache().evictAll();
+        TypedQuery<Pqrs> query = getEntityManager().createNamedQuery("Pqrs.findByAdmin", Pqrs.class);
+        query.setParameter("idAdministrador", idAdministrador);
+        return query.getResultList();
+    }
+    
+    @Override
+    public List<Pqrs> findByAdminAndEstado(Integer idAdministrador, Estadopqrs estadoPqrs) {
+        getEntityManager().getEntityManagerFactory().getCache().evictAll();
+        TypedQuery<Pqrs> query = getEntityManager().createNamedQuery("Pqrs.findByAdminAndEstado", Pqrs.class);
+        query.setParameter("idAdministrador", idAdministrador);
+        query.setParameter("estadoPqrsId", estadoPqrs.getId());
+        return query.getResultList();
+    }
 
    @Override
     public List<Pqrs> finByCustomer(Cliente customer) {

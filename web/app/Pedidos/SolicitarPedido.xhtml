@@ -21,11 +21,38 @@
                                 <div class="card-body card-block">
                                     <h:form id="formRealizarPedido" prependId="false" enctype="multipart/form-data" 
                                             class="form-horizontal">
+                                        <h:panelGroup id="infoCliente" layout="block" class="row form-group">
+                                            <div class="col col-md-2">
+                                                <label for="Telefono" class=" form-control-label">Cliente: </label></div>
+                                            <div class="col col-md-3">
+                                                <h:inputText id="documentoCliente" a:placeholder="Número documento a buscar" class="form-control" value="#{buscarClienteControlador.numeroDocumento}" />
+                                            </div>
+                                            <div class="col col-md-1">
+                                                <p:commandLink class="btn btn-info" 
+                                                               process="infoCliente"
+                                                               actionListener="#{buscarClienteControlador.buscar()}"
+                                                               update="infoCliente">
+                                                    <i class="fa fa-search"></i>
+                                                </p:commandLink>
+                                                <button class="btn btn-success"><i class="fa fa-plus"></i></button>
+                                            </div>
+                                            <h:panelGroup rendered="#{buscarClienteControlador.existeCliente()}" layout="block" class="col-md-6">
+                                                <div class="row form-group">
+                                                    <div class="col col-md-6">
+                                                        <div class="form-control">#{buscarClienteControlador.cliente.usuario.primerNombre}</div>
+                                                    </div>
+                                                    <div class="col col-md-6">
+                                                        <div class="form-control">#{buscarClienteControlador.cliente.usuario.primerApellido}</div>
+                                                    </div>
+                                                </div>
+                                            </h:panelGroup>
+                                        </h:panelGroup>
+                                        <hr/>       
                                         <div class="row form-group">
                                             <div class="col col-md-2">
                                                 <label for="tipoDePedido" class=" form-control-label">Tipo de Pedido:</label></div>
                                             <div class="col col-md-4">
-                                                <h:selectOneMenu id="tipoDePedido" required="true" class="form-control" value="#{registroPedidoControlador.pedidos.tipoPedido}">
+                                                <h:selectOneMenu id="tipoDePedido" required="true" class="form-control" value="#{registroPedidoControlador.pedido.tipoPedido}">
                                                     <f:selectItem itemLabel="Domicilio" itemValue="Cédula" a:style="color: black"></f:selectItem>                                       
                                                     <f:selectItem itemLabel="Restaurante" itemValue="Cédula Ex" a:style="color: black"></f:selectItem>
                                                 </h:selectOneMenu>
@@ -33,19 +60,19 @@
                                             <div class="col col-md-2">
                                                 <label for="tipoDePedido" class=" form-control-label">Lugar de Entrega:</label></div>
                                             <div class="col-12 col-md-4">
-                                                <h:inputText id="LugarDeEntrega" a:placeholder="Mesa # / Dirección" class="form-control" value="#{registroPedidoControlador.pedidos.puntoEntrega}" />
+                                                <h:inputText id="LugarDeEntrega" a:placeholder="Mesa # / Dirección" class="form-control" value="#{registroPedidoControlador.pedido.puntoEntrega}" />
                                             </div>
                                         </div>
                                         <div class="row form-group">
                                             <div class="col col-md-2">
                                                 <label for="Telefono" class=" form-control-label">Telefono:</label></div>
                                             <div class="col col-md-4">
-                                                <h:inputText id="Telefono" a:placeholder="Celular / Phone" class="form-control" value="#{registroPedidoControlador.pedidos.telefono}" />
+                                                <h:inputText id="Telefono" a:placeholder="Celular / Phone" class="form-control" value="#{registroPedidoControlador.pedido.telefono}" />
                                             </div>
                                         </div>
+                                        <hr/>                                             
                                         <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-                                            <h:panelGroup id="infoPedidoProducto" layout="block" class="card-body">
-                                                <hr/>                                                
+                                            <h:panelGroup id="infoPedidoProducto" layout="block" class="card-body">   
                                                 <div class="row form-group">
                                                     <div class="col col-md-2">
                                                         <label for="producto" class=" form-control-label">Productos:</label></div>
@@ -53,7 +80,7 @@
                                                         <h:selectOneMenu id="producto"
                                                                          class="form-control" 
                                                                          value="#{registroPedidoControlador.detallePedido.producto}">
-                                                            <f:selectItems value="#{registroPedidoControlador.productos}" var="ped" itemValue="#{ped}" itemLabel="#{ped.id}-#{ped.categoriaProducto.nombreCategoria}-#{ped.nombre}"  />
+                                                            <f:selectItems value="#{registroPedidoControlador.productos}" var="pro" itemValue="#{pro}" itemLabel="#{pro.id}-#{pro.categoriaProducto.nombreCategoria}-#{pro.nombre}"  />
                                                         </h:selectOneMenu>
                                                     </div>
                                                     <div class="col col-md-2">
@@ -80,7 +107,7 @@
 
                                                 <hr/>
                                                 <h:panelGroup id="panelTablaPedidoProducto" layout="block" class="table-stats order-table ov-h">
-                                                    <h:dataTable class="table" value="#{registroPedidoControlador.pedidos.detallesPedido}" var="pedidoProducto">
+                                                    <h:dataTable class="table" value="#{registroPedidoControlador.pedido.detallesPedido}" var="pedidoProducto">
                                                         <h:column>
                                                             <f:facet name="header">Categoria</f:facet>
                                                                 #{pedidoProducto.producto.categoriaProducto.nombreCategoria}
@@ -100,7 +127,7 @@
                                                         </h:column>
                                                         <h:column>
                                                             <f:facet name="header">#{msjMenu.subTotal}</f:facet>
-                                                            #{pedidoProducto.producto.precio * pedidoProducto.cantidad}
+                                                                #{pedidoProducto.producto.precio * pedidoProducto.cantidad}
                                                         </h:column>
                                                     </h:dataTable>
                                                     <hr/>
@@ -116,7 +143,7 @@
                                                             <tr>
                                                                 <th colspan="1" scope="col" class="text-right" style="background: white">#{msjOlvCompra.SUBTOTAL}</th>
                                                                 <th scope="col" style="background: white">
-                                                                    #{registroPedidoControlador.pedidos.subTotal}
+                                                                    #{registroPedidoControlador.pedido.subTotal}
                                                                 </th>
                                                                 <!-- <th scope="col"></th> -->
                                                             </tr>
@@ -130,7 +157,7 @@
                                                             <tr>
                                                                 <th colspan="1" scope="col" class="text-right" style="background: white">#{msjOlvCompra.TOTAL}</th>
                                                                 <th scope="col" style="background: white">
-                                                                    #{registroPedidoControlador.pedidos.valorTotal}
+                                                                    #{registroPedidoControlador.pedido.valorTotal}
                                                                 </th>
                                                                 <!-- <th scope="col"></th> -->
                                                             </tr>

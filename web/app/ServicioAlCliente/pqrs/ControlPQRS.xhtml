@@ -78,27 +78,24 @@
                             <f:convertDateTime pattern="yyyy-MM-dd"/>
                         </h:outputText>
                     </p:column>
+                    <p:column headerText="#{msjPQRS.FECHA}" priority="2" style="width: 120px">
+                        <h:outputText value="#{pq.estadoPqrs.descripcion}"/>
+                    </p:column>
                     <p:column headerText="#{msjPQRS.OPCIONES}" priority="2" style="width: 180px">
                         <h:commandLink class="btn" style="color: white; background: #580000; 
                                        margin-left: 10px;display: inline-block" 
                                        title="Detalles" 
                                        a:data-toggle="modal" a:data-target="#verInfoPqrs"
-                                       action="#{pqrsControlador.seleccionarPqrs(pq)}">
+                                       action="#{controlPqrsView.seleccionarPqrs(pq)}">
                             <i class="fa fa-eye"></i>
                             <f:ajax render=":verInfoPqrsContent" />
                         </h:commandLink>
-                        <h:commandLink class="btn" style="background: #951010; color: white; margin-left: 10px;display: inline-block" title="Modificar" 
+                        <h:commandLink rendered="#{controlPqrsView.renderEditButton(pqrs)}"
+                                       class="btn" style="background: #951010; color: white; margin-left: 10px;display: inline-block" title="Modificar" 
                                        a:data-toggle="modal" a:data-target="#responderInfoPQRS"
-                                       action="#{pqrsControlador.seleccionarPqrs(pq)}">
+                                       action="#{controlPqrsView.seleccionarPqrs(pq)}">
                             <i class="fa fa-pencil"></i>
                             <f:ajax render=":responderPQRSContent" />
-                        </h:commandLink>
-
-                        <h:commandLink class="btn" style="background: #727272; color: white; margin-left: 10px;display: inline" title="Eliminar" 
-                                       a:data-toggle="modal" a:data-target="#eliminarInsumo"
-                                       action="#inventarioControlador.seleccionarInsumo(pq)}">
-                            <i class="fa fa-trash"></i>
-                            <f:ajax render=":confirmEliminarInsumo" />
                         </h:commandLink>
 
                         <h:commandLink class="btn"
@@ -112,9 +109,9 @@
 
         </div>
 
-            <ui:include src="/WEB-INF/includes/modal/pqrs/ver_info_pqrs.xhtml"></ui:include>
-            <ui:include src="/WEB-INF/includes/modal/pqrs/responder_pqrs.xhtml"></ui:include>
-            <!--<ui:include src="/WEB-INF/includes/modal/pqrs/confirmar_camb_Estado.xhtml"></ui:include>-->
+        <ui:include src="/WEB-INF/includes/modal/pqrs/ver_info_pqrs.xhtml"></ui:include>
+        <ui:include src="/WEB-INF/includes/modal/pqrs/responder_pqrs.xhtml"></ui:include>
+        <!--<ui:include src="/WEB-INF/includes/modal/pqrs/confirmar_camb_Estado.xhtml"></ui:include>-->
 
     </ui:define>
 </ui:composition>

@@ -30,6 +30,7 @@ import org.primefaces.PrimeFaces;
 import pyp.DAO.IPqrsDAO;
 import pyp.controlador.sesion.SessionControlador;
 import pyp.modelo.entidades.Pqrs;
+import pyp.servicios.pqrs.IRegistroPqrsService;
 
 /**
  *
@@ -43,6 +44,8 @@ public class PqrsControlador implements Serializable {
     private SessionControlador session;
     @EJB
     private IPqrsDAO pqDAO;
+    @EJB
+    private IRegistroPqrsService registroPqrsService;
     private List<Pqrs> pqrs;
     private Pqrs pqrsSeleccionada;
     private Pqrs nuevaPqrs;
@@ -108,15 +111,18 @@ public class PqrsControlador implements Serializable {
     public void registrarPqrs() {
         String mensajeRequest = "";
         try {
-            nuevaPqrs.setId(pqDAO.count() + 1);
-            nuevaPqrs.setFecha(new Date());
-            pqDAO.create(nuevaPqrs);
+            compltarInfoPQRS();
+            registroPqrsService.registroPqrs(nuevaPqrs);
             mensajeRequest = "swal('Registro Exitoso', '', 'success');";
         } catch (Exception e) {
             mensajeRequest = "swal('Verifique sus datos', 'Intente de nuevo', 'error');";
         }
         PrimeFaces.current().executeScript(mensajeRequest);
         nuevaPqrs = new Pqrs();
+    }
+
+    private void compltarInfoPQRS() {
+        nuevaPqrs.setCliente(session.getUser().getCliente());
     }
 
     public void actualizar() {
