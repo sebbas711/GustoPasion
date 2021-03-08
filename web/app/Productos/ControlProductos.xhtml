@@ -13,11 +13,11 @@
             <h:form prependId="false">
                 <div class="animated fadeIn" id="page-top">
                     <div class="row">
-                        <div class="col-sm-6 col-lg">
+                        <div class="col-sm-6 col-lg-4">
                             <div class="card text-white colorverde" style="background: #580000">
                                 <p:commandLink class="hovcard"
-                                               actionListener="#{controlInventarioView.limpiarFiltroTipoInsumo()}"
-                                               update="tablaInsumos">
+                                               actionListener="#{controlProductosView.limpiarFiltroCategoriaProducto()}"
+                                               update="tablaProductos">
                                     <div class="card-body">
                                         <div class="card-left pt-1 float-left">
                                             <h4 class="mb-0 fw-r">
@@ -28,16 +28,16 @@
                                 </p:commandLink>
                             </div>
                         </div>
-                        <ui:repeat value="#{controlInventarioView.tiposInsumosHabilitados}" var="tipoInsumo">
-                            <div class="col-sm-6 col-lg">
-                                <div class="card text-white coloramarillo" style="background: #{controlInventarioView.getColorByTipoInsumo(tipoInsumo)}">
+                        <ui:repeat value="#{controlProductosView.categoriaProductosHabilitados}" var="categoriaProductos">
+                            <div class="col-sm-6 col-lg-4">
+                                <div class="card text-white coloramarillo">
                                     <p:commandLink class="hovcard" 
-                                                   actionListener="#{controlInventarioView.filtrarPorTipoInsumo(tipoInsumo)}"
-                                                   update="tablaInsumos">
+                                                   actionListener="#{controlProductosView.filtrarPorCategoriaProducto(categoriaProductoFiltro)}"
+                                                   update="tablaProductos">
                                         <div class="card-body">
                                             <div class="card-left pt-1 float-left">
                                                 <h4 class="mb-0 fw-r">
-                                                    <span>#{msjInventario[tipoInsumo.nombre]}</span>
+                                                    <span>#{msjInventario[categoriaProductos.nombreCategoria]}</span>
                                                 </h4>
                                             </div>
                                         </div>
@@ -47,115 +47,55 @@
                         </ui:repeat>
                     </div>
                 </div>
-                <center>
-                    <h:commandLink class="btn btn-secundary" style="border: double #951010" title="#{msjInventario.RegistrarInsumo}" 
-                                   value="#{msjInventario.RegistrarInsumo}"
-                                   a:data-toggle="modal" a:data-target="#agregarInsumo"
-                                   >
-                        <i class="fa fa-pencil"></i>
-                        <f:ajax render=":agregarInfoInsumoContent" />
-                    </h:commandLink>
-                    <h:commandButton class="btn" value="Reporte Lista Insumos" 
-                                     style="background: #951010; color: white; margin-left: 10px"
-                                     action="#{inventarioControlador.descargaListado()}">
-                    </h:commandButton>
-                </center>
                 <br/>
-                <br/>
-                <br/>
-                <h3 class="text-center"><b style="color: #951010">#{controlInventarioView.tipoInsumoFiltro.nombre}</b></h3>
-                <br/>
-                <p:dataTable class="table table-striped"
-                             value="#{controlInventarioView.insumos}" 
-                             rows="5"
-                             paginator="true"
-                             paginatorPosition="bottom"
-                             rowsPerPageTemplate="5,10,15"
-                             reflow="true"
-                             var="insu"
-                             id="tablaInsumos">
-                    <p:column headerText="#{msjInventario.ID}" priority="2" style="width: 30px">
-                        <h:outputText value="#{insu.id}"/>
-                    </p:column>
-                    <p:column headerText="#{msjInventario.NOMBRE}" priority="2" style="width: 150px">
-                        <h:outputText value="#{insu.nombre}"/>
-                    </p:column>
-                    <p:column headerText="#{msjInventario.CANTIDAD}" priority="2" style="width: 70px">
-                        <h:outputText value="#{insu.cantidad} "/>
-                    </p:column>
-                    <p:column headerText="#{msjInventario.ESTADO}" priority="2" style="width: 60px">
-                        <h:outputText value="#{insu.estado} "/>
-                    </p:column>
-                    <p:column headerText="#{msjInventario.OPCIONES}" priority="2" style="width: 180px">
-                        <h:commandLink class="btn" style="color: white; background: #580000; margin-left: 10px" title="Detalle" 
-                                       a:data-toggle="modal" a:data-target="#verInfoInsumo"
-                                       action="#{inventarioControlador.seleccionarInsumo(insu)}">
-                            <i class="fa fa-eye"></i>
-                            <f:ajax render=":verInfoInsumoContent" />
-                        </h:commandLink>
-                        <h:commandLink class="btn" style="background: #951010; color: white; margin-left: 15px" title="Editar" 
-                                       a:data-toggle="modal" a:data-target="#editarInfoInsumo"
-                                       action="#{inventarioControlador.seleccionarInsumo(insu)}">
-                            <i class="fa fa-pencil"></i>
-                            <f:ajax render=":editarInfoInsumoContent" />
-                        </h:commandLink>
-                        <!--h:commandLink class="btn" style="background: #727272; color: white; margin-left: 15px" title="Eliminar" 
-                                       a:data-toggle="modal" a:data-target="#eliminarInsumo"
-                                       action="#inventarioControlador.seleccionarInsumo(insu)}">
-                            <i class="fa fa-trash"></i>
-                            <f:ajax render=":confirmEliminarInsumo" />
-                        </h:commandLink-->
-                        <h:commandLink rendered="#{inventarioControlador.renderedBtnBloquear(insu)}" class="btn"
-                                       action="#{inventarioControlador.seleccionarInsumo(insu)}"
-                                       a:data-toggle="modal" a:data-target="#bloquearInsumo"
-                                       style="background: #9D9898; margin-left: 15px">
-                            <i class="fa fa-unlock" style="color: white"></i>
-                            <f:ajax render=":confirmarBloquearInsumo"/>
-                        </h:commandLink>
-                        <h:commandLink rendered="#{empty insu.estado or insu.estado eq 0}" class="btn"
-                                       action="#{inventarioControlador.seleccionarInsumo(insu)}"
-                                       a:data-toggle="modal" a:data-target="#bloquearInsumo"
-                                       style="background: #9D9898; margin-left: 15px">
-                            <i class="fa fa-lock" style="color: white"></i>
-                            <f:ajax render=":confirmarBloquearInsumo"/>
-                        </h:commandLink>
-                        <h:commandLink class="btn"
-                                       action="#{inventarioControlador.descargaCertificado(insu.id)}"
-                                       style="background: #727272;margin-left: 15px">
-                            <i class="fa fa-download" style="color: white;"></i>
-                        </h:commandLink>
-                    </p:column>
-                </p:dataTable>
-            </h:form>
-        </div>
-        <div class="row">
-            <h:form>
-                <p:growl id="messages" showDetail="true" />  
-                <p:fileUpload
-                    listener="#{inventarioControlador.cargaListaUsuarios}"
-                    mode="advanced"
-                    dragDropSupport="true"
-                    multiple="true"
-                    update=":tablaInsumos messages"
-                    sizeLimit="100000000"
-                    cancelLabel="Cancelar"
-                    fileLimitMessage="Cantidad de Archivos no permitida"
-                    invalidFileMessage="Archivo no valido"
-                    label="Escoger"
-                    uploadLabel="Subir"
-                    fileLimit="3"                                                                                          
-                    allowTypes="/(\.|\/)(xls|xlsx)$/" 
-                    style="margin-left: 350px">
-                </p:fileUpload>
-
+                <h:form prependId="false">
+                    <p:dataTable class="table table-striped"
+                                 value="#{controlProductosView.productos}" 
+                                 rows="10"
+                                 paginator="true"
+                                 paginatorPosition="bottom"
+                                 rowsPerPageTemplate="10,20,30"
+                                 reflow="true"
+                                 var="pro"
+                                 id="tablaProductos">
+                        <p:column headerText="#{msjInventario.ID}" priority="2" style="width: 30px">
+                            <h:outputText value="#{pro.id}"/>
+                        </p:column>
+                        <p:column headerText="#{msjInventario.NOMBRE}" priority="2" style="width: 150px">
+                            <h:outputText value="#{pro.nombre}"/>
+                        </p:column>
+                        <p:column headerText="#{msjInventario.CANTIDAD}" priority="2" style="width: 70px">
+                            <h:outputText value="#{pro.categoriaProducto.nombreCategoria} "/>
+                        </p:column>
+                        <p:column headerText="#{msjInventario.OPCIONES}" priority="2" style="width: 180px">
+                            <h:commandLink class="btn" a:data-toggle="modal" a:data-target="#verInfoProductos"
+                                           action="#{controlProductosView.seleccionarProducto(pro)}" 
+                                           style="background: #580000; margin-right: 12px">
+                                <i class="fa fa-eye" style="color: white"></i>
+                                <f:ajax render=":verInfoProductoContent"/>
+                            </h:commandLink>
+                            <h:commandLink class="btn" a:data-toggle="modal" a:data-target="#editarInfoProducto" 
+                                           action="#{controlProductosView.seleccionarProducto(pro)}" 
+                                           style="background: #951010; margin-right: 12px">
+                                <i class="fa fa-pencil" style="color: white"></i>
+                                <f:ajax render=":editarInfoProductoContent"/>
+                            </h:commandLink>
+                            <h:commandLink class="btn"
+                                           action="#{controlProductosView.seleccionarProducto(pro)}" 
+                                           a:data-toggle="modal" a:data-target="#eliminarProducto" 
+                                           style="background: #727272; margin-right: 15px">
+                                <i class="fa fa-trash" style="color: white"></i>
+                                <f:ajax render=":confirmEliminarProducto"/>
+                            </h:commandLink>
+                        </p:column>
+                    </p:dataTable>
+                </h:form>
             </h:form>
         </div>
 
-        <ui:include src="/WEB-INF/includes/modal/inventario/ver_insumos.xhtml"></ui:include>
-        <ui:include src="/WEB-INF/includes/modal/inventario/confirmar_eliminar.xhtml"></ui:include>
-        <ui:include src="/WEB-INF/includes/modal/inventario/confirmar_bloquear.xhtml"></ui:include>
-        <ui:include src="/WEB-INF/includes/modal/inventario/editar-info-insumo.xhtml"></ui:include>
-        <ui:include src="/WEB-INF/includes/modal/inventario/agregar_insumo.xhtml"></ui:include>
+        <ui:include src="/WEB-INF/includes/modal/productos/ver_productos.xhtml"></ui:include>
+        <ui:include src="/WEB-INF/includes/modal/productos/confirmar_eliminar.xhtml"></ui:include>
+        <ui:include src="/WEB-INF/includes/modal/productos/editar-info-productos.xhtml"></ui:include>
 
 
     </ui:define>

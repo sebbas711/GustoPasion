@@ -24,14 +24,16 @@
                         </div>
                         <div class="modal-body row">
                             <div class="col-md-5" style="margin-left: 70px">
-                                <div class="form-group">
-                                    <label>#{msjModales.ROL}</label>
-                                    <h:selectOneMenu class="form-control" 
-                                                     value="#{usuarioControlador.usuarioSeleccionado.rol}">
-                                        <f:selectItem itemLabel="#{msjModales.SeleccioneuntipodRol}" itemValue=""/>
-                                        <f:selectItems value="#{tipoRolControlador.roles}" var="rol" 
-                                                       itemLabel="#{rol.descripcion}"/>
-                                    </h:selectOneMenu>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <center>
+                                            <h:outputLabel for="fr_rol"><b style="color: #951010">#{msjRegistro.ROL}</b> <b style="color: red">*</b> </h:outputLabel>
+                                            <h:selectOneMenu id="fr_rol" class="form-control" value="#{usuarioControlador.nuevoUsuario.roles}">
+                                                <f:converter converterId="rolConverter"/>
+                                                <f:selectItems value="#{rolControlador.roles}" var="rol" itemValue="#{rol}" itemLabel="#{rol.descripcion} &ensp; &ensp; &ensp; &ensp; &ensp; &ensp; &ensp; &ensp; &ensp; &ensp; "/>
+                                            </h:selectOneMenu>
+                                        </center>
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <label>#{msjModales.TIPODEIDENTIFICACION}</label>
@@ -40,7 +42,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>#{msjModales.NumerodeIdentificación} </label>
-                                    <h:inputText class="form-control" a:type="number" value="#{usuarioControlador.usuarioSeleccionado.idUsuario}"/>
+                                    <h:inputText class="form-control" a:type="number" value="#{usuarioControlador.usuarioSeleccionado.id}"/>
                                 </div>
 
                                 <div class="form-group">

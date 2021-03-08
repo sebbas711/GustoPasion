@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
-                xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
     <!-- modal mostrar usuarios-->
     <div class="modal fade" id="verInfoUsuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" 
          aria-hidden="true">
@@ -22,11 +23,7 @@
                             <div class="modal-body">
                                 <div class="form-group">
                                     <label for="message-text" class="col-form-label">#{msjModales.ID}</label>
-                                    <span class="form-control">#{usuarioControlador.usuarioSeleccionado.idUsuario}</span>
-                                </div>
-                                <div class="form-group">
-                                    <label for="message-text" class="col-form-label">#{msjModales.ROL}</label>
-                                    <span class="form-control">#{usuarioControlador.usuarioSeleccionado.rol.descripcion}</span>
+                                    <span class="form-control">#{usuarioControlador.usuarioSeleccionado.id}</span>
                                 </div>
                                 <div class="form-group">
                                     <label for="message-text" class="col-form-label">#{msjModales.TIPODEIDENTIFICACION}</label>

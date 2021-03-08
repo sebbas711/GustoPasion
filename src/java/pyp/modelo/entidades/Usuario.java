@@ -44,6 +44,10 @@ import javax.validation.constraints.Size;
     , @NamedQuery(name = "Usuario.findByEstado", query = "SELECT u FROM Usuario u WHERE u.estado = :estado")})
 public class Usuario implements Serializable {
 
+    public static enum EstadosUsuario {
+        BLOQUEADO, ACTIVO
+    }
+
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -287,5 +291,9 @@ public class Usuario implements Serializable {
     public String toString() {
         return "pyp.modelo.entidades.Usuario[ id=" + id + " ]";
     }
-    
+
+    public String estadoToString() {
+        return EstadosUsuario.values()[estado].name();
+    }
+
 }

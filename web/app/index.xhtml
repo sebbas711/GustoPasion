@@ -8,29 +8,11 @@
                 xmlns:f="http://xmlns.jcp.org/jsf/core"
                 xmlns:p="http://primefaces.org/ui">
     <ui:define name="contenido">
-        <div class="content">
-            <!-- Animated -->
-            <div class="animated fadeIn" id="page-top">
-                <!-- Widgets  -->
-                <div class="row">
-                    <div class="col-sm-6 col-lg-3">
-                        <div class="card text-white colorverde" style="background: #580000">
-                            <a class="hovcard" href="#verduras">
-                                <div class="card-body">
-                                    <div class="card-left pt-1 float-left">
-                                        <h4 class="mb-0 fw-r">
-                                            <span>#{msjInventario.Verduras}</span>
-                                        </h4>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--/.col-->
-
+        <div class="form-group text-center" style="background: #951010; opacity: 0.9; height: 550px">
+            <img  src="#{request.contextPath}/resource/img/LOgo.png" alt="100" width="700" class="logo-brand img-fluid"/>
+            <h1 style="color: white; font-family: initial"><b>#{msjLogin.title}</b></h1>
+        </div> 
+    <br/>
     </ui:define>
 
 </ui:composition>

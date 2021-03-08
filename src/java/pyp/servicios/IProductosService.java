@@ -3,21 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pyp.DAO;
+package pyp.servicios;
 
 import java.util.List;
 import javax.ejb.Local;
+import pyp.excepciones.BusinessException;
 import pyp.modelo.entidades.CategoriaProducto;
 import pyp.modelo.entidades.Producto;
 
-/**
- *
- * @GAES 5
- */
 @Local
-public interface IProductoDAO extends DAO<Producto> {
+public interface IProductosService {
     
-    public List<Producto> listaProductosPorCategoria(int fk_categoria);
+    List<CategoriaProducto> getCategoriaProductoHabilitados() throws BusinessException;
 
-    List<Producto> findByCategoriaProducto(CategoriaProducto categoriaProductoFiltro);
+    public List<Producto> findProductosByFilter(CategoriaProducto categoriaProductoFiltro) throws BusinessException;
+    
 }

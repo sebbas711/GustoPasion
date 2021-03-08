@@ -8,8 +8,10 @@ package pyp.DAO.impl;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 import pyp.modelo.entidades.Producto;
 import pyp.DAO.IProductoDAO;
+import pyp.modelo.entidades.CategoriaProducto;
 
 /**
  *
@@ -31,5 +33,12 @@ public class ProductoDAO extends AbstractDAO<Producto> implements IProductoDAO {
         } catch (Exception e) {
             return null;
         }
+    }
+    
+    @Override
+    public List<Producto> findByCategoriaProducto(CategoriaProducto categoriaProductoFiltro){
+        TypedQuery<Producto> query = getEntityManager().createNamedQuery("Producto.findByCategoriaProducto", Producto.class);
+        query.setParameter("categoriaProductoId", categoriaProductoFiltro.getId());
+        return query.getResultList();
     }
 }
