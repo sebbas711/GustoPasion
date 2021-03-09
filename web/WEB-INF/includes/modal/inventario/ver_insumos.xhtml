@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
-                xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
     <!-- modal mostrar usuarios-->
     <div class="modal fade" id="verInfoInsumo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" 
          aria-hidden="true">
@@ -13,44 +14,52 @@
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span class="text-light" aria-hidden="true">&times;</span>
                         </button>
-                        <span><center><img src="#{request.contextPath}/resource/img/LOgo.png" class="rounded-pill" 
-                                           target="_blank" style="height: 100px"/></center></span>             
+                        <span><center style="color: #fff">
+                                <img src="#{request.contextPath}/resource/img/LOgo.png" 
+                                     class="rounded-pill" target="_blank" 
+                                     style="height: 70px"/>
+                                <b>ID: #{inventarioControlador.insumoSeleccionado.id}</b>
+                            </center>
+                        </span>               
                     </div>
                     <div class="modal-body row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="message-text" class="col-form-label">#{msjModales.ID}</label>
-                                <span class="form-control">#{inventarioControlador.insumoSeleccionado.id}</span>
-                            </div>
-                            <div class="form-group">
-                                <label for="message-text" class="col-form-label">#{msjModales.TipodeInsumo}</label>
+                                <label for="message-text" class="col-form-label"><b>#{msjModales.TipodeInsumo}</b></label>
                                 <span class="form-control">#{inventarioControlador.insumoSeleccionado.tipoInsumo.nombre}</span>
                             </div>
                             <div class="form-group">
-                                <label for="message-text" class="col-form-label">#{msjModales.FechadeIngreso} </label>
-                                <span class="form-control">#{inventarioControlador.insumoSeleccionado.fechaIngreso}</span>
+                                <label for="message-text" class="col-form-label"><b>#{msjModales.FechadeIngreso}</b></label>
+                                <h:outputText class="form-control" value="#{inventarioControlador.insumoSeleccionado.fechaIngreso}">
+                                    <f:convertDateTime pattern="YYYY/MM/dd"/>
+                                </h:outputText>
                             </div>
                             <div class="form-group">
-                                <label for="message-text" class="col-form-label">#{msjModales.FechadeVencimiento}</label>
-                                <span class="form-control">#{inventarioControlador.insumoSeleccionado.fechaVencimiento}</span>
+                                <label for="message-text" class="col-form-label"><b>#{msjModales.FechadeVencimiento}</b></label>
+                                <h:outputText class="form-control" value="#{inventarioControlador.insumoSeleccionado.fechaVencimiento}">
+                                    <f:convertDateTime pattern="YYYY/MM/dd"/>
+                                </h:outputText>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="message-text" class="col-form-label">#{msjModales.Nombre} </label>
+                                <label for="message-text" class="col-form-label"><b>#{msjModales.Nombre}</b></label>
                                 <span class="form-control">#{inventarioControlador.insumoSeleccionado.nombre}</span>
                             </div>
                             <div class="form-group">
-                                <label for="message-text" class="col-form-label">#{msjModales.Descripción} </label>
-                                <span class="form-control">#{inventarioControlador.insumoSeleccionado.descripcion}</span>
-                            </div>
-                            <div class="form-group">
-                                <label for="message-text" class="col-form-label">#{msjModales.Cantidad} </label>
+                                <label for="message-text" class="col-form-label"><b>#{msjModales.Cantidad}</b></label>
                                 <span class="form-control">#{inventarioControlador.insumoSeleccionado.cantidad}</span>
                             </div>
                             <div class="form-group">
-                                <label for="message-text" class="col-form-label">#{msjModales.Estado}</label>
+                                <label for="message-text" class="col-form-label"><b>#{msjModales.Estado}</b></label>
                                 <span class="form-control">#{inventarioControlador.insumoSeleccionado.estadoToString()}</span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="message-text" class="col-form-label"><b>#{msjModales.Descripción}</b></label>
+                                <span class="form-control">#{inventarioControlador.insumoSeleccionado.descripcion}</span>
                             </div>
                         </div>
                     </div>
@@ -63,4 +72,3 @@
         </div>
     </div>
 </ui:composition>
-
