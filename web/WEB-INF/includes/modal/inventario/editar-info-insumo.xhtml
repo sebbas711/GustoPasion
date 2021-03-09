@@ -27,27 +27,20 @@
                         <div class="modal-body row">
                             <div class="col-md-6">
                                 <div class="form-group" >
-                                    <label for="message-text" class="col-form-label">#{msjModales.TipodeInsumo} <b style="color: red">*</b></label>
+                                    <label for="message-text" class="col-form-label"><b>#{msjModales.TipodeInsumo}</b> <b style="color: red">*</b></label>
                                     <h:selectOneMenu class="form-control" value="#{inventarioControlador.insumoSeleccionado.tipoInsumo}">
                                         <f:selectItem itemLabel="#{msjModales.TipodeInsumo}" itemValue=""/>
                                         <f:selectItems value="#{tipoInsumoControlador.tiposInsumo}" var="ti" itemLabel="#{ti.nombre}"/>
                                     </h:selectOneMenu>
                                 </div>
                                 <div class="form-group">
-                                    <label for="message-text" class="col-form-label">#{msjModales.AuxiliarCocina} <b style="color: red">*</b></label>
-                                    <h:selectOneMenu class="form-control" value="#{inventarioControlador.insumoSeleccionado.auxCocina}">
-                                        <f:selectItem itemLabel="#{msjModales.AuxiliarCocina}" itemValue=""/>
-                                        <f:selectItems value="#{auxCocinaControlador.auxCocina}" var="aux" itemLabel="#{aux.usuario.primerNombre} #{aux.usuario.primerApellido}"/>
-                                    </h:selectOneMenu>
-                                </div>
-                                <div class="form-group">
-                                    <label for="message-text" class="col-form-label">#{msjModales.FECHADEINGRESO} <b style="color: red">*</b></label>
+                                    <label for="message-text" class="col-form-label"><b>#{msjModales.FechadeIngreso}</b> <b style="color: red">*</b></label>
                                     <h:inputText a:type="date" class="form-control" value="#{inventarioControlador.insumoSeleccionado.fechaIngreso}">
                                         <f:convertDateTime pattern="yyyy-MM-dd"/>
                                     </h:inputText>
                                 </div>
                                 <div class="form-group">
-                                    <label for="message-text" class="col-form-label">#{msjModales.FECHADEVENCIMIENTO} <b style="color: red">*</b></label>
+                                    <label for="message-text" class="col-form-label"><b>#{msjModales.FechadeVencimiento}</b> <b style="color: red">*</b></label>
                                     <h:inputText a:type="date" class="form-control" value="#{inventarioControlador.insumoSeleccionado.fechaVencimiento}">
                                         <f:convertDateTime pattern="yyyy-MM-dd"/>
                                     </h:inputText>
@@ -55,16 +48,26 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="message-text" class="col-form-label">#{msjModales.NOMBRE} <b style="color: red">*</b></label>
+                                    <label for="message-text" class="col-form-label"><b>#{msjModales.Nombre}</b> <b style="color: red">*</b></label>
                                     <h:inputText class="form-control" value="#{inventarioControlador.insumoSeleccionado.nombre}" a:placeholder="#{msjModales.Nombre}" maxlength="20"/>
                                 </div>
                                 <div class="form-group">
-                                    <label for="message-text" class="col-form-label">#{msjModales.DESCRIPCION} <b style="color: red">*</b></label>
-                                    <h:inputText class="form-control" value="#{inventarioControlador.insumoSeleccionado.descripcion}" a:placeholder="#{msjModales.Descripción}" maxlength="70"/>
+                                    <label for="message-text"  class="col-form-label"><b>#{msjModales.Cantidad}</b> <b style="color: red">*</b></label>
+                                    <h:inputText class="form-control"  a:type="number" value="#{inventarioControlador.insumoSeleccionado.cantidad}"/>
                                 </div>
                                 <div class="form-group">
-                                    <label for="message-text"  class="col-form-label">#{msjModales.CANTIDAD} <b style="color: red">*</b></label>
-                                    <h:inputText class="form-control"  a:type="number" value="#{inventarioControlador.insumoSeleccionado.cantidad}"/>
+                                    <label for="message-text" class="col-form-label"><b>#{msjModales.AuxiliarCocina}</b> <b style="color: red">*</b></label>
+                                    <h:selectOneMenu class="form-control" value="#{inventarioControlador.insumoSeleccionado.auxCocina}">
+                                        <f:selectItem itemLabel="#{msjModales.AuxiliarCocina}" itemValue=""/>
+                                        <f:selectItems value="#{auxCocinaControlador.auxCocina}" var="aux" itemLabel="#{aux.usuario.primerNombre} #{aux.usuario.primerApellido}"/>
+                                    </h:selectOneMenu>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="message-text" class="col-form-label"><b>#{msjModales.Descripción}</b> <b style="color: red">*</b></label>
+                                    <h:inputText class="form-control" value="#{inventarioControlador.insumoSeleccionado.descripcion}" a:placeholder="#{msjModales.Descripción}" maxlength="70"/>
                                 </div>
                             </div>
                         </div>
@@ -83,4 +86,3 @@
     </div>
 
 </ui:composition>
-
