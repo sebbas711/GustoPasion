@@ -20,7 +20,7 @@ import pyp.servicios.pqrs.IRespondePqrsService;
 
 /**
  *
- * @author Ismael
+ * @author Gaes5
  */
 @Stateless
 public class RespondePqrsService implements IRespondePqrsService {

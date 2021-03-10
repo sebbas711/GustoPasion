@@ -9,7 +9,7 @@ import javax.ejb.ApplicationException;
 
 /**
  *
- * @author Ismael
+ * @author Gaes5
  */
 @ApplicationException(rollback=true, inherited=false)
 public class BusinessException extends PypException {

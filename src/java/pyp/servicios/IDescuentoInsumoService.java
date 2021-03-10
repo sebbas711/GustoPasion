@@ -12,7 +12,7 @@ import pyp.modelo.entidades.DetallePedido;
 
 /**
  *
- * @author Ismael
+ * @author Gaes5
  */
 @Local
 public interface IDescuentoInsumoService {

@@ -29,7 +29,7 @@ import pyp.util.RedirectUtil;
 
 /**
  *
- * @author Ismael
+ * @author Gaes5
  */
 @Named
 @SessionScoped

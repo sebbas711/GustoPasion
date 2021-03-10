@@ -28,7 +28,7 @@ import static pyp.DAO.IRolDAO.ID_ROL_CLIENTE;
 
 /**
  *
- * @author Ismael
+ * @author Gaes5
  */
 @Stateless
 public class RegistroUsuarioService implements IRegistroUsuarioService {
