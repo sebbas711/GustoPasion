@@ -11,7 +11,7 @@ import pyp.modelo.entidades.Usuario;
 
 /**
  *
- * @author Ismael
+ * @author Gaes5
  */
 @Local
 public interface ISessionService {

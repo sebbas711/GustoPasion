@@ -17,7 +17,7 @@ import pyp.servicios.pqrs.IRegistroPqrsService;
 
 /**
  *
- * @author Ismael
+ * @author Gaes5
  */
 @Stateless
 public class RegistroPqrsService implements IRegistroPqrsService {

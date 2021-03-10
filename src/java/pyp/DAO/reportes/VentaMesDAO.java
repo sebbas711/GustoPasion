@@ -9,14 +9,12 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.Query;
-import javax.persistence.Tuple;
-import javax.persistence.TypedQuery;
 import pyp.DAO.impl.BaseDAO;
 import pyp.modelo.dto.VentaMesData;
 
 /**
  *
- * @author Ismael
+ * @author Gaes5
  */
 @Stateless
 public class VentaMesDAO extends BaseDAO<VentaMesData> implements IVentaMesDAO {

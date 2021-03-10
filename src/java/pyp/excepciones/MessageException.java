@@ -7,7 +7,7 @@ package pyp.excepciones;
 
 /**
  *
- * @author Ismael
+ * @author Gaes5
  */
 public enum MessageException {
 

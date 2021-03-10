@@ -7,7 +7,7 @@ package pyp.modelo.entidades.enums;
 
 /**
  *
- * @author Ismael
+ * @author Gaes5
  */
 public enum EstadoUsuariosEnum {
     INACTIVO, ACTIVO

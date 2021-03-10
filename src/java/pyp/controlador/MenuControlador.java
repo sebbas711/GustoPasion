@@ -20,7 +20,7 @@ import pyp.modelo.entidades.Producto;
 
 /**
  *
- * @author Ismael
+ * @author Gaes5
  */
 @Named
 @ViewScoped

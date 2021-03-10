@@ -7,7 +7,7 @@ package pyp.modelo.dto;
 
 /**
  *
- * @author Ismael
+ * @author Gaes5
  */
 public final class VentaMesData {
     

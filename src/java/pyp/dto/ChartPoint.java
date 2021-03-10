@@ -7,7 +7,7 @@ package pyp.dto;
 
 /**
  *
- * @author Ismael
+ * @author Gaes5
  */
 public class ChartPoint {
     
