@@ -6,26 +6,15 @@
 package pyp.DAO.impl;
 
 import java.util.List;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 
 /**
  *
  * @Gaes 5
  */
-public abstract class AbstractDAO<T> {
-    
-    @PersistenceContext(unitName = "PizzasPU")
-    protected EntityManager em;
-
-    protected Class<T> entityClass;
+public abstract class AbstractDAO<T> extends BaseDAO<T>{
 
     public AbstractDAO(Class<T> entityClass) {
-        this.entityClass = entityClass;
-    }
-
-    protected EntityManager getEntityManager() {
-        return em;
+        super(entityClass);
     }
 
     public void create(T entity) {

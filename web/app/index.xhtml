@@ -7,12 +7,46 @@
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 xmlns:f="http://xmlns.jcp.org/jsf/core"
                 xmlns:p="http://primefaces.org/ui">
+    <ui:define name="headPlus">
+        <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+        <script>
+            window.onload = function () {
+
+                var chart = new CanvasJS.Chart("chartContainerVentasMes", {
+                    animationEnabled: true,
+                    theme: "light2", // "light1", "light2", "dark1", "dark2"
+                    title: {
+                        text: "Ventas por mes"
+                    },
+                    axisY: {
+                        title: "Valor de ventas)"
+                    },
+                    data: [{
+                            type: "column",
+                            showInLegend: true,
+                            legendMarkerColor: "grey",
+                            legendText: "2020",
+                            dataPoints: #{dashboardAdminControlador.chartData}
+                        }]
+                });
+                chart.render();
+
+            }
+        </script>
+        
+    </ui:define>
     <ui:define name="contenido">
         <div class="form-group text-center" style="background: #951010; opacity: 0.9; height: 550px">
             <img  src="#{request.contextPath}/resource/img/LOgo.png" alt="100" width="700" class="logo-brand img-fluid"/>
             <h1 style="color: white; font-family: initial"><b>#{msjLogin.title}</b></h1>
         </div> 
-    <br/>
+        <div class="row">
+            <div class="col-md-3">
+                <div id="chartContainerVentasMes" style="height: 270px; width: 100%;"></div>
+            </div>
+        </div>
+        
+        
     </ui:define>
 
 </ui:composition>
