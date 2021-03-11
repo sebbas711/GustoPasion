@@ -336,16 +336,16 @@ public class UsuarioControlador implements Serializable {
 
         try {
             Map parametro = new HashMap();
-            parametro.put("UsuarioReporte", "Sebastian Luna");
-            parametro.put("RutaImagen", context.getRealPath("/resource/imagenes/Report.jpg"));
-            Connection conec = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/basededatos", "root", "");
+            parametro.put("UsuarioReporte", "Juan Sebastian Luna");
+            parametro.put("RutaImagen", context.getRealPath("/resource/img/Report.jpg"));
+            Connection conec = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/basededatos", "root", "");
 
             File jasper = new File(context.getRealPath("/WEB-INF/classes/pyp/modelo/reportes/ListaUsuarios.jasper"));
 
             JasperPrint jp = JasperFillManager.fillReport(jasper.getPath(), parametro, conec);
 
             HttpServletResponse hsr = (HttpServletResponse) context.getResponse();
-            hsr.addHeader("Content-disposition", "attachment; filename=Certificado.pdf");
+            hsr.addHeader("Content-disposition", "attachment; filename=Reporte-ListadoUsuarios.pdf");
             OutputStream os = hsr.getOutputStream();
             JasperExportManager.exportReportToPdfStream(jp, os);
             os.flush();
@@ -353,6 +353,7 @@ public class UsuarioControlador implements Serializable {
             facesContext.responseComplete();
 
         } catch (Exception e) {
+            System.out.println("pyp.modelo.reportes.insumos.ListaInsumos()" + e.getMessage());
         }
     }
     

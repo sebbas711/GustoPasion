@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="0" uuid="699c6e8a-7506-424e-b256-8329e2406b3f">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#FFFFFF" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     pedido.`cliente` AS pedido_cliente,
+     pedido.`fecha` AS pedido_fecha,
+     pedido.`sub_total` AS pedido_sub_total,
+     pedido.`valor_total` AS pedido_valor_total,
+     pedido.`tipo_pedido` AS pedido_tipo_pedido,
+     pedido.`punto_entrega` AS pedido_punto_entrega,
+     pedido.`observaciones` AS pedido_observaciones,
+     detalle_pedido.`pedido` AS detalle_pedido_pedido,
+     detalle_pedido.`Producto` AS detalle_pedido_Producto,
+     detalle_pedido.`cantidad` AS detalle_pedido_cantidad,
+     detalle_pedido.`valor_unitario` AS detalle_pedido_valor_unitario,
+     producto.`nombre` AS producto_nombre,
+     categoria_producto.`nombre_categoria` AS categoria_producto_nombre_categoria
+FROM
+     `pedido` pedido INNER JOIN `detalle_pedido` detalle_pedido ON pedido.`id` = detalle_pedido.`pedido`
+     INNER JOIN `producto` producto ON detalle_pedido.`Producto` = producto.`id`
+     INNER JOIN `categoria_producto` categoria_producto ON producto.`categoria_producto` = categoria_producto.`id`]]>
+	</queryString>
+	<field name="pedido_cliente" class="java.lang.Integer"/>
+	<field name="pedido_fecha" class="java.sql.Date"/>
+	<field name="categoria_producto_nombre_categoria" class="java.lang.String"/>
+	<field name="detalle_pedido_pedido" class="java.lang.Integer"/>
+	<field name="detalle_pedido_Producto" class="java.lang.Integer"/>
+	<field name="producto_nombre" class="java.lang.String"/>
+	<field name="pedido_tipo_pedido" class="java.lang.String"/>
+	<field name="pedido_punto_entrega" class="java.lang.String"/>
+	<field name="pedido_observaciones" class="java.lang.String"/>
+	<field name="detalle_pedido_cantidad" class="java.lang.Integer"/>
+	<field name="detalle_pedido_valor_unitario" class="java.lang.Double"/>
+	<field name="pedido_sub_total" class="java.lang.Double"/>
+	<field name="pedido_valor_total" class="java.lang.Double"/>
+	<background>
+		<band height="575" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="475" width="105" height="100" backcolor="#660000" uuid="30549cc8-affe-4403-9d39-3d81f1ba40ea"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="0" y="77" width="104" height="20" forecolor="#FFFFFF" uuid="755bfff0-67d5-4de1-9d8f-23a955397b7c"/>
+					<box leftPadding="4" rightPadding="4"/>
+					<textElement textAlignment="Center">
+						<font size="16" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement mode="Transparent" x="42" y="73" width="20" height="1" backcolor="#FFFFFF" uuid="ba76fb7c-388d-40c1-8838-1e932183d0de"/>
+				</line>
+				<textField>
+					<reportElement style="Column header" x="1" y="0" width="104" height="73" forecolor="#FFFFFF" uuid="de06b032-0daf-48a5-97e6-1de41d480cc7"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="58" isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</background>
+	<title>
+		<band height="104" splitType="Stretch">
+			<staticText>
+				<reportElement style="SubTitle" x="232" y="67" width="568" height="37" uuid="5d0b401a-09c8-4303-8867-3275b8fa3bd6"/>
+				<textElement textAlignment="Right">
+					<font size="26"/>
+				</textElement>
+				<text><![CDATA[Listado de Pedidos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Title" x="0" y="0" width="802" height="67" forecolor="#660000" uuid="5f78eece-636b-4c38-ba5c-4c0bc58ef27a"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Bodoni MT" size="54" isBold="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<text><![CDATA[Restaurante Gusto & Pasión]]></text>
+			</staticText>
+			<image>
+				<reportElement x="0" y="-18" width="139" height="122" uuid="54ac429f-a7a8-40d6-af07-091f96f6a0ba"/>
+				<imageExpression><![CDATA["C:\\Users\\PC\\Videos\\Proyecto\\Gusto y Pasion\\GustoPasion\\web\\resource\\img\\Report.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="97" y="5" width="705" height="20" backcolor="#660000" uuid="56245394-c95f-4ad6-a1bc-5ea68c500352"/>
+				<staticText>
+					<reportElement style="Column header" x="0" y="0" width="54" height="15" uuid="1332fffa-0770-42e3-9721-b7055d44940a"/>
+					<textElement textAlignment="Center"/>
+					<text><![CDATA[Cliente]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="54" y="0" width="54" height="15" uuid="2afe61d1-a248-4e80-ba84-de5c2ab8a51d"/>
+					<textElement textAlignment="Center"/>
+					<text><![CDATA[Fecha]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="108" y="0" width="54" height="15" uuid="45ca2221-0aaa-4cbe-9a4a-106be0a07062"/>
+					<textElement textAlignment="Center"/>
+					<text><![CDATA[categoria]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="162" y="0" width="54" height="15" uuid="29edc408-2549-4e29-9dad-c9add5c52832"/>
+					<textElement textAlignment="Center"/>
+					<text><![CDATA[ID Pedido]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="216" y="0" width="54" height="15" uuid="00e87e1e-c1f5-4964-8d36-593756a3cab1"/>
+					<textElement textAlignment="Center"/>
+					<text><![CDATA[ID Producto]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="270" y="0" width="54" height="15" uuid="29072de0-43d8-4be4-b7f2-7976ead4be0c"/>
+					<textElement textAlignment="Center"/>
+					<text><![CDATA[Nombre]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="324" y="0" width="54" height="15" uuid="822f17f6-2f24-4a2d-a0cd-6d0982b23eaa"/>
+					<textElement textAlignment="Center"/>
+					<text><![CDATA[Tipo Pedido]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="378" y="0" width="54" height="15" uuid="31753268-4301-4846-a7a7-9c75c03c54d7"/>
+					<textElement textAlignment="Center"/>
+					<text><![CDATA[Entrega]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="432" y="0" width="54" height="15" uuid="e60a4909-2a1b-447c-9de0-636c80768d89"/>
+					<textElement textAlignment="Center"/>
+					<text><![CDATA[Observaciones]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="486" y="0" width="54" height="15" uuid="ac9f90d9-63f8-4c5e-a682-1f685adfa082"/>
+					<textElement textAlignment="Center"/>
+					<text><![CDATA[Cantidad]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="540" y="0" width="54" height="15" uuid="11204d3f-dbc3-45ab-aa98-4b0226daa2b3"/>
+					<textElement textAlignment="Center"/>
+					<text><![CDATA[V/U]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="594" y="0" width="54" height="15" uuid="0ebf736d-6b3b-43ea-8683-29662157d7b6"/>
+					<textElement textAlignment="Center"/>
+					<text><![CDATA[Sub_Total]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="648" y="0" width="54" height="15" uuid="60586955-cdfa-478a-83f7-03b06e481613"/>
+					<textElement textAlignment="Center"/>
+					<text><![CDATA[Total]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<frame>
+				<reportElement x="97" y="1" width="705" height="15" uuid="2edc229d-97db-4039-b479-af9f20b15ea7"/>
+				<textField>
+					<reportElement style="Detail" x="0" y="0" width="54" height="15" uuid="f78d2712-c1c9-45b1-8c1f-ce25577b7a79"/>
+					<textFieldExpression><![CDATA[$F{pedido_cliente}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Detail" x="54" y="0" width="54" height="15" uuid="f2c661f3-1f1c-46a9-a377-3e6f8088d3b4"/>
+					<textFieldExpression><![CDATA[$F{pedido_fecha}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Detail" x="108" y="0" width="54" height="15" uuid="31a80405-bee6-42e8-8ffa-39f67444c708"/>
+					<textFieldExpression><![CDATA[$F{categoria_producto_nombre_categoria}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Detail" x="162" y="0" width="54" height="15" uuid="bffe6335-e4fb-4fea-8499-6c80f00e1330"/>
+					<textFieldExpression><![CDATA[$F{detalle_pedido_pedido}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Detail" x="216" y="0" width="54" height="15" uuid="d8f68ba6-6cf2-4b15-bc1a-4b889687a8e5"/>
+					<textFieldExpression><![CDATA[$F{detalle_pedido_Producto}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Detail" x="270" y="0" width="54" height="15" uuid="96ef9acb-edd4-4da5-b114-5caf1c77fdb6"/>
+					<textFieldExpression><![CDATA[$F{producto_nombre}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Detail" x="324" y="0" width="54" height="15" uuid="9cc480d3-09f1-4f78-8526-cd9eec6b72db"/>
+					<textFieldExpression><![CDATA[$F{pedido_tipo_pedido}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Detail" x="378" y="0" width="54" height="15" uuid="1cff51d1-e601-4776-b46e-97e974107db8"/>
+					<textFieldExpression><![CDATA[$F{pedido_punto_entrega}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Detail" x="432" y="0" width="54" height="15" uuid="58bb5c24-8e48-4fc4-b19d-8fcf441fb5b3"/>
+					<textFieldExpression><![CDATA[$F{pedido_observaciones}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Detail" x="486" y="0" width="54" height="15" uuid="1f7c4be8-5d76-4c08-93fb-2b3b749eb445"/>
+					<textFieldExpression><![CDATA[$F{detalle_pedido_cantidad}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Detail" x="540" y="0" width="54" height="15" uuid="244fb316-72c7-43f3-a8a1-a2f966b24bf6"/>
+					<textFieldExpression><![CDATA[$F{detalle_pedido_valor_unitario}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Detail" x="594" y="0" width="54" height="15" uuid="7c24548a-751e-49d7-a82a-6309f18ab865"/>
+					<textFieldExpression><![CDATA[$F{pedido_sub_total}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Detail" x="648" y="0" width="54" height="15" uuid="be81eae0-efea-4f0b-a99e-dc49a940c15e"/>
+					<textFieldExpression><![CDATA[$F{pedido_valor_total}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="97" y="16" width="705" height="1" uuid="1023e482-c450-4386-a31c-4be7db042fa5"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="39" splitType="Stretch">
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement style="Column header" x="671" y="0" width="131" height="20" forecolor="#000000" uuid="d05fa107-5313-4f7d-9fba-8e351c4d2e61"/>
+				<textElement textAlignment="Right">
+					<font size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

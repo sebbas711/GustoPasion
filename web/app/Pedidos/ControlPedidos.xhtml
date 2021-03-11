@@ -12,23 +12,8 @@
             <h:form prependId="false">
                 <div class="animated fadeIn" id="page-top">
                     <div class="row">
-                        <div class="col-sm-6 col-lg">
-                            <div class="card text-white colorverde" style="background: #580000">
-                                <p:commandLink class="hovcard"
-                                               actionListener="#{controlPedidoView.limpiarFiltroEstadoPedido()}"
-                                               update="tablaPedidos">
-                                    <div class="card-body">
-                                        <div class="card-left pt-1 float-left">
-                                            <h4 class="mb-0 fw-r">
-                                                <span>Todos</span>
-                                            </h4>
-                                        </div>
-                                    </div>
-                                </p:commandLink>
-                            </div>
-                        </div>
                         <ui:repeat value="#{controlPedidoView.estadoPedidosHabilitados}" var="estadoPedido">
-                            <div class="col-sm-6 col-lg">
+                            <div class="col-sm-6 col-lg-3">
                                 <div class="card text-white coloramarillo" style="background: #{controlPedidoView.getColorByEstadoPedido(estadoPedido)}">
                                     <p:commandLink class="hovcard" 
                                                    actionListener="#{controlPedidoView.filtrarPorEstadoPedido(estadoPedido)}"

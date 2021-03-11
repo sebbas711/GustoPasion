@@ -1,0 +1,30 @@
+public void descargaListado() {
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+        ExternalContext context = facesContext.getExternalContext();
+        HttpServletRequest request = (HttpServletRequest) context.getRequest();
+        HttpServletResponse response = (HttpServletResponse) context.getResponse();
+        response.setContentType("application/pdf");
+
+        try {
+            Map parametro = new HashMap();
+            parametro.put("UserReport", "Ana María Lopez");
+            parametro.put("RutaImagen", context.getRealPath("/resource/imagenes/LOgo.jpg"));
+            Connection conec = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/basededatos", "root", "");
+
+            File jasper = new File(context.getRealPath("/src/pyp/modelo/reportes/ListaPQRS.jasper"));
+
+            JasperPrint jp = JasperFillManager.fillReport(jasper.getPath(), parametro, conec);
+
+            HttpServletResponse hsr = (HttpServletResponse) context.getResponse();
+            hsr.addHeader("Content-disposition", "attachment; filename=Certificado.pdf");
+            OutputStream os = hsr.getOutputStream();
+            JasperExportManager.exportReportToPdfStream(jp, os);
+            os.flush();
+            os.close();
+            facesContext.responseComplete();
+
+        } catch (Exception e) {
+        }
+    }
+
+
