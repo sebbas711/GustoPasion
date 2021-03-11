@@ -63,7 +63,6 @@ public class CarritoController implements Serializable {
         Usuario usuario = sessionControlador.getUser();
         if (Objects.nonNull(usuario)) {
             pedido.setCliente(usuario.getCliente());
-            pedido.setTelefono(Objects.nonNull(usuario.getTelefono()) ? Long.valueOf(usuario.getTelefono()).intValue() : 0);
             pedido.setPuntoEntrega(Objects.nonNull(usuario.getDireccion()) ? usuario.getDireccion() : " ");
             return true;
         } else {

@@ -58,7 +58,7 @@ public class Pqrs implements Serializable {
     private Date fecha;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 45)
+    @Size(min = 1, max = 65535)
     @Column(name = "observaciones")
     private String observaciones;
     @JoinColumn(name = "administrador", referencedColumnName = "id")

@@ -193,12 +193,12 @@ public class InventarioControlador implements Serializable {
                     insumoSeleccionado.setEstado((short) 1);
                 }
                 IDAO.edit(insumoSeleccionado);
-                mensajeRequest = "swal('Estado el Usuario', 'Modificado', 'success');";
+                mensajeRequest = "swal('Estado del Insumo', 'Modificado', 'success');";
                 insumos = null;
             }
         } catch (Exception e) {
             e.printStackTrace();
-            mensajeRequest = "swal('Error', 'No se pudo cambiar el estado del usuario', 'error');";
+            mensajeRequest = "swal('Error', 'No se pudo cambiar el estado del Insumo', 'error');";
         }
         PrimeFaces.current().executeScript(mensajeRequest);
     }

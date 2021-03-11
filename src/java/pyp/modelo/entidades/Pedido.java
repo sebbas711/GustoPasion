@@ -71,13 +71,13 @@ public class Pedido implements Serializable {
     @Column(name = "tipo_pedido")
     private String tipoPedido;
     @Column(name = "telefono")
-    private Integer telefono;
+    private Long telefono;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
     @Column(name = "punto_entrega")
     private String puntoEntrega;
-    @Size(max = 95)
+    @Size(min = 1, max = 65535)
     @Column(name = "observaciones")
     private String observaciones;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "pedido", fetch = FetchType.LAZY)
@@ -154,11 +154,11 @@ public class Pedido implements Serializable {
         this.tipoPedido = tipoPedido;
     }
     
-    public Integer getTelefono() {
+    public Long getTelefono() {
         return telefono;
     }
     
-    public void setTelefono(Integer telefono) {
+    public void setTelefono(Long telefono) {
         this.telefono = telefono;
     }
     
