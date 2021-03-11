@@ -10,7 +10,7 @@ import javax.persistence.PersistenceContext;
 
 /**
  *
- * @author Ismael
+ * @author Gaes 1
  */
 public abstract class BaseDAO<T> {
     
