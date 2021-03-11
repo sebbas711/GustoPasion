@@ -61,67 +61,63 @@
                 <br/>
                 <h3 class="text-center"><b style="color: #951010">#{controlInventarioView.tipoInsumoFiltro.nombre}</b></h3>
                 <br/>
-                <p:dataTable class="table table-striped"
-                             value="#{controlInventarioView.insumos}" 
-                             rows="5"
-                             paginator="true"
-                             paginatorPosition="bottom"
-                             rowsPerPageTemplate="5,10,15"
-                             reflow="true"
-                             var="insu"
-                             id="tablaInsumos">
-                    <p:column headerText="#{msjInventario.ID}" priority="2" style="width: 30px">
-                        <h:outputText value="#{insu.id}"/>
-                    </p:column>
-                    <p:column headerText="#{msjInventario.NOMBRE}" priority="2" style="width: 150px">
-                        <h:outputText value="#{insu.nombre}"/>
-                    </p:column>
-                    <p:column headerText="#{msjInventario.CANTIDAD}" priority="2" style="width: 70px">
-                        <h:outputText value="#{insu.cantidad} "/>
-                    </p:column>
-                    <p:column headerText="#{msjInventario.ESTADO}" priority="2" style="width: 60px">
-                        <h:outputText value="#{insu.estado} "/>
-                    </p:column>
-                    <p:column headerText="#{msjInventario.OPCIONES}" priority="2" style="width: 180px">
-                        <h:commandLink class="btn" style="color: white; background: #580000; margin-left: 10px" title="Detalle" 
-                                       a:data-toggle="modal" a:data-target="#verInfoInsumo"
-                                       action="#{inventarioControlador.seleccionarInsumo(insu)}">
-                            <i class="fa fa-eye"></i>
-                            <f:ajax render=":verInfoInsumoContent" />
-                        </h:commandLink>
-                        <h:commandLink class="btn" style="background: #951010; color: white; margin-left: 15px" title="Editar" 
-                                       a:data-toggle="modal" a:data-target="#editarInfoInsumo"
-                                       action="#{inventarioControlador.seleccionarInsumo(insu)}">
-                            <i class="fa fa-pencil"></i>
-                            <f:ajax render=":editarInfoInsumoContent" />
-                        </h:commandLink>
-                        <!--h:commandLink class="btn" style="background: #727272; color: white; margin-left: 15px" title="Eliminar" 
-                                       a:data-toggle="modal" a:data-target="#eliminarInsumo"
-                                       action="#inventarioControlador.seleccionarInsumo(insu)}">
-                            <i class="fa fa-trash"></i>
-                            <f:ajax render=":confirmEliminarInsumo" />
-                        </h:commandLink-->
-                        <h:commandLink rendered="#{inventarioControlador.renderedBtnBloquear(insu)}" class="btn"
-                                       action="#{inventarioControlador.seleccionarInsumo(insu)}"
-                                       a:data-toggle="modal" a:data-target="#bloquearInsumo"
-                                       style="background: #9D9898; margin-left: 15px">
-                            <i class="fa fa-unlock" style="color: white"></i>
-                            <f:ajax render=":confirmarBloquearInsumo"/>
-                        </h:commandLink>
-                        <h:commandLink rendered="#{empty insu.estado or insu.estado eq 0}" class="btn"
-                                       action="#{inventarioControlador.seleccionarInsumo(insu)}"
-                                       a:data-toggle="modal" a:data-target="#bloquearInsumo"
-                                       style="background: #9D9898; margin-left: 15px">
-                            <i class="fa fa-lock" style="color: white"></i>
-                            <f:ajax render=":confirmarBloquearInsumo"/>
-                        </h:commandLink>
-                        <h:commandLink class="btn"
-                                       action="#{inventarioControlador.descargaCertificado(insu.id)}"
-                                       style="background: #727272;margin-left: 15px">
-                            <i class="fa fa-download" style="color: white;"></i>
-                        </h:commandLink>
-                    </p:column>
-                </p:dataTable>
+                <div class="container">
+                    <p:dataTable class="table table-striped"
+                                 value="#{controlInventarioView.insumos}" 
+                                 rows="5"
+                                 paginator="true"
+                                 paginatorPosition="bottom"
+                                 rowsPerPageTemplate="5,10,15"
+                                 reflow="true"
+                                 var="insu"
+                                 id="tablaInsumos">
+                        <p:column headerText="#{msjInventario.ID}" priority="2" style="width: 30px">
+                            <h:outputText value="#{insu.id}"/>
+                        </p:column>
+                        <p:column headerText="#{msjInventario.NOMBRE}" priority="2" style="width: 130px">
+                            <h:outputText value="#{insu.nombre}"/>
+                        </p:column>
+                        <p:column headerText="#{msjInventario.CANTIDAD}" priority="2" style="width: 90px">
+                            <h:outputText value="#{insu.cantidad} "/>
+                        </p:column>
+                        <p:column headerText="#{msjInventario.ESTADO}" priority="2" style="width: 90px">
+                            <h:outputText value="#{insu.estado} "/>
+                        </p:column>
+                        <p:column headerText="#{msjInventario.OPCIONES}" priority="2" style="width: 125px">
+                            <h:commandLink class="btn" style="color: white; background: #580000; margin-left: 15px; margin-top: 5px" title="Detalle" 
+                                           a:data-toggle="modal" a:data-target="#verInfoInsumo"
+                                           action="#{inventarioControlador.seleccionarInsumo(insu)}">
+                                <i class="fa fa-eye"></i>
+                                <f:ajax render=":verInfoInsumoContent" />
+                            </h:commandLink>
+                            <h:commandLink class="btn" style="background: #951010; color: white; margin-left: 15px; margin-top: 5px" title="Editar" 
+                                           a:data-toggle="modal" a:data-target="#editarInfoInsumo"
+                                           action="#{inventarioControlador.seleccionarInsumo(insu)}">
+                                <i class="fa fa-pencil"></i>
+                                <f:ajax render=":editarInfoInsumoContent" />
+                            </h:commandLink>
+                            <h:commandLink rendered="#{inventarioControlador.renderedBtnBloquear(insu)}" class="btn"
+                                           action="#{inventarioControlador.seleccionarInsumo(insu)}"
+                                           a:data-toggle="modal" a:data-target="#bloquearInsumo"
+                                           style="background: #9D9898; margin-left: 15px; margin-top: 5px">
+                                <i class="fa fa-unlock" style="color: white"></i>
+                                <f:ajax render=":confirmarBloquearInsumo"/>
+                            </h:commandLink>
+                            <h:commandLink rendered="#{empty insu.estado or insu.estado eq 0}" class="btn"
+                                           action="#{inventarioControlador.seleccionarInsumo(insu)}"
+                                           a:data-toggle="modal" a:data-target="#bloquearInsumo"
+                                           style="background: #9D9898; margin-left: 15px; margin-top: 5px">
+                                <i class="fa fa-lock" style="color: white"></i>
+                                <f:ajax render=":confirmarBloquearInsumo"/>
+                            </h:commandLink>
+                            <h:commandLink class="btn"
+                                           action="#{inventarioControlador.descargaCertificado(insu.id)}"
+                                           style="background: #727272;margin-left: 15px; margin-top: 5px">
+                                <i class="fa fa-download" style="color: white;"></i>
+                            </h:commandLink>
+                        </p:column>
+                    </p:dataTable>
+                </div>
             </h:form>
         </div>
         <div class="row">
