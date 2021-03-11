@@ -189,7 +189,7 @@ public class PqrsControlador implements Serializable {
             parametro.put("RutaImagen", context.getRealPath("/resource/img/Report.jpg"));
             Connection conec = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/basededatos", "root", "");
 
-            File jasper = new File(context.getRealPath("/WEB-INF/classes/pyp/modelo/reportes/ListaPQRS.jasper"));
+            File jasper = new File(context.getRealPath("/WEB-INF/classes/pyp/modelo/reportes/ListadoPqrs.jasper"));
 
             JasperPrint jp = JasperFillManager.fillReport(jasper.getPath(), parametro, conec);
 

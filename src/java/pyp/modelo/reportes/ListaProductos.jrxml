@@ -52,7 +52,7 @@ FROM
 				<textElement textAlignment="Right">
 					<font size="26"/>
 				</textElement>
-				<text><![CDATA[Silhouette SubTitle]]></text>
+				<text><![CDATA[Listado de Productos]]></text>
 			</staticText>
 			<staticText>
 				<reportElement style="Title" x="0" y="0" width="802" height="67" forecolor="#660000" uuid="e6c17a33-5465-4aed-af14-6d1958243013"/>

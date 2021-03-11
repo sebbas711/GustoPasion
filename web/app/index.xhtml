@@ -14,7 +14,7 @@
 
                 var chart = new CanvasJS.Chart("chartContainerVentasMes", {
                     animationEnabled: true,
-                    theme: "light2", // "light1", "light2", "dark1", "dark2"
+                    theme: "light1", // "light1", "light2", "dark1", "dark2"
                     title: {
                         text: "Ventas por mes"
                     },
@@ -22,6 +22,7 @@
                         title: "Valor de ventas)"
                     },
                     data: [{
+
                             type: "column",
                             showInLegend: true,
                             legendMarkerColor: "grey",
@@ -42,10 +43,10 @@
                 <hr style="background: #951010"/>
                 <!--MODULO DE PEDIDOS-->
                 <center>
-                    <h4 style="font-family: serif">MODULO DE PEDIDOS</h4>
+                    <h4 style="font-family: serif">MÓDULO DE PEDIDOS</h4>
                 </center>
                 <br/>
-                <div class="card col-lg-6">
+                <div class="card col-lg-12">
                     <div class="card-body">
                         <div id="chartContainerVentasMes" style="height: 270px; width: 100%;"></div>
                     </div> 
@@ -67,17 +68,16 @@
                 <!--MODULO DE PQRS-->
                 <hr style="background: #951010"/>
                 <center>
-                    <h4 style="font-family: serif">MODULO DE PQRS</h4>
+                    <h4 style="font-family: serif">MÓDULO DE PQRS</h4>
                 </center>
-                 <br/>
-                <div class="card col-lg-6">
+                <br/>
+                <div class="card col-lg-12">
                     <div class="card-body">
                         <div id="chartContainerVentasMes" style="height: 270px; width: 100%;"></div>
                     </div> 
                     <center>
                         <h:commandButton class="btn col-lg-8" value="Descargar Reporte" 
-                                         style="background: #951010; color: white;"
-                                         action="#{pedidosControlador.descargaListadoVenta()}">
+                                         style="background: #951010; color: white;">
                         </h:commandButton>
                     </center>
                     <br/>
@@ -88,20 +88,21 @@
                                      action="#{pqrsControlador.descargaListado()}">
                     </h:commandButton>
                 </center>
+
                 <!--MODULO DE USUARIOS-->
                 <hr style="background: #951010"/>
                 <center>
                     <h4 style="font-family: serif">MODULO DE USUARIOS</h4>
                 </center>
-                 <br/>
-                <div class="card col-lg-6">
+                <br/>
+                <div class="card col-lg-12">
                     <div class="card-body">
                         <div id="chartContainerVentasMes" style="height: 270px; width: 100%;"></div>
                     </div> 
                     <center>
                         <h:commandButton class="btn col-lg-8" value="Descargar Reporte" 
                                          style="background: #951010; color: white;"
-                                         action="#{pedidosControlador.descargaListadoVenta()}">
+                                         >
                         </h:commandButton>
                     </center>
                     <br/>
@@ -117,8 +118,8 @@
                 <center>
                     <h4 style="font-family: serif">MODULO DE PRODUCTOS</h4>
                 </center>
-                 <br/>
-                <div class="card col-lg-6">
+                <br/>
+                <div class="card col-lg-12">
                     <div class="card-body">
                         <div id="chartContainerVentasMes" style="height: 270px; width: 100%;"></div>
                     </div> 
@@ -141,8 +142,8 @@
                 <center>
                     <h4 style="font-family: serif">MODULO DE INVENTARIO</h4>
                 </center>
-                 <br/>
-                <div class="card col-lg-6">
+                <br/>
+                <div class="card col-lg-12">
                     <div class="card-body">
                         <div id="chartContainerVentasMes" style="height: 270px; width: 100%;"></div>
                     </div> 
@@ -152,7 +153,6 @@
                                          action="#{pedidosControlador.descargaListadoVenta()}">
                         </h:commandButton>
                     </center>
-                    <br/>
                 </div>
                 <center>
                     <h:commandButton class="btn btn-block col-lg-12" value="Descargar Listado de los Insumos" 
@@ -160,7 +160,8 @@
                                      action="#{inventarioControlador.descargaListado()}">
                     </h:commandButton>
                 </center>
-                 <br/>
+                <br/>
+
             </div>
         </h:form>
     </ui:define>
