@@ -46,30 +46,56 @@
                         <p:column headerText="#{msjPedidos.ID}" priority="2" style="width: 60px">
                             <h:outputText value="#{pedidos.id}"/>
                         </p:column>
-                        <p:column headerText="#{msjPedidos.FECHA}" priority="2" style="width: 150px">
-                            <h:outputText value="#{pedidos.fecha}"/>
+                        <p:column headerText="#{msjPedidos.FECHA}" priority="2" style="width: 120px">
+                            <h:outputText value="#{pedidos.fecha}">
+                                <f:convertDateTime pattern="yyyy/MM/dd"/>
+                            </h:outputText>
                         </p:column>
-                        <p:column headerText="Punto de Entrega" priority="2" style="width: 150px">
+                        <p:column headerText="Punto de Entrega" priority="2" style="width: 170px">
                             <h:outputText value="#{pedidos.puntoEntrega}"/>
                         </p:column>
-                        <p:column headerText="Tipo de pedido" priority="2" style="width: 150px">
+                        <p:column headerText="Tipo de pedido" priority="2" style="width: 140px">
                             <h:outputText value="#{pedidos.tipoPedido}"/>
                         </p:column>
-                        <p:column headerText="#{msjPedidos.OPCIONES}" priority="2" style="width: 180px">
+                        <p:column headerText="#{msjPedidos.OPCIONES}" priority="2" style="width: 140px">
                             <h:commandLink class="btn" a:data-toggle="modal" a:data-target="#verInfoPedidos"
-                                           action="#{pedidosControlador.seleccionarPedido(pedidos)}" style="background: #580000">
+                                           action="#{pedidosControlador.seleccionarPedido(pedidos)}" 
+                                           style="background: #580000; margin-left: 15px; margin-top: 5px">
                                 <i class="fa fa-eye" style="color: white"></i>
                                 <f:ajax render=":verInfoPedidosContent"/>
                             </h:commandLink>
-                            <a class="btn" style="background: #951010"><i class="fa fa-pencil" style="color: white"></i></a>
-                            <a class="btn" style="background: #727272"><i class="fa fa-trash" style="color: white"></i></a>
-                            <a class="btn" style="background: #9D9898"><i class="fa fa-lock" style="color: white"></i></a>
+                            <h:commandLink class="btn" style="background: #951010; color: white; margin-left: 15px; margin-top: 5px" title="Editar" 
+                                           a:data-toggle="modal" a:data-target="#editarInfoPedido"
+                                           action="#{pedidosControlador.seleccionarPedido(pedidos)}">
+                                <i class="fa fa-pencil"></i>
+                                <f:ajax render=":editarInfoPedidoContent" />
+                            </h:commandLink>
+                            <!--a class="btn" style="background: #727272"><i class="fa fa-trash" style="color: white"></i></a-->
+                            <!--rendered="{inventarioControlador.renderedBtnBloquear(insu)}" va dentro del commandLink-->
+                            <h:commandLink  class="btn" 
+                                            action="#{pedidosControlador.seleccionarPedido(pedidos)}"
+                                            a:data-toggle="modal" a:data-target="#cambioEstPedido"
+                                            style="background: #9D9898; margin-left: 15px; margin-top: 5px">
+                                <i class="fa fa-unlock" style="color: white"></i>
+                                <f:ajax render=":confirmarCambioEstadoPedido"/>
+                            </h:commandLink>
+                            <!--rendered="{empty insu.estado or insu.estado eq 0}" va dentro del commandLink-->
+                            <!--h:commandLink  class="btn"
+                                            action="{pedidosControlador.seleccionarPedido(pedidos)}"
+                                            a:data-toggle="modal" a:data-target="#cambioEstPedido"
+                                            style="background: #9D9898; margin-left: 15px; margin-top: 5px">
+                                <i class="fa fa-lock" style="color: white"></i>
+                                <f:ajax render=":confirmarCambioEstadoPedido"/>
+                            </h:commandLink-->
                         </p:column>
                     </p:dataTable>
                 </div>
             </h:form>
         </div>
         <ui:include src="/WEB-INF/includes/modal/pedidos/ver_info_pedidos.xhtml"></ui:include>
+        <ui:include src="/WEB-INF/includes/modal/pedidos/confirmar_cambio_estado.xhtml"></ui:include>
+        <ui:include src="/WEB-INF/includes/modal/pedidos/editar-info-pedido.xhtml   "></ui:include>
+
     </ui:define>
 
 </ui:composition>
