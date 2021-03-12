@@ -10,8 +10,10 @@ package pyp.dto;
  * @author PC
  */
 public class ChartPointProducto {
-        private int y;
+
+    private int y;
     private String label;
+    private String color;
 
     public ChartPointProducto() {
     }
@@ -19,6 +21,12 @@ public class ChartPointProducto {
     public ChartPointProducto(int y, String label) {
         this.y = y;
         this.label = label;
+    }
+
+    public ChartPointProducto(int y, String label, String color) {
+        this.y = y;
+        this.label = label;
+        this.color = color;
     }
 
     public int getY() {
@@ -36,5 +44,13 @@ public class ChartPointProducto {
     public void setLabel(String label) {
         this.label = label;
     }
-    
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
 }

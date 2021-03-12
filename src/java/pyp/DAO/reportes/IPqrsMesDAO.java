@@ -3,16 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pyp.DAO;
+package pyp.DAO.reportes;
 
+import java.util.List;
 import javax.ejb.Local;
-import pyp.modelo.entidades.Tipopqrs;
+import pyp.modelo.dto.PorcentajePQRS;
 
 /**
  *
- * @GAES 5
+ * @author alejo
  */
 @Local
-public interface ITipopqrsDAO extends DAO<Tipopqrs> {
+public interface IPqrsMesDAO {
+    
+    List<PorcentajePQRS> getPqrsPorMes();
     
 }

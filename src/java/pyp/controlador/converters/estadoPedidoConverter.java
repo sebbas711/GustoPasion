@@ -13,7 +13,6 @@ import javax.faces.convert.FacesConverter;
 import pyp.DAO.ICategoriaProductoDAO;
 import pyp.modelo.entidades.CategoriaProducto;
 import pyp.modelo.entidades.Estadopedido;
-import static pyp.modelo.entidades.Pedido_.estadoPedido;
 
 /**
  *

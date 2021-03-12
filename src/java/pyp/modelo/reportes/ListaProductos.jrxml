@@ -61,10 +61,6 @@ FROM
 				</textElement>
 				<text><![CDATA[Restaurante Gusto & Pasión]]></text>
 			</staticText>
-			<image>
-				<reportElement x="-1" y="0" width="120" height="104" uuid="96002670-b430-4b75-b8b5-5f336c4260d4"/>
-				<imageExpression><![CDATA["C:\\Users\\PC\\Videos\\Proyecto\\Gusto y Pasion\\GustoPasion\\web\\resource\\img\\Report.jpg"]]></imageExpression>
-			</image>
 		</band>
 	</title>
 	<pageHeader>

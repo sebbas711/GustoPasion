@@ -53,10 +53,6 @@ FROM
 					<reportElement mode="Transparent" x="42" y="73" width="20" height="1" backcolor="#FFFFFF" uuid="bbeb3474-51da-4de0-ae87-03a7cd43eefd"/>
 				</line>
 			</frame>
-			<image>
-				<reportElement x="643" y="433" width="177" height="142" uuid="2e6a6952-bfb4-48c9-8514-fea3f9604d94"/>
-				<imageExpression><![CDATA["C:\\Users\\PC\\Downloads\\Pizzas\\web\\resource\\imagenes\\Report.jpg"]]></imageExpression>
-			</image>
 		</band>
 	</background>
 	<title>

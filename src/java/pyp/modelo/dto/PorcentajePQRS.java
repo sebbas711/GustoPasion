@@ -7,15 +7,15 @@ package pyp.modelo.dto;
 
 /**
  *
- * @author Gaes5
+ * @author alejo
  */
-public final class VentaMesData {
+public final class PorcentajePQRS {
     
     private int anio;
     private int mes;
     private double totalMes;
 
-    public VentaMesData() {    
+    public PorcentajePQRS() {
     }
 
     public int getAnio() {

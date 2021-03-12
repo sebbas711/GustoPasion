@@ -28,7 +28,7 @@ public class VentaProductoDAO extends BaseDAO<VentaProductoData> implements IVen
     
     @Override
     public List<VentaProductoData> getVentaPorProducto() {
-        String queryStr = "select cat.nombre_categoria, sum(dp.cantidad) as cantidad_vidad from categoria_producto cat inner join producto pro on pro.categoria_producto = cat.id inner join detalle_pedido dp on dp.Producto = pro.id group by 1,2 order by 3 desc;";
+        String queryStr = "select cat.nombre_categoria, sum(dp.cantidad) as cantidad_vidad from categoria_producto cat inner join producto pro on pro.categoria_producto = cat.id inner join detalle_pedido dp on dp.Producto = pro.id group by 1 order by 1 desc;";
         Query query = getEntityManager()
                 .createNativeQuery(queryStr);
         List<Object[]> result = query.getResultList();
@@ -42,7 +42,7 @@ public class VentaProductoDAO extends BaseDAO<VentaProductoData> implements IVen
         private VentaProductoData toVentaProductoData(Object[] row){
         VentaProductoData ventaProductoData = new VentaProductoData();
         ventaProductoData.setNombreCategoria((String) row[0]);
-        ventaProductoData.setCantidadProductoVendida((int) row[1]);
+        ventaProductoData.setCantidadProductoVendida(Integer.valueOf(row[1].toString()));
         return ventaProductoData;
     }
 }

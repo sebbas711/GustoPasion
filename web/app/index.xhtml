@@ -33,20 +33,14 @@
                 });
                 chart.render();
 
-            }
-        </script>
-        <!--PRODUCTOS-->
-        <!--<script>
-            window.onload = function () {
-
-                var chart = new CanvasJS.Chart("chartContainerProductos", {
+                var chartProductos = new CanvasJS.Chart("chartContainerProductos", {
                     animationEnabled: true,
                     theme: "light1", // "light1", "light2", "dark1", "dark2"
                     title: {
-                        text: "Ventas por mes"
+                        text: "Categoria Producto"
                     },
                     axisY: {
-                        title: "Valor de ventas)"
+                        title: "Cantidad Producto)"
                     },
                     data: [{
 
@@ -54,13 +48,46 @@
                             showInLegend: true,
                             legendMarkerColor: "grey",
                             legendText: "2020",
-                            dataPoints:dashboardProductoControlador.chartData;
+                            dataPoints:#{dashboardProductoControlador.chartData}
                         }]
                 });
-                chart.render();
+                chartProductos.render();
 
+                var chartPQRS = new CanvasJS.Chart("chartContainerPqrsMes", {
+                    animationEnabled: true,
+                    theme: "light1", // "light1", "light2", "dark1", "dark2"
+                    title: {
+                        text: "PQRS por mes"
+                    },
+                    axisY: {
+                        title: "Cantidad PQRS"
+                    },
+                    data: [{
+
+                            type: "column",
+                            showInLegend: true,
+                            legendMarkerColor: "grey",
+                            legendText: "2020",
+                            dataPoints: #{dashboardAdminControlador.chartData1}
+                        }]
+                });
+                chartPQRS.render();
+
+                var chartInsumos = new CanvasJS.Chart("chartContainerInsumos", {
+                    animationEnabled: true,
+                    theme: "light1", // "light1", "light2", "dark1", "dark2"
+                    title: {
+                        text: "PQRS por mes"
+                    },
+                    axisY: {
+                        title: "Cantidad PQRS"
+                    },
+                    data: #{dashboardAdminControlador.dataInsumo} 
+                });
+                chartInsumos.render();
             }
-        </script>-->
+        </script>
+
 
     </ui:define>
     <ui:define name="contenido">
@@ -100,7 +127,7 @@
                 <br/>
                 <div class="card col-lg-12">
                     <div class="card-body">
-                        <div id="chartContainerVentasMes" style="height: 270px; width: 100%;"></div>
+                        <div id="chartContainerPqrsMes" style="height: 270px; width: 100%;"></div>
                     </div> 
                     <center>
                         <h:commandButton class="btn col-lg-8" value="Descargar Reporte" 
