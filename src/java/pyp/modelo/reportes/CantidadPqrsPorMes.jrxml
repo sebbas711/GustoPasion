@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="0" uuid="baaa4953-c295-43f7-8c96-d1baf618d2bf">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="0" uuid="fd2c94c1-360c-4c01-bcb6-c0ece646a2f5">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
@@ -8,21 +8,17 @@
 	<style name="Column header" forecolor="#FFFFFF" fontName="Arial" fontSize="12" isBold="true"/>
 	<style name="Detail" fontName="Arial" fontSize="12"/>
 	<queryString language="SQL">
-		<![CDATA[select concat(year(p.fecha),'-',month(p.fecha)) as id_group, year(p.fecha) as anio, month(p.fecha) as mes, sum(p.valor_total) as total_mes
-from pedido p
-group by id_group, anio, mes
-order by anio desc, mes desc
-;]]>
+		<![CDATA[select year(pq.fecha) as anio, month(pq.fecha) as mes, sum(pq.tipoPQRS) as total_mes from pqrs pq group by anio, mes order by anio desc, mes desc]]>
 	</queryString>
 	<field name="anio" class="java.lang.Integer"/>
 	<field name="mes" class="java.lang.Integer"/>
-	<field name="total_mes" class="java.lang.Double"/>
+	<field name="total_mes" class="java.math.BigDecimal"/>
 	<background>
 		<band height="575" splitType="Stretch">
 			<frame>
-				<reportElement mode="Opaque" x="-20" y="475" width="105" height="100" forecolor="#660000" backcolor="#660000" uuid="74f0b0a5-c51b-4772-93cf-58029628f2df"/>
+				<reportElement mode="Opaque" x="-20" y="475" width="105" height="100" backcolor="#660000" uuid="a504e38e-7916-40a9-acf0-01a189b0e1ea"/>
 				<textField evaluationTime="Report">
-					<reportElement style="Column header" x="0" y="77" width="104" height="20" forecolor="#FFFFFF" uuid="b79cf517-838d-4ff4-aee3-29351b3e743e"/>
+					<reportElement style="Column header" x="0" y="77" width="104" height="20" forecolor="#FFFFFF" uuid="a1b77b2a-5896-4888-a89e-2d2cebce2b76"/>
 					<box leftPadding="4" rightPadding="4"/>
 					<textElement textAlignment="Center">
 						<font size="16" isBold="false"/>
@@ -30,10 +26,10 @@ order by anio desc, mes desc
 					<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
 				</textField>
 				<line>
-					<reportElement mode="Transparent" x="42" y="73" width="20" height="1" backcolor="#FFFFFF" uuid="24cfab85-6ae5-49a0-baf4-d2c11a9619ca"/>
+					<reportElement mode="Transparent" x="42" y="73" width="20" height="1" backcolor="#FFFFFF" uuid="285ab9fd-3e8c-45f9-b560-b66c9ec90991"/>
 				</line>
 				<textField>
-					<reportElement style="Column header" x="1" y="0" width="104" height="73" forecolor="#FFFFFF" uuid="d810774d-c4ec-4692-a1ef-b000d19a4f8f"/>
+					<reportElement style="Column header" x="0" y="1" width="104" height="73" forecolor="#FFFFFF" uuid="8e78840a-c04c-410a-8794-5b5435897a00"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font size="58" isBold="true" pdfFontName="Helvetica-Bold"/>
 					</textElement>
@@ -45,18 +41,18 @@ order by anio desc, mes desc
 	<title>
 		<band height="104" splitType="Stretch">
 			<staticText>
-				<reportElement style="Title" x="0" y="0" width="802" height="67" forecolor="#660000" uuid="db01b557-29f2-466b-b6bc-97d94dfb756a"/>
+				<reportElement style="Title" x="0" y="0" width="802" height="67" forecolor="#660000" uuid="fae51d5e-1087-4423-9b06-af63b066661a"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font fontName="Bodoni MT" size="54" isBold="false" pdfFontName="Helvetica"/>
 				</textElement>
 				<text><![CDATA[Restaurante Gusto & Pasión]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="SubTitle" x="232" y="67" width="568" height="37" uuid="0634f85e-5a50-4725-a474-8dd7eafcbe20"/>
+				<reportElement style="SubTitle" x="232" y="67" width="568" height="37" uuid="7980ca36-811d-4969-bf69-0768fbb8b2c7"/>
 				<textElement textAlignment="Right">
 					<font size="26"/>
 				</textElement>
-				<text><![CDATA[Ventas por Mes]]></text>
+				<text><![CDATA[Cantidad PQRS por mes]]></text>
 			</staticText>
 		</band>
 	</title>
@@ -66,19 +62,19 @@ order by anio desc, mes desc
 	<columnHeader>
 		<band height="25" splitType="Stretch">
 			<frame>
-				<reportElement mode="Opaque" x="97" y="5" width="705" height="20" backcolor="#660000" uuid="f252934c-99d7-4593-a6c4-ccd240b19842"/>
+				<reportElement mode="Opaque" x="97" y="5" width="705" height="20" backcolor="#660000" uuid="82a73db8-50f2-4750-b807-51f1e8d6e51d"/>
 				<staticText>
-					<reportElement style="Column header" x="0" y="0" width="235" height="15" uuid="15405da4-d824-4e4d-9a2d-fce8246f7622"/>
+					<reportElement style="Column header" x="0" y="0" width="235" height="15" uuid="a268c493-f4e3-4e7f-bd57-894d19ec787b"/>
 					<textElement textAlignment="Center"/>
 					<text><![CDATA[Año]]></text>
 				</staticText>
 				<staticText>
-					<reportElement style="Column header" x="235" y="0" width="235" height="15" uuid="063cc4c4-5153-4e5c-b2cc-dfd1a5c39ff3"/>
+					<reportElement style="Column header" x="235" y="0" width="235" height="15" uuid="a006a658-44a1-43ac-bc71-532ba7e270a3"/>
 					<textElement textAlignment="Center"/>
 					<text><![CDATA[Mes]]></text>
 				</staticText>
 				<staticText>
-					<reportElement style="Column header" x="470" y="0" width="235" height="15" uuid="a1f87545-fac2-44a6-af6c-dd7fc01d4cab"/>
+					<reportElement style="Column header" x="470" y="0" width="235" height="15" uuid="7a678fb6-c7eb-428f-a363-472aa3c59648"/>
 					<textElement textAlignment="Center"/>
 					<text><![CDATA[Total Mes]]></text>
 				</staticText>
@@ -88,22 +84,22 @@ order by anio desc, mes desc
 	<detail>
 		<band height="21" splitType="Stretch">
 			<frame>
-				<reportElement x="97" y="1" width="705" height="15" uuid="186b36f9-cd76-4ac7-9bd0-9eb39004d8b1"/>
+				<reportElement x="97" y="1" width="705" height="15" uuid="a192977b-1491-475b-940b-7afc0166d02f"/>
 				<textField>
-					<reportElement style="Detail" x="0" y="0" width="235" height="15" uuid="4db7a62d-d7f2-4651-9962-c182e0000bdf"/>
+					<reportElement style="Detail" x="0" y="0" width="235" height="15" uuid="61f78926-2915-47f9-b76b-7b45a19f286d"/>
 					<textFieldExpression><![CDATA[$F{anio}]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement style="Detail" x="235" y="0" width="235" height="15" uuid="4cd7a308-ec6d-4415-b704-ef9e37bb48ca"/>
+					<reportElement style="Detail" x="235" y="0" width="235" height="15" uuid="4aafec05-bfd9-4cb0-8324-6f1bd2a1b696"/>
 					<textFieldExpression><![CDATA[$F{mes}]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement style="Detail" x="470" y="0" width="235" height="15" uuid="9f2b727e-11da-4eca-833a-db0e46d86d35"/>
+					<reportElement style="Detail" x="470" y="0" width="235" height="15" uuid="89c3b644-a8da-4572-82c7-b420799801e5"/>
 					<textFieldExpression><![CDATA[$F{total_mes}]]></textFieldExpression>
 				</textField>
 			</frame>
 			<line>
-				<reportElement positionType="FixRelativeToBottom" x="97" y="16" width="705" height="1" uuid="437f95ab-c4fe-40e1-b23b-277990dff143"/>
+				<reportElement positionType="FixRelativeToBottom" x="97" y="16" width="705" height="1" uuid="68ef646d-4614-41f1-bbdc-d809ae99067f"/>
 				<graphicElement>
 					<pen lineWidth="0.5" lineColor="#999999"/>
 				</graphicElement>
@@ -116,19 +112,12 @@ order by anio desc, mes desc
 	<pageFooter>
 		<band height="39" splitType="Stretch">
 			<textField pattern="EEEEE dd MMMMM yyyy">
-				<reportElement style="Column header" x="671" y="0" width="131" height="20" forecolor="#000000" uuid="097af49d-f133-486e-973e-97206e9f13d0"/>
+				<reportElement style="Column header" x="671" y="0" width="131" height="20" forecolor="#000000" uuid="d881d52d-9d26-4976-8629-d9ad21b995b9"/>
 				<textElement textAlignment="Right">
 					<font size="12" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
-			<staticText>
-				<reportElement x="96" y="0" width="267" height="20" uuid="5da987af-8525-426a-b88b-b9fca65f8d31"/>
-				<textElement>
-					<font size="12"/>
-				</textElement>
-				<text><![CDATA[Silhouette Title Report]]></text>
-			</staticText>
 		</band>
 	</pageFooter>
 	<summary>

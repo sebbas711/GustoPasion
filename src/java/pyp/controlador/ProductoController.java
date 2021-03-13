@@ -118,6 +118,35 @@ public class ProductoController implements Serializable{
         }
     }
     
+        public void descargaCantidadProducto() {
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+        ExternalContext context = facesContext.getExternalContext();
+        HttpServletRequest request = (HttpServletRequest) context.getRequest();
+        HttpServletResponse response = (HttpServletResponse) context.getResponse();
+        response.setContentType("application/pdf");
+
+        try {
+            Map parametro = new HashMap();
+            parametro.put("UsuarioReporte", "Juan Sebastian Luna");
+            parametro.put("RutaImagen", context.getRealPath("/resource/img/Report.jpg"));
+            Connection conec = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/basededatos", "root", "");
+
+            File jasper = new File(context.getRealPath("/WEB-INF/classes/pyp/modelo/reportes/CantidadProductoVendidoPorMes.jasper"));
+
+            JasperPrint jp = JasperFillManager.fillReport(jasper.getPath(), parametro, conec);
+
+            HttpServletResponse hsr = (HttpServletResponse) context.getResponse();
+            hsr.addHeader("Content-disposition", "attachment; filename=Reporte-ReporteCantidadProductos.pdf");
+            OutputStream os = hsr.getOutputStream();
+            JasperExportManager.exportReportToPdfStream(jp, os);
+            os.flush();
+            os.close();
+            facesContext.responseComplete();
+
+        } catch (Exception e) {
+            System.out.println("pyp.modelo.reportes.insumos.ListaInsumos()" + e.getMessage());
+        }
+    }
     
     
 }

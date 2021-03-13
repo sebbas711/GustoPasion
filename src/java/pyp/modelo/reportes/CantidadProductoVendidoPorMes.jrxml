@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="0" uuid="32c09afc-fdf1-420a-9510-e2798f20d2da">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#FFFFFF" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<queryString language="SQL">
+		<![CDATA[select cat.nombre_categoria, sum(dp.cantidad) as cantidad_vidad from categoria_producto cat inner join producto pro on pro.categoria_producto = cat.id inner join detalle_pedido dp on dp.Producto = pro.id group by 1 order by 1 desc;]]>
+	</queryString>
+	<field name="nombre_categoria" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cantidad_vidad" class="java.math.BigDecimal"/>
+	<background>
+		<band height="575" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="475" width="105" height="100" backcolor="#660000" uuid="5f76de87-8bbc-4aad-8a2c-862799d5539e"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="0" y="77" width="104" height="20" forecolor="#FFFFFF" uuid="f1c3b3c0-589e-4796-af6a-c42c96356623"/>
+					<box leftPadding="4" rightPadding="4"/>
+					<textElement textAlignment="Center">
+						<font size="16" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement mode="Transparent" x="42" y="73" width="20" height="1" backcolor="#FFFFFF" uuid="5dc7f094-64d1-4652-b50a-f20e81491af7"/>
+				</line>
+				<textField>
+					<reportElement style="Column header" x="0" y="1" width="104" height="73" forecolor="#FFFFFF" uuid="14e39f88-0e69-47ea-b5ab-a22c99599365"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="58" isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</background>
+	<title>
+		<band height="104" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" x="0" y="0" width="802" height="67" forecolor="#660000" uuid="6750dd25-385d-4683-9ff2-d2f429ae5367"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Bodoni MT" size="54" isBold="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<text><![CDATA[Restaurante Gusto & Pasión]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="232" y="67" width="568" height="37" uuid="e7f75a23-98ef-4cbf-bbab-dec47533835b"/>
+				<textElement textAlignment="Right">
+					<font size="26"/>
+				</textElement>
+				<text><![CDATA[Cantidad de Productos vendidos por Mes]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="97" y="5" width="705" height="20" backcolor="#660000" uuid="877cd1a5-7bfc-444f-bccb-81d4f4e0868d"/>
+				<staticText>
+					<reportElement style="Column header" x="0" y="0" width="352" height="15" uuid="e9229538-4692-4cd6-8ed1-81d6d1c99f10"/>
+					<textElement textAlignment="Center"/>
+					<text><![CDATA[Nombre Categoria]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="352" y="0" width="352" height="15" uuid="d9075653-6123-4419-a818-00977bee57ac"/>
+					<textElement textAlignment="Center"/>
+					<text><![CDATA[Cantidad Vendida]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<frame>
+				<reportElement x="97" y="1" width="705" height="15" uuid="a7061992-1be6-404f-bb2e-d75a82a82616"/>
+				<textField>
+					<reportElement style="Detail" x="0" y="0" width="352" height="15" uuid="3bb0a6d5-4e88-49a1-9820-d09e20e01dac"/>
+					<textFieldExpression><![CDATA[$F{nombre_categoria}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Detail" x="352" y="0" width="352" height="15" uuid="c505330c-3bc6-4284-9636-06db6707e9ea"/>
+					<textFieldExpression><![CDATA[$F{cantidad_vidad}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="97" y="16" width="705" height="1" uuid="beb621b3-7699-4364-809f-38d7dd89c5d4"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="39" splitType="Stretch">
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement style="Column header" x="671" y="0" width="131" height="20" forecolor="#000000" uuid="c93ba048-dd4f-46b1-bd4f-abcf043d25d0"/>
+				<textElement textAlignment="Right">
+					<font size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

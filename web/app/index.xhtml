@@ -131,7 +131,8 @@
                     </div> 
                     <center>
                         <h:commandButton class="btn col-lg-8" value="Descargar Reporte" 
-                                         style="background: #951010; color: white;">
+                                         style="background: #951010; color: white;"
+                                         action="#{pqrsControlador.descargaCantidadPqrsPorMes()}">
                         </h:commandButton>
                     </center>
                     <br/>
@@ -142,31 +143,7 @@
                                      action="#{pqrsControlador.descargaListado()}">
                     </h:commandButton>
                 </center>
-
-                <!--MODULO DE USUARIOS-->
-                <hr style="background: #951010"/>
-                <center>
-                    <h4 style="font-family: serif">MODULO DE USUARIOS</h4>
-                </center>
-                <br/>
-                <div class="card col-lg-12">
-                    <div class="card-body">
-                        <div id="chartContainerVentasMes" style="height: 270px; width: 100%;"></div>
-                    </div> 
-                    <center>
-                        <h:commandButton class="btn col-lg-8" value="Descargar Reporte" 
-                                         style="background: #951010; color: white;"
-                                         >
-                        </h:commandButton>
-                    </center>
-                    <br/>
-                </div>
-                <center>
-                    <h:commandButton class="btn btn-block col-lg-12" value="Descargar Listado de los Usuarios" 
-                                     style="background: #951010; color: white;"
-                                     action="#{usuarioControlador.descargaListado()}">
-                    </h:commandButton>
-                </center>
+                
                 <!--MODULO DE PRODUCTOS-->
                 <hr style="background: #951010"/>
                 <center>
@@ -180,7 +157,7 @@
                     <center>
                         <h:commandButton class="btn col-lg-8" value="Descargar Reporte" 
                                          style="background: #951010; color: white;"
-                                         action="#{pedidosControlador.descargaListadoVenta()}">
+                                         action="#{productoController.descargaCantidadProducto()}">
                         </h:commandButton>
                     </center>
                     <br/>
@@ -191,6 +168,7 @@
                                      action="#{productoController.descargaListado()}">
                     </h:commandButton>
                 </center>
+                
                 <!--MODULO DE INVENTARIO-->
                 <hr style="background: #951010"/>
                 <center>
