@@ -58,36 +58,46 @@
                              reflow="true"
                              var="pq"
                              id="tablaPqrs">
-                    <p:column headerText="#{msjPQRS.ID}" priority="2" style="width: 60px">
-                        <h:outputText value="#{pq.id}"/>
+                    <p:column headerText="#{msjPQRS.ID}" priority="2" style="width: 40px">
+                        <center>
+                            <h:outputText value="#{pq.id}"/>
+                        </center>
                     </p:column>
-                    <p:column headerText="#{msjPQRS.TIPO}" priority="2" style="width: 60px">
-                        <h:outputText value="#{pq.tipoPQRS.nombre}"/>
+                    <p:column headerText="#{msjPQRS.TIPO}" priority="2" style="width: 90px">
+                        <center>
+                            <h:outputText value="#{pq.tipoPQRS.nombre}"/>
+                        </center>
                     </p:column>
                     <p:column headerText="#{msjPQRS.ADMINISTRADOR}" priority="2" style="width: 140px">
-                        <h:outputText value="#{pq.administrador.usuario.primerNombre} #{pq.administrador.usuario.primerApellido}"/>
+                        <center>
+                            <h:outputText value="#{pq.administrador.usuario.primerNombre} #{pq.administrador.usuario.primerApellido}"/>
+                        </center>
                     </p:column>
                     <p:column headerText="#{msjPQRS.FECHA}" priority="2" style="width: 120px">
-                        <h:outputText value="#{pq.fecha}">
-                            <f:convertDateTime pattern="yyyy-MM-dd"/>
-                        </h:outputText>
+                        <center>
+                            <h:outputText value="#{pq.fecha}">
+                                <f:convertDateTime pattern="yyyy-MM-dd"/>
+                            </h:outputText>
+                        </center>
                     </p:column>
-                    <p:column headerText="#{msjPQRS.FECHA}" priority="2" style="width: 120px">
-                        <h:outputText value="#{pq.estadoPqrs.descripcion}"/>
+                    <p:column headerText="#{msjPQRS.ESTADO}" priority="2" style="width: 110px">
+                        <center>
+                            <h:outputText value="#{pq.estadoPqrs.descripcion}"/>
+                        </center>
                     </p:column>
-                    <p:column headerText="#{msjPQRS.OPCIONES}" priority="2" style="width: 180px">
-                        <h:commandLink class="btn" style="color: white; background: #580000; 
-                                       margin-left: 10px;display: inline-block" 
+                    <p:column headerText="#{msjPQRS.OPCIONES}" priority="2" style="width: 80px">
+                        <h:commandLink class="btn" style=" background: #580000; color: white; margin-left: 15px; margin-top: 5px; display: inline-block" 
                                        title="Detalles" 
                                        a:data-toggle="modal" a:data-target="#verInfoPqrs"
                                        action="#{controlPqrsView.seleccionarPqrs(pq)}">
                             <i class="fa fa-eye"></i>
-                            <f:ajax render=":verInfoPqrsContent" />
+                            <f:ajax render=":verInfoPqrsContent" /> 
                         </h:commandLink>
-                        <h:commandLink 
-                                       class="btn" style="background: #951010; color: white; margin-left: 10px;display: inline-block" title="Modificar" 
-                                       a:data-toggle="modal" a:data-target="#responderInfoPQRS"
-                                       action="#{controlPqrsView.seleccionarPqrs(pq)}">
+                        <h:commandLink  class="btn" 
+                                        style="background: #951010; margin-left: 15px; margin-top: 5px; display: inline-block" 
+                                        title="Modificar" 
+                                        a:data-toggle="modal" a:data-target="#responderInfoPQRS"
+                                        action="#{controlPqrsView.seleccionarPqrs(pq)}">
                             <i class="fa fa-pencil"></i>
                             <f:ajax render=":responderPQRSContent" />
                         </h:commandLink>
