@@ -74,29 +74,52 @@
                             </center>
                         </p:column>
                         <p:column headerText="#{msjInventario.OPCIONES}" priority="2" style="width: 70px">
-                                <h:commandLink class="btn" a:data-toggle="modal" a:data-target="#verInfoProductos"
-                                               action="#{controlProductosView.seleccionarProducto(pro)}" 
-                                               style="background: #580000; margin-right: 12px; margin-top: 5px">
-                                    <i class="fa fa-eye" style="color: white"></i>
-                                    <f:ajax render=":verInfoProductoContent"/>
-                                </h:commandLink>
-                                <h:commandLink class="btn" a:data-toggle="modal" a:data-target="#editarInfoProducto" 
-                                               action="#{controlProductosView.seleccionarProducto(pro)}" 
-                                               style="background: #951010; margin-right: 12px; margin-top: 5px">
-                                    <i class="fa fa-pencil" style="color: white"></i>
-                                    <f:ajax render=":editarInfoProductoContent"/>
-                                </h:commandLink>
-                                <h:commandLink class="btn"
-                                               action="#{controlProductosView.seleccionarProducto(pro)}" 
-                                               a:data-toggle="modal" a:data-target="#eliminarProducto" 
-                                               style="background: #727272; margin-right: 15px; margin-top: 5px">
-                                    <i class="fa fa-trash" style="color: white"></i>
-                                    <f:ajax render=":confirmEliminarProducto"/>
-                                </h:commandLink>
+                            <h:commandLink class="btn" a:data-toggle="modal" a:data-target="#verInfoProductos"
+                                           action="#{controlProductosView.seleccionarProducto(pro)}" 
+                                           style="background: #580000; margin-right: 12px; margin-top: 5px">
+                                <i class="fa fa-eye" style="color: white"></i>
+                                <f:ajax render=":verInfoProductoContent"/>
+                            </h:commandLink>
+                            <h:commandLink class="btn" a:data-toggle="modal" a:data-target="#editarInfoProducto" 
+                                           action="#{controlProductosView.seleccionarProducto(pro)}" 
+                                           style="background: #951010; margin-right: 12px; margin-top: 5px">
+                                <i class="fa fa-pencil" style="color: white"></i>
+                                <f:ajax render=":editarInfoProductoContent"/>
+                            </h:commandLink>
+                            <h:commandLink class="btn"
+                                           action="#{controlProductosView.seleccionarProducto(pro)}" 
+                                           a:data-toggle="modal" a:data-target="#eliminarProducto" 
+                                           style="background: #727272; margin-right: 15px; margin-top: 5px">
+                                <i class="fa fa-trash" style="color: white"></i>
+                                <f:ajax render=":confirmEliminarProducto"/>
+                            </h:commandLink>
                         </p:column>
                     </p:dataTable>
                 </h:form>
             </h:form>
+        </div>
+        <div class="container">
+            <div class="row">
+                <h:form>
+                    <p:growl id="messages" showDetail="true" />  
+                    <p:fileUpload
+                        listener="#{productoController.cargaListaProductos}"
+                        mode="advanced"
+                        dragDropSupport="true"
+                        multiple="true"
+                        update=":tablaProductos messages"
+                        sizeLimit="100000000"
+                        cancelLabel="Cancelar"
+                        fileLimitMessage="Cantidad de Archivos no permitida"
+                        invalidFileMessage="Archivo no valido"
+                        label="Escoger"
+                        uploadLabel="Subir"
+                        fileLimit="3"                                                                                          
+                        allowTypes="/(\.|\/)(xls|xlsx)$/" 
+                        style="margin-left: 45px">
+                    </p:fileUpload>
+                </h:form>
+            </div>
         </div>
 
         <ui:include src="/WEB-INF/includes/modal/productos/ver_productos.xhtml"></ui:include>
