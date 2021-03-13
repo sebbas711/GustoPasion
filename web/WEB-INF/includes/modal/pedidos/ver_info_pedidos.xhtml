@@ -37,11 +37,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="message-text" class="col-form-label"><b>#{msjModales.VALORTOTAL}</b></label>
-                                    <span class="form-control">#{pedidosControlador.pedidoSeleccionado.valorTotal}</span>
-                                </div>
-                                <div class="form-group">
-                                    <label for="message-text" class="col-form-label"><b>#{msjModales.TIPODEPEDIDO}</b></label>
-                                    <span class="form-control">#{pedidosControlador.pedidoSeleccionado.tipoPedido}</span>
+                                    <span class="form-control"> $ #{pedidosControlador.pedidoSeleccionado.valorTotal}</span>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -54,12 +50,20 @@
                                     <span class="form-control">#{pedidosControlador.pedidoSeleccionado.puntoEntrega}</span>
                                 </div>
                                 <div class="form-group">
-                                    <label for="message-text" class="col-form-label"><b>#{msjModales.ESTADO}</b></label>
-                                    <span class="form-control">#{pedidosControlador.pedidoSeleccionado.estadoPedido.descripcion}</span>
+                                    <label for="message-text" class="col-form-label"><b>#{msjModales.TIPODEPEDIDO}</b></label>
+                                    <span class="form-control">#{pedidosControlador.pedidoSeleccionado.tipoPedido}</span>
                                 </div>
+                                <!--div class="form-group">
+                                    <label for="message-text" class="col-form-label"><b>{msjModales.ESTADO}</b></label>
+                                    <span class="form-control">{pedidosControlador.pedidoSeleccionado.estadoPedido.descripcion}</span>
+                                </div-->
                             </div>
                             <div class="col-lg-12">
-                                <label for="message-text" class="col-form-label"><b>#{msjModales.OBSERVACIONES}</b></label>
+                                <center>
+                                    <label for="message-text" class="col-form-label">
+                                        <b>#{msjModales.OBSERVACIONES}</b>
+                                    </label>
+                                </center>
                                 <div class="card form-group" style="width: 47rem; box-shadow: 1px 1px 1px 1px black">
                                     <div class="card-body">
                                         <span>#{pedidosControlador.pedidoSeleccionado.observaciones}</span>
