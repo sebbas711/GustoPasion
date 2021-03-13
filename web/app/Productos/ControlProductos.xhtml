@@ -59,34 +59,40 @@
                                  var="pro"
                                  id="tablaProductos">
                         <p:column headerText="#{msjInventario.ID}" priority="2" style="width: 30px">
-                            <h:outputText value="#{pro.id}"/>
+                            <center>
+                                <h:outputText value="#{pro.id}"/>
+                            </center>
                         </p:column>
-                        <p:column headerText="#{msjInventario.NOMBRE}" priority="2" style="width: 150px">
-                            <h:outputText value="#{pro.nombre}"/>
+                        <p:column headerText="#{msjInventario.NOMBRE}" priority="2" style="width: 120px">
+                            <center>
+                                <h:outputText value="#{pro.nombre}"/>
+                            </center>
                         </p:column>
-                        <p:column headerText="#{msjInventario.CANTIDAD}" priority="2" style="width: 70px">
-                            <h:outputText value="#{pro.categoriaProducto.nombreCategoria} "/>
+                        <p:column headerText="#{msjInventario.CATEGORIA}" priority="2" style="width: 120px">
+                            <center>
+                                <h:outputText value="#{pro.categoriaProducto.nombreCategoria} "/>
+                            </center>
                         </p:column>
-                        <p:column headerText="#{msjInventario.OPCIONES}" priority="2" style="width: 180px">
-                            <h:commandLink class="btn" a:data-toggle="modal" a:data-target="#verInfoProductos"
-                                           action="#{controlProductosView.seleccionarProducto(pro)}" 
-                                           style="background: #580000; margin-right: 12px">
-                                <i class="fa fa-eye" style="color: white"></i>
-                                <f:ajax render=":verInfoProductoContent"/>
-                            </h:commandLink>
-                            <h:commandLink class="btn" a:data-toggle="modal" a:data-target="#editarInfoProducto" 
-                                           action="#{controlProductosView.seleccionarProducto(pro)}" 
-                                           style="background: #951010; margin-right: 12px">
-                                <i class="fa fa-pencil" style="color: white"></i>
-                                <f:ajax render=":editarInfoProductoContent"/>
-                            </h:commandLink>
-                            <h:commandLink class="btn"
-                                           action="#{controlProductosView.seleccionarProducto(pro)}" 
-                                           a:data-toggle="modal" a:data-target="#eliminarProducto" 
-                                           style="background: #727272; margin-right: 15px">
-                                <i class="fa fa-trash" style="color: white"></i>
-                                <f:ajax render=":confirmEliminarProducto"/>
-                            </h:commandLink>
+                        <p:column headerText="#{msjInventario.OPCIONES}" priority="2" style="width: 70px">
+                                <h:commandLink class="btn" a:data-toggle="modal" a:data-target="#verInfoProductos"
+                                               action="#{controlProductosView.seleccionarProducto(pro)}" 
+                                               style="background: #580000; margin-right: 12px; margin-top: 5px">
+                                    <i class="fa fa-eye" style="color: white"></i>
+                                    <f:ajax render=":verInfoProductoContent"/>
+                                </h:commandLink>
+                                <h:commandLink class="btn" a:data-toggle="modal" a:data-target="#editarInfoProducto" 
+                                               action="#{controlProductosView.seleccionarProducto(pro)}" 
+                                               style="background: #951010; margin-right: 12px; margin-top: 5px">
+                                    <i class="fa fa-pencil" style="color: white"></i>
+                                    <f:ajax render=":editarInfoProductoContent"/>
+                                </h:commandLink>
+                                <h:commandLink class="btn"
+                                               action="#{controlProductosView.seleccionarProducto(pro)}" 
+                                               a:data-toggle="modal" a:data-target="#eliminarProducto" 
+                                               style="background: #727272; margin-right: 15px; margin-top: 5px">
+                                    <i class="fa fa-trash" style="color: white"></i>
+                                    <f:ajax render=":confirmEliminarProducto"/>
+                                </h:commandLink>
                         </p:column>
                     </p:dataTable>
                 </h:form>
