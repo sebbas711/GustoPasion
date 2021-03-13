@@ -52,12 +52,10 @@
                                    value="#{msjInventario.RegistrarInsumo}"
                                    a:data-toggle="modal" a:data-target="#agregarInsumo"
                                    >
-                        <i class="fa fa-pencil"></i>
+                        <i class="fa fa-plus" style="color: #727272"></i>
                         <f:ajax render=":agregarInfoInsumoContent" />
                     </h:commandLink>
                 </center>
-                <br/>
-                <br/>
                 <br/>
                 <h3 class="text-center"><b style="color: #951010">#{controlInventarioView.tipoInsumoFiltro.nombre}</b></h3>
                 <br/>
@@ -110,39 +108,35 @@
                                 <i class="fa fa-lock" style="color: white"></i>
                                 <f:ajax render=":confirmarBloquearInsumo"/>
                             </h:commandLink>
-                            <h:commandLink class="btn"
-                                           action="#{inventarioControlador.descargaCertificado(insu.id)}"
-                                           style="background: #727272;margin-left: 15px; margin-top: 5px">
-                                <i class="fa fa-download" style="color: white;"></i>
-                            </h:commandLink>
                         </p:column>
                     </p:dataTable>
                 </div>
             </h:form>
         </div>
-        <div class="row">
-            <h:form>
-                <p:growl id="messages" showDetail="true" />  
-                <p:fileUpload
-                    listener="#{inventarioControlador.cargaListaUsuarios}"
-                    mode="advanced"
-                    dragDropSupport="true"
-                    multiple="true"
-                    update=":tablaInsumos messages"
-                    sizeLimit="100000000"
-                    cancelLabel="Cancelar"
-                    fileLimitMessage="Cantidad de Archivos no permitida"
-                    invalidFileMessage="Archivo no valido"
-                    label="Escoger"
-                    uploadLabel="Subir"
-                    fileLimit="3"                                                                                          
-                    allowTypes="/(\.|\/)(xls|xlsx)$/" 
-                    style="margin-left: 350px">
-                </p:fileUpload>
-
-            </h:form>
+        <div class="container">
+            <div class="row">
+                <h:form>
+                    <p:growl id="messages" showDetail="true" />  
+                    <p:fileUpload
+                        listener="#{inventarioControlador.cargaListaUsuarios}"
+                        mode="advanced"
+                        dragDropSupport="true"
+                        multiple="true"
+                        update=":tablaInsumos messages"
+                        sizeLimit="100000000"
+                        cancelLabel="Cancelar"
+                        fileLimitMessage="Cantidad de Archivos no permitida"
+                        invalidFileMessage="Archivo no valido"
+                        label="Escoger"
+                        uploadLabel="Subir"
+                        fileLimit="3"                                                                                          
+                        allowTypes="/(\.|\/)(xls|xlsx)$/" 
+                        style="margin-left: 45px">
+                    </p:fileUpload>
+                </h:form>
+            </div>
         </div>
-
+        <br/>
         <ui:include src="/WEB-INF/includes/modal/inventario/ver_insumos.xhtml"></ui:include>
         <ui:include src="/WEB-INF/includes/modal/inventario/confirmar_eliminar.xhtml"></ui:include>
         <ui:include src="/WEB-INF/includes/modal/inventario/confirmar_bloquear.xhtml"></ui:include>

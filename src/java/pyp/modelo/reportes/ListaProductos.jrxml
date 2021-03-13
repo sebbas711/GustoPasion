@@ -134,13 +134,6 @@ FROM
 				</textElement>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
-			<staticText>
-				<reportElement x="96" y="0" width="267" height="20" uuid="72338734-ca78-4bbc-8c3c-2b8079abc83d"/>
-				<textElement>
-					<font size="12"/>
-				</textElement>
-				<text><![CDATA[Silhouette Title Report]]></text>
-			</staticText>
 		</band>
 	</pageFooter>
 	<summary>

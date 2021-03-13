@@ -19,13 +19,31 @@ public class ChartData {
     private String legendText;
     List<Object> dataPoints;
 
+    private int y;
+    private String label;
+    
     public ChartData(String legendText, List<Object> dataPoints) {
         this.legendText = legendText;
         this.dataPoints = dataPoints;
     }
     
-    
 
+    public int getY() {
+        return y;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+
+    public String getLabel() {
+        return label;
+    }
+
+    public void setLabel(String label) {
+        this.label = label;
+    }
+    
     public String getType() {
         return type;
     }
@@ -65,6 +83,5 @@ public class ChartData {
     public void setDataPoints(List<Object> dataPoints) {
         this.dataPoints = dataPoints;
     }
-    
-    
+
 }

@@ -77,14 +77,15 @@
                     animationEnabled: true,
                     theme: "light1", // "light1", "light2", "dark1", "dark2"
                     title: {
-                        text: "PQRS por mes"
+                        text: "Cantidad Insumos usados por Mes"
                     },
                     axisY: {
-                        title: "Cantidad PQRS"
+                        title: "Cantidad Insumos"
                     },
-                    data: #{dashboardAdminControlador.dataInsumo} 
+                    data: #{dashboardAdminControlador.dataInsumo}
                 });
                 chartInsumos.render();
+
             }
         </script>
 
@@ -93,107 +94,108 @@
     <ui:define name="contenido">
         <h:form>
             <div class="container">
-                <br/>
-                <hr style="background: #951010"/>
-                <!--MODULO DE PEDIDOS-->
-                <center>
-                    <h4 style="font-family: serif">MÓDULO DE PEDIDOS</h4>
-                </center>
-                <br/>
-                <div class="card col-lg-12">
-                    <div class="card-body">
-                        <div id="chartContainerVentasMes" style="height: 270px; width: 100%;"></div>
-                    </div> 
-                    <center>
-                        <h:commandButton class="btn col-lg-8" value="Descargar Reporte" 
-                                         style="background: #951010; color: white;"
-                                         action="#{pedidosControlador.descargaListadoVenta()}">
-                        </h:commandButton>
-                    </center>
-                    <br/>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <hr style="background: #951010"/>
+                        <!--MODULO DE PEDIDOS-->
+                        <center>
+                            <h4 style="font-family: serif">MÓDULO DE PEDIDOS</h4>
+                        </center>
+                        <br/>
+                        <div class="card-body">
+                            <div id="chartContainerVentasMes" style="height: 270px; width: 100%;"></div>
+                        </div> 
+                        <center>
+                            <h:commandButton class="btn col-lg-8" value="Descargar Reporte" 
+                                             style="background: #951010; color: white;"
+                                             action="#{pedidosControlador.descargaListadoVenta()}">
+                            </h:commandButton>
+                        </center>
+                        <br/>
+                        <center>
+                            <h:commandButton class="btn btn-block col-lg-12" value="Descargar Listado de los pedidos" 
+                                             style="background: #951010; color: white;"
+                                             action="#{pedidosControlador.descargaListado()}">
+                            </h:commandButton>
+                        </center>
+                    </div>
+                    <div class="col-lg-6">
+                        <hr style="background: #951010"/>
+                        <!--MODULO DE PQRS-->
+                        <center>
+                            <h4 style="font-family: serif">MÓDULO DE PQRS</h4>
+                        </center>
+                        <br/>
+                        <div class="card-body">
+                            <div id="chartContainerPqrsMes" style="height: 270px; width: 100%;"></div>
+                        </div> 
+                        <center>
+                            <h:commandButton class="btn col-lg-8" value="Descargar Reporte" 
+                                             style="background: #951010; color: white;"
+                                             action="#{pqrsControlador.descargaCantidadPqrsPorMes()}">
+                            </h:commandButton>
+                        </center>
+                        <br/>
+                        <center>
+                            <h:commandButton class="btn btn-block col-lg-12" value="Descargar Listado de las PQRS" 
+                                             style="background: #951010; color: white;"
+                                             action="#{pqrsControlador.descargaListado()}">
+                            </h:commandButton>
+                        </center>
+                    </div>
                 </div>
-                <center>
-                    <h:commandButton class="btn btn-block col-lg-12" value="Descargar Listado de los pedidos" 
-                                     style="background: #951010; color: white;"
-                                     action="#{pedidosControlador.descargaListado()}">
-                    </h:commandButton>
-                </center>
 
-                <!--MODULO DE PQRS-->
-                <hr style="background: #951010"/>
-                <center>
-                    <h4 style="font-family: serif">MÓDULO DE PQRS</h4>
-                </center>
-                <br/>
-                <div class="card col-lg-12">
-                    <div class="card-body">
-                        <div id="chartContainerPqrsMes" style="height: 270px; width: 100%;"></div>
-                    </div> 
-                    <center>
-                        <h:commandButton class="btn col-lg-8" value="Descargar Reporte" 
-                                         style="background: #951010; color: white;"
-                                         action="#{pqrsControlador.descargaCantidadPqrsPorMes()}">
-                        </h:commandButton>
-                    </center>
-                    <br/>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <hr style="background: #951010"/>
+                        <!--MODULO DE PRODUCTOS-->
+                        <center>
+                            <h4 style="font-family: serif">MÓDULO DE PRODUCTOS</h4>
+                        </center>
+                        <br/>
+                        <div class="card-body">
+                            <div id="chartContainerProductos" style="height: 270px; width: 100%;"></div>
+                        </div> 
+                        <center>
+                            <h:commandButton class="btn col-lg-8" value="Descargar Reporte" 
+                                             style="background: #951010; color: white;"
+                                             action="#{productoController.descargaCantidadProducto()}">
+                            </h:commandButton>
+                        </center>
+                        <br/>
+                        <center>
+                            <h:commandButton class="btn btn-block col-lg-12" value="Descargar Listado de los productos" 
+                                             style="background: #951010; color: white;"
+                                             action="#{productoController.descargaListado()}">
+                            </h:commandButton>
+                        </center>
+                    </div>
+                    <div class="col-lg-6">
+                        <hr style="background: #951010"/>
+                        <!--MODULO DE INVENTARIO-->
+                        <center>
+                            <h4 style="font-family: serif">MODULO DE INVENTARIO</h4>
+                        </center>
+                        <br/>
+                        <div class="card-body">
+                            <div id="chartContainerInsumos" style="height: 270px; width: 100%;"></div>
+                        </div> 
+                        <center>
+                            <h:commandButton class="btn col-lg-8" value="Descargar Reporte" 
+                                             style="background: #951010; color: white;"
+                                             action="#{inventarioControlador.descargaCantidadInsumosUsados()}">
+                            </h:commandButton>
+                        </center>
+                        <br/>
+                        <center>
+                            <h:commandButton class="btn btn-block col-lg-12" value="Descargar Listado de los Insumos" 
+                                             style="background: #951010; color: white;"
+                                             action="#{inventarioControlador.descargaListado()}">
+                            </h:commandButton>
+                        </center>
+                    </div>
                 </div>
-                <center>
-                    <h:commandButton class="btn btn-block col-lg-12" value="Descargar Listado de las PQRS" 
-                                     style="background: #951010; color: white;"
-                                     action="#{pqrsControlador.descargaListado()}">
-                    </h:commandButton>
-                </center>
-                
-                <!--MODULO DE PRODUCTOS-->
-                <hr style="background: #951010"/>
-                <center>
-                    <h4 style="font-family: serif">MODULO DE PRODUCTOS</h4>
-                </center>
                 <br/>
-                <div class="card col-lg-12">
-                    <div class="card-body">
-                        <div id="chartContainerProductos" style="height: 270px; width: 100%;"></div>
-                    </div> 
-                    <center>
-                        <h:commandButton class="btn col-lg-8" value="Descargar Reporte" 
-                                         style="background: #951010; color: white;"
-                                         action="#{productoController.descargaCantidadProducto()}">
-                        </h:commandButton>
-                    </center>
-                    <br/>
-                </div>
-                <center>
-                    <h:commandButton class="btn btn-block col-lg-12" value="Descargar Listado de los productos" 
-                                     style="background: #951010; color: white;"
-                                     action="#{productoController.descargaListado()}">
-                    </h:commandButton>
-                </center>
-                
-                <!--MODULO DE INVENTARIO-->
-                <hr style="background: #951010"/>
-                <center>
-                    <h4 style="font-family: serif">MODULO DE INVENTARIO</h4>
-                </center>
-                <br/>
-                <div class="card col-lg-12">
-                    <div class="card-body">
-                        <div id="chartContainerVentasMes" style="height: 270px; width: 100%;"></div>
-                    </div> 
-                    <center>
-                        <h:commandButton class="btn col-lg-8" value="Descargar Reporte" 
-                                         style="background: #951010; color: white;"
-                                         action="#{pedidosControlador.descargaListadoVenta()}">
-                        </h:commandButton>
-                    </center>
-                </div>
-                <center>
-                    <h:commandButton class="btn btn-block col-lg-12" value="Descargar Listado de los Insumos" 
-                                     style="background: #951010; color: white;"
-                                     action="#{inventarioControlador.descargaListado()}">
-                    </h:commandButton>
-                </center>
-                <br/>
-
             </div>
         </h:form>
     </ui:define>

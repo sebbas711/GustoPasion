@@ -87,6 +87,13 @@
                                 <i class="fa fa-lock" style="color: white"></i>
                                 <f:ajax render=":confirmarCambioEstadoPedido"/>
                             </h:commandLink-->
+                            <h:commandLink class="btn"
+                                           action="#{usuarioControlador.seleccionarUsuario(usuario)}" 
+                                           a:data-toggle="modal" a:data-target="#eliminarUsuario" 
+                                           style="background: #727272; margin-right: 12px">
+                                <i class="fa fa-trash" style="color: white"></i>
+                                <f:ajax render=":confirmEliminarUsuario"/>
+                            </h:commandLink>
                         </p:column>
                     </p:dataTable>
                 </div>

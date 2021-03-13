@@ -13,15 +13,11 @@
             <br/>
             <h:form prependId="false">
                 <h:form>
-                    <a class="btn" href="RegistroUsuario.xhtml" style="background: #951010; margin-left: 300px">
-                        <i class="fa fa-plus" style="color: white">#{msjUsuario.registrarUsuario}</i></a>
-
-
-                    <h:commandButton class="btn" value="Reporte Lista Usuarios" 
-                                     style="background: #951010; color: white; margin-left: 10px"
-                                     action="#{usuarioControlador.descargaListado()}">
-                    </h:commandButton>
-
+                    <center>
+                        <a class="btn" href="RegistroUsuario.xhtml" style="background: #951010">
+                            <i class="fa fa-plus" style="color: white">#{msjUsuario.registrarUsuario}</i>
+                        </a>
+                    </center>
                 </h:form>
                 <br/>
                 <h4 class="text-center"><b>#{msjUsuario.Usuarios}</b></h4>
@@ -79,48 +75,15 @@
                             <i class="fa fa-lock" style="color: white"></i>
                             <f:ajax render=":confirmarBloquearUsuario"/>
                         </h:commandLink>
-                        <h:commandLink class="btn"
-                                       action="#{usuarioControlador.descargaCertificado(usuario.idUsuario)}"
-                                       style="background: #727272;">
-                            <i class="fa fa-download" style="color: white"></i>
-                        </h:commandLink>
                     </p:column>
                 </p:dataTable>
             </h:form>
             <br/>
-            <br/>
-            <br/>
-            <div class="row">
-
-                <h:form>
-
-                    <p:growl id="messages" showDetail="true" />  
-                    <p:fileUpload
-                        listener="#{usuarioControlador.cargaListaUsuarios}"
-                        mode="advanced"
-                        dragDropSupport="true"
-                        multiple="true"
-                        update=":tabla messages"
-                        sizeLimit="100000000"
-                        cancelLabel="Cancelar"
-                        fileLimitMessage="Cantidad de Archivos no permitida"
-                        invalidFileMessage="Archivo no valido"
-                        label="Escoger"
-                        uploadLabel="Subir"
-                        fileLimit="3"                                                                                          
-                        allowTypes="/(\.|\/)(xls|xlsx)$/" 
-                        style="margin-left: 350px">
-                    </p:fileUpload>
-
-                </h:form>
-
-            </div>
+            
             <ui:include src="/WEB-INF/includes/modal/usuarios/ver_info_usuario.xhtml"></ui:include>
             <ui:include src="/WEB-INF/includes/modal/usuarios/confirmar_eliminar.xhtml"></ui:include>
             <ui:include src="/WEB-INF/includes/modal/usuarios/confirmar_bloquear.xhtml"></ui:include>
             <ui:include src="/WEB-INF/includes/modal/usuarios/editar_info_usuario.xhtml"></ui:include>
-
-
 
         </f:view>
     </ui:define>

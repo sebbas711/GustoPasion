@@ -7,7 +7,7 @@
     <!-- modal mostrar usuarios-->
     <div class="modal fade" id="verInfoPedidos" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" 
          aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <h:panelGroup id="verInfoPedidosContent" layout="block">
                     <div class="modal-header" style="background-color: #951010">
@@ -54,14 +54,19 @@
                                     <span class="form-control">#{pedidosControlador.pedidoSeleccionado.puntoEntrega}</span>
                                 </div>
                                 <div class="form-group">
-                                    <label for="message-text" class="col-form-label"><b>#{msjModales.OBSERVACIONES}</b></label>
-                                    <span class="form-control">#{pedidosControlador.pedidoSeleccionado.observaciones}</span>
-                                </div>
-                                <div class="form-group">
                                     <label for="message-text" class="col-form-label"><b>#{msjModales.ESTADO}</b></label>
                                     <span class="form-control">#{pedidosControlador.pedidoSeleccionado.estadoPedido.descripcion}</span>
                                 </div>
                             </div>
+                            <div class="col-lg-12">
+                                <label for="message-text" class="col-form-label"><b>#{msjModales.OBSERVACIONES}</b></label>
+                                <div class="card form-group" style="width: 47rem; box-shadow: 1px 1px 1px 1px black">
+                                    <div class="card-body">
+                                        <span>#{pedidosControlador.pedidoSeleccionado.observaciones}</span>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
 
                     </div>
