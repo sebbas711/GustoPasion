@@ -27,14 +27,33 @@
                         </div>
                         <div class="modal-body row">
                             <div class="col-md-6">
-
+                                <div class="form-group">
+                                    <label for="message-text" class="col-form-label">
+                                        <b>#{msjModales.PUNTODEENTREGA}</b>
+                                    </label>
+                                    <h:inputText class="form-control" 
+                                                 value="#{pedidosControlador.pedidoSeleccionado.puntoEntrega}"/>
+                                </div>
                             </div>
                             <div class="col-md-6">
-
+                                <div class="form-group">
+                                    <label for="message-text" class="col-form-label">
+                                        <b>#{msjModales.TELEFONO}</b>
+                                    </label>
+                                    <h:inputText class="form-control" 
+                                                 value="#{pedidosControlador.pedidoSeleccionado.telefono}"/>
+                                </div>
                             </div>
 
                             <div class="col-md-12">
-
+                                <center>
+                                    <label for="message-text" class="col-form-label">
+                                        <b>#{msjModales.OBSERVACIONES}</b>
+                                    </label>
+                                </center>
+                                <div class="card form-group" style="width: 47rem; box-shadow: 1px 1px 1px 1px black">
+                                        <h:inputTextarea value="#{pedidosControlador.pedidoSeleccionado.observaciones}"/>
+                                </div>
                             </div>
                         </div>
                         <div class="modal-footer">

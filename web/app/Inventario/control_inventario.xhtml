@@ -70,18 +70,24 @@
                                  var="insu"
                                  id="tablaInsumos">
                         <p:column headerText="#{msjInventario.ID}" priority="2" style="width: 30px">
-                            <h:outputText value="#{insu.id}"/>
+                            <center>
+                                <h:outputText value="#{insu.id}"/>
+                            </center>
                         </p:column>
                         <p:column headerText="#{msjInventario.NOMBRE}" priority="2" style="width: 130px">
                             <h:outputText value="#{insu.nombre}"/>
                         </p:column>
                         <p:column headerText="#{msjInventario.CANTIDAD}" priority="2" style="width: 90px">
-                            <h:outputText value="#{insu.cantidad} "/>
+                            <center>
+                                <h:outputText value="#{insu.cantidad} "/>
+                            </center>
                         </p:column>
                         <p:column headerText="#{msjInventario.ESTADO}" priority="2" style="width: 90px">
-                            <h:outputText value="#{insu.estado} "/>
+                            <center>
+                                <h:outputText value="#{insu.estado} "/>
+                            </center>
                         </p:column>
-                        <p:column headerText="#{msjInventario.OPCIONES}" priority="2" style="width: 125px">
+                        <p:column headerText="#{msjInventario.OPCIONES}" priority="2" style="width: 95px">
                             <h:commandLink class="btn" style="color: white; background: #580000; margin-left: 15px; margin-top: 5px" title="Detalle" 
                                            a:data-toggle="modal" a:data-target="#verInfoInsumo"
                                            action="#{inventarioControlador.seleccionarInsumo(insu)}">

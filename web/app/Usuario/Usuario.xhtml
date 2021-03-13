@@ -28,50 +28,56 @@
                              rowsPerPageTemplate="5,10,15"
                              reflow="true"
                              var="usuario">
-                    <p:column style="width: 120px">
+                    <p:column style="width: 80px">
                         <f:facet name="header">#{msjUsuario.ID}</f:facet>
-                        <h:outputText value="#{usuario.id}"/>
+                        <center>
+                            <h:outputText value="#{usuario.id}"/>
+                        </center>
                     </p:column>
                     <p:column style="width: 150px">
                         <f:facet name="header">#{msjUsuario.NOMBRES}</f:facet>
-                        <h:outputText value="#{usuario.primerNombre} #{usuario.segundoNombre} "/>
+                        <center>
+                            <h:outputText value="#{usuario.primerNombre} #{usuario.segundoNombre} "/>
+                        </center>
                     </p:column>
                     <p:column style="width: 150px">
                         <f:facet name="header">#{msjUsuario.APELLIDOS}</f:facet>
-                        <h:outputText value="#{usuario.primerApellido} #{usuario.segundoApellido} "/>
+                        <center>
+                            <h:outputText value="#{usuario.primerApellido} #{usuario.segundoApellido} "/>
+                        </center>
                     </p:column>
-                    <p:column style="width: 200px">
+                    <p:column style="width: 110px">
                         <f:facet name="header">#{msjUsuario.OPCIONES}</f:facet>
                         <h:commandLink class="btn" a:data-toggle="modal" a:data-target="#verInfoUsuario"
                                        action="#{usuarioControlador.seleccionarUsuario(usuario)}" 
-                                       style="background: #580000; margin-right: 12px">
+                                       style="background: #580000; margin-right: 9px; margin-top: 5px">
                             <i class="fa fa-eye" style="color: white"></i>
                             <f:ajax render=":verInfoUsuarioContent"/>
                         </h:commandLink>
                         <h:commandLink class="btn" a:data-toggle="modal" a:data-target="#editarInfoUsuario" 
                                        action="#{usuarioControlador.seleccionarUsuario(usuario)}" 
-                                       style="background: #951010; margin-right: 12px">
+                                       style="background: #951010; margin-right: 10px; margin-top: 5px">
                             <i class="fa fa-pencil" style="color: white"></i>
                             <f:ajax render=":editarInfoUsuarioContent"/>
                         </h:commandLink>
                         <h:commandLink class="btn"
                                        action="#{usuarioControlador.seleccionarUsuario(usuario)}" 
                                        a:data-toggle="modal" a:data-target="#eliminarUsuario" 
-                                       style="background: #727272; margin-right: 12px">
+                                       style="background: #727272; margin-right: 12px; margin-top: 5px">
                             <i class="fa fa-trash" style="color: white"></i>
                             <f:ajax render=":confirmEliminarUsuario"/>
                         </h:commandLink>
                         <h:commandLink rendered="#{usuarioControlador.renderedBtnBloquear(usuario)}" class="btn"
                                        action="#{usuarioControlador.seleccionarUsuario(usuario)}"
                                        a:data-toggle="modal" a:data-target="#bloquearUsuario"
-                                       style="background: #9D9898; margin-right: 12px">
+                                       style="background: #9D9898; margin-right: 12px; margin-top: 5px">
                             <i class="fa fa-unlock" style="color: white"></i>
                             <f:ajax render=":confirmarBloquearUsuario"/>
                         </h:commandLink>
                         <h:commandLink rendered="#{empty usuario.estado or usuario.estado eq 0}" class="btn"
                                        action="#{usuarioControlador.seleccionarUsuario(usuario)}"
                                        a:data-toggle="modal" a:data-target="#bloquearUsuario"
-                                       style="background: #9D9898; margin-right: 12px">
+                                       style="background: #9D9898; margin-right: 12px; margin-top: 5px">
                             <i class="fa fa-lock" style="color: white"></i>
                             <f:ajax render=":confirmarBloquearUsuario"/>
                         </h:commandLink>
@@ -79,7 +85,7 @@
                 </p:dataTable>
             </h:form>
             <br/>
-            
+
             <ui:include src="/WEB-INF/includes/modal/usuarios/ver_info_usuario.xhtml"></ui:include>
             <ui:include src="/WEB-INF/includes/modal/usuarios/confirmar_eliminar.xhtml"></ui:include>
             <ui:include src="/WEB-INF/includes/modal/usuarios/confirmar_bloquear.xhtml"></ui:include>
