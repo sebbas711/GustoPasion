@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="0" uuid="675d15f1-e59a-43a6-aff3-f6768700a176">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="0" uuid="16737cc3-88aa-4682-8a67-7e24499972cf">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
@@ -7,25 +7,28 @@
 	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
 	<style name="Column header" forecolor="#FFFFFF" fontName="Arial" fontSize="12" isBold="true"/>
 	<style name="Detail" fontName="Arial" fontSize="12"/>
-	<queryString>
-		<![CDATA[select i.nombre, concat(monthname(i.fecha_ingreso)," ", year(i.fecha_ingreso)) as mes, sum(inpro.cantidad_insumo) as total
-from insumo i
-inner join insumos_del_producto inpro on inpro.insumo = i.id
-group by 1,2
-order by 2 asc
-;]]>
+	<queryString language="SQL">
+		<![CDATA[select concat(monthname(info.fecha_pedido), year(info.fecha_pedido)) as mes, info.nombre_insumo, info.cantidad_por_pedido
+                from(
+                select i.id as id_insumo, i.nombre as nombre_insumo, ped.fecha as fecha_pedido, dp.id as id_detalle_pedido, (dp.cantidad * inpro.cantidad_insumo) as cantidad_por_pedido 
+                from insumo i 
+                inner join insumos_del_producto inpro on inpro.insumo = i.id 
+                inner join detalle_pedido dp on dp.Producto = inpro.Producto 
+                inner join pedido ped on ped.id = dp.Pedido 
+                 ) 
+                 info 
+                group by 1,2 
+                order by 2 asc;]]>
 	</queryString>
-	<field name="nombre" class="java.lang.String">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
+	<field name="nombre_insumo" class="java.lang.String"/>
 	<field name="mes" class="java.lang.String"/>
-	<field name="total" class="java.lang.Double"/>
+	<field name="cantidad_por_pedido" class="java.lang.Double"/>
 	<background>
 		<band height="575" splitType="Stretch">
 			<frame>
-				<reportElement mode="Opaque" x="-20" y="475" width="105" height="100" backcolor="#660000" uuid="22848141-51d6-445f-9ff5-1eaaee412009"/>
+				<reportElement mode="Opaque" x="-20" y="475" width="105" height="100" backcolor="#660000" uuid="cbab1867-05c0-46fe-b65f-8dc5b945d31f"/>
 				<textField evaluationTime="Report">
-					<reportElement style="Column header" x="0" y="77" width="104" height="20" forecolor="#FFFFFF" uuid="45135e5c-02ea-4169-95f5-15a29aa59981"/>
+					<reportElement style="Column header" x="0" y="77" width="104" height="20" forecolor="#FFFFFF" uuid="9755068a-f80d-4297-b0d7-a5164d586616"/>
 					<box leftPadding="4" rightPadding="4"/>
 					<textElement textAlignment="Center">
 						<font size="16" isBold="false"/>
@@ -33,10 +36,10 @@ order by 2 asc
 					<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
 				</textField>
 				<line>
-					<reportElement mode="Transparent" x="42" y="73" width="20" height="1" backcolor="#FFFFFF" uuid="0a192f49-de13-4587-a421-c999af612d26"/>
+					<reportElement mode="Transparent" x="42" y="73" width="20" height="1" backcolor="#FFFFFF" uuid="6f41b78d-1d30-48de-afd5-040ddc8c25c3"/>
 				</line>
 				<textField>
-					<reportElement style="Column header" x="1" y="0" width="104" height="73" forecolor="#FFFFFF" uuid="2eb24f44-5867-44bb-bab3-078fffe9f8fa"/>
+					<reportElement style="Column header" x="1" y="0" width="104" height="73" forecolor="#FFFFFF" uuid="c103998f-e2f1-43ec-9685-eb71a4fa7f8a"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font size="58" isBold="true" pdfFontName="Helvetica-Bold"/>
 					</textElement>
@@ -48,18 +51,18 @@ order by 2 asc
 	<title>
 		<band height="104" splitType="Stretch">
 			<staticText>
-				<reportElement style="Title" x="0" y="0" width="802" height="67" forecolor="#660000" uuid="42f5d0f8-26f7-4195-bb21-c3d092644ecd"/>
+				<reportElement style="Title" x="0" y="0" width="802" height="67" forecolor="#660000" uuid="a1581893-e143-44b0-9b1e-203249feff62"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font fontName="Bodoni MT" size="54" isBold="false" pdfFontName="Helvetica"/>
 				</textElement>
 				<text><![CDATA[Restaurante Gusto & Pasión]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="SubTitle" x="232" y="67" width="568" height="37" uuid="704b89a4-a403-4e59-92a4-512136d41991"/>
+				<reportElement style="SubTitle" x="232" y="67" width="568" height="37" uuid="ac88ecf5-f2a0-40e4-bad5-cf2fd6f83b22"/>
 				<textElement textAlignment="Right">
 					<font size="26"/>
 				</textElement>
-				<text><![CDATA[Cantidad Insumos usados al mes]]></text>
+				<text><![CDATA[Insumos usados al mes]]></text>
 			</staticText>
 		</band>
 	</title>
@@ -69,21 +72,21 @@ order by 2 asc
 	<columnHeader>
 		<band height="25" splitType="Stretch">
 			<frame>
-				<reportElement mode="Opaque" x="97" y="5" width="705" height="20" backcolor="#660000" uuid="fd23f18f-9019-4ce6-bc5f-1292ea5a72af"/>
+				<reportElement mode="Opaque" x="97" y="5" width="705" height="20" backcolor="#660000" uuid="f40425fa-511e-4fba-b5b9-a6af958614af"/>
 				<staticText>
-					<reportElement style="Column header" x="0" y="0" width="235" height="15" uuid="bebd1002-0d7b-4112-a92c-6784bfa58569"/>
+					<reportElement style="Column header" x="0" y="0" width="235" height="15" uuid="46ac6a88-abfb-4597-8989-396fe91c3859"/>
 					<textElement textAlignment="Center"/>
 					<text><![CDATA[Nombre Insumo]]></text>
 				</staticText>
 				<staticText>
-					<reportElement style="Column header" x="235" y="0" width="235" height="15" uuid="4eb5b94a-f17d-47db-9c49-fd88ea8ad1dd"/>
+					<reportElement style="Column header" x="235" y="0" width="235" height="15" uuid="fc1a3af5-a280-429d-b254-9cf64cb77836"/>
 					<textElement textAlignment="Center"/>
 					<text><![CDATA[Mes]]></text>
 				</staticText>
 				<staticText>
-					<reportElement style="Column header" x="470" y="0" width="235" height="15" uuid="5e5bc249-6f8c-43b7-9497-9baef3514732"/>
+					<reportElement style="Column header" x="470" y="0" width="235" height="15" uuid="d89a0eec-3301-4715-8112-1da38d6cbcb4"/>
 					<textElement textAlignment="Center"/>
-					<text><![CDATA[Total del Insumo]]></text>
+					<text><![CDATA[Cantidad por Pedido]]></text>
 				</staticText>
 			</frame>
 		</band>
@@ -91,22 +94,22 @@ order by 2 asc
 	<detail>
 		<band height="21" splitType="Stretch">
 			<frame>
-				<reportElement x="97" y="1" width="705" height="15" uuid="5583787e-ca00-4842-97a8-81fb206738fd"/>
+				<reportElement x="97" y="1" width="705" height="15" uuid="b90a24a7-c493-4dd5-a4a9-4e61b547590e"/>
 				<textField>
-					<reportElement style="Detail" x="0" y="0" width="235" height="15" uuid="35dac29a-b435-41d8-8f07-c6799672ff68"/>
-					<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+					<reportElement style="Detail" x="0" y="0" width="235" height="15" uuid="a877f065-0490-4c1c-89fc-dc05c7903f7f"/>
+					<textFieldExpression><![CDATA[$F{nombre_insumo}]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement style="Detail" x="235" y="0" width="235" height="15" uuid="0f40e1d3-09a1-4022-9938-fa402248a479"/>
+					<reportElement style="Detail" x="235" y="0" width="235" height="15" uuid="41658f90-72b9-460c-83a3-5aa1fec689ac"/>
 					<textFieldExpression><![CDATA[$F{mes}]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement style="Detail" x="470" y="0" width="235" height="15" uuid="2d00af86-ee00-4211-a42c-e57bb3787180"/>
-					<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
+					<reportElement style="Detail" x="470" y="0" width="235" height="15" uuid="a181bdd9-3dd7-4087-ac61-3b226d6ed8ea"/>
+					<textFieldExpression><![CDATA[$F{cantidad_por_pedido}]]></textFieldExpression>
 				</textField>
 			</frame>
 			<line>
-				<reportElement positionType="FixRelativeToBottom" x="97" y="16" width="705" height="1" uuid="9c9d588d-dd2c-4878-b42d-b3f71747d7e5"/>
+				<reportElement positionType="FixRelativeToBottom" x="97" y="16" width="705" height="1" uuid="47407817-ff71-4b4f-b31d-ff3369e6cfef"/>
 				<graphicElement>
 					<pen lineWidth="0.5" lineColor="#999999"/>
 				</graphicElement>
@@ -119,7 +122,7 @@ order by 2 asc
 	<pageFooter>
 		<band height="39" splitType="Stretch">
 			<textField pattern="EEEEE dd MMMMM yyyy">
-				<reportElement style="Column header" x="671" y="0" width="131" height="20" forecolor="#000000" uuid="0bada00c-df03-4e29-8751-a956c1cb7642"/>
+				<reportElement style="Column header" x="671" y="0" width="131" height="20" forecolor="#000000" uuid="1280bda4-b3a0-4d8d-a832-fe75869bbdd5"/>
 				<textElement textAlignment="Right">
 					<font size="12" isBold="false"/>
 				</textElement>
