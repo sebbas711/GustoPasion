@@ -21,11 +21,9 @@ import pyp.dto.ChartPoint;
 import pyp.dto.ChartPoint1;
 import pyp.modelo.dto.CantidadInsumo;
 import pyp.modelo.dto.PorcentajePQRS;
-//import pyp.dto.ChartPoint1;
-//import pyp.modelo.dto.PorcentajePQRS;
 import pyp.modelo.dto.VentaMesData;
+import pyp.servicios.reportes.IReporteCantidadInsumo;
 import pyp.servicios.reportes.IReportePqrsMes;
-//import pyp.servicios.reportes.IReportePqrsMes;
 import pyp.servicios.reportes.IReporteVentaMesService;
 
 /**
@@ -39,10 +37,13 @@ public class DashboardAdminControlador implements Serializable {
     @EJB
     private IReporteVentaMesService reporteVentaMesService;
     
-    private List<VentaMesData> ventasMes;
-    
     @EJB
     private IReportePqrsMes reportePqrsMes;
+    
+    @EJB
+    private IReporteCantidadInsumo reporteCantidadInsumo;
+    
+    private List<VentaMesData> ventasMes;
     
     private List<PorcentajePQRS> pqrsMes;
     
@@ -54,7 +55,7 @@ public class DashboardAdminControlador implements Serializable {
     public void init(){
         ventasMes = reporteVentaMesService.get();
         pqrsMes = reportePqrsMes.get();
-        cantidadInsumo = new ArrayList<>();
+        cantidadInsumo = reporteCantidadInsumo.get();
     }
 
     public List<VentaMesData> getVentasMes() {
@@ -71,8 +72,7 @@ public class DashboardAdminControlador implements Serializable {
     }
     
     public String getChartData1(){
-        Gson gson1 = new Gson();
-        return gson1.toJson(toChartPoints1());
+        return toJson(toChartPoints1());
     }
     
     private List<ChartPoint> toChartPoints(){
@@ -91,7 +91,11 @@ public class DashboardAdminControlador implements Serializable {
         return chartPoints1;
     }
     
-    public List<ChartData> getDataInsumo(){
+    public String getChartDataInsumo(){
+        return toJson(getDataInsumo());
+    }
+    
+    private List<ChartData> getDataInsumo(){
         /*Map<String, List<CantidadInsumo>> group = cantidadInsumo.stream()
                 .collect(Collectors.groupingBy(CantidadInsumo::getMes));
         List<ChartData> data = new ArrayList<>();
@@ -119,5 +123,9 @@ public class DashboardAdminControlador implements Serializable {
         return new ChartPoint1(cantidadInsumo.getCantidadInsumo(), cantidadInsumo.getNombreInsumo());
     }
     
+    private String toJson(Object object){
+        Gson gson1 = new Gson();
+        return gson1.toJson(object);
+    }
     
 }

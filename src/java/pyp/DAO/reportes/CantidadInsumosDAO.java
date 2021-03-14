@@ -25,7 +25,7 @@ public class CantidadInsumosDAO extends BaseDAO<CantidadInsumo> implements ICant
 
     @Override
     public List<CantidadInsumo> getcantidadInsumo() {
-        String queryStr = "select i.nombre, concat(monthname(i.fecha_ingreso), year(i.fecha_ingreso)) as mes, sum(inpro.cantidad_insumo) as total from insumo i inner join insumos_del_producto inpro on inpro.insumo = i.id group by 1,2 order by 2 asc;";
+        String queryStr = getStringSQL();
         Query query = getEntityManager()
                 .createNativeQuery(queryStr);
         List<Object[]> result = query.getResultList();
@@ -39,10 +39,23 @@ public class CantidadInsumosDAO extends BaseDAO<CantidadInsumo> implements ICant
 
     private CantidadInsumo toCantidadInsumo(Object[] row) {
         CantidadInsumo cantidadInsumoData = new CantidadInsumo();
-        cantidadInsumoData.setCantidadInsumo((int) row[0]);
+        cantidadInsumoData.setMes((String) row[0]);
         cantidadInsumoData.setNombreInsumo((String) row[1]);
-        cantidadInsumoData.setMes((String) row[2]);
+        cantidadInsumoData.setCantidadInsumo(Double.valueOf(row[2].toString()));
         return cantidadInsumoData;
+    }
+
+    private String getStringSQL() {
+        return "select concat(monthname(info.fecha_pedido), year(info.fecha_pedido)) as mes, info.nombre_insumo, info.cantidad_por_pedido "
+                + "from("
+                + "     select i.id as id_insumo, i.nombre as nombre_insumo, ped.fecha as fecha_pedido, dp.id as id_detalle_pedido, (dp.cantidad * inpro.cantidad_insumo) as cantidad_por_pedido "
+                + "     from insumo i "
+                + "     inner join insumos_del_producto inpro on inpro.insumo = i.id "
+                + "     inner join detalle_pedido dp on dp.Producto = inpro.Producto "
+                + "     inner join pedido ped on ped.id = dp.Pedido "
+                + ") info "
+                + "group by 1,2 "
+                + "order by 2 asc;";
     }
 
 }

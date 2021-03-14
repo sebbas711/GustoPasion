@@ -13,7 +13,7 @@ public final class CantidadInsumo {
 
     private String nombreInsumo;
     private String mes;
-    private int cantidadInsumo;
+    private double cantidadInsumo;
 
     public CantidadInsumo() {
     }
@@ -26,11 +26,11 @@ public final class CantidadInsumo {
         this.nombreInsumo = nombreInsumo;
     }
 
-    public int getCantidadInsumo() {
+    public double getCantidadInsumo() {
         return cantidadInsumo;
     }
 
-    public void setCantidadInsumo(int cantidadInsumo) {
+    public void setCantidadInsumo(double cantidadInsumo) {
         this.cantidadInsumo = cantidadInsumo;
     }
 
