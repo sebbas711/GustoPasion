@@ -24,6 +24,7 @@ import javax.servlet.http.HttpServletResponse;
 import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
+import org.primefaces.PrimeFaces;
 import pyp.DAO.IPedidoDAO;
 import pyp.modelo.entidades.Pedido;
 
@@ -65,7 +66,23 @@ public class pedidosControlador implements Serializable {
         this.pedidoSeleccionado = pedidos;
 
     }
+    
+    public void actualizarDatosPedido() {
+        String mensajeRequest = "";
+        FacesContext fc = FacesContext.getCurrentInstance();
+        try {
+            if (pedidoSeleccionado != null) {
+                pedidosDAO.edit(pedidoSeleccionado);
+                mensajeRequest = "swal('Actulizado', 'Correctamente', 'success');";
+                pedidos = null;
+            }
+        } catch (Exception e) {
+            mensajeRequest = "swal('Error', 'No se pudo actualizar el pedido', 'error');";
+        }
+        PrimeFaces.current().executeScript(mensajeRequest);
 
+    }
+    
     public void descargaListado() {
         FacesContext facesContext = FacesContext.getCurrentInstance();
         ExternalContext context = facesContext.getExternalContext();

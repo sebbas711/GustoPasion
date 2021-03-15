@@ -17,20 +17,24 @@
 
             <h:dataTable class="table" value="#{carritoController.pedido.detallesPedido}" var="dp">
                 <h:column>
-                    <f:facet name="header">Categoria</f:facet>
-                        #{dp.producto.categoriaProducto.nombreCategoria}
+                    <f:facet  name="header"><b style="color: #951010">#{msjMenu.Categoria}</b></f:facet>
+                    <b>#{dp.producto.categoriaProducto.nombreCategoria}</b>
                 </h:column>
                 <h:column>
-                    <f:facet name="header">#{msjMenu.Nombre}</f:facet>
-                        #{dp.producto.nombre}
+                    <f:facet name="header"><b style="color: #951010">#{msjMenu.Nombre}</b></f:facet>
+                    <b>#{dp.producto.nombre}</b>
                 </h:column>
                 <h:column>
-                    <f:facet name="header">#{msjMenu.Precio}</f:facet>
-                        #{dp.producto.precio}
+                    <f:facet name="header"><b style="color: #951010">#{msjMenu.Precio}</b></f:facet>
+                    <center>
+                        <b style="color: #951010">$</b><b>#{dp.producto.precio}</b>
+                    </center>
                 </h:column>
                 <h:column>
-                    <f:facet name="header">#{msjMenu.Cantidad}</f:facet>
-                        #{dp.cantidad}
+                    <f:facet name="header"><b style="color: #951010">#{msjMenu.Cantidad}</b></f:facet>
+                    <center>
+                        <b>#{dp.cantidad}</b>
+                    </center>
                 </h:column>
             </h:dataTable>
             <p:commandLink actionListener="#{carritoController.vaciar()}"
