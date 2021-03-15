@@ -70,7 +70,23 @@
                                     </div>
                                 </div>
                             </div>
-
+                            <hr/>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="message-text" class="col-form-label"><b>PRODUCTOS</b></label>
+                                    <ui:repeat value="#{pedidosControlador.pedidoSeleccionado.detallesPedido}" var="r">
+                                        <span class="form-control">#{r.producto.categoriaProducto.nombreCategoria} #{r.producto.nombre}</span>
+                                    </ui:repeat>                                    
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="message-text" class="col-form-label"><b>CANTIDAD</b></label>
+                                    <ui:repeat value="#{pedidosControlador.pedidoSeleccionado.detallesPedido}" var="r">
+                                        <span class="form-control">#{r.cantidad}</span>
+                                    </ui:repeat>                                    
+                                </div>
+                            </div> 
                         </div>
 
                     </div>
