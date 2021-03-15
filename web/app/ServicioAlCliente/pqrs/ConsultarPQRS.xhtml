@@ -4,79 +4,67 @@
     xmlns="http://www.w3.org/1999/xhtml"
     xmlns:h="http://xmlns.jcp.org/jsf/html"
     xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-    xmlns:f="http://xmlns.jcp.org/jsf/core">
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+    xmlns:p="http://primefaces.org/ui">
     <div class="container">
         <h2 style="color:#980505"><b>#{msjRadicarPQRS.ConsultarPQRS}</b></h2>
-        <div class="table-responsive">
-            <table border="1" class="table table-striped table-bordered table-hover">
-                <thead>
-                    <tr>
-                        <th><center>##{msjRadicarPQRS.PQRS}</center></th>
-                        <th><center>#{msjRadicarPQRS.FECHA}</center></th>
-                        <th><center>#{msjRadicarPQRS.TipodePQRS}</center></th>
-                        <th><center>#{msjRadicarPQRS.Consultar}</center></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>3578951246</td>
-                        <td> <center>2020/07/20</center></td>
-                        <td><center>#{msjRadicarPQRS.Petición}</center></td>
-                        <td><center><button class="btn" data-toggle="modal" data-target="#samodal" style="background: #951010; color: white">#{msjRadicarPQRS.ConsultarPQRS}</button>
-                            </center></td>
-                        <div>
-                            <div class="modal fade" id="samodal" tagindex="-1" role="dialog" area-label-ledby="samodal" aria-hudden="true" style="margin-top: 220px">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-body">
-                                            <h6 class="text-center">#{msjRadicarPQRS.SUPETICIÓNAUNNO}</h6><br />
-                                            <p class="text-center">#{msjRadicarPQRS.Recuerdaquedamos}</p>
-                                            <p class="text-center"> #{msjRadicarPQRS.Graciasporpreferir}<br /> <strong style="color: #980505">#{msjRadicarPQRS.RestauranteGustoyPasión}</strong></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </tr>
-                    <tr>
-                        <td>7584213590</td>
-                        <td> <center>2019/03/15</center></td>
-                        <td><center>#{msjRadicarPQRS.Reclamo}</center></td>
-                        <td><center><button class="btn" data-toggle="modal" data-target="#semodal" style="background: #951010; color: white" >#{msjRadicarPQRS.ConsultarPQRS}</button></center></td>
-                        <div class="modal fade" id="semodal" tagindex="-1" role="dialog" area-label-ledby="semodal" aria-hudden="true" style="margin-top: 220px">
-                            <div class="modal-dialog">
-                                <div>
-                                    <div class="modal-content">
-                                        <div class="modal-body">
-                                            <h6 class="text-center">#{msjRadicarPQRS.ReclamoNumero} </h6><br />
-                                            <p class="text-justify">#{msjRadicarPQRS.Atendiendo}<br /> #{msjRadicarPQRS.Graciasporsu}</p>
-                                            <p class="text-center"> #{msjRadicarPQRS.Graciasporpreferir} <br /> <strong style="color: #980505">#{msjRadicarPQRS.RestauranteGustoyPasión}</strong></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </tr>
-                    <tr>
-                        <td>8574896512</td>
-                        <td> <center>2017/06/21</center></td>
-                        <td><center>#{msjRadicarPQRS.Felicitación}</center></td>
-                        <td><center><button class="btn" data-toggle="modal" data-target="#simodal" style="background: #951010; color: white">#{msjRadicarPQRS.ConsultarPQRS}</button></center></td>
-                        <div class="modal fade" id="simodal" tagindex="-1" role="dialog" area-label-ledby="simodal" aria-hudden="true" style="margin-top: 220px">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-body">
-                                        <h6 class="text-center">#{msjRadicarPQRS.FelicitacionNumero} 8574896512</h6><br/>
-                                        <p class="text-center">#{msjRadicarPQRS.Nossatisfacelabuena}</p>
-                                        <p class="text-center"> #{msjRadicarPQRS.Graciasporpreferir} <br/> <strong style="color: #980505">#{msjRadicarPQRS.RestauranteGustoyPasión}</strong></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+        <h:form prependId="false">
+            <p:dataTable value="#{pqrsControlador.pqrs}" 
+                             rows="5"
+                             paginator="true"
+                             paginatorPosition="bottom"
+                             rowsPerPageTemplate="5,10,15"
+                             reflow="true"
+                             var="pq"
+                             id="tablaPqrs">
+                    <p:column headerText="#{msjPQRS.ID}" priority="2" style="width: 40px">
+                        <center>
+                            <h:outputText value="#{pq.id}"/>
+                        </center>
+                    </p:column>
+                    <p:column headerText="#{msjPQRS.TIPO}" priority="2" style="width: 90px">
+                        <center>
+                            <h:outputText value="#{pq.tipoPQRS.nombre}"/>
+                        </center>
+                    </p:column>
+                    <p:column headerText="#{msjPQRS.ADMINISTRADOR}" priority="2" style="width: 140px">
+                        <center>
+                            <h:outputText value="#{pq.administrador.usuario.primerNombre} #{pq.administrador.usuario.primerApellido}"/>
+                        </center>
+                    </p:column>
+                    <p:column headerText="#{msjPQRS.FECHA}" priority="2" style="width: 120px">
+                        <center>
+                            <h:outputText value="#{pq.fecha}">
+                                <f:convertDateTime pattern="yyyy-MM-dd"/>
+                            </h:outputText>
+                        </center>
+                    </p:column>
+                    <p:column headerText="#{msjPQRS.ESTADO}" priority="2" style="width: 110px">
+                        <center>
+                            <h:outputText value="#{pq.estadoPqrs.descripcion}"/>
+                        </center>
+                    </p:column>
+                    <p:column headerText="#{msjPQRS.OPCIONES}" priority="2" style="width: 80px">
+                        <h:commandLink  class="btn" 
+                                        style="background: #951010; color: white; margin-left: 15px; margin-top: 5px; display: inline-block" 
+                                        title="Modificar" 
+                                        a:data-toggle="modal" a:data-target="#responderInfoPQRS"
+                                        action="#{controlPqrsView.seleccionarPqrs(pq)}">
+                            <i class="fa fa-eye"></i>
+                            <f:ajax render=":responderPQRSContent" />
+                        </h:commandLink>
+                        <h:commandLink  class="btn" 
+                                        style="background: #951010; color: white; margin-left: 15px; margin-top: 5px; display: inline-block" 
+                                        title="Modificar" 
+                                        a:data-toggle="modal" a:data-target="#responderInfoPQRS"
+                                        action="#{controlPqrsView.seleccionarPqrs(pq)}">
+                            <i class="fa fa-pencil"></i>
+                            <f:ajax render=":responderPQRSContent" />
+                        </h:commandLink>
+                    </p:column>
+                </p:dataTable>
+        </h:form>    
     </div>
     <br/>
 </ui:fragment>

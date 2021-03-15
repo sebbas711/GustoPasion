@@ -124,7 +124,7 @@ public class Email {
 
     }
 
-    public static void sendBienvenido(String para, String Nombres, String Asunto, String ImgPromo) {
+    public static void sendBienvenido(String para, String nombres, String asunto, String urlImgPromo) {
         final String user = "gustoypasion2020@gmail.com";//cambiará en consecuencia al servidor utilizado
         final String pass = "gustoypasion";
 
@@ -152,18 +152,12 @@ public class Email {
             message.setSubject("Restaurante Gusto y Pasión");
 
             message.setContent(
-                    "<center><img src='https://lh3.googleusercontent.com/UjT-jnUUqhKE4ISNf-vsYFhY3459dFpXwAal2qMQfnnQ_GTVxxhywT_RPPZx0KVfSekyUbEgeVqj9sFEwxH9vwAds4jxcODqIbuoJW4QdnZjzEJLLw7UsPQjdpTZb_hEUu6KqFpCes9GSvRO3iQ7VKD3LaF_is4jVTftG51Mu3mPnZZXcrz41kQucWNcHDnhv-CFeZsyRrNnDd1cxnfG7idSwikTBEQVYVKJUdiWOLLCdlX2GV4M3ZEDooc_S53wkp55aI250nNzFuRFBknDDdR5TBNHpgb7YfN8oJsHfa3bH8F50EZceWC6kAQsmgwdG1sNNLXB6CQdK9RWGeuuQxJORb54uZse-3fpaiKM2w2Hk0_T4pd5j13VRCj1c0fYz5LCNDcCMYUDCHqjhi1i9mRCj2RZnlmc4W2HppGw-tyn4BDQ61PLk5CnZrs_XMQA7h7jIupd2etlrqY3VEqi4rlRXdkM0LzRR6Xr729iJD81abDJvstLCgjJIUB9ZBngTPYvie4nKASGcotsAuFAHGtvsnQ2yoUtBZKaZxtN-7KnKMYbiRifAWmUMCXND1u25xNBeulRK5r-hlq4CJ_Ax2b6RAiPbM5U8cc2KTjZa0N2DTfetayOcjcofgYEgcCfrxAF4OUZ29XgdNJRRhkAPL1lohjT2R51Ag_B5yd57bXfVDnrw5FRnyTvfBb0YA=w763-h610-no?authuser=0' "
-                    + "title='Restaurante Gusto y Pasión'></center>"
-                    + "<h3> Hola "
-                    + Nombres
-                    + "</h3>"
+                    "<center><img src='" + urlImgPromo + "' title='Restaurante Gusto y Pasión'></center>"
+                    + "<h3> Hola " + nombres + "</h3>"
                     + "Reciba un cordial saludo de Restaurante Gusto y Pasión"
-                    + "<h4> "
-                    + Asunto
-                    +"</h4>"
-                    + "<h4> Te esperamos pronto  "
-                    + ImgPromo
-                    + " </h4>", "text/html");
+                    + "<h4> "  + asunto + "</h4>"
+                    + "<h4> Te esperamos pronto </h4>",
+                    "text/html");
 
             //3rd paso)send message
             Transport.send(message);

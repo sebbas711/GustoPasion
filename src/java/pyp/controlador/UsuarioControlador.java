@@ -60,8 +60,6 @@ public class UsuarioControlador implements Serializable {
     private Usuario UsuarioSeleccionado;
     private Usuario nuevoUsuario;
     private String correo = "";
-    private String imgPromocion;
-    private String Asunto = "";
 
     public UsuarioControlador() {
     }
@@ -214,25 +212,6 @@ public class UsuarioControlador implements Serializable {
             return "Bloquear";
         }
         return "";
-    }
-
-    public void correoMasivo() {
-        String mensajeRequest = "";
-        try {
-            for (Usuario IUsuario : usuarioDAO.findAll()) {
-                Email.sendBienvenido(IUsuario.getEmail(), "Señor(a) " + IUsuario.getPrimerNombre() + " "
-                        + IUsuario.getPrimerApellido(), "Queremos invitarte a visitar nuestra pagina web", "Restaurante gusto y Pasion");
-            }
-            mensajeRequest = "swal('Envio exitoso', 'Gracias', 'success');";
-            MessageUtil.sendInfo(null, "Registro exitoso",
-                    "", Boolean.FALSE);
-        } catch (Exception e) {
-            mensajeRequest = "swal('Error', 'No se pudo enviar el correo', 'error');";
-            MessageUtil.sendInfo(null, "Error",
-                    "", Boolean.FALSE);
-        }
-        PrimeFaces.current().executeScript(mensajeRequest);
-
     }
 
     public void insertarXLS(List cellDataList) {
@@ -392,21 +371,5 @@ public class UsuarioControlador implements Serializable {
 
     public void setCorreo(String correo) {
         this.correo = correo;
-    }
-
-    public String getImgPromocion() {
-        return imgPromocion;
-    }
-
-    public void setImgPromocion(String imgPromocion) {
-        this.imgPromocion = imgPromocion;
-    }
-
-    public String getAsunto() {
-        return Asunto;
-    }
-
-    public void setAsunto(String Asunto) {
-        this.Asunto = Asunto;
     }
 }
