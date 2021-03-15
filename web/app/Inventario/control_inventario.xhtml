@@ -47,15 +47,6 @@
                         </ui:repeat>
                     </div>
                 </div>
-                <center>
-                    <h:commandLink class="btn btn-secundary" style="border: double #951010" title="#{msjInventario.RegistrarInsumo}" 
-                                   value="#{msjInventario.RegistrarInsumo}"
-                                   a:data-toggle="modal" a:data-target="#agregarInsumo"
-                                   >
-                        <i class="fa fa-plus" style="color: #727272"></i>
-                        <f:ajax render=":agregarInfoInsumoContent" />
-                    </h:commandLink>
-                </center>
                 <br/>
                 <h3 class="text-center"><b style="color: #951010">#{controlInventarioView.tipoInsumoFiltro.nombre}</b></h3>
                 <br/>

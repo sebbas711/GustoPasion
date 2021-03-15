@@ -30,6 +30,7 @@ import org.primefaces.PrimeFaces;
 import pyp.DAO.IPqrsDAO;
 import pyp.controlador.sesion.SessionControlador;
 import pyp.modelo.entidades.Pqrs;
+import pyp.modelo.entidades.Respuestapqrs;
 import pyp.servicios.pqrs.IRegistroPqrsService;
 
 /**
@@ -49,6 +50,8 @@ public class PqrsControlador implements Serializable {
     private List<Pqrs> pqrs;
     private Pqrs pqrsSeleccionada;
     private Pqrs nuevaPqrs;
+
+    private Respuestapqrs respuestaSeleccionada;
 
     private boolean formRadicarEnable;
     private boolean tablaPqrsEnable;
@@ -85,6 +88,14 @@ public class PqrsControlador implements Serializable {
         this.pqrsSeleccionada = pqrsSeleccionada;
     }
 
+    public Respuestapqrs getRespuestaSeleccionada() {
+        return respuestaSeleccionada;
+    }
+
+    public void setRespuestaSeleccionada(Respuestapqrs respuestaSeleccionada) {
+        this.respuestaSeleccionada = respuestaSeleccionada;
+    }
+
     public Pqrs getNuevaPqrs() {
         return nuevaPqrs;
     }
@@ -105,6 +116,13 @@ public class PqrsControlador implements Serializable {
         System.out.println("Se ha seleccionado una pqrs");
         System.out.println(pq);
         this.pqrsSeleccionada = pq;
+
+    }
+
+    public void seleccionarRespuestaPqrs(Respuestapqrs rp) {
+        System.out.println("Se ha seleccionado una pqrs");
+        System.out.println(rp);
+        this.respuestaSeleccionada = rp;
 
     }
 
@@ -136,6 +154,18 @@ public class PqrsControlador implements Serializable {
         } catch (Exception e) {
             e.printStackTrace();
             mensajeRequest = "swal('Error', 'No se pudo responder la PQRS', 'error');";
+        }
+        PrimeFaces.current().executeScript(mensajeRequest);
+    }
+
+    public void eliminar() {
+        String mensajeRequest = "";
+        try {
+            pqDAO.remove(pqrsSeleccionada);
+            mensajeRequest = "swal('PQRS Eliminada', 'Correctamente', 'success');";
+            pqrs = null;
+        } catch (Exception e) {
+            mensajeRequest = "swal('Error', 'No se pudo eliminar la PQRS', 'error');";
         }
         PrimeFaces.current().executeScript(mensajeRequest);
     }
@@ -175,7 +205,6 @@ public class PqrsControlador implements Serializable {
         }
         return "";
     }*/
-
     public void descargaListado() {
         FacesContext facesContext = FacesContext.getCurrentInstance();
         ExternalContext context = facesContext.getExternalContext();

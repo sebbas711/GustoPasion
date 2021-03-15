@@ -14,7 +14,6 @@
             <link rel="icon" type="Pagina" href="img/Logo2.png"/>
             <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css"/>
 
-            <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
             <title>#{msjLogin.title}</title>
         </h:head>
 
@@ -58,6 +57,9 @@
                             <h:commandButton class="btn" value="#{msjOlvContr.Restablecer}" style="margin-left: 10px; 
                                              background: #727272; color: white"
                                              action="#{usuarioControlador.recuperarClave()}"/>
+                            <h:messages showDetail="false" layout="table"
+                                        style="padding: 5px; border-radius: 5px; box-shadow: 0px, 0px, 4px #ffff33; display: block; color: white;
+                                        margin-left: 50px"/>
                         </div>
                         <br/>
 
@@ -66,5 +68,6 @@
             </div>
         </h:body>
     </f:view>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </html>
 

@@ -51,7 +51,7 @@ public class ControlProductosView implements Serializable {
     public String getColorByCategoriaProducto(CategoriaProducto categoriaProducto) {
         return "#" + (categoriaProducto.getId() % 2 == 0 ? "951010" : "727272");
     }
-
+    
     public void filtrarPorCategoriaProducto(CategoriaProducto categoriaProductoFiltro) {
         this.categoriaProductoFiltro = categoriaProductoFiltro;
         findProductos();
@@ -81,6 +81,7 @@ public class ControlProductosView implements Serializable {
     public CategoriaProducto getCategoriaProductoFiltro() {
         return categoriaProductoFiltro;
     }
+    
 
     public void seleccionarProducto(Producto pro) {
         System.out.println("Se ha seleccionado el usuario");

@@ -30,9 +30,9 @@
                         </div>
                         <ui:repeat value="#{controlProductosView.categoriaProductosHabilitados}" var="categoriaProductos">
                             <div class="col-sm-6 col-lg-4">
-                                <div class="card text-white coloramarillo">
+                                <div class="card text-white coloramarillo" style="background: #{controlProductosView.getColorByCategoriaProducto(categoriaProductos)}">
                                     <p:commandLink class="hovcard" 
-                                                   actionListener="#{controlProductosView.filtrarPorCategoriaProducto(categoriaProductoFiltro)}"
+                                                   actionListener="#{controlProductosView.filtrarPorCategoriaProducto(categoriaProductos)}"
                                                    update="tablaProductos">
                                         <div class="card-body">
                                             <div class="card-left pt-1 float-left">

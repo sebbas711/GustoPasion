@@ -102,27 +102,32 @@ public class UsuarioControlador implements Serializable {
 
     public void registrar() {
         String mensajeRequest = "";
-        
-        try { 
+        try {
             if (nuevoUsuario.getId() != null
                     && nuevoUsuario.getPrimerNombre() != null
-                    && nuevoUsuario.getPrimerApellido() != null 
+                    && nuevoUsuario.getPrimerApellido() != null
                     && nuevoUsuario.getEmail() != null
                     && nuevoUsuario.getDireccion() != null
                     && nuevoUsuario.getContraseña() != null) {
-                if(Objects.isNull(nuevoUsuario.getRoles()) || nuevoUsuario.getRoles().isEmpty()){
+                if (Objects.isNull(nuevoUsuario.getRoles()) || nuevoUsuario.getRoles().isEmpty()) {
                     registroUsuarioService.registrarCliente(nuevoUsuario);
                 } else {
                     registroUsuarioService.registrarUsuario(nuevoUsuario);
                 }
                 mensajeRequest = "swal('Registro Exitoso', '', 'success');";
+                MessageUtil.sendInfo(null, "Registro Exitoso",
+                        "Listado en la tabla Usuarios", Boolean.FALSE);
             } else {
+                MessageUtil.sendError(null, "Los campos son obligatorios",
+                        "Por favor diligencie todos los campos", Boolean.FALSE);
                 mensajeRequest = "swal('Los campos son obligatorios', 'Por favor diligencie todos los campos', 'info');";
             }
 
         } catch (Exception e) {
             System.out.println("pyp.modelo.controlador.UsuarioControlador.registrar()" + e.getMessage());
             mensajeRequest = "swal('Verifique sus datos', 'Intente de nuevo', 'error');";
+            MessageUtil.sendError(null, "Verifique sus datos",
+                    "Intente de nuevo", Boolean.FALSE);
         }
         PrimeFaces.current().executeScript(mensajeRequest);
         nuevoUsuario = new Usuario();
@@ -130,21 +135,20 @@ public class UsuarioControlador implements Serializable {
     }
 
     public void recuperarClave() {
-
         String mensajeRequest = "";
         Usuario usuarioResultado = new Usuario();
-
         try {
             usuarioResultado = usuarioDAO.recuperarClave(correo);
             int claveNew = (int) (Math.random() * 100000);
             usuarioResultado.setContraseña("GP-" + claveNew);
             usuarioDAO.edit(usuarioResultado);
-            mensajeRequest += "swal('Envio Exitoso', 'Clave enviada al correo registrado', 'success');";
             Email.sendClaves(usuarioResultado.getEmail(), usuarioResultado.getPrimerNombre() + " "
                     + usuarioResultado.getPrimerApellido(), correo, "GP-" + claveNew);
+            MessageUtil.sendInfo(null, "Contraseña enviado con exito al correo",
+                    "Revise su Correo", Boolean.FALSE);
         } catch (Exception e) {
-            System.out.println("Error RegistroRequest:recuperarClave" + e.getMessage());
-            mensajeRequest = "swal('Verifique sus datos', 'Intente de nuevo', 'error');";
+            MessageUtil.sendError(null, "Datos Incorrectos, revise sus Datos",
+                    "e Intente Nuevamente", Boolean.FALSE);
         }
         PrimeFaces.current().executeScript(mensajeRequest);
         correo = "";

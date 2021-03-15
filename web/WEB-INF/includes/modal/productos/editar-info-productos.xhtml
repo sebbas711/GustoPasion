@@ -25,26 +25,23 @@
                             </span>             
                         </div>
                         <div class="modal-body row">
-                            <div class="col-md-6">
-                                <div class="form-group" >
-                                    <label for="message-text" class="col-form-label">Categoria Producto <b style="color: red">*</b></label>
-                                    <h:selectOneMenu class="form-control" value="#{controlProductosView.productoSeleccionado.categoriaProducto.nombreCategoria}">
-                                        <f:selectItem itemLabel="Categoria Productos" itemValue=""/>
-                                        <f:selectItems value="#{categoriaViewControlador.categorias}" var="ti" itemLabel="#{ti.nombreCategoria}"/>
-                                    </h:selectOneMenu>
-                                </div>
+                            <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="message-text" class="col-form-label">#{msjModales.NOMBRE} <b style="color: red">*</b></label>
                                     <h:inputText class="form-control" value="#{controlProductosView.productoSeleccionado.nombre}" a:placeholder="#{msjModales.Nombre}" maxlength="20"/>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <div class="form-group">
-                                    <label for="message-text" class="col-form-label">#{msjModales.DESCRIPCION} <b style="color: red">*</b></label>
-                                    <h:inputText class="form-control" value="#{controlProductosView.productoSeleccionado.descripcion}" a:placeholder="#{msjModales.Descripción}"/>
+                                    <div class="form-group">
+                                        <label for="message-text" class="col-form-label">#{msjModales.DESCRIPCION} <b style="color: red">*</b></label>
+                                        <h:inputText class="form-control" value="#{controlProductosView.productoSeleccionado.descripcion}" a:placeholder="#{msjModales.Descripción}"/>
+                                    </div>
                                 </div>
+                            </div>
+                            <div class="col-md-12">
                                 <div class="form-group">
-                                    <label for="message-text" class="col-form-label">Precio <b style="color: red">*</b></label>
+                                    <label for="message-text" class="col-form-label">PRECIO <b style="color: red">*</b></label>
                                     <h:inputText class="form-control" value="#{controlProductosView.productoSeleccionado.precio}" a:placeholder="#{msjModales.Nombre}" maxlength="20"/>
                                 </div>
                             </div>
