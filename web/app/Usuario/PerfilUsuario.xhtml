@@ -21,62 +21,56 @@
                         <div class="col-md-5" style="margin-left: 70px">
                             <div class="form-group">
                                 <label>#{msjModales.TIPODEIDENTIFICACION}</label>
-                                <h:inputText class="form-control" 
-                                             value="#{usuarioControlador.usuarioSeleccionado.tipoIdentificación}"/>
+                                <span class="form-control disabled">#{perfilUsuarioControlador.usuario.tipoIdentificación}</span>
                             </div>
                             <div class="form-group">
                                 <label>#{msjModales.NumerodeIdentificación} </label>
-                                <h:inputText class="form-control" a:type="number" value="#{usuarioControlador.usuarioSeleccionado.id}"/>
+                                <span class="form-control disabled">#{perfilUsuarioControlador.usuario.id}</span>
                             </div>
 
                             <div class="form-group">
                                 <label>#{msjModales.PRIMERNOMBRE}</label>
                                 <h:inputText class="form-control" 
-                                             value="#{usuarioControlador.usuarioSeleccionado.primerNombre}"/>
+                                             value="#{perfilUsuarioControlador.usuario.primerNombre}"/>
                             </div>
                             <div class="form-group">
                                 <label>#{msjModales.SEGUNDONOMBRE}</label>
                                 <h:inputText class="form-control" 
-                                             value="#{usuarioControlador.usuarioSeleccionado.segundoNombre}"/>
+                                             value="#{perfilUsuarioControlador.usuario.segundoNombre}"/>
                             </div>
                             <div class="form-group">
                                 <label>#{msjModales.PRIMERAPELLIDO}</label>
                                 <h:inputText class="form-control" 
-                                             value="#{usuarioControlador.usuarioSeleccionado.primerApellido}"/>
+                                             value="#{perfilUsuarioControlador.usuario.primerApellido}"/>
                             </div>
                         </div>
                         <div class="col-md-5">
                             <div class="form-group">
                                 <label>#{msjModales.SEGUNDOAPELLIDO}</label>
                                 <h:inputText class="form-control" 
-                                             value="#{usuarioControlador.usuarioSeleccionado.segundoApellido}"/>
+                                             value="#{perfilUsuarioControlador.usuario.segundoApellido}"/>
                             </div>
                             <div class="form-group">
                                 <label>#{msjModales.DIRECCION}</label>
                                 <h:inputText class="form-control" 
-                                             value="#{usuarioControlador.usuarioSeleccionado.direccion}"/>
+                                             value="#{perfilUsuarioControlador.usuario.direccion}"/>
                             </div>
                             <div class="form-group">
                                 <label>#{msjModales.CORREOELECTRONICO}</label>
                                 <h:inputText class="form-control" 
-                                             value="#{usuarioControlador.usuarioSeleccionado.email}"/>
+                                             value="#{perfilUsuarioControlador.usuario.email}"/>
                             </div>
                             <div class="form-group">
                                 <label>#{msjModales.TELEFONO}</label>
                                 <h:inputText class="form-control" 
-                                             value="#{usuarioControlador.usuarioSeleccionado.telefono}"/>
-                            </div>
-                            <div class="form-group">
-                                <label>#{msjQuienesSomos.ModificarContraseña}</label>
-                                <h:inputText class="form-control" 
-                                             value="#{usuarioControlador.usuarioSeleccionado.telefono}"/>
+                                             value="#{perfilUsuarioControlador.usuario.telefono}"/>
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn"  style="background: #951010; color: white">#{msjModales.Cancelar}</button>
                         <h:commandLink class="btn" value="#{msjModales.Actualizar}"
-                                       action="#{usuarioControlador.actualizarCliente}" 
+                                       action="#{perfilUsuarioControlador.actualizar()}" 
                                        style="background: #727272; color: white">
                             <i class="fa fa-save"></i>
                         </h:commandLink>

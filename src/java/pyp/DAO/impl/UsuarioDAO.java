@@ -47,4 +47,17 @@ public class UsuarioDAO extends AbstractDAO<Usuario> implements IUsuarioDAO {
         }
     }
 
+    @Override
+    public Usuario findByIdAndPassword(Integer idUsuario, String clave) {
+        try {
+            TypedQuery<Usuario> q = getEntityManager().createQuery("SELECT u FROM Usuario u WHERE u.id=:id AND u.contraseña=:pass", Usuario.class);
+            q.setParameter("id", idUsuario);
+            q.setParameter("pass", clave);
+            return q.getSingleResult();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
 }
