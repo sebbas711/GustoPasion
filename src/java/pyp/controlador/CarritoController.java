@@ -64,6 +64,7 @@ public class CarritoController implements Serializable {
         if (Objects.nonNull(usuario)) {
             pedido.setCliente(usuario.getCliente());
             pedido.setPuntoEntrega(Objects.nonNull(usuario.getDireccion()) ? usuario.getDireccion() : " ");
+            
             return true;
         } else {
             RedirectUtil.redirectTo("/app/Usuario/InicioSesion.xhtml");

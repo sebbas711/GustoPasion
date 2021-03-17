@@ -147,7 +147,7 @@ public class UsuarioControlador implements Serializable {
             MessageUtil.sendInfo(null, "Contraseña enviado con exito al correo",
                     "Revise su Correo", Boolean.FALSE);
         } catch (Exception e) {
-            MessageUtil.sendError(null, "Datos Incorrectos, revise sus Datos",
+            MessageUtil.sendError(null, "Envio Exitoso",
                     "e Intente Nuevamente", Boolean.FALSE);
         }
         PrimeFaces.current().executeScript(mensajeRequest);
@@ -167,6 +167,22 @@ public class UsuarioControlador implements Serializable {
     }
 
     public void actualizar() {
+        String mensajeRequest = "";
+        FacesContext fc = FacesContext.getCurrentInstance();
+        try {
+            if (UsuarioSeleccionado != null) {
+                usuarioDAO.edit(UsuarioSeleccionado);
+                mensajeRequest = "swal('Actulizado', 'Correctamente', 'success');";
+                usuarios = null;
+            }
+        } catch (Exception e) {
+            mensajeRequest = "swal('Error', 'No se pudo actualizar el usuario', 'error');";
+        }
+        PrimeFaces.current().executeScript(mensajeRequest);
+
+    }
+
+    public void actualizarCliente() {
         String mensajeRequest = "";
         FacesContext fc = FacesContext.getCurrentInstance();
         try {
@@ -339,8 +355,8 @@ public class UsuarioControlador implements Serializable {
             System.out.println("pyp.modelo.reportes.insumos.ListaInsumos()" + e.getMessage());
         }
     }
-    
-        public void descargaCertificado(String idUsuario) {
+
+    public void descargaCertificado(String idUsuario) {
         FacesContext facesContext = FacesContext.getCurrentInstance();
         ExternalContext context = facesContext.getExternalContext();
         HttpServletRequest request = (HttpServletRequest) context.getRequest();

@@ -26,7 +26,11 @@ import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import org.primefaces.PrimeFaces;
 import pyp.DAO.IPedidoDAO;
+import pyp.DAO.impl.EstadopedidoDAO;
+import pyp.excepciones.BusinessException;
 import pyp.modelo.entidades.Pedido;
+import pyp.servicios.IPedidosService;
+import pyp.servicios.impl.PedidosService;
 
 @Named(value = "pedidosControlador")
 @ViewScoped
@@ -37,6 +41,8 @@ public class pedidosControlador implements Serializable {
     private List<Pedido> pedidos;
     private Pedido pedidoSeleccionado;
 
+    /*@EJB
+     private IPedidosService estadoPqrsService;*/
     public pedidosControlador() {
     }
 
@@ -66,7 +72,7 @@ public class pedidosControlador implements Serializable {
         this.pedidoSeleccionado = pedidos;
 
     }
-    
+
     public void actualizarDatosPedido() {
         String mensajeRequest = "";
         FacesContext fc = FacesContext.getCurrentInstance();
@@ -82,7 +88,22 @@ public class pedidosControlador implements Serializable {
         PrimeFaces.current().executeScript(mensajeRequest);
 
     }
-    
+
+    /*public void cambiarEstadoFinalizada() throws BusinessException {
+        estadoPqrsService.cambiarestadoPedido(pedidoSeleccionado);
+    }*/
+    public void eliminar() {
+        String mensajeRequest = "";
+        try {
+            pedidosDAO.remove(pedidoSeleccionado);
+            mensajeRequest = "swal('Pedido Eliminado', 'Correctamente', 'success');";
+            pedidos = null;
+        } catch (Exception e) {
+            mensajeRequest = "swal('Error', 'No se pudo eliminar el pedido', 'error');";
+        }
+        PrimeFaces.current().executeScript(mensajeRequest);
+    }
+
     public void descargaListado() {
         FacesContext facesContext = FacesContext.getCurrentInstance();
         ExternalContext context = facesContext.getExternalContext();

@@ -13,7 +13,7 @@
                 <div class="col-md-12 ">
                     <div class="form-group" >
                         <h:outputLabel for="fr_tipo_pqrs" class="col-form-label"><b>#{msjRadicarPQRS.TipodePQRS}</b> <b style="color: red">*</b></h:outputLabel>
-                        <h:selectOneMenu  id="fr_tipo_pqrs" class="form-control" 
+                        <h:selectOneMenu  id="fr_tipo_pqrs" class="form-control" required="true" requiredMessage="Debe escoger un tipo de PQRS" 
                                           value="#{pqrsControlador.nuevaPqrs.tipoPQRS}">
                             <f:selectItem itemLabel="#{msjPQRS.Seleccione}"/>
                             <f:selectItems value="#{tipoPqrsView.tiposPqrs}" var="tp" itemLabel="#{tp.nombre}"/>
@@ -23,7 +23,7 @@
                 <div class="col-md-12">
                     <div class="form-group">
                         <h:outputLabel for="fr_nom_cliente" class="col-form-label"><b>#{msjRadicarPQRS.Observaciones}</b> <b style="color: red">*</b></h:outputLabel>
-                        <h:inputTextarea id="fr_nom_cliente" class="form-control" 
+                        <h:inputTextarea id="fr_nom_cliente" class="form-control" required="true" requiredMessage="Debe poner las observaciones"
                                          a:type="text" value="#{pqrsControlador.nuevaPqrs.observaciones}"/>
                     </div>
                 </div>
@@ -42,6 +42,9 @@
                     </h:commandButton>
                 </div>
             </div>
+            <h:messages showDetail="false" layout="table"
+                        style="padding: 5px; border-radius: 5px; box-shadow: 0px, 0px, 4px #951010; display: block; color: red;
+                        margin-left: 50px"/>
         </h:form>
     </div>
     <br/>

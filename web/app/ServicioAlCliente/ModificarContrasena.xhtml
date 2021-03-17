@@ -1,0 +1,90 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition 
+    template="/WEB-INF/includes2/template.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+    >
+    <ui:define name="contenido">
+        <f:view locale="#{languagecontroller.locale}">
+            <!--******************************************************EMPIEZA EL CONTENIDO*****************************************************-->
+            <div class="jumbotron" style="background-image: url(#{request.contextPath}/resource/img/Quienessomos.jpg); 
+                 background-size: 100%"><h1 class="display-3 mb-3" style="font-family: Garamond; font-size: 30px; 
+                  color: white; margin-top: 80px; margin-left: 120px;">EDITAR DATOS</h1> 
+            </div>
+            <h:form prependId="false">
+                <h:panelGroup layout="block">
+                    <div class="modal-body row">
+                        <div class="col-md-5" style="margin-left: 70px">
+                            <div class="form-group">
+                                <label>#{msjModales.TIPODEIDENTIFICACION}</label>
+                                <h:inputText class="form-control" 
+                                             value="#{usuarioControlador.usuarioSeleccionado.tipoIdentificación}"/>
+                            </div>
+                            <div class="form-group">
+                                <label>#{msjModales.NumerodeIdentificación} </label>
+                                <h:inputText class="form-control" a:type="number" value="#{usuarioControlador.usuarioSeleccionado.id}"/>
+                            </div>
+
+                            <div class="form-group">
+                                <label>#{msjModales.PRIMERNOMBRE}</label>
+                                <h:inputText class="form-control" 
+                                             value="#{usuarioControlador.usuarioSeleccionado.primerNombre}"/>
+                            </div>
+                            <div class="form-group">
+                                <label>#{msjModales.SEGUNDONOMBRE}</label>
+                                <h:inputText class="form-control" 
+                                             value="#{usuarioControlador.usuarioSeleccionado.segundoNombre}"/>
+                            </div>
+                            <div class="form-group">
+                                <label>#{msjModales.PRIMERAPELLIDO}</label>
+                                <h:inputText class="form-control" 
+                                             value="#{usuarioControlador.usuarioSeleccionado.primerApellido}"/>
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <label>#{msjModales.SEGUNDOAPELLIDO}</label>
+                                <h:inputText class="form-control" 
+                                             value="#{usuarioControlador.usuarioSeleccionado.segundoApellido}"/>
+                            </div>
+                            <div class="form-group">
+                                <label>#{msjModales.DIRECCION}</label>
+                                <h:inputText class="form-control" 
+                                             value="#{usuarioControlador.usuarioSeleccionado.direccion}"/>
+                            </div>
+                            <div class="form-group">
+                                <label>#{msjModales.CORREOELECTRONICO}</label>
+                                <h:inputText class="form-control" 
+                                             value="#{usuarioControlador.usuarioSeleccionado.email}"/>
+                            </div>
+                            <div class="form-group">
+                                <label>#{msjModales.TELEFONO}</label>
+                                <h:inputText class="form-control" 
+                                             value="#{usuarioControlador.usuarioSeleccionado.telefono}"/>
+                            </div>
+                            <div class="form-group">
+                                <label>#{msjQuienesSomos.ModificarContraseña}</label>
+                                <h:inputText class="form-control" 
+                                             value="#{usuarioControlador.usuarioSeleccionado.telefono}"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn"  style="background: #951010; color: white">#{msjModales.Cancelar}</button>
+                        <h:commandLink class="btn" value="#{msjModales.Actualizar}"
+                                       action="#{usuarioControlador.actualizarCliente}" 
+                                       style="background: #727272; color: white">
+                            <i class="fa fa-save"></i>
+                        </h:commandLink>
+                    </div>
+                </h:panelGroup>
+            </h:form>
+
+        </f:view>
+    </ui:define>
+</ui:composition>
+

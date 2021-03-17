@@ -23,7 +23,7 @@
                                     <label for="Dirección" class="col-md-2 col-form-label h2"
                                            >#{msjOlvCompra.Dirección}</label>
                                     <div class="col-md-10">
-                                        <h:inputText class="form-control" id="Dirección"
+                                        <h:inputText required="true" requiredMessage="Ingrese la dirección por favor" class="form-control" id="Dirección"
                                                      a:placeholder="#{msjOlvCompra.Ingresadireccióndedestino}" 
                                                      maxlength="255" value="#{carritoController.pedido.puntoEntrega}"/>
                                     </div>
@@ -32,7 +32,7 @@
                                     <label for="Telefono" class="col-md-2 col-form-label h2">
                                         #{msjOlvCompra.Telefono}</label>
                                     <div class="col-md-10">
-                                        <h:inputText class="form-control" id="Telefono" maxlength="10" 
+                                        <h:inputText required="true" requiredMessage="Ingrese el telefono por favor" class="form-control" id="Telefono" maxlength="10" 
                                                      a:placeholder="#{msjOlvCompra.Telefono}"
                                                      value="#{carritoController.pedido.telefono}"/>
                                     </div>
@@ -40,7 +40,7 @@
                                 <div class="form-group row">
                                     <label for="Observaciones" class="col-md-2 col-form-label h2">#{msjMenu.Observaciones}:</label>
                                     <div>
-                                        <h:inputTextarea  rows="3" cols="128" style="margin-left: 16px"
+                                        <h:inputTextarea  required="true" requiredMessage="Ingrese las Obsrevaciones por favor" rows="3" cols="128" style="margin-left: 16px"
                                                           value="#{carritoController.pedido.observaciones}"/>
                                     </div>
                                 </div>
@@ -112,13 +112,16 @@
                                         </div>
                                     </div>
                                 </div>
-
+                                <h:messages showDetail="false" layout="table"
+                                            style="padding: 5px; border-radius: 5px; box-shadow: 0px, 0px, 4px #951010; display: block; color: red;
+                                            margin-left: 50px"/> 
                             </h:form>
                         </div>
                     </div>
                 </div>
             </main>
             <br/><br/>
+
         </f:view>
     </ui:define>
 </ui:composition>

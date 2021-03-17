@@ -31,6 +31,9 @@
                         </ui:repeat>
                     </div>
                 </div>
+                <center>
+                    <h1 style="font-family: monospace; color: #951010">CONTROL DE PEDIDOS</h1>
+                </center>
                 <div class="col-md-12">
                     <h3 class="text-center"><b style="color: #951010">#{controlPedidoView.estadoPedidoFiltro.descripcion}</b></h3>
                     <br/>
@@ -78,17 +81,15 @@
                                 <i class="fa fa-pencil"></i>
                                 <f:ajax render=":editarInfoPedidoContent" />
                             </h:commandLink>
-                            <!--a class="btn" style="background: #727272"><i class="fa fa-trash" style="color: white"></i></a-->
-                            <!--rendered="{inventarioControlador.renderedBtnBloquear(insu)}" va dentro del commandLink-->
-                            <h:commandLink  class="btn" title="Cambiar Estado"
-                                            action="#{pedidosControlador.seleccionarPedido(pedidos)}"
+                            <!--h:commandLink  class="btn" title="Cambiar Estado"
+                                            action="{pedidosControlador.seleccionarPedido(pedidos)}"
                                             a:data-toggle="modal" a:data-target="#cambioEstPedido"
                                             style="background: #9D9898; margin-left: 10px; margin-top: 5px">
                                 <i class="fa fa-unlock" style="color: white"></i>
                                 <f:ajax render=":confirmarCambioEstadoPedido"/>
                             </h:commandLink>
-                            <!--rendered="{empty insu.estado or insu.estado eq 0}" va dentro del commandLink-->
-                            <!--h:commandLink  class="btn"
+                            <h:commandLink  rendered="{pedidos.estadoPedido eq 1}"
+                                            class="btn"
                                             action="{pedidosControlador.seleccionarPedido(pedidos)}"
                                             a:data-toggle="modal" a:data-target="#cambioEstPedido"
                                             style="background: #9D9898; margin-left: 15px; margin-top: 5px">
@@ -96,11 +97,11 @@
                                 <f:ajax render=":confirmarCambioEstadoPedido"/>
                             </h:commandLink-->
                             <h:commandLink class="btn" title="Suspender"
-                                           action="#{usuarioControlador.seleccionarUsuario(usuario)}" 
-                                           a:data-toggle="modal" a:data-target="#eliminarUsuario" 
+                                           action="#{pedidosControlador.seleccionarPedido(pedidos)}" 
+                                           a:data-toggle="modal" a:data-target="#eliminarPedido" 
                                            style="background: #727272; margin-left: 10px; margin-top: 5px">
                                 <i class="fa fa-trash" style="color: white"></i>
-                                <f:ajax render=":confirmEliminarUsuario"/>
+                                <f:ajax render=":confirmEliminarPedido"/>
                             </h:commandLink>
                         </p:column>
                     </p:dataTable>
@@ -108,10 +109,9 @@
             </h:form>
         </div>
         <ui:include src="/WEB-INF/includes/modal/pedidos/ver_info_pedidos.xhtml"></ui:include>
-        <ui:include src="/WEB-INF/includes/modal/pedidos/confirmar_cambio_estado.xhtml"></ui:include>
+        <ui:include src="/WEB-INF/includes/modal/pedidos/confirmar_eliminar.xhtml"></ui:include>
         <ui:include src="/WEB-INF/includes/modal/pedidos/editar-info-pedido.xhtml"></ui:include>
 
     </ui:define>
 
 </ui:composition>
-
