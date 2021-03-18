@@ -19,4 +19,6 @@ public interface IPedidoDAO extends DAO<Pedido> {
 
     List<Pedido> findByEstadoPedido(Estadopedido estadoPedidoFiltro);
     
+    void updateState(Integer id, Estadopedido state) throws Exception;
+    
 }

@@ -13,6 +13,8 @@ import java.sql.DriverManager;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.context.ExternalContext;
@@ -26,15 +28,14 @@ import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import org.primefaces.PrimeFaces;
 import pyp.DAO.IPedidoDAO;
-import pyp.DAO.impl.EstadopedidoDAO;
 import pyp.excepciones.BusinessException;
 import pyp.modelo.entidades.Pedido;
 import pyp.servicios.IPedidosService;
-import pyp.servicios.impl.PedidosService;
+import pyp.util.MessageUtil;
 
 @Named(value = "pedidosControlador")
 @ViewScoped
-public class pedidosControlador implements Serializable {
+public class PedidosControlador implements Serializable {
 
     @EJB
     private IPedidoDAO pedidosDAO;
@@ -43,12 +44,12 @@ public class pedidosControlador implements Serializable {
 
     /*@EJB
      private IPedidosService estadoPqrsService;*/
-    public pedidosControlador() {
+    public PedidosControlador() {
     }
 
     @PostConstruct
     public void init() {
-
+        pedidos = null;
     }
 
     public List<Pedido> getPedidos() {

@@ -66,6 +66,11 @@
                                 <h:outputText value="#{pedidos.tipoPedido}"/>
                             </center>
                         </p:column>
+                        <p:column  headerText="Estado" priority="2" style="width: 140px">
+                            <center>
+                                <h:outputText value="#{pedidos.estadoPedido.descripcion}"/>
+                            </center>
+                        </p:column>
                         <p:column headerText="#{msjPedidos.OPCIONES}" priority="2" style="width: 160px">
                             <h:commandLink class="btn" title="Ver"
                                            a:data-toggle="modal" a:data-target="#verInfoPedidos"
@@ -96,6 +101,20 @@
                                 <i class="fa fa-lock" style="color: white"></i>
                                 <f:ajax render=":confirmarCambioEstadoPedido"/>
                             </h:commandLink-->
+                            <h:commandLink class="btn" title="Terminar preparación"
+                                           rendered="#{controlPedidoView.renderTerminaPreparacion(pedidos)}"
+                                           action="#{controlPedidoView.finalizarPreparacion(pedidos)}" 
+                                           style="background: #727272; margin-left: 10px; margin-top: 5px">
+                                <i class="fa fa-cutlery" style="color: white"></i>
+                                <f:ajax render=":tablaPedidos"/>
+                            </h:commandLink>
+                            <h:commandLink class="btn" title="Preparar"
+                                           rendered="#{controlPedidoView.renderPreparar(pedidos)}"
+                                           action="#{controlPedidoView.preparar(pedidos)}" 
+                                           style="background: #727272; margin-left: 10px; margin-top: 5px">
+                                <i class="fa fa-coffee" style="color: white"></i>
+                                <f:ajax render=":tablaPedidos"/>
+                            </h:commandLink>
                             <h:commandLink class="btn" title="Suspender"
                                            action="#{pedidosControlador.seleccionarPedido(pedidos)}" 
                                            a:data-toggle="modal" a:data-target="#eliminarPedido" 

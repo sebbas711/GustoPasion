@@ -7,6 +7,7 @@ package pyp.DAO.impl;
 
 import java.util.List;
 import javax.ejb.Stateless;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import pyp.modelo.entidades.Pedido;
 import pyp.DAO.IPedidoDAO;
@@ -28,6 +29,17 @@ public class PedidoDAO extends AbstractDAO<Pedido> implements IPedidoDAO {
         TypedQuery<Pedido> query = getEntityManager().createNamedQuery("Pedido.findByEstadoPedido",Pedido.class);
         query.setParameter("estadoPedidoId", estadoPedidoFiltro.getId());
         return query.getResultList();
+    }
+
+    @Override
+    public void updateState(Integer id, Estadopedido state) throws Exception {
+        Query query = getEntityManager().createQuery("UPDATE Pedido p SET p.estadoPedido = :state WHERE p.id = :id");
+        query.setParameter("state", state);
+        query.setParameter("id", id);
+        int quantity = query.executeUpdate();
+        if(quantity != 1){
+            throw new Exception("No se pudo actualizar el estado del pedido");
+        }
     }
     
 }

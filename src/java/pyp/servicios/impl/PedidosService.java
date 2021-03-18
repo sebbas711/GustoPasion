@@ -8,6 +8,8 @@ package pyp.servicios.impl;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import pyp.DAO.IEstadopedidoDAO;
@@ -72,9 +74,9 @@ public class PedidosService implements IPedidosService {
             throw new BusinessException(MessageException.BE_PEDIDO_SIN_PRODUCTOS);
         }
     }
-    
-    private void validaDetallesPedido(List<DetallePedido> detallesPedido) throws BusinessException{
-        for(DetallePedido detallePedido: detallesPedido){
+
+    private void validaDetallesPedido(List<DetallePedido> detallesPedido) throws BusinessException {
+        for (DetallePedido detallePedido : detallesPedido) {
             validaCantidadDetallePedido(detallePedido);
             validaValorUnitarioDetallePedido(detallePedido);
         }
@@ -85,7 +87,7 @@ public class PedidosService implements IPedidosService {
             throw new BusinessException(MessageException.BE_PEDIDO_SIN_CANTIDAD, detallePedido.getProducto().getNombre());
         }
     }
-    
+
     private void validaValorUnitarioDetallePedido(DetallePedido detallePedido) throws BusinessException {
         if (Objects.isNull(detallePedido.getValorUnitario()) || detallePedido.getValorUnitario() <= 0) {
             throw new BusinessException(MessageException.BE_PEDIDO_SIN_VALOR_UNITARIO, detallePedido.getProducto().getNombre());
@@ -99,6 +101,32 @@ public class PedidosService implements IPedidosService {
             pedidoDao.create(pedido);
         } catch (Exception e) {
             throw new BusinessException(MessageException.BE_ERROR_REGISTRAR_PEDIDO, e);
+        }
+    }
+
+    @Override
+    public void prepararPedido(Integer idPedido) throws BusinessException {
+        if (Objects.nonNull(idPedido)) {
+            //TODO throw new BusinessException();
+        }
+        Estadopedido estadoPreparando = estadoPedidoDao.findEstadoPreparando();
+        updateState(idPedido, estadoPreparando);
+    }
+
+    @Override
+    public void terminarPreparacionPedido(Integer idPedido) throws BusinessException {
+        if (Objects.nonNull(idPedido)) {
+            //TODO throw new BusinessException();
+        }
+        Estadopedido estadoPreparando = estadoPedidoDao.findEstadoPreparado();
+        updateState(idPedido, estadoPreparando);
+    }
+
+    private void updateState(Integer id, Estadopedido state) throws BusinessException {
+        try {
+            pedidoDao.updateState(id, state);
+        } catch (Exception ex) {
+            //throw new BusinessException();
         }
     }
 

@@ -74,5 +74,35 @@ public class ControlPedidoView implements Serializable {
     public List<Estadopedido> getEstadoPedidosHabilitados() {
         return estadoPedidosHabilitados;
     }
+    
+    public void preparar(Pedido pedido) {
+        try {
+            pedidoService.prepararPedido(pedido.getId());
+            MessageUtil.sendSuccessModal("Actualización exitosa", "Se ha iniciado la preparación del pedido.");
+            init();
+        } catch (BusinessException ex) {
+            MessageUtil.sendErrorModal(ex.getMessage(), ex.getDetails());
+        }
+
+    }
+    
+    public boolean renderPreparar(Pedido pedido) {
+        return pedido.getEstadoPedido().getId() == 1;
+    }
+    
+    public void finalizarPreparacion(Pedido pedido) {
+        try {
+            pedidoService.terminarPreparacionPedido(pedido.getId());
+            MessageUtil.sendSuccessModal("Actualización exitosa", "Se ha terminado la preparación del pedido.");
+            init();
+        } catch (BusinessException ex) {
+            MessageUtil.sendErrorModal(ex.getMessage(), ex.getDetails());
+        }
+
+    }
+    
+    public boolean renderTerminaPreparacion(Pedido pedido) {
+        return pedido.getEstadoPedido().getId() == 2;
+    }
 
 }

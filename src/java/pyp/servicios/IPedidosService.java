@@ -20,4 +20,8 @@ public interface IPedidosService {
 
     public void realizarPedido(Pedido pedido) throws BusinessException;
     
+    public void prepararPedido(Integer idPedido) throws BusinessException;
+    
+    public void terminarPreparacionPedido(Integer idPedido) throws BusinessException;
+    
 }
