@@ -13,7 +13,7 @@
                 <div class="animated fadeIn" id="page-top">
                     <div class="row">
                         <ui:repeat value="#{controlPedidoView.estadoPedidosHabilitados}" var="estadoPedido">
-                            <div class="col-sm-6 col-lg-3">
+                            <div class="col-sm-6 col-lg-4">
                                 <div class="card text-white coloramarillo" style="background: #{controlPedidoView.getColorByEstadoPedido(estadoPedido)}">
                                     <p:commandLink class="hovcard" 
                                                    actionListener="#{controlPedidoView.filtrarPorEstadoPedido(estadoPedido)}"
@@ -86,21 +86,6 @@
                                 <i class="fa fa-pencil"></i>
                                 <f:ajax render=":editarInfoPedidoContent" />
                             </h:commandLink>
-                            <!--h:commandLink  class="btn" title="Cambiar Estado"
-                                            action="{pedidosControlador.seleccionarPedido(pedidos)}"
-                                            a:data-toggle="modal" a:data-target="#cambioEstPedido"
-                                            style="background: #9D9898; margin-left: 10px; margin-top: 5px">
-                                <i class="fa fa-unlock" style="color: white"></i>
-                                <f:ajax render=":confirmarCambioEstadoPedido"/>
-                            </h:commandLink>
-                            <h:commandLink  rendered="{pedidos.estadoPedido eq 1}"
-                                            class="btn"
-                                            action="{pedidosControlador.seleccionarPedido(pedidos)}"
-                                            a:data-toggle="modal" a:data-target="#cambioEstPedido"
-                                            style="background: #9D9898; margin-left: 15px; margin-top: 5px">
-                                <i class="fa fa-lock" style="color: white"></i>
-                                <f:ajax render=":confirmarCambioEstadoPedido"/>
-                            </h:commandLink-->
                             <h:commandLink class="btn" title="Terminar preparación"
                                            rendered="#{controlPedidoView.renderTerminaPreparacion(pedidos)}"
                                            action="#{controlPedidoView.finalizarPreparacion(pedidos)}" 
@@ -114,13 +99,6 @@
                                            style="background: #727272; margin-left: 10px; margin-top: 5px">
                                 <i class="fa fa-coffee" style="color: white"></i>
                                 <f:ajax render=":tablaPedidos"/>
-                            </h:commandLink>
-                            <h:commandLink class="btn" title="Suspender"
-                                           action="#{pedidosControlador.seleccionarPedido(pedidos)}" 
-                                           a:data-toggle="modal" a:data-target="#eliminarPedido" 
-                                           style="background: #727272; margin-left: 10px; margin-top: 5px">
-                                <i class="fa fa-trash" style="color: white"></i>
-                                <f:ajax render=":confirmEliminarPedido"/>
                             </h:commandLink>
                         </p:column>
                     </p:dataTable>
