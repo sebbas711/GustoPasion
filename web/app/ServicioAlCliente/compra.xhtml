@@ -104,7 +104,10 @@
                                     <p:commandLink actionListener="#{carritoController.realizarPedido()}"
                                                    update=":shopCar :shopWindow :globalMessages"
                                                    id="procesar-pedido" class="btn btn-success btn-block" 
-                                                   value="#{msjMenu.RealizarPedido}"/>
+                                                   value="#{msjMenu.RealizarPedido}">
+                                        <f:ajax execute="@form"/>
+                                    </p:commandLink>
+                                        
                                     <br/>
                                     <div class="row justify-content-between">
                                         <div class="col-md-12">

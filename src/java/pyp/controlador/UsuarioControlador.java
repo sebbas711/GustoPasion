@@ -38,6 +38,7 @@ import org.primefaces.PrimeFaces;
 import org.primefaces.event.FileUploadEvent;
 import pyp.DAO.IRolDAO;
 import pyp.DAO.IUsuarioDAO;
+import pyp.excepciones.BusinessException;
 import pyp.modelo.entidades.Rol;
 import pyp.modelo.entidades.Usuario;
 import pyp.servicios.usuarios.IRegistroUsuarioService;
@@ -115,19 +116,15 @@ public class UsuarioControlador implements Serializable {
                     registroUsuarioService.registrarUsuario(nuevoUsuario);
                 }
                 mensajeRequest = "swal('Registro Exitoso', '', 'success');";
-                MessageUtil.sendInfo(null, "Registro Exitoso",
-                        "Listado en la tabla Usuarios", Boolean.FALSE);
+                MessageUtil.sendInfoModal("Registro Exitoso", "Bienvenido a Restaurante Gusto & Pasión");
             } else {
-                MessageUtil.sendError(null, "Los campos son obligatorios",
-                        "Por favor diligencie todos los campos", Boolean.FALSE);
+                MessageUtil.sendInfoModal("Error", "Bienvenido a Restaurante Gusto & Pasión");
                 mensajeRequest = "swal('Los campos son obligatorios', 'Por favor diligencie todos los campos', 'info');";
             }
 
         } catch (Exception e) {
-            System.out.println("pyp.modelo.controlador.UsuarioControlador.registrar()" + e.getMessage());
             mensajeRequest = "swal('Verifique sus datos', 'Intente de nuevo', 'error');";
-            MessageUtil.sendError(null, "Verifique sus datos",
-                    "Intente de nuevo", Boolean.FALSE);
+            MessageUtil.sendInfoModal("error", "Bienvenido a Restaurante Gusto & Pasión");
         }
         PrimeFaces.current().executeScript(mensajeRequest);
         nuevoUsuario = new Usuario();
@@ -138,19 +135,25 @@ public class UsuarioControlador implements Serializable {
         String mensajeRequest = "";
         Usuario usuarioResultado = new Usuario();
         try {
-            usuarioResultado = usuarioDAO.recuperarClave(correo);
+            if (correo != null) {
+                            usuarioResultado = usuarioDAO.recuperarClave(correo);
             int claveNew = (int) (Math.random() * 100000);
             usuarioResultado.setContraseña("GP-" + claveNew);
             usuarioDAO.edit(usuarioResultado);
             Email.sendClaves(usuarioResultado.getEmail(), usuarioResultado.getPrimerNombre() + " "
                     + usuarioResultado.getPrimerApellido(), correo, "GP-" + claveNew);
-            MessageUtil.sendInfo(null, "Contraseña enviado con exito al correo",
-                    "Revise su Correo", Boolean.FALSE);
+            MessageUtil.sendInfoModal("Contraseña enviada", "Se ha enviado la contraseña a la dirección de correo registrada.");
+            MessageUtil.sendError(null, "Los campos son obligatorios",
+                    "Por favor diligencie todos los campos", Boolean.FALSE);
+            }else{
+                MessageUtil.sendError(null, "Los campos son obligatorios",
+                        "Por favor diligencie todos los campos", Boolean.FALSE);
+                mensajeRequest = "swal('Los campos son obligatorios', 'Por favor diligencie todos los campos', 'info');";
+            }
         } catch (Exception e) {
-            MessageUtil.sendError(null, "Envio Exitoso",
-                    "e Intente Nuevamente", Boolean.FALSE);
+            MessageUtil.sendErrorModal("Correo incorrecto", "Por favor ingrese el correo de manera correcta.");
+            e.printStackTrace();
         }
-        PrimeFaces.current().executeScript(mensajeRequest);
         correo = "";
     }
 

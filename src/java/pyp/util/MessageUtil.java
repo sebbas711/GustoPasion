@@ -55,7 +55,7 @@ public class MessageUtil {
     }
     
     public static void sendInfoModal(String title, String detail){
-        PrimeFaces.current().executeScript(buildMessageModal(title, detail, "info"));
+        PrimeFaces.current().executeScript(buildMessageModal(title, detail, "success"));
     }
     
     public static void sendSuccessModal(String title, String detail){

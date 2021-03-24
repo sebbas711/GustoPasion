@@ -66,6 +66,7 @@ public class EnvioPromoControlador implements Serializable {
         } catch (Exception e) {
             MessageUtil.sendInfo(null, "Error",
                     "", Boolean.FALSE);
+            e.printStackTrace();
         }
     }
 

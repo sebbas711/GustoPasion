@@ -26,7 +26,7 @@
                                                 <label for="nombre" class="form-control-label">#{msjProductos.NombreProducto}</label>
                                             </div>
                                             <div class="col-12 col-md-4">
-                                                <h:inputText id="nombre" a:placeholder="Pizza" class="form-control"
+                                                <h:inputText required="true" requiredMessage="Ingrese el nombre del producto" id="nombre" a:placeholder="Pizza" class="form-control"
                                                              value="#{registroProductoControlador.producto.nombre}"/>
                                             </div>
                                             <div class="col col-md-2">
@@ -43,14 +43,15 @@
                                             </div>
                                             <div class="col-12 col-md-4">
                                                 <h:inputText id="descripcion" a:placeholder="Piza de carnes con queso" class="form-control"
-                                                             value="#{registroProductoControlador.producto.descripcion}"/>
+                                                             value="#{registroProductoControlador.producto.descripcion}" required="true" requiredMessage="Ingrese la descripción del producto"/>
                                             </div>
                                             <div class="col col-md-2">
                                                 <label for="imagen" class="form-control-label">#{msjProductos.Imagen}</label>
                                             </div>
                                             <div class="col-12 col-md-4">
                                                 <h:inputText id="imagen" a:placeholder="/Bebidas/JugoMandarina.jpg" class="form-control"
-                                                             value="#{registroProductoControlador.producto.imagenP}"/>
+                                                             value="#{registroProductoControlador.producto.imagenP}"
+                                                             required="true" requiredMessage="Ingrese una imagen"/>
                                             </div>
                                         </div>
                                         <div class="row form-group">
@@ -152,13 +153,16 @@
                                         <div class="row form-group">
                                             <div class="col-12 col-md-12" id="Añadir Producto">
                                                 <p:commandLink id="registrarPedido"  class="btn btn-block" 
-                                                        style="background: #951010; color: white"
-                                                        update="contentRegistroPedido"
-                                                        actionListener="#{registroProductoControlador.registrarProducto()}">
-                                                    <span id="Enviar Pedido">#{msjProductos.RegistrarProducto}</span>
+                                                               style="background: #951010; color: white"
+                                                               update="contentRegistroPedido"
+                                                               actionListener="#{registroProductoControlador.registrarProducto()}">
+                                                    <span id="Enviar Producto">#{msjProductos.RegistrarProducto}</span>
                                                 </p:commandLink>
                                             </div>
                                         </div>
+                                        <h:messages showDetail="false" layout="table"
+                                                    style="padding: 5px; border-radius: 5px; box-shadow: 0px, 0px, 4px #951010; display: block; color: red;
+                                                    margin-left: 50px"/>
                                     </h:form>
                                 </div>
                             </div>

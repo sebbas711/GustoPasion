@@ -57,13 +57,15 @@
                             <div class="form-group mx-sm-4 pt-3 user">
                                 <h:outputLabel><b>CORREO:</b></h:outputLabel>
                                 <h:inputText class="form-control" id="usuario" a:type="email" a:placeholder="ejemplo@gmail.com" 
-                                             required="true" value="#{sessionControlador.email}" maxlength="45"/>
+                                             required="true" requiredMessage="Ingrese su correo electronico" 
+                                             value="#{sessionControlador.email}" maxlength="45"/>
                             </div>
 
                             <div class="form-group mx-sm-4 pb-3 user">
                                 <h:outputLabel><b>CONTRASEÑA:</b></h:outputLabel>
                                 <h:inputSecret class="form-control" id="contraseña"
                                                a:placeholder="Ingrese Su Contraseña" required="true" 
+                                               requiredMessage="Ingrese la contraseña"
                                                value="#{sessionControlador.password}" maxlength="45"/>
                             </div>
                             

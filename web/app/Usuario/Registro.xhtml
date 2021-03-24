@@ -83,9 +83,9 @@
                                                  a:placeholder="#{msjRegistro.PrimerAprellido}"/>
 
                                 </div>
-                                
+
                                 <br/>
-                                
+
                                 <div class="col-md-5" style="margin-left: 50px">
 
                                     <h:outputLabel for="fr_sapellido"><b>#{msjRegistro.SegundoApellido}</b></h:outputLabel>
@@ -96,47 +96,55 @@
                                     <h:outputLabel for="fr_direccion"><b>#{msjRegistro.Dirección}</b><b class="text-warning"> *</b></h:outputLabel>
                                     <h:inputText id="fr_direccion" class="form-control" 
                                                  value="#{usuarioControlador.nuevoUsuario.direccion}" maxlength="45" 
-                                                 a:placeholder="#{msjRegistro.Dirección}"/>
+                                                 a:placeholder="#{msjRegistro.Dirección}" required="true"
+                                                 requiredMessage="Por favor ingrese la dirección"/>
                                     <br/>
                                     <h:outputLabel for="fr_email"><b>#{msjRegistro.CorreoElectronico}</b><b class="text-warning"> *</b></h:outputLabel>
                                     <h:inputText id="fr_email" class="form-control" value="#{usuarioControlador.nuevoUsuario.email}" 
-                                                 maxlength="85" a:placeholder="#{msjRegistro.CorreoElectronico}" a:type="email"/>
+                                                 maxlength="85" a:placeholder="#{msjRegistro.CorreoElectronico}" a:type="email" required="true" 
+                                                 requiredMessage="Por favor ingrese su Correo electronico, ejemplo 123456@gmail.com"/>
                                     <br/>
                                     <h:outputLabel for="fr_telefono"><b>#{msjRegistro.Telefono}</b><b class="text-warning"> *</b></h:outputLabel>
                                     <h:inputText id="fr_telefono" class="form-control" 
-                                                 value="#{usuarioControlador.nuevoUsuario.telefono}" maxlength="10" 
-                                                 a:placeholder="#{msjRegistro.Telefono}"/>
+                                                 value="#{usuarioControlador.nuevoUsuario.telefono}"  maxlength="10" 
+                                                 a:placeholder="#{msjRegistro.Telefono}"
+                                                 required="true" requiredMessage="Ingrese el numero de Celular"/>
                                     <br/>
                                     <h:outputLabel for="fr_contraseña"><b>#{msjRegistro.Contraseña}</b><b class="text-warning"> *</b></h:outputLabel>
                                     <h:inputSecret id="fr_contraseña" class="form-control" 
                                                    value="#{usuarioControlador.nuevoUsuario.contraseña}" maxlength="20" 
-                                                   a:placeholder="#{msjRegistro.Contraseña}"/>
+                                                   a:placeholder="#{msjRegistro.Contraseña}"
+                                                   required="true" requiredMessage="Debe ingresar la contraseña"/>
 
                                 </div>
                             </div>
                             <br/>
                             <div class="col-sm-12">
                                 <div>
-                                   <center>
-                                    <a class="btn" 
-                                       href="#{request.contextPath}/index.xhtml"
-                                       style="margin-right: 10px; background: #951010; color: white">Cancelar
-                                    </a>
-                                    <h:commandButton class="btn" style="margin-left: 10px; color: white; background: #727272" 
-                                                     value="Registrar" action="#{usuarioControlador.registrar()}"/>
-                                </center> 
+                                    <center>
+                                        <a class="btn" 
+                                           href="#{request.contextPath}/index.xhtml"
+                                           style="margin-right: 10px; background: #951010; color: white">Cancelar
+                                        </a>
+                                        <h:commandButton class="btn" style="margin-left: 10px; color: white; background: #727272" 
+                                                         value="Registrar" action="#{usuarioControlador.registrar()}"/>
+                                    </center> 
                                 </div>
                                 <br/>
-                                 <div style="margin-left: 35px">
-                                     <p> Los campos con (<b class="text-warning">*</b>) son obligatorios.</p>
+                                <div style="margin-left: 35px">
+                                    <p> Los campos con (<b class="text-warning">*</b>) son obligatorios.</p>
                                 </div>
-                                
+
                             </div>
                             <br/>
                         </h:form>
+                        <h:messages showDetail="false" layout="table"
+                                    style="padding: 5px; border-radius: 5px; box-shadow: 0px, 0px, 4px #951010; display: block; color: white;
+                                    margin-left: 50px"/>
                     </div>
                 </div>
             </div>
+
 
             <script type="text/javascript" src="#{request.contextPath}/resource/js/InicioSesion.js"></script>
             <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"

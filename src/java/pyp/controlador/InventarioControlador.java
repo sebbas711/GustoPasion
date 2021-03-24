@@ -39,6 +39,7 @@ import org.primefaces.event.FileUploadEvent;
 import pyp.DAO.IAuxCocinaDAO;
 import pyp.DAO.IInsumoDAO;
 import pyp.DAO.ITipoInsumoDAO;
+import pyp.excepciones.BusinessException;
 import pyp.modelo.entidades.AuxCocina;
 import pyp.modelo.entidades.Insumo;
 import pyp.modelo.entidades.TipoInsumo;
@@ -113,16 +114,18 @@ public class InventarioControlador implements Serializable {
                 nuevoInsumo.setFechaIngreso(new Date());
                 nuevoInsumo.setEstado(Short.valueOf("1"));
                 IDAO.create(nuevoInsumo);
-                mensajeRequest = "swal('Registro Exitoso', '', 'success');";
+                mensajeRequest = "swal('Registro Exitoso', 'Insumo listado en el control del inventario', 'success');";
                 MessageUtil.sendInfo(null, "Registro Exitoso",
-                        "Listado en Control de Insumos", Boolean.FALSE);
+                        "Listado en la tabla de insumos", Boolean.FALSE);
             } else {
-                MessageUtil.sendInfo(null, "Fecha de Vencimiento debe ser superior a la fecha de registro",
-                        "Por favor diligencie todos los campos", Boolean.FALSE);
+                MessageUtil.sendError(null, "Fecha de vencimiento debe ser mayor a la actual",
+                        "Por favor diligencie todos los campos, recuerde que la fecha de vencimiento debe ser superior a la actual", Boolean.FALSE);
+                mensajeRequest = "swal('Los campos son obligatorios', 'Por favor diligencie todos los campos, recuerde que la fecha de vencimiento debe ser superior a la actual', 'info');";
             }
         } catch (Exception ex) {
-            System.out.println("Error UsuarioControlador:registrar " + ex.getMessage());
-            mensajeRequest = "swal('Verifique sus datos', 'Intente de nuevo', 'error');";
+            MessageUtil.sendError(null, "Verifique los datos",
+                    "Intente de nuevo", Boolean.FALSE);
+            ex.printStackTrace();
         }
         PrimeFaces.current().executeScript(mensajeRequest);
         nuevoInsumo = new Insumo();

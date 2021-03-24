@@ -53,7 +53,7 @@
 			<staticText>
 				<reportElement style="Title" x="0" y="0" width="802" height="67" forecolor="#660000" uuid="a1581893-e143-44b0-9b1e-203249feff62"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font fontName="Bodoni MT" size="54" isBold="false" pdfFontName="Helvetica"/>
+					<font fontName="Arial" size="54" isBold="false" pdfFontName="Helvetica"/>
 				</textElement>
 				<text><![CDATA[Restaurante Gusto & Pasión]]></text>
 			</staticText>

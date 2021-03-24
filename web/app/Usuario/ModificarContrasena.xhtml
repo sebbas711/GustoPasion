@@ -18,26 +18,30 @@
             <h:form prependId="false">
                 <h:panelGroup layout="block" class="container">
                     <div class="form-row">
-                      <div class="form-group col-md-6">
-                        <label for="inputEmail4">Clave actual</label>
-                        <h:inputSecret id="claveActual" class="form-control" 
-                                       value="#{modificaContrasenaControlador.claveActual}"/>
-                      </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputEmail4">Clave actual</label>
+                            <h:inputSecret id="claveActual" class="form-control" 
+                                           value="#{modificaContrasenaControlador.claveActual}"/>
+                        </div>
                     </div>
                     <div class="form-row">
-                      <div class="form-group col-md-6">
-                        <label for="inputEmail4">Nueva clave</label>
-                        <h:inputSecret id="nuevaClave" class="form-control" 
-                                       value="#{modificaContrasenaControlador.nuevaClave}"/>
-                      </div>
-                      <div class="form-group col-md-6">
-                        <label for="inputPassword4">Confirme su nueva clave</label>
-                        <h:inputSecret id="confirmacionClave" class="form-control" 
-                                       value="#{modificaContrasenaControlador.confirmacionNuevaClave}"/>
-                      </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputEmail4">Nueva clave</label>
+                            <h:inputSecret id="nuevaClave" class="form-control" 
+                                           value="#{modificaContrasenaControlador.nuevaClave}"/>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputPassword4">Confirme su nueva clave</label>
+                            <h:inputSecret id="confirmacionClave" class="form-control" 
+                                           value="#{modificaContrasenaControlador.confirmacionNuevaClave}"/>
+                        </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn"  style="background: #951010; color: white">#{msjModales.Cancelar}</button>
+                        <div class="row justify-content-between">
+                            <div class="col-md-12">
+                                <a href="#{request.contextPath}/index.xhtml" class="btn btn-block" style="background: #951010; color: white">#{msjModales.Cancelar}</a>
+                            </div>
+                        </div>
                         <h:commandLink class="btn" value="#{msjModales.Actualizar}"
                                        action="#{modificaContrasenaControlador.actualizar()}" 
                                        style="background: #727272; color: white">

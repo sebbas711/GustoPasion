@@ -49,17 +49,18 @@
                                          a:placeholder="#{msjOlvContr.CorreoElectronico}" autocomplete="off" 
                                          class="form-control placeholder-no-fix" maxlength="80"
                                          value="#{usuarioControlador.correo}"/>
+                            <h:messages showDetail="false" layout="table"/>
                         </div>
                         <br/>
                         <div>
                             <a href="InicioSesion.xhtml"><button class="btn" type="button" style="margin-left: 10px; 
                                                                  background: #951010; color: white">#{msjOlvContr.Cancelar}</button></a>
-                            <h:commandButton class="btn" value="#{msjOlvContr.Restablecer}" style="margin-left: 10px; 
-                                             background: #727272; color: white"
-                                             action="#{usuarioControlador.recuperarClave()}"/>
-                            <h:messages showDetail="false" layout="table"
-                                        style="padding: 5px; border-radius: 5px; box-shadow: 0px, 0px, 4px #ffff33; display: block; color: white;
-                                        margin-left: 50px"/>
+                            <h:commandLink class="btn" value="#{msjOlvContr.Restablecer}" 
+                                           style="margin-left: 10px; 
+                                           background: #727272; color: white"
+                                           action="#{usuarioControlador.recuperarClave()}">
+                                <f:ajax execute="@form"/>
+                            </h:commandLink>
                         </div>
                         <br/>
 

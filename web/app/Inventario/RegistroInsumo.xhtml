@@ -7,73 +7,99 @@
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 xmlns:f="http://xmlns.jcp.org/jsf/core"
                 xmlns:p="http://primefaces.org/ui">
-
     <ui:define name="contenido">
         <f:view locale="#{languagecontroller.locale}">
-            <div class="container">
-                <h:form prependId="false"> 
-                    <br/>
-                    <h3 class="text-center"><b style="color: #951010;font-family: inherit">#{msjInventario.REGISTRARINSUMOS}</b></h3>
-                    <br/>
+            <h:panelGroup id="contentRegistroInsumo" class="content">
+                <div class="animated fadeIn">
                     <div class="row">
-                        <div class="col-md-5"  style="margin-left:40px">
-                            <div class="form-group" >
-                                <label for="message-text" class="col-form-label">#{msjInventario.TipodeInsumo} 
-                                    <b style="color: red">*</b></label>
-                                <h:selectOneMenu class="form-control" value="#{inventarioControlador.nuevoInsumo.tipoInsumo}">
-                                    <f:selectItem itemLabel="#{msjInventario.SeleccioneuntipodeInsumo}" itemValue=""/>
-                                    <f:selectItems value="#{tipoInsumoControlador.tiposInsumo}" var="ti" itemLabel="#{ti.nombre}"/>
-                                </h:selectOneMenu>
-                            </div>
-                            <div class="form-group">
-                                <label for="message-text" class="col-form-label">#{msjInventario.AuxiliarCocina} <b style="color: red">*</b></label>
-                                <h:selectOneMenu class="form-control" value="#{inventarioControlador.nuevoInsumo.auxCocina}">
-                                    <f:selectItem itemLabel="#{msjInventario.SeleccioneAuxiliarCocina}" itemValue=""/>
-                                    <f:selectItems value="#{auxCocinaControlador.auxCocina}" var="aux" itemLabel="#{aux.usuario.primerNombre} #{aux.usuario.primerApellido}"/>
-                                </h:selectOneMenu>
-                            </div> 
-                            <div class="form-group">
-                                <label for="message-text" class="col-form-label">#{msjInventario.FECHADEVENCIMIENTO} <b style="color: red">*</b></label>
-                                <h:inputText a:type="date" class="form-control" value="#{inventarioControlador.nuevoInsumo.fechaVencimiento}">
-                                    <f:convertDateTime pattern="yyyy-MM-dd"/>
-                                </h:inputText>
-                            </div>
-                        </div>
-                        <div class="col-md-6" style="margin-left:40px">
-                            <div class="form-group">
-                                <label for="message-text" class="col-form-label">#{msjInventario.NOMBRE} <b style="color: red">*</b></label>
-                                <h:inputText class="form-control" value="#{inventarioControlador.nuevoInsumo.nombre}" a:placeholder="#{msjInventario.NombredelInsumo}" maxlength="20"/>
-                            </div> 
-                            <div class="form-group">
-                                <label for="message-text" class="col-form-label">#{msjInventario.DESCRIPCION} <b style="color: red">*</b></label>
-                                <h:inputText class="form-control" value="#{inventarioControlador.nuevoInsumo.descripcion}" a:placeholder="#{msjInventario.Descripción}" maxlength="70"/>
-                            </div>
-                            <div class="form-group">
-                                <label for="message-text"  class="col-form-label">#{msjInventario.CANTIDAD} <b style="color: red">*</b></label>
-                                <h:inputText class="form-control"  a:type="number" value="#{inventarioControlador.nuevoInsumo.cantidad}"/>
+                        <div class="col-lg-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <strong>#{msjInventario.REGISTRARINSUMOS}</strong>
+                                </div>
+                                <div class="card-body card-block">
+                                    <h:form id="formRegistroInsumo" prependId="false" enctype="multipart/form-data" 
+                                            class="form-horizontal">
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label for="tipoInsumo" class="form-control-label">#{msjInventario.TipodeInsumo}<b style="color: red">*</b></label>
+                                            </div>
+                                            <div class="col-12 col-md-3">
+                                                <h:selectOneMenu id="tipoInsumo" required="true" requiredMessage="Tipo de insumo se debe diligenciar" class="form-control" value="#{inventarioControlador.nuevoInsumo.tipoInsumo}">
+                                                    <f:selectItem itemLabel="#{msjInventario.SeleccioneuntipodeInsumo}" itemValue=""/>
+                                                    <f:selectItems value="#{tipoInsumoControlador.tiposInsumo}" var="ti" itemLabel="#{ti.nombre}"/>
+                                                </h:selectOneMenu>
+                                            </div>
+                                            <div class="col col-md-3">
+                                                <label for="AuxCocina" class="form-control-label">#{msjInventario.AuxiliarCocina}<b style="color: red">*</b></label>
+                                            </div>
+                                            <div class="col-12 col-md-3">
+                                                <h:selectOneMenu id="AuxCocina" required="true" requiredMessage="Debe seleccionar un Auxiliar de Cocina" class="form-control" value="#{inventarioControlador.nuevoInsumo.auxCocina}">
+                                                    <f:selectItem itemLabel="#{msjInventario.SeleccioneAuxiliarCocina}" itemValue=""/>
+                                                    <f:selectItems value="#{auxCocinaControlador.auxCocina}" var="aux" itemLabel="#{aux.usuario.primerNombre} #{aux.usuario.primerApellido}"/>
+                                                </h:selectOneMenu>
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label for="fecha" class="form-control-label">#{msjInventario.FECHADEVENCIMIENTO}<b style="color: red">*</b></label>
+                                            </div>
+                                            <div class="col-12 col-md-3">
+                                                <h:inputText id="fecha" required="true" requiredMessage="Seleccione fecha de vencimiento" 
+                                                             a:type="date" class="form-control" 
+                                                             value="#{inventarioControlador.nuevoInsumo.fechaVencimiento}">
+                                                    <f:convertDateTime pattern="yyyy-MM-dd"/>
+                                                </h:inputText>
+                                            </div>
+                                            <div class="col col-md-3">
+                                                <label for="nombre" class="form-control-label">#{msjInventario.NOMBRE}<b style="color: red">*</b></label>
+                                            </div>
+                                            <div class="col-12 col-md-3">
+                                                <h:inputText id="nombre" required="true" requiredMessage="Ingrese el nombre del insumo" class="form-control" value="#{inventarioControlador.nuevoInsumo.nombre}" maxlength="50"/> 
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label for="descripcion" class="form-control-label">#{msjInventario.DESCRIPCION}<b style="color: red">*</b></label>
+                                            </div>
+                                            <div class="col-12 col-md-3">
+                                                <h:inputText id="descripcion" required="true" requiredMessage="Ingrese la descripcion del insumo" class="form-control" value="#{inventarioControlador.nuevoInsumo.descripcion}" a:placeholder="Unidad de medida" maxlength="70"/> 
+                                            </div>
+                                            <div class="col-12 col-md-3">
+                                                <label for="cantidad" class="form-control-label">#{msjInventario.CANTIDAD}<b style="color: red">*</b></label>
+                                            </div>
+                                            <div class="col-12 col-md-3">
+                                                <h:inputText id="cantidad" required="true" requiredMessage="ingrese una cantidad" class="form-control" value="#{inventarioControlador.nuevoInsumo.cantidad}"/> 
+                                            </div>
+                                        </div>
+                                        <div class="col col-md-2">
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col-12 col-md-12">
+                                                <center>
+                                                    <a href="RegistroInsumo.xhtml"><button class="btn" type="button" style="margin-right: 10px; background: #951010; color: white">#{msjOlvContr.Cancelar}</button></a>
+                                                    <p:commandLink class="btn"
+                                                                   actionListener="#{inventarioControlador.registrar()}" 
+                                                                   style="margin-right: 10px; background: #727272; color: white"
+                                                                   id="registrarInsumo"
+                                                                   update="contentRegistroInsumo"
+                                                                   type="submit">
+                                                        <span id="Enviar Insumo">#{msjRegistro.Registrar}</span>
+                                                    </p:commandLink>
+                                                </center>
+                                            </div>
+                                        </div>
+
+                                        <h:messages showDetail="false" layout="table"
+                                                    style="padding: 5px; border-radius: 5px; box-shadow: 0px, 0px, 4px #951010; display: block; color: red;
+                                                    margin-left: 50px"/>
+                                    </h:form>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <br/>
-                    <div class="col-sm-12">
-                        <center>
-                            <h:commandLink class="btn" 
-                                           action="RegistroInsumo.xhtml" style="margin-right: 10px; background: #951010;
-                                           color: white" value="#{msjModales.Cancelar}">
-                            </h:commandLink>
-                            <h:commandButton class="btn"
-                                             value="#{msjRegistro.Registrar}" action="#{inventarioControlador.registrar()}" 
-                                             style="margin-right: 10px; background: #727272; color: white"/>
-                        </center>
-                        <br/>
-                    </div>
-                    <br/>
-                    <br/>
-                    <h:messages showDetail="false" layout="table"
-                                style="padding: 5px; border-radius: 5px; box-shadow: 0px, 0px, 4px #951010; display: block; color: red;
-                                margin-left: 50px"/>
-                </h:form>
-            </div>
+                </div>
+            </h:panelGroup>
         </f:view>
     </ui:define>
 </ui:composition>

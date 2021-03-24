@@ -28,7 +28,7 @@ import pyp.util.MessageUtil;
 @Named
 @ViewScoped
 public class ControlPqrsView implements Serializable {
-    
+
     @Inject
     private SessionControlador sessionControlador;
 
@@ -48,7 +48,7 @@ public class ControlPqrsView implements Serializable {
     }
 
     @PostConstruct
-    public void init(){
+    public void init() {
         try {
             findPqrs();
             estadoPqrsHabilitados = pqrsService.getEstadoPqrsHabilitados();
@@ -64,15 +64,14 @@ public class ControlPqrsView implements Serializable {
         this.pqrsSeleccionada = pqrsSeleccionada;
         inicializarRespuesta();
     }
-    
-    private void inicializarRespuesta(){
+
+    private void inicializarRespuesta() {
         respuestaPqrs = new Respuestapqrs();
         respuestaPqrs.setPqrs(pqrsSeleccionada);
     }
 
-
     public String getColorByEstadoPqrs(Estadopqrs estadoPqrs) {
-        return "#" + (estadoPqrs.getId()% 2 == 0 ? "951010" : "727272");
+        return "#" + (estadoPqrs.getId() % 2 == 0 ? "951010" : "727272");
     }
 
     public void filtrarPorEstadoPqrs(Estadopqrs estadoPqrsFiltro) {
@@ -84,17 +83,20 @@ public class ControlPqrsView implements Serializable {
         this.estadoPqrsFiltro = null;
         findPqrs();
     }
-    
-    public void responder(){
+
+    public void responder() {
         try {
             respondePqrsService.responder(pqrsSeleccionada, respuestaPqrs);
             init();
+            MessageUtil.sendInfoModal("Se ha respondido la PQRS", "El estado cambiado automaticamente a finalizado");
         } catch (BusinessException ex) {
             MessageUtil.sendErrorModal(ex.getMessage(), ex.getDetails());
+            MessageUtil.sendInfo(null, "Error",
+                    "", Boolean.FALSE);
         }
     }
-    
-    public boolean renderEditButton(Pqrs pqrs){
+
+    public boolean renderEditButton(Pqrs pqrs) {
         return !Objects.equals(pqrs.getEstadoPqrs().getId(), IEstadopqrsDAO.ID_ESTADO_FINALIZADA);
     }
 
@@ -121,9 +123,9 @@ public class ControlPqrsView implements Serializable {
     public Pqrs getPqrsSeleccionada() {
         return pqrsSeleccionada;
     }
-    
+
     public Respuestapqrs getRespuestaPqrs() {
         return respuestaPqrs;
     }
-    
+
 }

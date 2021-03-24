@@ -87,7 +87,7 @@ public class RegistroPedidoControlador implements Serializable {
             pedido.setCliente(buscarClienteControlador.getCliente());
             pedidosService.realizarPedido(pedido);
             limpiarForm();
-            MessageUtil.sendInfo(null, "Pedido realizado con exito", "Gracias por utilizar nuestro servicio de pedido a domicilio", Boolean.TRUE);
+            MessageUtil.sendInfoModal("Pedido Realizado", "Registro exitoso, este atento al proceso del pedido");
         } catch (Exception e) {
             throw new BusinessException(MessageException.BE_ERROR_REGISTRAR_PEDIDO, e);
         }

@@ -23,8 +23,12 @@ import pyp.modelo.entidades.Administrador;
 import pyp.modelo.entidades.Cajero;
 
 import static pyp.DAO.IRolDAO.ID_ROL_ADMIN;
+import static pyp.DAO.IRolDAO.ID_ROL_AUXCOCINA;
 import static pyp.DAO.IRolDAO.ID_ROL_CAJERO;
 import static pyp.DAO.IRolDAO.ID_ROL_CLIENTE;
+import static pyp.DAO.IRolDAO.ID_ROL_OPERARIO;
+import pyp.modelo.entidades.AuxCocina;
+import pyp.modelo.entidades.Operario;
 
 /**
  *
@@ -60,22 +64,22 @@ public class RegistroUsuarioService implements IRegistroUsuarioService {
     private List<Rol> getRolesCliente() {
         return Arrays.asList(getRolCliente());
     }
-    
-    private Rol getRolCliente(){
+
+    private Rol getRolCliente() {
         return rolDAO.findRolCliente();
     }
 
     @Override
     public Usuario registrarUsuario(Usuario usuario) throws BusinessException {
         if (Objects.isNull(usuario)) {
-            
+
         }
         completarInformacionUsuario(usuario);
         return registrar(usuario);
     }
-    
-    private void completarInformacionUsuario(Usuario usuario){
-        for(Rol rol: usuario.getRoles()){
+
+    private void completarInformacionUsuario(Usuario usuario) {
+        for (Rol rol : usuario.getRoles()) {
             completarIformacionUsuarioPorRol(rol, usuario);
         }
     }
@@ -83,9 +87,17 @@ public class RegistroUsuarioService implements IRegistroUsuarioService {
     private void completarIformacionUsuarioPorRol(Rol rol, Usuario usuario) throws AssertionError {
         switch (rol.getId()) {
             case ID_ROL_ADMIN:
-                usuario.setAdministrador(new Administrador(usuario.getId()));break;
+                usuario.setAdministrador(new Administrador(usuario.getId()));
+                break;
             case ID_ROL_CAJERO:
-                usuario.setCajero(new Cajero(usuario.getId()));break;
+                usuario.setCajero(new Cajero(usuario.getId()));
+                break;
+            case ID_ROL_AUXCOCINA:
+                usuario.setAuxCocina(new AuxCocina(usuario.getId()));
+                break;
+            case ID_ROL_OPERARIO:
+                usuario.setOperario(new Operario(usuario.getId()));
+                break;
             default:
                 throw new AssertionError();
         }

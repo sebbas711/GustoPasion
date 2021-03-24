@@ -64,7 +64,7 @@ public class CarritoController implements Serializable {
         if (Objects.nonNull(usuario)) {
             pedido.setCliente(usuario.getCliente());
             pedido.setPuntoEntrega(Objects.nonNull(usuario.getDireccion()) ? usuario.getDireccion() : " ");
-            
+
             return true;
         } else {
             RedirectUtil.redirectTo("/app/Usuario/InicioSesion.xhtml");
@@ -83,14 +83,20 @@ public class CarritoController implements Serializable {
     }
 
     public void realizarPedido() {
+        String mensajeRequest = "";
         try {
             if (setValoresDelUsuarioEnPedido()) {
                 pedidoService.realizarPedido(pedido);
                 vaciar();
-                MessageUtil.sendInfo(null, "Pedido realizado", "Gracias por utilizar nuestro servicio de pedido a domicilio", Boolean.TRUE);
+                MessageUtil.sendInfoModal("Pedido Realizado con éxito", "El pedido estara en su casa en menos de 30 minutoss");
+            } else {
+                MessageUtil.sendError(null, "Los campos son obligatorios",
+                        "Por favor diligencie todos los campos", Boolean.FALSE);
+                mensajeRequest = "swal('Los campos son obligatorios', 'Por favor diligencie todos los campos', 'info');";
             }
         } catch (BusinessException be) {
-            MessageUtil.sendBusinessException(null, be);
+            MessageUtil.sendErrorModal("Error", "Por favor verifique sus datos");
+            be.printStackTrace();
         }
     }
 

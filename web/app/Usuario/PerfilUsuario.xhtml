@@ -68,7 +68,11 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn"  style="background: #951010; color: white">#{msjModales.Cancelar}</button>
+                        <div class="row justify-content-between">
+                            <div class="col-md-12">
+                                <a href="#{request.contextPath}/index.xhtml" class="btn btn-block" style="background: #951010; color: white">#{msjModales.Cancelar}</a>
+                            </div>
+                        </div>
                         <h:commandLink class="btn" value="#{msjModales.Actualizar}"
                                        action="#{perfilUsuarioControlador.actualizar()}" 
                                        style="background: #727272; color: white">

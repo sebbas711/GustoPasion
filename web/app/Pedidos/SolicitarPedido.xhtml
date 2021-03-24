@@ -25,7 +25,7 @@
                                             <div class="col col-md-2">
                                                 <label for="Telefono" class=" form-control-label">Cliente: </label></div>
                                             <div class="col col-md-3">
-                                                <h:inputText id="documentoCliente" a:placeholder="Número documento a buscar" class="form-control" value="#{buscarClienteControlador.numeroDocumento}" />
+                                                <h:inputText required="true" requiredMessage="Ingrese por favor el número de documento" id="documentoCliente" a:placeholder="Número documento a buscar" class="form-control" value="#{buscarClienteControlador.numeroDocumento}" />
                                             </div>
                                             <div class="col col-md-1">
                                                 <p:commandLink class="btn btn-info" 
@@ -35,7 +35,6 @@
                                                     <i class="fa fa-search"></i>
                                                 </p:commandLink>
                                                 <a class="btn btn-success" href="../Usuario/RegistroUsuario.xhtml"><i class="fa fa-plus"></i></a>
-
                                             </div>
                                             <h:panelGroup rendered="#{buscarClienteControlador.existeCliente()}" layout="block" class="col-md-6">
                                                 <div class="row form-group">
@@ -61,14 +60,18 @@
                                             <div class="col col-md-2">
                                                 <label for="tipoDePedido" class=" form-control-label">Lugar de Entrega:</label></div>
                                             <div class="col-12 col-md-4">
-                                                <h:inputText id="LugarDeEntrega" a:placeholder="Mesa # / Dirección" class="form-control" value="#{registroPedidoControlador.pedido.puntoEntrega}" />
+                                                <h:inputText required="true" requiredMessage="Ingrese el punto de entrega del Pedido"
+                                                             id="LugarDeEntrega" a:placeholder="Mesa # / Dirección" class="form-control" 
+                                                             value="#{registroPedidoControlador.pedido.puntoEntrega}" />
                                             </div>
                                         </div>
                                         <div class="row form-group">
                                             <div class="col col-md-2">
                                                 <label for="Telefono" class=" form-control-label">Telefono:</label></div>
                                             <div class="col col-md-4">
-                                                <h:inputText id="Telefono" a:placeholder="Celular / Phone" class="form-control" value="#{registroPedidoControlador.pedido.telefono}" />
+                                                <h:inputText required="true" requiredMessage="Ingrese por favor el telefono"
+                                                             id="Telefono" a:placeholder="Celular / Phone" class="form-control" 
+                                                             value="#{registroPedidoControlador.pedido.telefono}" />
                                             </div>
                                         </div>
                                         <hr/>                                             
@@ -88,7 +91,9 @@
                                                         <label for="CantidadProducto" class="form-control-label">Cantidad del Producto:</label>
                                                     </div>
                                                     <div class="col-12 col-md-4">
-                                                        <h:inputText id="CantidadProducto" a:placeholder="Cantidad del producto" class="form-control"
+                                                        <h:inputText required="true" requiredMessage="Ingrese la cantidad"
+                                                                     id="CantidadProducto" a:placeholder="Cantidad del producto" 
+                                                                     class="form-control"
                                                                      value="#{registroPedidoControlador.detallePedido.cantidad}"/>
                                                     </div>
                                                 </div>
@@ -169,7 +174,7 @@
                                             <div class="form-group row">
                                                 <label for="Observaciones" class="col-md-2 col-form-label h2">#{msjMenu.Observaciones}:</label>
                                                 <div>
-                                                    <h:inputTextarea required="true" requiredMessage="Campo Requerido"  rows="3" cols="115" style="margin-left: 16px" value="#{registroPedidoControlador.pedido.observaciones}"/>
+                                                    <h:inputTextarea required="true" requiredMessage="Diligencia las observaciones"  rows="3" cols="115" style="margin-left: 16px" value="#{registroPedidoControlador.pedido.observaciones}"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -179,7 +184,7 @@
                                                                id="registrarPedido"  class="btn btn-block" 
                                                                style="background: #951010; color: white"
                                                                update="contentRealizarPedido"
-                                                               >
+                                                               type="submit">
                                                     <span id="EnviarPedido">Realizar Pedido</span>
                                                 </p:commandLink>
                                             </div>
