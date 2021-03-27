@@ -10,7 +10,7 @@ import pyp.modelo.entidades.AuxCocina;
 
 /**
  *
- * @GAES 5
+ * @GAES 1
  */
 @Local
 public interface IAuxCocinaDAO extends DAO<AuxCocina> {

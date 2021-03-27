@@ -8,6 +8,10 @@ import java.util.List;
 import java.util.Locale;
 import javax.annotation.PostConstruct;
 
+/**
+ *
+ * @GAES 1
+ */
 @Named(value = "languagecontroller")
 @SessionScoped
 public class LanguageController implements Serializable {

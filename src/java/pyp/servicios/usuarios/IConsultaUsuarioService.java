@@ -8,7 +8,10 @@ package pyp.servicios.usuarios;
 import javax.ejb.Local;
 import pyp.excepciones.BusinessException;
 import pyp.modelo.entidades.Usuario;
-
+/**
+ *
+ * @GAES 1
+ */
 @Local
 public interface IConsultaUsuarioService {
     

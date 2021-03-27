@@ -11,7 +11,7 @@ import pyp.modelo.entidades.Usuario;
 
 /**
  *
- * @author Gaes5
+ * @GAES 1
  */
 @Local
 public interface ISessionService {

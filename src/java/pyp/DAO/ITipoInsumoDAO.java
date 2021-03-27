@@ -10,7 +10,7 @@ import pyp.modelo.entidades.TipoInsumo;
 
 /**
  *
- * @GAES 5
+ * @GAES 1
  */
 @Local
 public interface ITipoInsumoDAO extends DAO<TipoInsumo> {

@@ -11,7 +11,7 @@ import pyp.modelo.entidades.Estadopedido;
 
 /**
  *
- * @author PC
+ * @GAES 1
  */
 @Local
 public interface IEstadopedidoDAO extends DAO<Estadopedido> {

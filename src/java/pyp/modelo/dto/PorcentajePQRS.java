@@ -7,7 +7,7 @@ package pyp.modelo.dto;
 
 /**
  *
- * @author alejo
+ * @GAES 1
  */
 public final class PorcentajePQRS {
     

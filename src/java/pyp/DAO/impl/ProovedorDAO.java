@@ -11,7 +11,7 @@ import pyp.DAO.IProovedorDAO;
 
 /**
  *
- * @Gaes 5
+ * @GAES 1
  */
 @Stateless
 public class ProovedorDAO extends AbstractDAO<Proovedor> implements IProovedorDAO {

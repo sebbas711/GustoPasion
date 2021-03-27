@@ -11,7 +11,7 @@ import pyp.modelo.entidades.DetallePedido;
 
 /**
  *
- * @author PC
+ * @GAES 1
  */
 @Local
 public interface IDetallePedidoDAO extends DAO<DetallePedido>{

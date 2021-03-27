@@ -14,7 +14,7 @@ import pyp.servicios.reportes.IReporteVentaProductoService;
 
 /**
  *
- * @author PC
+ * @GAES 1
  */
 @Stateless
 public class ReporteVentaPorducto implements IReporteVentaProductoService{

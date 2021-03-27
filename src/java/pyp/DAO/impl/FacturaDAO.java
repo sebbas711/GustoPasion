@@ -11,7 +11,7 @@ import pyp.DAO.IFacturaDAO;
 
 /**
  *
- * @Gaes 5
+ * @GAES 1
  */
 @Stateless
 public class FacturaDAO extends AbstractDAO<Factura> implements IFacturaDAO {

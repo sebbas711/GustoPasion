@@ -12,6 +12,10 @@ import pyp.DAO.ITipoInsumoDAO;
 import pyp.modelo.entidades.Respuestapqrs;
 import pyp.modelo.entidades.TipoInsumo;
 
+/**
+ *
+ * @GAES 1
+ */
 @Named(value = "respuestaPqrsControlador")
 @ViewScoped
 public class respuestaPqrsControlador implements Serializable {

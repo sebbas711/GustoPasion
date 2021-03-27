@@ -23,7 +23,7 @@ import javax.validation.constraints.NotNull;
 
 /**
  *
- * @author alejo
+ * @GAES 1
  */
 @Entity
 @Table(name = "aux_cocina")

@@ -11,7 +11,7 @@ import pyp.DAO.IPermisoDAO;
 
 /**
  *
- * @author alejo
+ * @GAES 1
  */
 @Stateless
 public class PermisoDAO extends AbstractDAO<Permiso> implements IPermisoDAO {

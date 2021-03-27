@@ -10,7 +10,7 @@ import pyp.modelo.entidades.Cajero;
 
 /**
  *
- * @GAES 5
+ * @GAES 1
  */
 @Local
 public interface ICajeroDAO extends DAO<Cajero> {

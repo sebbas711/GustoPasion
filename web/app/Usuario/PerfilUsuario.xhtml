@@ -13,7 +13,7 @@
             <!--******************************************************EMPIEZA EL CONTENIDO*****************************************************-->
             <div class="jumbotron" style="background-image: url(#{request.contextPath}/resource/img/Quienessomos.jpg); 
                  background-size: 100%"><h1 class="display-3 mb-3" style="font-family: Garamond; font-size: 30px; 
-                  color: white; margin-top: 80px; margin-left: 120px;">EDITAR DATOS</h1> 
+                  color: white; margin-top: 80px; margin-left: 120px;">#{msjLogin.EDITARDATOS}</h1> 
             </div>
             <h:form prependId="false">
                 <h:panelGroup layout="block">
@@ -27,7 +27,6 @@
                                 <label>#{msjModales.NumerodeIdentificación} </label>
                                 <span class="form-control disabled">#{perfilUsuarioControlador.usuario.id}</span>
                             </div>
-
                             <div class="form-group">
                                 <label>#{msjModales.PRIMERNOMBRE}</label>
                                 <h:inputText class="form-control" 
@@ -81,7 +80,6 @@
                     </div>
                 </h:panelGroup>
             </h:form>
-
         </f:view>
     </ui:define>
 </ui:composition>

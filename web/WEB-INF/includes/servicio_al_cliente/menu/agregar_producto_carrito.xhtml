@@ -14,7 +14,8 @@
             <div class="jumbotron" style="background: url(#{request.contextPath}/resource/img/Menu.jpg); 
                  opacity: 0.7; height: 10px;"><a href="Menu.xhtml" style="text-decoration: none;">
                     <h1 class="display-3 mb-3" style="font-family: Gabriola; font-size: 50px; color: yellow; 
-                        margin-left: 120px;"><strong>MENÚ - #{menuControlador.categoriaSeleccionada.nombreCategoria} - #{menuControlador.productoSeleccionado.nombre}</strong></h1></a> 
+                        margin-left: 120px;">
+                        <strong>MENÚ - #{menuControlador.categoriaSeleccionada.nombreCategoria} - #{menuControlador.productoSeleccionado.nombre}</strong></h1></a> 
             </div>
         </main>
         <div class="container" id="lista-productos">
@@ -36,20 +37,22 @@
                                      class="card-img-top" style="height: 180px;"/>
                                 <p class="card-text">#{menuControlador.productoSeleccionado.descripcion}.</p>
                                 <hr style="background-color: #951010"/>
-                                <div><b style="color: #951010">Precio unitatio: $</b><b> #{menuControlador.productoSeleccionado.precio}</b></div>
+                                <div><b style="color: #951010">#{msjMenu.Precio}: $</b><b> #{menuControlador.productoSeleccionado.precio}</b></div>
                                 <div>
-                                    <b style="color: #951010">Cantidad: </b>
+                                    <b style="color: #951010">#{msjMenu.Cantidad}:</b>
                                     <div class="btn-group btn-group-sm mb-2" role="group" aria-label="Basic example">
                                         <p:commandLink  class="btn btn-secondary" value="-"
                                                         update="agregarProductoCarritoContent"
                                                         actionListener="#{menuControlador.disminuirCantidadProducto()}"/>
-                                        <h:panelGroup id="cantidadProductoSeleccionado" class="form-control form-control-sm" style="width: 50px; text-align: center;">#{menuControlador.cantidadProducto}</h:panelGroup>
+                                        <h:panelGroup id="cantidadProductoSeleccionado" class="form-control form-control-sm" 
+                                                      style="width: 50px; text-align: center;">#{menuControlador.cantidadProducto}
+                                        </h:panelGroup>
                                         <p:commandLink class="btn btn-secondary" value="+" 
                                                        update="agregarProductoCarritoContent"
                                                        actionListener="#{menuControlador.incrementarCantidadProducto()}"/>
                                     </div>
                                 </div>
-                                <div class="mb-2"><b style="color: #951010">Subtotal: $</b><b> #{menuControlador.getSubtotalAgregarCarrito()}</b></div>
+                                <div class="mb-2"><b style="color: #951010">#{msjMenu.subTotal}: $</b><b> #{menuControlador.getSubtotalAgregarCarrito()}</b></div>
                                 <p:commandLink actionListener="#{menuControlador.agregarProductoAlCarrito()}"
                                                update=":containerMenu :shopCar"
                                                class="btn btn-block  agregar-carrito" 

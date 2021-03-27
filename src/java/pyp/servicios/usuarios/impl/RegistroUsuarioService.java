@@ -32,7 +32,7 @@ import pyp.modelo.entidades.Operario;
 
 /**
  *
- * @author Gaes5
+ * @GAES 1
  */
 @Stateless
 public class RegistroUsuarioService implements IRegistroUsuarioService {

@@ -27,27 +27,39 @@
                         <div class="modal-body row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label for="message-text" class="col-form-label">#{msjModales.NOMBRE} <b style="color: red">*</b></label>
-                                    <h:inputText class="form-control" value="#{controlProductosView.productoSeleccionado.nombre}" a:placeholder="#{msjModales.Nombre}" maxlength="20"/>
+                                    <label for="message-text" class="col-form-label">#{msjModales.NOMBRE} 
+                                        <b style="color: red">*</b></label>
+                                    <h:inputText class="form-control" 
+                                                 value="#{controlProductosView.productoSeleccionado.nombre}" 
+                                                 a:placeholder="#{msjModales.Nombre}" maxlength="50"/>
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <div class="form-group">
-                                        <label for="message-text" class="col-form-label">#{msjModales.DESCRIPCION} <b style="color: red">*</b></label>
-                                        <h:inputText class="form-control" value="#{controlProductosView.productoSeleccionado.descripcion}" a:placeholder="#{msjModales.Descripción}"/>
+                                        <label for="message-text" class="col-form-label">#{msjModales.DESCRIPCION} 
+                                            <b style="color: red">*</b>
+                                        </label>
+                                        <h:inputText class="form-control" 
+                                                     value="#{controlProductosView.productoSeleccionado.descripcion}" a:placeholder="#{msjModales.Descripción}"/>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label for="message-text" class="col-form-label">PRECIO <b style="color: red">*</b></label>
-                                    <h:inputText class="form-control" value="#{controlProductosView.productoSeleccionado.precio}" a:placeholder="#{msjModales.Nombre}" maxlength="20"/>
+                                    <label for="message-text" class="col-form-label">#{msjInventario.PRECIO}
+                                        <b style="color: red">*</b>
+                                    </label>
+                                    <h:inputText class="form-control" 
+                                                 value="#{controlProductosView.productoSeleccionado.precio}" 
+                                                 a:placeholder="#{msjModales.Nombre}" maxlength="20"/>
                                 </div>
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" data-dismiss="modal" style="background: #951010">#{msjModales.Cancelar}</button>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal" 
+                                    style="background: #951010">#{msjModales.Cancelar}
+                            </button>
                             <h:commandLink class="btn" value="#{msjModales.Actualizar}" style="background: #727272; color: white"
                                            action="#{controlProductosView.actualizar()}">
                                 <i class="fa fa-save"></i>
@@ -58,6 +70,5 @@
             </div>
         </div>
     </div>
-
 </ui:composition>
 

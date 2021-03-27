@@ -17,7 +17,7 @@ import pyp.modelo.entidades.Producto;
 
 /**
  *
- * @author alejo
+ * @GAES 1
  */
 @FacesConverter(forClass = Producto.class)
 public class ProductoConverter implements Converter{

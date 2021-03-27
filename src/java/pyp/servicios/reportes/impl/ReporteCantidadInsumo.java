@@ -14,7 +14,7 @@ import pyp.servicios.reportes.IReporteCantidadInsumo;
 
 /**
  *
- * @author PC
+ * @GAES 1
  */
 @Stateless
 public class ReporteCantidadInsumo implements IReporteCantidadInsumo {

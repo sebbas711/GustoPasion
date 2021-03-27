@@ -11,7 +11,7 @@ import pyp.modelo.entidades.CategoriaProducto;
 
 /**
  *
- * @author alejo
+ * @GAES 1
  */
 @Stateless
 public class CategoriaProductoDAO extends AbstractDAO<CategoriaProducto> implements ICategoriaProductoDAO {

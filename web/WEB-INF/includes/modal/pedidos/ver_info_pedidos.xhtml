@@ -14,7 +14,8 @@
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span class="text-light" aria-hidden="true">&times;</span>
                         </button>
-                        <span><center style="color: #fff">
+                        <span>
+                            <center style="color: #fff">
                                 <img src="#{request.contextPath}/resource/img/LOgo.png" 
                                      class="rounded-pill" target="_blank" 
                                      style="height: 70px"/>
@@ -26,37 +27,44 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="message-text" class="col-form-label"><b> #{msjModales.CLIENTE}</b></label>
+                                    <label for="message-text" class="col-form-label">
+                                        <b> #{msjModales.CLIENTE}</b>
+                                    </label>
                                     <span class="form-control">#{pedidosControlador.pedidoSeleccionado.cliente.usuario.primerNombre} #{pedidosControlador.pedidoSeleccionado.cliente.usuario.primerApellido}</span>
                                 </div>
                                 <div class="form-group">
-                                    <label for="message-text" class="col-form-label"><b> #{msjModales.FECHA}</b></label>
+                                    <label for="message-text" class="col-form-label">
+                                        <b> #{msjModales.FECHA}</b></label>
                                     <h:outputText class="form-control" value="#{pedidosControlador.pedidoSeleccionado.fecha}">
                                         <f:convertDateTime pattern="YYYY/MM/dd"/>
                                     </h:outputText>
                                 </div>
                                 <div class="form-group">
-                                    <label for="message-text" class="col-form-label"><b>#{msjModales.VALORTOTAL}</b></label>
+                                    <label for="message-text" class="col-form-label">
+                                        <b>#{msjModales.VALORTOTAL}</b>
+                                    </label>
                                     <span class="form-control"> $ #{pedidosControlador.pedidoSeleccionado.valorTotal}</span>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="message-text" class="col-form-label"><b>#{msjModales.TELEFONO}</b></label>
+                                    <label for="message-text" class="col-form-label">
+                                        <b>#{msjModales.TELEFONO}</b>
+                                    </label>
                                     <span class="form-control">#{pedidosControlador.pedidoSeleccionado.telefono}</span>
                                 </div>
                                 <div class="form-group">
-                                    <label for="message-text" class="col-form-label"><b>#{msjModales.PUNTODEENTREGA}</b></label>
+                                    <label for="message-text" class="col-form-label">
+                                        <b>#{msjModales.PUNTODEENTREGA}</b>
+                                    </label>
                                     <span class="form-control">#{pedidosControlador.pedidoSeleccionado.puntoEntrega}</span>
                                 </div>
                                 <div class="form-group">
-                                    <label for="message-text" class="col-form-label"><b>#{msjModales.TIPODEPEDIDO}</b></label>
+                                    <label for="message-text" class="col-form-label">
+                                        <b>#{msjModales.TIPODEPEDIDO}</b>
+                                    </label>
                                     <span class="form-control">#{pedidosControlador.pedidoSeleccionado.tipoPedido}</span>
                                 </div>
-                                <!--div class="form-group">
-                                    <label for="message-text" class="col-form-label"><b>{msjModales.ESTADO}</b></label>
-                                    <span class="form-control">{pedidosControlador.pedidoSeleccionado.estadoPedido.descripcion}</span>
-                                </div-->
                             </div>
                             <div class="col-lg-12">
                                 <center>
@@ -64,7 +72,8 @@
                                         <b>#{msjModales.OBSERVACIONES}</b>
                                     </label>
                                 </center>
-                                <div class="card form-group" style="width: 47rem; box-shadow: 1px 1px 1px 1px black">
+                                <div class="card form-group" 
+                                     style="width: 47rem; box-shadow: 1px 1px 1px 1px black">
                                     <div class="card-body">
                                         <span>#{pedidosControlador.pedidoSeleccionado.observaciones}</span>
                                     </div>
@@ -73,7 +82,7 @@
                             <hr/>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="message-text" class="col-form-label"><b>PRODUCTOS</b></label>
+                                    <label for="message-text" class="col-form-label"><b>#{msjInventario.PRODUCTOS}</b></label>
                                     <ui:repeat value="#{pedidosControlador.pedidoSeleccionado.detallesPedido}" var="r">
                                         <span class="form-control">#{r.producto.categoriaProducto.nombreCategoria} #{r.producto.nombre}</span>
                                     </ui:repeat>                                    
@@ -81,14 +90,13 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="message-text" class="col-form-label"><b>CANTIDAD</b></label>
+                                    <label for="message-text" class="col-form-label"><b>#{msjInventario.CANTIDAD}</b></label>
                                     <ui:repeat value="#{pedidosControlador.pedidoSeleccionado.detallesPedido}" var="r">
                                         <span class="form-control">#{r.cantidad}</span>
                                     </ui:repeat>                                    
                                 </div>
                             </div> 
                         </div>
-
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-dismiss="modal" 

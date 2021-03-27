@@ -17,6 +17,10 @@ import pyp.modelo.entidades.Insumo;
 import pyp.modelo.entidades.TipoInsumo;
 import pyp.servicios.IInventarioService;
 
+/**
+ *
+ * @GAES 1
+ */
 @Stateless
 public class InventarioService implements IInventarioService {
 

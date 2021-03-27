@@ -29,7 +29,7 @@ import javax.validation.constraints.Size;
 
 /**
  *
- * @author PC
+ * @GAES 1
  */
 @Entity
         @Table(name = "pqrs")

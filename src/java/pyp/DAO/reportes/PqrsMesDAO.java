@@ -14,7 +14,7 @@ import pyp.modelo.dto.PorcentajePQRS;
 
 /**
  *
- * @author alejo
+ * @GAES 1
  */
 @Stateless
 public class PqrsMesDAO extends BaseDAO<PorcentajePQRS> implements IPqrsMesDAO {

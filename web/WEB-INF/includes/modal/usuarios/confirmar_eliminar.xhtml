@@ -16,9 +16,12 @@
                                     style="color: white">
                                 <span aria-hidden="true">x</span>
                             </button>
-                            <span><center><img src="#{request.contextPath}/resource/img/LOgo.png" 
-                                               class="rounded-pill" target="_blank" style="height: 100px"/>
-                                </center></span>             
+                            <span>
+                                <center>
+                                    <img src="#{request.contextPath}/resource/img/LOgo.png" 
+                                         class="rounded-pill" target="_blank" style="height: 100px"/>
+                                </center>
+                            </span>             
                         </div>
                         <div class="modal-body">
                             <h5>#{msjModales.Estasegurodeeliminarelusuario} <strong>
@@ -27,8 +30,10 @@
                                     #{usuarioControlador.usuarioSeleccionado.primerApellido}</strong> ?</h5>
                             <div class="modal-footer">
                                 <button class="btn" type="button" data-dismiss="modal" style="background: #951010; 
-                                        color: white">#{msjModales.Cancelar}</button>
-                                        <h:commandButton class="btn" value="#{msjModales.Eliminar}" action="#{usuarioControlador.eliminar()}" 
+                                        color: white">#{msjModales.Cancelar}
+                                </button>
+                                <h:commandButton class="btn" value="#{msjModales.Eliminar}" 
+                                                 action="#{usuarioControlador.eliminar()}" 
                                                  style="background: #727272; color: white"/>
                             </div>
                         </div>

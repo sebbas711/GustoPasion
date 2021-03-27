@@ -11,7 +11,7 @@ import pyp.modelo.entidades.InsumosDelProducto;
 
 /**
  *
- * @author PC
+ * @GAES 1
  */
 @Local
 public interface IInsumosDelProductoDAO extends DAO<InsumosDelProducto>{

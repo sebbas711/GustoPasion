@@ -11,7 +11,7 @@ import pyp.DAO.IOperarioDAO;
 
 /**
  *
- * @Gaes 5
+ * @GAES 1
  */
 @Stateless
 public class OperarioDAO extends AbstractDAO<Operario> implements IOperarioDAO {

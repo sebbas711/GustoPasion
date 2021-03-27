@@ -10,7 +10,7 @@ import pyp.modelo.entidades.CategoriaProducto;
 
 /**
  *
- * @author alejo
+ * @GAES 1
  */
 @Local
 public interface ICategoriaProductoDAO extends DAO<CategoriaProducto> {

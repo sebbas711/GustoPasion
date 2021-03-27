@@ -13,7 +13,7 @@ import pyp.DAO.IDetallePedidoDAO;
 
 /**
  *
- * @author PC
+ * @GAES 1
  */
 @Stateless
 public class DetallePedidoDAO extends AbstractDAO<DetallePedido> implements IDetallePedidoDAO {

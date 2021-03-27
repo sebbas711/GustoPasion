@@ -44,30 +44,30 @@
                                                  value="#{pedidosControlador.pedidoSeleccionado.telefono}"/>
                                 </div>
                             </div>
-
                             <div class="col-md-12">
                                 <center>
                                     <label for="message-text" class="col-form-label">
                                         <b>#{msjModales.OBSERVACIONES}</b>
                                     </label>
                                 </center>
-                                <div class="card form-group" style="width: 47rem; box-shadow: 1px 1px 1px 1px black">
+                                <div class="card form-group" style="width: 47rem; 
+                                     box-shadow: 1px 1px 1px 1px black">
                                     <h:inputTextarea value="#{pedidosControlador.pedidoSeleccionado.observaciones}"/>
                                 </div>
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <h:commandLink class="btn" value="#{msjModales.Actualizar}" style="background: #727272; color: white"
+                            <h:commandLink class="btn" value="#{msjModales.Actualizar}" 
+                                           style="background: #727272; color: white"
                                            action="#{pedidosControlador.actualizarDatosPedido()}">
                                 <i class="fa fa-save"></i>
                             </h:commandLink>
-                            <button type="button" class="btn btn-danger" data-dismiss="modal" style="background: #951010">#{msjModales.Cancelar}</button>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal" 
+                                    style="background: #951010">#{msjModales.Cancelar}</button>
                         </div>
-
                     </h:panelGroup>
                 </h:form>
             </div>
         </div>
     </div>
-
 </ui:composition>

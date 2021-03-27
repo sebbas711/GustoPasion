@@ -15,7 +15,7 @@ import pyp.modelo.entidades.Rol;
 
 /**
  *
- * @author alejo
+ * @GAES 1
  */
 @FacesConverter(value = "rolConverter")
 public class RolConverter implements Converter{

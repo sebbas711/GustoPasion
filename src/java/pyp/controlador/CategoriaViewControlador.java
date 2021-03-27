@@ -18,7 +18,7 @@ import pyp.modelo.entidades.Producto;
 
 /**
  *
- * @author alejo
+ * @GAES 1
  */
 @Named(value = "categoriaViewControlador")
 @ViewScoped

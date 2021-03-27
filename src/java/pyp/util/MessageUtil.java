@@ -11,7 +11,10 @@ import org.primefaces.PrimeFaces;
 import pyp.excepciones.BusinessException;
 import pyp.excepciones.ExceptionType;
 
-
+/**
+ *
+ * @GAES 1
+ */
 public class MessageUtil {
 
     public static void sendMessage(String clientID, String message, String detail, FacesMessage.Severity severity, Boolean prop){

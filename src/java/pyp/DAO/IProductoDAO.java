@@ -12,7 +12,7 @@ import pyp.modelo.entidades.Producto;
 
 /**
  *
- * @GAES 5
+ * @GAES 1
  */
 @Local
 public interface IProductoDAO extends DAO<Producto> {

@@ -4,7 +4,8 @@
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <!-- modal mostrar usuarios-->
-    <div class="modal fade" id="eliminarProducto" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="eliminarProducto" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" 
+         aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <h:form prependId="false">
@@ -13,22 +14,26 @@
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span class="text-light" aria-hidden="true">&times;</span>
                             </button>
-                            <span><center><img src="#{request.contextPath}/resource/img/LOgo.png" class="rounded-pill" 
-                                               target="_blank" style="height: 70px"/></center></span>             
+                            <span>
+                                <center><img src="#{request.contextPath}/resource/img/LOgo.png" 
+                                             class="rounded-pill" target="_blank" style="height: 70px"/>
+                                </center>
+                            </span>             
                         </div>
                         <div class="modal-body">
-                            <h5>¿Esta seguro de eliminar el producto <strong> #{controlProductosView.productoSeleccionado.nombre}
-                                </strong>, Perteneciente a la categoria 
-                                <strong> #{controlProductosView.productoSeleccionado.categoriaProducto.nombreCategoria}</strong>?</h5>
-
+                            <h5>#{msjInventario.Estasegurodeeliminarelproducto}
+                                <strong> #{controlProductosView.productoSeleccionado.nombre}</strong>, 
+                                #{msjInventario.Pertenecientealacategoria} 
+                                <strong> #{controlProductosView.productoSeleccionado.categoriaProducto.nombreCategoria}</strong>?
+                            </h5>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">#{msjModales.Cancelar} </button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">#{msjModales.Cancelar} 
+                                </button>
                                 <h:commandButton class="btn" value="#{msjModales.Eliminar}" 
                                                  action="#{controlProductosView.eliminar()}"
                                                  style="background: #951010;color: white"/>
                             </div>
                         </div>
-
                     </h:panelGroup>
                 </h:form>
             </div>

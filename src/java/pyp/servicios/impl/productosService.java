@@ -16,7 +16,10 @@ import pyp.excepciones.MessageException;
 import pyp.modelo.entidades.CategoriaProducto;
 import pyp.modelo.entidades.Producto;
 import pyp.servicios.IProductosService;
-
+/**
+ *
+ * @GAES 1
+ */
 @Stateless
 public class productosService implements IProductosService {
 

@@ -22,7 +22,7 @@ import pyp.util.MessageUtil;
 
 /**
  *
- * @author Ismael
+ * @GAES 1
  */
 @Named
 @ViewScoped

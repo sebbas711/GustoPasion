@@ -11,7 +11,7 @@ import pyp.DAO.ITipoInsumoDAO;
 
 /**
  *
- * @Gaes 5
+ * @GAES 1
  */
 @Stateless
 public class TipoInsumoDAO extends AbstractDAO<TipoInsumo> implements ITipoInsumoDAO {

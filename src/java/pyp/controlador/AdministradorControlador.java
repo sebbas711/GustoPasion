@@ -16,7 +16,7 @@ import pyp.modelo.entidades.Administrador;
 
 /**
  *
- * @author alejo
+ * @GAES 1
  */
 @Named(value = "administradorControlador")
 @ViewScoped

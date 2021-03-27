@@ -16,7 +16,7 @@ import pyp.modelo.entidades.AuxCocina;
 
 /**
  *
- * @author PC
+ * @GAES 1
  */
 @Named(value = "auxCocinaControlador")
 @ViewScoped

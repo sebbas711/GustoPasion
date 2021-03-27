@@ -10,7 +10,7 @@ import pyp.modelo.entidades.MetodoDePago;
 
 /**
  *
- * @GAES 5
+ * @GAES 1
  */
 @Local
 public interface IMetodoDePagoDAO extends DAO<MetodoDePago> {

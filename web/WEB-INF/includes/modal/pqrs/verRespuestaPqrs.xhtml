@@ -14,7 +14,8 @@
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span class="text-light" aria-hidden="true">&times;</span>
                         </button>
-                        <span><center style="color: #fff">
+                        <span>
+                            <center style="color: #fff">
                                 <img src="#{request.contextPath}/resource/img/LOgo.png" 
                                      class="rounded-pill" target="_blank" 
                                      style="height: 70px"/>
@@ -25,8 +26,9 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label for="message-text" class="col-form-label">Respuesta PQRS</label>
-                                    <ui:repeat value="#{pqrsControlador.pqrsSeleccionada.respuestapqrsList}" var="r">
+                                    <label for="message-text" class="col-form-label">#{msjInventario.RespuestaPQRS}</label>
+                                    <ui:repeat value="#{pqrsControlador.pqrsSeleccionada.respuestapqrsList}" 
+                                               var="r">
                                         <span class="form-control">#{r.respuesta}</span>
                                     </ui:repeat>
                                 </div>
@@ -34,7 +36,8 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal" style="background: #951010">#{msjModales.Cancelar} </button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal" 
+                                style="background: #951010">#{msjModales.Cancelar} </button>
                     </div>
                 </h:panelGroup>
             </div>

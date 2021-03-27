@@ -12,6 +12,10 @@ import pyp.modelo.entidades.Administrador;
 import pyp.modelo.entidades.Estadopqrs;
 import pyp.modelo.entidades.Pqrs;
 
+/**
+ *
+ * @GAES 1
+ */
 @Local
 public interface IPqrsService {
     

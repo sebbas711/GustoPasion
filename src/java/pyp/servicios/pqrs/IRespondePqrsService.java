@@ -12,7 +12,7 @@ import pyp.modelo.entidades.Respuestapqrs;
 
 /**
  *
- * @author Gaes5
+ * @GAES 1
  */
 @Local
 public interface IRespondePqrsService {

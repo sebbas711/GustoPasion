@@ -11,6 +11,10 @@ import pyp.excepciones.BusinessException;
 import pyp.modelo.entidades.Insumo;
 import pyp.modelo.entidades.TipoInsumo;
 
+/**
+ *
+ * @GAES 1
+ */
 @Local
 public interface IInventarioService {
     

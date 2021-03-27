@@ -11,7 +11,7 @@ import pyp.DAO.IMetodoDePagoDAO;
 
 /**
  *
- * @Gaes 5
+ * @GAES 1
  */
 @Stateless
 public class MetodoDePagoDAO extends AbstractDAO<MetodoDePago> implements IMetodoDePagoDAO {

@@ -22,6 +22,10 @@ import pyp.modelo.entidades.Pedido;
 import pyp.servicios.IDescuentoInsumoService;
 import pyp.servicios.IPedidosService;
 
+/**
+ *
+ * @GAES 1
+ */
 @Stateless
 public class PedidosService implements IPedidosService {
 

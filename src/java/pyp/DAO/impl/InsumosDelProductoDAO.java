@@ -13,7 +13,7 @@ import pyp.DAO.IInsumosDelProductoDAO;
 
 /**
  *
- * @author PC
+ * @GAES 1
  */
 @Stateless
 public class InsumosDelProductoDAO extends AbstractDAO<InsumosDelProducto> implements IInsumosDelProductoDAO {

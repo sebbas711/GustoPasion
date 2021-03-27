@@ -11,7 +11,7 @@ import pyp.modelo.entidades.Rol;
 
 /**
  *
- * @author alejo
+ * @GAES 1
  */
 @Named
 @RequestScoped

@@ -11,7 +11,7 @@ import pyp.modelo.dto.VentaMesData;
 
 /**
  *
- * @author Gaes5
+ * @GAES 1
  */
 @Local
 public interface IVentaMesDAO {

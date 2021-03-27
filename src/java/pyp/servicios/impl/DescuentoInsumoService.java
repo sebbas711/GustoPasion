@@ -22,7 +22,7 @@ import pyp.servicios.IDescuentoInsumoService;
 
 /**
  *
- * @author Gaes5
+ * @GAES 1
  */
 @Stateless
 public class DescuentoInsumoService implements IDescuentoInsumoService {

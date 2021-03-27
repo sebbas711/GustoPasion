@@ -9,7 +9,7 @@ import java.util.List;
 
 /**
  *
- * @Gaes 5
+ * @GAES 1
  */
 public abstract class AbstractDAO<T> extends BaseDAO<T>{
 

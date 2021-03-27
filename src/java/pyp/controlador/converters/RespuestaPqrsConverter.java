@@ -17,7 +17,7 @@ import pyp.modelo.entidades.Respuestapqrs;
 
 /**
  *
- * @author alejo
+ * @GAES 1
  */
 @FacesConverter(forClass = CategoriaProducto.class)
 public class RespuestaPqrsConverter implements Converter{

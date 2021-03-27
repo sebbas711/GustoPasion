@@ -21,7 +21,7 @@ import pyp.servicios.reportes.IReporteVentaProductoService;
 
 /**
  *
- * @author PC
+ * @GAES 1
  */
 @Named
 @ViewScoped

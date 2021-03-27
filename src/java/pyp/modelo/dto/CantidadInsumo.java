@@ -7,7 +7,7 @@ package pyp.modelo.dto;
 
 /**
  *
- * @author PC
+ * @GAES 1
  */
 public final class CantidadInsumo {
 

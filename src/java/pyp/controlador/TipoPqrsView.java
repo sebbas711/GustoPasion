@@ -16,7 +16,7 @@ import pyp.modelo.entidades.Tipopqrs;
 
 /**
  *
- * @author alejo
+ * @GAES 1
  */
 @Named(value = "tipoPqrsView")
 @ViewScoped

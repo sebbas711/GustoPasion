@@ -10,7 +10,8 @@
             <div class="navbar-header">
                 <a class="navbar-brand img-fluid" href="#page-top">
                     <img src="#{request.contextPath}/resource/img/LOgo.png" alt="Logo" style="height: 50px; 
-                         margin-left: 70px"/></a>
+                         margin-left: 70px"/>
+                </a>
                 <a id="menuToggle" class="menutoggle"><i class="fa fa-bars hamburg"></i></a>
             </div>
         </div>
@@ -26,16 +27,18 @@
                     </div>
                 </div> 
                 <div class="user-area dropdown float-right">
-                    <a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img class="user-avatar rounded-circle" src="#{request.contextPath}/resource/img/LOgo.png" alt="User Avatar"/>
+                    <a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" 
+                       aria-expanded="false">
+                        <img class="user-avatar rounded-circle" src="#{request.contextPath}/resource/img/LOgo.png" 
+                             alt="User Avatar"/>
                     </a>
                     <div class="user-menu dropdown-menu">
                         <h:form>
-                            <h:commandLink action="#{sessionControlador.cerrarSesion()}" class="nav-link" value="#{msjMenu.CerrarSesión}"></h:commandLink>
+                            <h:commandLink action="#{sessionControlador.cerrarSesion()}" class="nav-link" 
+                                           value="#{msjMenu.CerrarSesión}"></h:commandLink>
                         </h:form>
                     </div>
                 </div>
-
             </div>
         </div>
     </header>

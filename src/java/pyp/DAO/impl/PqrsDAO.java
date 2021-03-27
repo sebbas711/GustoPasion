@@ -15,7 +15,7 @@ import pyp.modelo.entidades.Estadopqrs;
 
 /**
  *
- * @Gaes 5
+ * @GAES 1
  */
 @Stateless
 public class PqrsDAO extends AbstractDAO<Pqrs> implements IPqrsDAO {

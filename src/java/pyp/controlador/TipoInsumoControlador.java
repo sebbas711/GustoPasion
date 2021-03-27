@@ -10,6 +10,10 @@ import javax.faces.view.ViewScoped;
 import pyp.DAO.ITipoInsumoDAO;
 import pyp.modelo.entidades.TipoInsumo;
 
+/**
+ *
+ * @GAES 1
+ */
 @Named(value = "tipoInsumoControlador")
 @ViewScoped
 public class TipoInsumoControlador implements Serializable {

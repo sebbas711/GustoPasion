@@ -10,42 +10,41 @@
         <nav class="navbar navbar-expand-sm navbar-default">
             <div id="main-menu" class="main-menu collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li class="menu-title text-center" style="color: #951010"><b>#{msjTemplate.Bienvenido} !</b></li><!-- /.menu-title 1 -->
+                    <li class="menu-title text-center" style="color: #951010">
+                        <b>¡#{msjTemplate.Bienvenido}!</b>
+                    </li><!-- /.menu-title 1 -->
                     <li class="text-center">
                         <a href="#" class="dropdown-toggle" 
                            data-toggle="dropdown" 
                            aria-haspopup="true" 
                            style="color: #444; font-family: arial"
                            title="#{sessionControlador.rolSeleccionado.descripcion}">
-                            
-                            <b>#{sessionControlador.rolSeleccionado.descripcion}</b><br/>
+                            <b>#{sessionControlador.rolSeleccionado.descripcion}</b>
+                            <br/>
                             #{sessionControlador.user.primerNombre} #{sessionControlador.user.primerApellido}<b/>
-
                         </a>
                     </li>
-
-
                     <ui:repeat value="#{sessionControlador.permisosSuperiores}" var="ps">
-                    <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
-                            <i class="menu-icon #{ps.icono}" style="color: #951010"></i>
-                            #{msjTemplate[ps.nombre]}
-                        </a>
-                        <ul class="sub-menu children dropdown-menu" style="background-color: rgba(77,19,20,0.1)">
-                            <ui:repeat value="#{sessionControlador.getSubPermisos(ps)}" var="p">
-                                <li>
-                                    <i class="#{p.icono} logit" style="color: #951010"></i>
-                                    <a href="#{request.contextPath}#{p.url}">#{msjTemplate[p.nombre]}</a>
-                                </li>
-                            </ui:repeat>
-                        </ul>
-                    </li>
+                        <li class="menu-item-has-children dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" 
+                               aria-expanded="false"> 
+                                <i class="menu-icon #{ps.icono}" style="color: #951010"></i>
+                                #{msjTemplate[ps.nombre]}
+                            </a>
+                            <ul class="sub-menu children dropdown-menu" style="background-color: rgba(77,19,20,0.1)">
+                                <ui:repeat value="#{sessionControlador.getSubPermisos(ps)}" var="p">
+                                    <li>
+                                        <i class="#{p.icono} logit" style="color: #951010"></i>
+                                        <a href="#{request.contextPath}#{p.url}">#{msjTemplate[p.nombre]}</a>
+                                    </li>
+                                </ui:repeat>
+                            </ul>
+                        </li>
                     </ui:repeat>
                     <br/>
                     <br/>
                     <br/>
                     <br/>
-
                     <h:form prependId="false">
                         <h:selectOneMenu value="#{languagecontroller.lang}"
                                          onchange="submit();" style="background: #951010; color: white; margin-left: 20px">

@@ -47,7 +47,7 @@
                                 <div id="carrito">
                                     <h:dataTable class="table" value="#{carritoController.pedido.detallesPedido}" var="dp">
                                         <h:column>
-                                            <f:facet name="header">Categoria</f:facet>
+                                            <f:facet name="header">#{msjProductos.Categoria}</f:facet>
                                                 #{dp.producto.categoriaProducto.nombreCategoria}
                                         </h:column>
                                         <h:column>

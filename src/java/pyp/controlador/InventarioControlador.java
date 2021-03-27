@@ -47,7 +47,7 @@ import pyp.util.MessageUtil;
 
 /**
  *
- * @author PC
+ * @GAES 1
  */
 @Named(value = "inventarioControlador")
 @ViewScoped

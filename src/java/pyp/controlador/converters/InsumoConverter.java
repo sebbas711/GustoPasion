@@ -15,7 +15,7 @@ import pyp.modelo.entidades.Insumo;
 
 /**
  *
- * @author alejo
+ * @GAES 1
  */
 @FacesConverter(forClass = Insumo.class)
 public class InsumoConverter implements Converter{

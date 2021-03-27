@@ -14,7 +14,7 @@ import pyp.modelo.entidades.TipoInsumo;
 
 /**
  *
- * @Gaes 5
+ * @GAES 1
  */
 @Stateless
 public class InsumoDAO extends AbstractDAO<Insumo> implements IInsumoDAO {

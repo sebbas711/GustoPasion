@@ -12,7 +12,7 @@ import pyp.DAO.IAdministradorDAO;
 
 /**
  *
- * @Gaes 5
+ * @GAES 1
  */
 @Stateless
 public class AdministradorDAO extends AbstractDAO<Administrador> implements IAdministradorDAO {

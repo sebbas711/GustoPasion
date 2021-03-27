@@ -9,8 +9,6 @@
 
 
     <!-- Modal -->
-
-
     <div class="modal fade" role="dialog" id="verInfoCategoria"  data-keyboard="false" 
          tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl">
@@ -23,14 +21,19 @@
                                     <img src="#{request.contextPath}/resource/img/LOgo.png" class="rounded-pill" 
                                          target="_blank" style="height: 70px"/>
                                 </span>
-                                    <h4 style="text-align: center; color: #fff; font-family: cursive"><b>GUSTO Y PASIÓN</b></h4>
+                                    <h4 style="text-align: center; color: #fff; font-family: cursive">
+                                        <b#{msjInventario.GustoyPasion}</b></h4>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span class="text-light" aria-hidden="true">&times;</span>
                                 </button>
                             </div>
                             <div class="jumbotron" style="background: url(#{request.contextPath}/resource/img/Menu.jpg); opacity: 0.7;
-                                 height: 0px;"><h1 id="categoria" class="display-3 mb-3" style="font-family: Gabriola; font-size: 70px; 
-                                  color: yellow; text-align: center;"><b>#{categoriaViewControlador.seleccionCategoria.nombreCategoria}</b></h1> 
+                                 height: 0px;">
+                                <h1 id="categoria" class="display-3 mb-3" 
+                                  style="font-family: Gabriola; font-size: 70px; 
+                                  color: yellow; text-align: center;">
+                                    <b>#{categoriaViewControlador.seleccionCategoria.nombreCategoria}</b>
+                                </h1> 
                             </div>
                             <div class="modal-body">
                                 <div class="row">
@@ -44,7 +47,8 @@
                                                     <hr style="background-color: #951010"/>
                                                     <img src="#{request.contextPath}/resource/img/#{pt.imagenP}" 
                                                          class="card-img-top" style="height: 180px;"/>
-                                                    <h1 class="btn  pricing-btn  precio"><b style="color: #951010">$</b><b> #{pt.precio}</b></h1>
+                                                    <h1 class="btn  pricing-btn  precio">
+                                                        <b style="color: #951010">$</b><b> #{pt.precio}</b></h1>
                                                     <hr style="background-color: #951010"/>
                                                     <p class="card-text">#{pt.descripcion}.</p>
                                                     <br/>
@@ -71,6 +75,5 @@
         </div>
     </div>
     <ui:include src="/WEB-INF/includes/modal/pedidos/agregar_producto_carrito.xhtml"/>
-
 </ui:composition>
 

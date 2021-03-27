@@ -13,15 +13,13 @@
                   content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1.0"/>
             <link rel="stylesheet" type="text/css" href="#{request.contextPath}/resource/css/bootstrap.min.css"/>
             <link rel="stylesheet" type="text/css" href="#{request.contextPath}/resource/css/inicio sesion.css"/>
-            <link rel="icon" type="Pagina" href="img/Logo2.png"/>
+            <link rel="icon" type="Pagina" href="#{request.contextPath}/resource/img/Logo2.png"/>
             <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css"/>
-
             <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
             <title>#{msjLogin.title}</title>
         </h:head>
 
         <h:body>
-
             <nav class="navbar navbar-expand-lg fixed-top py-3" style="z-index: 1000; background: rgba(149, 16, 16,0.8)">
                 <div class="container-fluid">
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" 
@@ -81,13 +79,9 @@
                                                  requiredMessage="#{msjRegistro.Porfavoringresesuprimerapellido}" class="form-control" 
                                                  value="#{usuarioControlador.nuevoUsuario.primerApellido}" maxlength="30" 
                                                  a:placeholder="#{msjRegistro.PrimerAprellido}"/>
-
                                 </div>
-
                                 <br/>
-
                                 <div class="col-md-5" style="margin-left: 50px">
-
                                     <h:outputLabel for="fr_sapellido"><b>#{msjRegistro.SegundoApellido}</b></h:outputLabel>
                                     <h:inputText id="fr_sapellido" class="form-control" 
                                                  value="#{usuarioControlador.nuevoUsuario.segundoApellido}" maxlength="30" 
@@ -115,7 +109,6 @@
                                                    value="#{usuarioControlador.nuevoUsuario.contraseña}" maxlength="20" 
                                                    a:placeholder="#{msjRegistro.Contraseña}"
                                                    required="true" requiredMessage="Debe ingresar la contraseña"/>
-
                                 </div>
                             </div>
                             <br/>
@@ -124,7 +117,7 @@
                                     <center>
                                         <a class="btn" 
                                            href="#{request.contextPath}/index.xhtml"
-                                           style="margin-right: 10px; background: #951010; color: white">Cancelar
+                                           style="margin-right: 10px; background: #951010; color: white">#{msjModales.Cancelar}
                                         </a>
                                         <h:commandButton class="btn" style="margin-left: 10px; color: white; background: #727272" 
                                                          value="Registrar" action="#{usuarioControlador.registrar()}"/>
@@ -132,9 +125,8 @@
                                 </div>
                                 <br/>
                                 <div style="margin-left: 35px">
-                                    <p> Los campos con (<b class="text-warning">*</b>) son obligatorios.</p>
+                                    <p> #{msjLogin.Loscamposcon} (<b class="text-warning">*</b>) #{msjLogin.sonobligatorios}.</p>
                                 </div>
-
                             </div>
                             <br/>
                         </h:form>
@@ -144,8 +136,6 @@
                     </div>
                 </div>
             </div>
-
-
             <script type="text/javascript" src="#{request.contextPath}/resource/js/InicioSesion.js"></script>
             <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
                     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"

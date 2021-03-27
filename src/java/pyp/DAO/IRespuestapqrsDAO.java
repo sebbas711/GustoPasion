@@ -11,7 +11,7 @@ import pyp.modelo.entidades.Respuestapqrs;
 
 /**
  *
- * @author PC
+ * @GAES 1
  */
 @Local
 public interface IRespuestapqrsDAO extends DAO<Respuestapqrs> {

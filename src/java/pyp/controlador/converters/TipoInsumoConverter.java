@@ -9,6 +9,10 @@ import javax.faces.convert.FacesConverter;
 import pyp.DAO.ITipoInsumoDAO;
 import pyp.modelo.entidades.TipoInsumo;
 
+/**
+ *
+ * @GAES 1
+ */
 @FacesConverter(forClass = TipoInsumo.class)
 public class TipoInsumoConverter implements Converter {
     

@@ -13,7 +13,7 @@ import pyp.servicios.file.IFileSaveService;
 
 /**
  *
- * @author Ismael
+ * @GAES 1
  */
 @Stateless(name = "ImagePromo")
 public class ImagePromoFileSaveService extends AbstractFileSaveService implements IFileSaveService {

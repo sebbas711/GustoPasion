@@ -10,7 +10,7 @@ import pyp.modelo.entidades.Usuario;
 
 /**
  *
- * @GAES 5
+ * @GAES 1
  */
 @Local
 public interface IUsuarioDAO extends DAO<Usuario> {

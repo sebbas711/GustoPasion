@@ -19,7 +19,8 @@
                                     <strong>#{msjProductos.RegistroProductos}</strong>
                                 </div>
                                 <div class="card-body card-block">
-                                    <h:form id="formRegistroProductos" prependId="false" enctype="multipart/form-data" 
+                                    <h:form id="formRegistroProductos" prependId="false" 
+                                            enctype="multipart/form-data" 
                                             class="form-horizontal">
                                         <div class="row form-group">
                                             <div class="col col-md-2">
@@ -45,6 +46,14 @@
                                                 <h:inputText id="descripcion" a:placeholder="Piza de carnes con queso" class="form-control"
                                                              value="#{registroProductoControlador.producto.descripcion}" required="true" requiredMessage="Ingrese la descripción del producto"/>
                                             </div>
+                                            <!--<div class="col col-md-2">
+                                                <label for="imagen" class="form-control-label">#{msjProductos.Imagen}</label>
+                                            </div>
+                                            <div class="custom-file col-12 col-md-4">
+                                                <h:inputFile id="imagen" 
+                                                             a:aria-required="true" a:aria-invalid="false"/>
+                                                <div class="invalid-feedback">Example invalid custom file feedback</div>
+                                            </div>-->
                                             <div class="col col-md-2">
                                                 <label for="imagen" class="form-control-label">#{msjProductos.Imagen}</label>
                                             </div>
@@ -76,7 +85,6 @@
                                                 </h:selectOneMenu>
                                             </div>
                                         </div>
-
                                         <div class="accordion" id="accordionExample">
                                             <div class="card">
                                                 <div class="card-header" id="headingOne">
@@ -86,7 +94,6 @@
                                                         </button>
                                                     </h2>
                                                 </div>
-
                                                 <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
                                                     <h:panelGroup id="infoInsumoProducto" layout="block" class="card-body">
                                                         <div class="row form-group">
@@ -100,7 +107,6 @@
                                                                 </h:selectOneMenu>
                                                             </div>
                                                         </div>
-
                                                         <div class="row form-group">
                                                             <div class="col col-md-2">
                                                                 <label for="cantidadInsumo" class="form-control-label">#{msjProductos.CantidadInsumo}</label>
@@ -121,35 +127,28 @@
                                                                 </p:commandLink>
                                                             </div>
                                                         </div>
-
                                                         <hr/>
                                                         <h:panelGroup id="panelTablaInsumosProducto" layout="block" class="table-stats order-table ov-h">
                                                             <h:dataTable value="#{registroProductoControlador.producto.insumosDelProducto}" var="insumoProducto"
                                                                          class="table">
                                                                 <h:column >
-                                                                    <f:facet name="header">Nombre Insumo</f:facet>
+                                                                    <f:facet name="header">#{msjInventario.NombredelInsumo}</f:facet>
                                                                         #{insumoProducto.insumo.nombre}
                                                                 </h:column>
                                                                 <h:column>
-                                                                    <f:facet name="header">Tipo Insumo</f:facet>
+                                                                    <f:facet name="header">#{msjInventario.TipodeInsumo}</f:facet>
                                                                         #{insumoProducto.insumo.tipoInsumo.nombre}
                                                                 </h:column>
                                                                 <h:column>
-                                                                    <f:facet name="header">Cantidad</f:facet>
+                                                                    <f:facet name="header">#{msjMenu.Cantidad}</f:facet>
                                                                         #{insumoProducto.cantidadInsumo}
-                                                                </h:column>
-                                                                <h:column>
-                                                                    <f:facet name="header">Acción</f:facet>
-                                                                    <button class="btn btn-danger btn-sm">#{msjPedidos.Eliminar}</button>
                                                                 </h:column>
                                                             </h:dataTable>
                                                         </h:panelGroup>
-
                                                     </h:panelGroup>
                                                 </div>
                                             </div>
                                         </div>
-
                                         <div class="row form-group">
                                             <div class="col-12 col-md-12" id="Añadir Producto">
                                                 <p:commandLink id="registrarPedido"  class="btn btn-block" 

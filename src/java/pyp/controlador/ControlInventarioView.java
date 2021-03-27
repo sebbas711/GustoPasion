@@ -17,6 +17,10 @@ import pyp.modelo.entidades.TipoInsumo;
 import pyp.servicios.IInventarioService;
 import pyp.util.MessageUtil;
 
+/**
+ *
+ * @GAES 1
+ */
 @Named
 @ViewScoped
 public class ControlInventarioView implements Serializable {

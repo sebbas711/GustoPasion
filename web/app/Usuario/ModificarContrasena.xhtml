@@ -13,25 +13,25 @@
             <!--******************************************************EMPIEZA EL CONTENIDO*****************************************************-->
             <div class="jumbotron" style="background-image: url(#{request.contextPath}/resource/img/Quienessomos.jpg); 
                  background-size: 100%"><h1 class="display-3 mb-3" style="font-family: Garamond; font-size: 30px; 
-                  color: white; margin-top: 80px; margin-left: 120px;">EDITAR DATOS</h1> 
+                  color: white; margin-top: 80px; margin-left: 120px;">#{msjLogin.MODIFICARCONTRASEÑA}</h1> 
             </div>
             <h:form prependId="false">
                 <h:panelGroup layout="block" class="container">
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="inputEmail4">Clave actual</label>
+                            <label for="inputEmail4">#{msjLogin.Claveactual}</label>
                             <h:inputSecret id="claveActual" class="form-control" 
                                            value="#{modificaContrasenaControlador.claveActual}"/>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="inputEmail4">Nueva clave</label>
+                            <label for="inputEmail4">#{msjLogin.Nuevaclave}</label>
                             <h:inputSecret id="nuevaClave" class="form-control" 
                                            value="#{modificaContrasenaControlador.nuevaClave}"/>
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="inputPassword4">Confirme su nueva clave</label>
+                            <label for="inputPassword4">#{msjLogin.Confirmesunuevaclave}</label>
                             <h:inputSecret id="confirmacionClave" class="form-control" 
                                            value="#{modificaContrasenaControlador.confirmacionNuevaClave}"/>
                         </div>
@@ -39,7 +39,8 @@
                     <div class="modal-footer">
                         <div class="row justify-content-between">
                             <div class="col-md-12">
-                                <a href="#{request.contextPath}/index.xhtml" class="btn btn-block" style="background: #951010; color: white">#{msjModales.Cancelar}</a>
+                                <a href="#{request.contextPath}/index.xhtml" class="btn btn-block"
+                                   style="background: #951010; color: white">#{msjModales.Cancelar}</a>
                             </div>
                         </div>
                         <h:commandLink class="btn" value="#{msjModales.Actualizar}"
@@ -51,7 +52,6 @@
                     </div>
                 </h:panelGroup>
             </h:form>
-
         </f:view>
     </ui:define>
 </ui:composition>

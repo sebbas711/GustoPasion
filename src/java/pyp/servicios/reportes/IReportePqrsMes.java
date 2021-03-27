@@ -11,7 +11,7 @@ import pyp.modelo.dto.PorcentajePQRS;
 
 /**
  *
- * @author alejo
+ * @GAES 1
  */
 @Local
 public interface IReportePqrsMes {

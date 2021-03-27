@@ -23,7 +23,7 @@
                                             class="form-horizontal">
                                         <h:panelGroup id="infoCliente" layout="block" class="row form-group">
                                             <div class="col col-md-2">
-                                                <label for="Telefono" class=" form-control-label">Cliente: </label></div>
+                                                <label for="Telefono" class=" form-control-label">#{msjPedidos.Cliente} </label></div>
                                             <div class="col col-md-3">
                                                 <h:inputText required="true" requiredMessage="Ingrese por favor el número de documento" id="documentoCliente" a:placeholder="Número documento a buscar" class="form-control" value="#{buscarClienteControlador.numeroDocumento}" />
                                             </div>
@@ -50,7 +50,7 @@
                                         <hr/>       
                                         <div class="row form-group">
                                             <div class="col col-md-2">
-                                                <label for="tipoDePedido" class=" form-control-label">Tipo de Pedido:</label></div>
+                                                <label for="tipoDePedido" class=" form-control-label">#{msjPedidos.TipodePedido}:</label></div>
                                             <div class="col col-md-4">
                                                 <h:selectOneMenu id="tipoDePedido" required="true" class="form-control" value="#{registroPedidoControlador.pedido.tipoPedido}">
                                                     <f:selectItem itemLabel="Domicilio" itemValue="DOMICILIO" a:style="color: black"></f:selectItem>                                       
@@ -58,7 +58,7 @@
                                                 </h:selectOneMenu>
                                             </div>
                                             <div class="col col-md-2">
-                                                <label for="tipoDePedido" class=" form-control-label">Lugar de Entrega:</label></div>
+                                                <label for="tipoDePedido" class=" form-control-label">#{msjPedidos.LugardeEntrega}:</label></div>
                                             <div class="col-12 col-md-4">
                                                 <h:inputText required="true" requiredMessage="Ingrese el punto de entrega del Pedido"
                                                              id="LugarDeEntrega" a:placeholder="Mesa # / Dirección" class="form-control" 
@@ -67,7 +67,7 @@
                                         </div>
                                         <div class="row form-group">
                                             <div class="col col-md-2">
-                                                <label for="Telefono" class=" form-control-label">Telefono:</label></div>
+                                                <label for="Telefono" class=" form-control-label">#{msjContactenos.Teléfono}:</label></div>
                                             <div class="col col-md-4">
                                                 <h:inputText required="true" requiredMessage="Ingrese por favor el telefono"
                                                              id="Telefono" a:placeholder="Celular / Phone" class="form-control" 
@@ -79,7 +79,7 @@
                                             <h:panelGroup id="infoPedidoProducto" layout="block" class="card-body">   
                                                 <div class="row form-group">
                                                     <div class="col col-md-2">
-                                                        <label for="producto" class=" form-control-label">Productos:</label></div>
+                                                        <label for="producto" class=" form-control-label">#{msjPedidos.Productos}</label></div>
                                                     <div class="col col-md-4">
                                                         <h:selectOneMenu id="producto"
                                                                          class="form-control" 
@@ -88,7 +88,7 @@
                                                         </h:selectOneMenu>
                                                     </div>
                                                     <div class="col col-md-2">
-                                                        <label for="CantidadProducto" class="form-control-label">Cantidad del Producto:</label>
+                                                        <label for="CantidadProducto" class="form-control-label">#{msjPedidos.Cantidad}:</label>
                                                     </div>
                                                     <div class="col-12 col-md-4">
                                                         <h:inputText required="true" requiredMessage="Ingrese la cantidad"
@@ -106,26 +106,23 @@
                                                                    process="infoPedidoProducto"
                                                                    update="infoPedidoProducto"
                                                                    actionListener="#{registroPedidoControlador.agregarProductoAlPedido()}">
-                                                        <span id="Añadir Producto">Agregar Producto</span>
+                                                        <span id="Añadir Producto">#{msjPedidos.AgregarProducto}</span>
                                                     </p:commandLink>
                                                 </div>
-
-
                                                 <hr/>
                                                 <h:panelGroup id="panelTablaPedidoProducto" layout="block" class="table-stats order-table ov-h">
                                                     <h:dataTable class="table" value="#{registroPedidoControlador.pedido.detallesPedido}" var="pedidoProducto">
                                                         <h:column>
-                                                            <f:facet name="header">Categoria</f:facet>
+                                                            <f:facet name="header">#{msjProductos.Categoria}</f:facet>
                                                                 #{pedidoProducto.producto.categoriaProducto.nombreCategoria}
                                                         </h:column>
                                                         <h:column>
-                                                            <f:facet name="header">#{msjMenu.Nombre}</f:facet>
+                                                            <f:facet name="header">#{msjProductos.NombreProducto}</f:facet>
                                                                 #{pedidoProducto.producto.nombre}
                                                         </h:column>
                                                         <h:column>
                                                             <f:facet name="header">#{msjMenu.Precio}</f:facet>
                                                                 #{pedidoProducto.producto.precio}
-
                                                         </h:column>
                                                         <h:column>
                                                             <f:facet name="header">#{msjMenu.Cantidad}</f:facet>
@@ -185,7 +182,7 @@
                                                                style="background: #951010; color: white"
                                                                update="contentRealizarPedido"
                                                                type="submit">
-                                                    <span id="EnviarPedido">Realizar Pedido</span>
+                                                    <span id="EnviarPedido">#{msjPedidos.RealizarPedido}</span>
                                                 </p:commandLink>
                                             </div>
                                         </div>

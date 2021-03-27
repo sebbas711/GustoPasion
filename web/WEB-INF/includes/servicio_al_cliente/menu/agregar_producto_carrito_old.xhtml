@@ -19,7 +19,7 @@
                                     <img src="#{request.contextPath}/resource/img/LOgo.png" class="rounded-pill" 
                                          target="_blank" style="height: 70px"/>
                                 </span>
-                                <h4 style="text-align: center; color: #fff; font-family: cursive"><b>GUSTO Y PASIÓN</b></h4>
+                                <h4 style="text-align: center; color: #fff; font-family: cursive"><b>#{msjInventario.GustoyPasion}</b></h4>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span class="text-light" aria-hidden="true">&times;</span>
                                 </button>
@@ -37,9 +37,9 @@
                                                      class="card-img-top" style="height: 180px;"/>
                                                 <p class="card-text">#{carritoController.productoSeleccionado.descripcion}.</p>
                                                 <hr style="background-color: #951010"/>
-                                                <div><b style="color: #951010">Precio unitatio: $</b><b> #{carritoController.productoSeleccionado.precio}</b></div>
+                                                <div><b style="color: #951010">#{msjMenu.Precio} $</b><b> #{carritoController.productoSeleccionado.precio}</b></div>
                                                 <div>
-                                                    <b style="color: #951010">Cantidad: </b>
+                                                    <b style="color: #951010">#{msjMenu.Cantidad}: </b>
                                                     <div class="btn-group btn-group-sm mb-2" role="group" aria-label="Basic example">
                                                         <button type="button" class="btn btn-secondary">-</button>
                                                         <h:panelGroup class="form-control form-control-sm" style="width: 50px; text-align: center;" id="cantidadProductoSeleccionado">#{carritoController.cantidad}</h:panelGroup>
@@ -62,6 +62,5 @@
             </h:form>
         </div>
     </div>
-
 </ui:composition>
 

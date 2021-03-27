@@ -22,7 +22,7 @@ import javax.validation.constraints.NotNull;
 
 /**
  *
- * @author PC
+ * @GAES 1
  */
 @Entity
 @Table(name = "detalle_pedido")

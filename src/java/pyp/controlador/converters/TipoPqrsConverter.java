@@ -10,7 +10,7 @@ import pyp.modelo.entidades.Tipopqrs;
 
 /**
  *
- * @author alejo
+ * @GAES 1
  */
 @FacesConverter(forClass = Tipopqrs.class)
 public class TipoPqrsConverter implements Converter{

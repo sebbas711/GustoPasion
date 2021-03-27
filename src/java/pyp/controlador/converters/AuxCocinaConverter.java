@@ -8,6 +8,10 @@ import javax.faces.convert.FacesConverter;
 import pyp.DAO.IAuxCocinaDAO;
 import pyp.modelo.entidades.AuxCocina;
 
+/**
+ *
+ * @GAES 1
+ */
 @FacesConverter(forClass = AuxCocina.class)
 public class AuxCocinaConverter implements Converter {
     

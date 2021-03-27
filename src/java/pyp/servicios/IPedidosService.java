@@ -11,6 +11,10 @@ import pyp.excepciones.BusinessException;
 import pyp.modelo.entidades.Estadopedido;
 import pyp.modelo.entidades.Pedido;
 
+/**
+ *
+ * @GAES 1
+ */
 @Local
 public interface IPedidosService {
     

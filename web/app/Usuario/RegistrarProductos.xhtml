@@ -17,7 +17,6 @@
                 <br/>
                 <div class="row">
                     <div class="col-md-5" style="margin-left: 100px">
-
                         <h:outputLabel for="fr_rol">#{msjRegistro.ROL}</h:outputLabel>
                         <h:selectOneMenu id="fr_rol" class="form-control" value="#{usuarioControlador.nuevoUsuario.rol}">
                             <f:selectItem itemLabel="#{msjRegistro.SeleccioneuntipodeRol}" itemValue=""/>
@@ -57,7 +56,6 @@
                                      a:placeholder="#{msjRegistro.PrimerAprellido}"/>
                     </div>
                     <div class="col-md-5">
-
                         <h:outputLabel for="fr_sapellido">#{msjRegistro.SegundoApellido}</h:outputLabel>
                         <h:inputText id="fr_sapellido" class="form-control" 
                                      value="#{usuarioControlador.nuevoUsuario.segundoApellido}" maxlength="30" 
@@ -81,7 +79,6 @@
                         <h:inputSecret id="fr_contraseña" class="form-control" 
                                        value="#{usuarioControlador.nuevoUsuario.contraseña}" maxlength="20" 
                                        a:placeholder="#{msjRegistro.Contraseña}"/>
-
                     </div>
                 </div>
                 <br/>

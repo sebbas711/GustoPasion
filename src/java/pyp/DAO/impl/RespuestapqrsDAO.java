@@ -13,7 +13,7 @@ import pyp.DAO.IRespuestapqrsDAO;
 
 /**
  *
- * @author PC
+ * @GAES 1
  */
 @Stateless
 public class RespuestapqrsDAO extends AbstractDAO<Respuestapqrs> implements IRespuestapqrsDAO {

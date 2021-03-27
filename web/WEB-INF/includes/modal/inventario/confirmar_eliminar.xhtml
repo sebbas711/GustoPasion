@@ -4,7 +4,8 @@
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <!-- modal mostrar usuarios-->
-    <div class="modal fade" id="eliminarInsumo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="eliminarInsumo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" 
+         aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <h:form prependId="false">
@@ -13,14 +14,17 @@
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span class="text-light" aria-hidden="true">&times;</span>
                             </button>
-                            <span><center><img src="#{request.contextPath}/resource/img/LOgo.png" class="rounded-pill" 
-                                               target="_blank" style="height: 70px"/></center></span>             
+                            <span><center><img src="#{request.contextPath}/resource/img/LOgo.png" 
+                                               class="rounded-pill" 
+                                               target="_blank" style="height: 70px"/>
+                                </center>
+                            </span>             
                         </div>
                         <div class="modal-body">
-                            <h5>#{msjModales.Estasegurodeeliminarelinsumo} <strong>#{inventarioControlador.insumoSeleccionado.nombre}
-                                </strong>, #{msjModales.pertenecientealtipodeinsumo} 
+                            <h5>#{msjModales.Estasegurodeeliminarelinsumo} 
+                                <strong>#{inventarioControlador.insumoSeleccionado.nombre}</strong>, 
+                                #{msjModales.pertenecientealtipodeinsumo} 
                                 <strong>#{inventarioControlador.insumoSeleccionado.tipoInsumo.nombre}</strong>?</h5>
-
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">#{msjModales.Cancelar} </button>
                                 <h:commandButton class="btn" value="#{msjModales.Eliminar}" 
@@ -28,7 +32,6 @@
                                                  style="background: #951010;color: white"/>
                             </div>
                         </div>
-
                     </h:panelGroup>
                 </h:form>
             </div>

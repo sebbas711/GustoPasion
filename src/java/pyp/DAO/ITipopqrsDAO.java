@@ -10,7 +10,7 @@ import pyp.modelo.entidades.Tipopqrs;
 
 /**
  *
- * @GAES 5
+ * @GAES 1
  */
 @Local
 public interface ITipopqrsDAO extends DAO<Tipopqrs> {

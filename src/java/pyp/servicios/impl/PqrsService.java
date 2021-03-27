@@ -16,7 +16,10 @@ import pyp.excepciones.MessageException;
 import pyp.modelo.entidades.Estadopqrs;
 import pyp.modelo.entidades.Pqrs;
 import pyp.servicios.IPqrsService;
-
+/**
+ *
+ * @GAES 1
+ */
 @Stateless
 public class PqrsService implements IPqrsService {
 

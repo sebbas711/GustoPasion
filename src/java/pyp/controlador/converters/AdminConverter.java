@@ -15,7 +15,7 @@ import pyp.modelo.entidades.Administrador;
 
 /**
  *
- * @author alejo
+ * @GAES 1
  */
 @FacesConverter(forClass = Administrador.class)
 public class AdminConverter implements Converter {

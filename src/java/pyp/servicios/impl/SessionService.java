@@ -15,7 +15,10 @@ import pyp.modelo.entidades.Rol;
 import pyp.modelo.entidades.Usuario;
 import pyp.servicios.*;
 
-
+/**
+ *
+ * @GAES 1
+ */
 @Stateless
 public class SessionService implements ISessionService {
 

@@ -11,6 +11,10 @@ import pyp.excepciones.BusinessException;
 import pyp.modelo.entidades.CategoriaProducto;
 import pyp.modelo.entidades.Producto;
 
+/**
+ *
+ * @GAES 1
+ */
 @Local
 public interface IProductosService {
     

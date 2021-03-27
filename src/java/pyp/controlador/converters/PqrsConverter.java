@@ -15,7 +15,7 @@ import pyp.modelo.entidades.Pqrs;
 
 /**
  *
- * @author alejo
+ * @GAES 1
  */
 @FacesConverter(forClass = Pqrs.class)
 public class PqrsConverter implements Converter{

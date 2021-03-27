@@ -20,6 +20,10 @@ import pyp.modelo.entidades.Producto;
 import pyp.servicios.IProductosService;
 import pyp.util.MessageUtil;
 
+/**
+ *
+ * @GAES 1
+ */
 @Named
 @ViewScoped
 public class ControlProductosView implements Serializable {

@@ -11,7 +11,7 @@ import pyp.DAO.IAuxCocinaDAO;
 
 /**
  *
- * @Gaes 5
+ * @GAES 1
  */
 @Stateless
 public class AuxCocinaDAO extends AbstractDAO<AuxCocina> implements IAuxCocinaDAO {

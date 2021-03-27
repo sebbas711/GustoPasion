@@ -11,7 +11,7 @@ import pyp.modelo.dto.CantidadInsumo;
 
 /**
  *
- * @author PC
+ * @GAES 1
  */
 @Local
 public interface ICantidadInsumoDAO {

@@ -14,7 +14,7 @@ import pyp.modelo.dto.VentaMesData;
 
 /**
  *
- * @author Gaes5
+ * @GAES 1
  */
 @Stateless
 public class VentaMesDAO extends BaseDAO<VentaMesData> implements IVentaMesDAO {

@@ -11,7 +11,7 @@ import pyp.DAO.IClienteDAO;
 
 /**
  *
- * @Gaes 5
+ * @GAES 1
  */
 @Stateless
 public class ClienteDAO extends AbstractDAO<Cliente> implements IClienteDAO {

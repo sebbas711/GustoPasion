@@ -13,7 +13,7 @@ import pyp.modelo.entidades.Pqrs;
 
 /**
  *
- * @GAES 5
+ * @GAES 1
  */
 @Local
 public interface IPqrsDAO extends DAO<Pqrs> {

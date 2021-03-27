@@ -11,7 +11,7 @@ import pyp.modelo.entidades.Estadopqrs;
 
 /**
  *
- * @author PC
+ * @GAES 1
  */
 @Local
 public interface IEstadopqrsDAO extends DAO<Estadopqrs> {

@@ -27,6 +27,10 @@ import pyp.modelo.entidades.enums.EstadoPedidoEnum;
 import pyp.servicios.IPedidosService;
 import pyp.util.MessageUtil;
 
+/**
+ *
+ * @GAES 1
+ */
 @Named
 @ViewScoped
 public class RegistroPedidoControlador implements Serializable {

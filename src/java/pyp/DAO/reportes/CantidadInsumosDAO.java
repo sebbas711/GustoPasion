@@ -14,7 +14,7 @@ import pyp.modelo.dto.CantidadInsumo;
 
 /**
  *
- * @author PC
+ * @GAES 1
  */
 @Stateless
 public class CantidadInsumosDAO extends BaseDAO<CantidadInsumo> implements ICantidadInsumoDAO {

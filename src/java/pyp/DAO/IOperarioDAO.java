@@ -10,7 +10,7 @@ import pyp.modelo.entidades.Operario;
 
 /**
  *
- * @GAES 5
+ * @GAES 1
  */
 @Local
 public interface IOperarioDAO extends DAO<Operario> {

@@ -15,7 +15,7 @@ import pyp.excepciones.MessageException;
 
 /**
  *
- * @author Ismael
+ * @GAES 1
  */
 public abstract class AbstractFileSaveService {
 
@@ -27,31 +27,39 @@ public abstract class AbstractFileSaveService {
             }
         }
     }
-    
-    protected void savePart(Part partFile, String pathToSaveFile) throws BusinessException{
+
+    protected void savePart(Part partFile, String pathToSaveFile) throws BusinessException {
         makeDir(pathToSaveFile);
         File fileToSave = new File(pathToSaveFile.concat(getNameFile(partFile.getContentType())));
-        try(InputStream isFile = partFile.getInputStream()){
+        try (InputStream isFile = partFile.getInputStream()) {
             byte[] bytesFile = new byte[isFile.available()];
             isFile.read(bytesFile);
             Files.write(fileToSave.toPath(), bytesFile);
-        }catch(IOException ioe){
+        } catch (IOException ioe) {
             throw new BusinessException(MessageException.BE_FILE_NOT_SAVE, ioe);
         }
     }
-    
-    protected String getExtention(String mimeType){
+
+    protected String getExtention(String mimeType) {
         switch (mimeType) {
             case "image/jpeg":
                 return ".jpg";
             case "image/png":
                 return ".png";
+            case "application/pdf":
+                return ".pdf";
+            case "image/webm":
+                return ".webp";
+            case "image/gif":
+                return ".gif";
+            case "image/bmp":
+                return ".bmp";
             default:
                 throw new AssertionError();
         }
     }
-    
-    protected String toRealPath(String pathFile){
+
+    protected String toRealPath(String pathFile) {
         return pathFile.replace("/", File.separator);
     }
 

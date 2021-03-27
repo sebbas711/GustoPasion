@@ -13,7 +13,7 @@ import pyp.DAO.IUsuarioDAO;
 
 /**
  *
- * @Gaes 5
+ * @GAES 1
  */
 @Stateless
 public class UsuarioDAO extends AbstractDAO<Usuario> implements IUsuarioDAO {

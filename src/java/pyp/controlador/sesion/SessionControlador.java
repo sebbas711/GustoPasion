@@ -24,6 +24,10 @@ import pyp.servicios.ISessionService;
 import pyp.util.MessageUtil;
 import pyp.util.RedirectUtil;
 
+/**
+ *
+ * @GAES 1
+ */
 @Named(value = "sessionControlador")
 @SessionScoped
 public class SessionControlador implements Serializable {

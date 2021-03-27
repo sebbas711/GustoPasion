@@ -13,7 +13,7 @@ import static pyp.DAO.IRolDAO.ID_ROL_CLIENTE;
 
 /**
  *
- * @Gaes 5
+ * @GAES 1
  */
 @Stateless
 public class RolDAO extends AbstractDAO<Rol> implements IRolDAO {

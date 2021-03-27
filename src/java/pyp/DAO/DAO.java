@@ -9,7 +9,7 @@ import java.util.List;
 
 /**
  *
- * @GAES 5
+ * @GAES 1
  */
 public interface DAO<E>  {
     

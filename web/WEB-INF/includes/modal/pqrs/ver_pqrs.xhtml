@@ -14,7 +14,8 @@
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span class="text-light" aria-hidden="true">&times;</span>
                         </button>
-                        <span><center style="color: #fff">
+                        <span>
+                            <center style="color: #fff">
                                 <img src="#{request.contextPath}/resource/img/LOgo.png" 
                                      class="rounded-pill" target="_blank" 
                                      style="height: 70px"/>
@@ -25,14 +26,18 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="message-text" class="col-form-label"><b>#{msjRadicarPQRS.TipodePQRS}</b></label>
+                                    <label for="message-text" class="col-form-label">
+                                        <b>#{msjRadicarPQRS.TipodePQRS}</b>
+                                    </label>
                                     <h:outputText class="form-control" value="#{pqrsControlador.pqrsSeleccionada.tipoPQRS}"></h:outputText>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="message-text" class="col-form-label"><b>#{msjModales.Fecha}</b></label>
-                                    <h:outputText class="form-control" value="#{pqrsControlador.pqrsSeleccionada.fecha}">
+                                    <label for="message-text" class="col-form-label"><b>#{msjModales.Fecha}</b>
+                                    </label>
+                                    <h:outputText class="form-control" 
+                                                  value="#{pqrsControlador.pqrsSeleccionada.fecha}">
                                         <f:convertDateTime pattern="YYYY/MM/dd"/>
                                     </h:outputText>
                                 </div>
@@ -42,7 +47,9 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <h:outputLabel for="fr_observacion" class="col-form-label"><b>#{msjModales.Observaciones} </b></h:outputLabel>
+                                    <h:outputLabel for="fr_observacion" class="col-form-label">
+                                        <b>#{msjModales.Observaciones}</b>
+                                    </h:outputLabel>
                                     <h:outputText class="form-control" id="fr_observacion"
                                                   value="#{pqrsControlador.pqrsSeleccionada.observaciones}"/>
                                 </div>
@@ -50,7 +57,8 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal" style="background: #951010">#{msjModales.Cancelar} </button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal" 
+                                style="background: #951010">#{msjModales.Cancelar}</button>
                     </div>
                 </h:panelGroup>
             </div>

@@ -16,7 +16,7 @@ import pyp.modelo.entidades.Estadopedido;
 
 /**
  *
- * @author alejo
+ * @GAES 1
  */
 @FacesConverter(forClass = Estadopedido.class)
 public class estadoPedidoConverter implements Converter{

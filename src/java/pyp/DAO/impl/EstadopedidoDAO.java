@@ -11,7 +11,7 @@ import pyp.modelo.entidades.Estadopedido;
 
 /**
  *
- * @author PC
+ * @GAES 1
  */
 @Stateless
 public class EstadopedidoDAO extends AbstractDAO<Estadopedido> implements IEstadopedidoDAO {

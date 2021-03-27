@@ -11,7 +11,7 @@ import pyp.excepciones.BusinessException;
 
 /**
  *
- * @author Ismael
+ * @GAES 1
  */
 @Local
 public interface IFileSaveService {

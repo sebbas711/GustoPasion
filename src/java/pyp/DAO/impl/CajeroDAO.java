@@ -11,7 +11,7 @@ import pyp.DAO.ICajeroDAO;
 
 /**
  *
- * @Gaes 5
+ * @GAES 1
  */
 @Stateless
 public class CajeroDAO extends AbstractDAO<Cajero> implements ICajeroDAO {

@@ -15,6 +15,10 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+/**
+ *
+ * @GAES 1
+ */
 public class Email {
 
     private static final String USER = "gustoypasion2020@gmail.com";

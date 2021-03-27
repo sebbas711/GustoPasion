@@ -15,16 +15,24 @@
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span class="text-light" aria-hidden="true">&times;</span>
                             </button>
-                            <span><center><img src="#{request.contextPath}/resource/img/LOgo.png" class="rounded-pill" target="_blank" style="height: 70px"/></center></span>             
+                            <span>
+                                <center>
+                                    <img src="#{request.contextPath}/resource/img/LOgo.png" class="rounded-pill" 
+                                         target="_blank" style="height: 70px"/>
+                                </center>
+                            </span>             
                         </div>
                         <div class="modal-body">
-                            <h5>#{msjModales.Estasegurode} #{pqrsControlador.btnValueEstado.toLowerCase()} #{msjPQRS.PQRS} <strong>#{pqrsControlador.pqrsSeleccionada.id}</strong>? </h5>
+                            <h5>#{msjModales.Estasegurode} #{pqrsControlador.btnValueEstado.toLowerCase()} 
+                                #{msjPQRS.PQRS} <strong>#{pqrsControlador.pqrsSeleccionada.id}</strong>? </h5>
                             <div class="modal-footer">
-                                <button class="btn" type="button" data-dismiss="modal" style="background: #951010; color: white">#{msjModales.Cancelar}</button>
-                                <h:commandButton class="btn" value="#{pqrsControlador.btnValueEstado}" action="#{pqrsControlador.cambiarEstado()}" style="background: #727272; color: white"/>
+                                <button class="btn" type="button" data-dismiss="modal" 
+                                        style="background: #951010; color: white">#{msjModales.Cancelar}</button>
+                                <h:commandButton class="btn" value="#{pqrsControlador.btnValueEstado}" 
+                                                 action="#{pqrsControlador.cambiarEstado()}" 
+                                                 style="background: #727272; color: white"/>
                             </div>
                         </div>
-
                     </h:panelGroup>
                 </h:form>
             </div>

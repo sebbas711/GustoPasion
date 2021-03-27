@@ -7,7 +7,10 @@ package pyp.util;
 
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
-
+/**
+ *
+ * @GAES 1
+ */
 
 public class RedirectUtil {
 

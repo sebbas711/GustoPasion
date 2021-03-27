@@ -17,6 +17,10 @@ import pyp.modelo.entidades.Pedido;
 import pyp.servicios.IPedidosService;
 import pyp.util.MessageUtil;
 
+/**
+ *
+ * @GAES 1
+ */
 @Named
 @ViewScoped
 public class ControlPedidoView implements Serializable {

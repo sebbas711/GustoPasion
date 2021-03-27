@@ -12,7 +12,7 @@ import pyp.modelo.entidades.Pedido;
 
 /**
  *
- * @GAES 5
+ * @GAES 1
  */
 @Local
 public interface IPedidoDAO extends DAO<Pedido> {

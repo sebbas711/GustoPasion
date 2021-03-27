@@ -35,7 +35,7 @@ import pyp.servicios.pqrs.IRegistroPqrsService;
 
 /**
  *
- * @author alejo
+ * @GAES 1
  */
 @Named(value = "pqrsControlador")
 @ViewScoped

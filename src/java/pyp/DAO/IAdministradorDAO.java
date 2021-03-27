@@ -10,7 +10,7 @@ import pyp.modelo.entidades.Administrador;
 
 /**
  *
- * @GAES 5
+ * @GAES 1
  */
 @Local
 public interface IAdministradorDAO extends DAO<Administrador> {

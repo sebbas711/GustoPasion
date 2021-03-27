@@ -10,7 +10,7 @@ import pyp.modelo.entidades.Rol;
 
 /**
  *
- * @GAES 5
+ * @GAES 1
  */
 @Local
 public interface IRolDAO extends DAO<Rol> {

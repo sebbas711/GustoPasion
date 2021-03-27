@@ -25,6 +25,10 @@ import pyp.servicios.IPqrsService;
 import pyp.servicios.pqrs.IRespondePqrsService;
 import pyp.util.MessageUtil;
 
+/**
+ *
+ * @GAES 1
+ */
 @Named
 @ViewScoped
 public class ControlPqrsView implements Serializable {

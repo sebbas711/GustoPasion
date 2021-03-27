@@ -25,11 +25,12 @@
                             </span>             
                         </div>
                         <div class="modal-body">
-                            <h5>¿Esta seguro de eliminar el pedido?</h5>
+                            <h5>¿#{msjInventario.Estasegurodeeliminarelpedido}?</h5>
                             <div class="modal-footer">
                                 <button class="btn" type="button" data-dismiss="modal" style="background: #951010; 
                                         color: white">#{msjModales.Cancelar}</button>
-                                        <h:commandButton class="btn" value="#{msjModales.Eliminar}" action="#{pedidosControlador.eliminar()}" 
+                                        <h:commandButton class="btn" value="#{msjModales.Eliminar}" 
+                                                         action="#{pedidosControlador.eliminar()}" 
                                                  style="background: #727272; color: white"/>
                             </div>
                         </div>

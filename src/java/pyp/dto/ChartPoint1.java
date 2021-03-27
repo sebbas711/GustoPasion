@@ -7,7 +7,7 @@ package pyp.dto;
 
 /**
  *
- * @author Gaes5
+ * @GAES 1
  */
 public class ChartPoint1 {
     

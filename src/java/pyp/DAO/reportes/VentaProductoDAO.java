@@ -15,7 +15,7 @@ import pyp.modelo.dto.VentaProductoData;
 
 /**
  *
- * @author PC
+ * @GAES 1
  */
 
 @Stateless

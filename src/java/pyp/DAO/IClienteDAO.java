@@ -10,7 +10,7 @@ import pyp.modelo.entidades.Cliente;
 
 /**
  *
- * @GAES 5
+ * @GAES 1
  */
 @Local
 public interface IClienteDAO extends DAO<Cliente> {

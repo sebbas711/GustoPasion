@@ -16,7 +16,7 @@ import pyp.servicios.usuarios.IConsultaUsuarioService;
 
 /**
  *
- * @author Gaes5
+ * @GAES 1
  */
 @Stateless
 public class ConsultaUsuarioService implements IConsultaUsuarioService {

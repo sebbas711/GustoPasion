@@ -14,7 +14,7 @@ import pyp.servicios.reportes.IReportePqrsMes;
 
 /**
  *
- * @author alejo
+ * @GAES 1
  */
 @Stateless
 public class ReportePqrsMes implements IReportePqrsMes {

@@ -10,7 +10,7 @@ import pyp.modelo.entidades.Factura;
 
 /**
  *
- * @GAES 5
+ * @GAES 1
  */
 @Local
 public interface IFacturaDAO extends DAO<Factura> {

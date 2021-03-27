@@ -11,7 +11,7 @@ import pyp.DAO.ITipopqrsDAO;
 
 /**
  *
- * @Gaes 5
+ * @GAES 1
  */
 @Stateless
 public class TipopqrsDAO extends AbstractDAO<Tipopqrs> implements ITipopqrsDAO {

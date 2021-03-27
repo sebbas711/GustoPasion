@@ -33,6 +33,10 @@ import pyp.modelo.entidades.Pedido;
 import pyp.servicios.IPedidosService;
 import pyp.util.MessageUtil;
 
+/**
+ *
+ * @GAES 1
+ */
 @Named(value = "pedidosControlador")
 @ViewScoped
 public class PedidosControlador implements Serializable {

@@ -9,7 +9,7 @@ import java.util.List;
 
 /**
  *
- * @author PC
+ * @GAES 1
  */
 public class ChartData {
 

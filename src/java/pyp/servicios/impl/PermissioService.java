@@ -12,7 +12,10 @@ import javax.ejb.Stateless;
 import pyp.modelo.entidades.Permiso;
 import pyp.modelo.entidades.Rol;
 import pyp.servicios.IPermissionService;
-
+/**
+ *
+ * @GAES 1
+ */
 
 @Stateless
 public class PermissioService implements IPermissionService {

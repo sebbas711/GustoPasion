@@ -43,7 +43,7 @@ import pyp.modelo.entidades.Producto;
 
 /**
  *
- * @author PC
+ * @GAES 1
  */
 @Named
 @SessionScoped

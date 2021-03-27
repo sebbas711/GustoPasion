@@ -10,7 +10,7 @@ import pyp.modelo.entidades.Permiso;
 
 /**
  *
- * @author alejo
+ * @GAES 1
  */
 @Local
 public interface IPermisoDAO extends DAO<Permiso>{

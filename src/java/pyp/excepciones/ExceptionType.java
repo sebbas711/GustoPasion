@@ -7,7 +7,7 @@ package pyp.excepciones;
 
 /**
  *
- * @author Gaes5
+ * @GAES 1
  */
 public enum ExceptionType {
     WARNING, INFO, ERROR, FATAL
