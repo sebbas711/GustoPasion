@@ -53,11 +53,9 @@ public class RegistroProductoControlador implements Serializable {
     private Producto producto;
     private InsumosDelProducto insumoProducto;
 
-    //@EJB(beanName = "Producto")
-    //private IFileSaveService fileSaveService;
-    
-    //@EJB
-    //private Part imgProductos;
+    @EJB(beanName = "Producto")
+    private IFileSaveService fileSaveService;
+    private Part imgProductos;
 
     @PostConstruct
     public void init() {
@@ -92,6 +90,7 @@ public class RegistroProductoControlador implements Serializable {
 
     public void registrarProducto() {
         if (productoValido()) {
+            producto.setImagenP(getPathImgProductos());
             productoDAO.create(producto);
             init();
             MessageUtil.sendSuccessModal("Registro exitoso", "Se ha registrado correctamente el producto con la respectiva parametrización para preparlo.");
@@ -104,23 +103,11 @@ public class RegistroProductoControlador implements Serializable {
         return Objects.nonNull(producto.getNombre()) && !producto.getNombre().isEmpty();
     }
     
-    /*public void imgProducto() {
-        /*
-        String infoFile = imgPromocion.getSubmittedFileName()
-                .concat(" - ")
-                .concat(imgPromocion.getName())
-                .concat(" - ")
-                .concat(imgPromocion.getContentType())
-                .concat(" - ")
-                .concat(String.valueOf(imgPromocion.getSize()));
-        */
-       /* try {
+    private String getPathImgProductos() {
+       try {
             ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
-            String pathImage = fileSaveService.save(imgProductos, ec.getRealPath("/"));
-            //http://localhost:8080/GustoPasion
-            String urlImage = buildUrl(ec).concat("/").concat(pathImage);
-            MessageUtil.sendInfoModal("Se ha publicitado", "Se ha enviado la publicidad de la promoción a los usuarios del sistema.");
-        } catch (BusinessException ex) {
+            return fileSaveService.save(imgProductos, ec.getRealPath("/"));
+         } catch (BusinessException ex) {
             ex.printStackTrace();
             MessageUtil.sendErrorModal(ex.getMessage(), ex.getDetails());
         } catch (Exception e) {
@@ -128,19 +115,7 @@ public class RegistroProductoControlador implements Serializable {
                     "", Boolean.FALSE);
             e.printStackTrace();
         }
-    }*/
-    
-    
-   /* private String buildUrl(ExternalContext ec){
-        try {
-            return new URL(ec.getRequestScheme(),
-                    ec.getRequestServerName(),
-                    ec.getRequestServerPort(),
-                    ec.getRequestContextPath()).toString();
-        } catch (MalformedURLException ex) {
-            Logger.getLogger(EnvioPromoControlador.class.getName()).log(Level.SEVERE, null, ex);
-            return "";
-        }
+       return "";
     }
 
     public Part getImgProductos() {
@@ -149,7 +124,7 @@ public class RegistroProductoControlador implements Serializable {
 
     public void setImgProductos(Part imgProductos) {
         this.imgProductos = imgProductos;
-    }*/
+    }
     
     
 

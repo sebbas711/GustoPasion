@@ -18,12 +18,13 @@ import pyp.servicios.file.IFileSaveService;
 @Stateless(name = "Producto")
 public class ProductoFileSaveService extends AbstractFileSaveService implements IFileSaveService {
 
-    private static final String PATH_IMAGES_PRODUCTOS = "public/producto/";
+    private static final String PATH_IMAGES_PRODUCTOS = "producto/";
+    private static final String PATH_RESOURCE_IMAGE = "resource/img/" + PATH_IMAGES_PRODUCTOS;
     private static final String FILE_NAME = "producto-";
 
     @Override
     public String save(Part partFile, String rootPathToSave) throws BusinessException {
-        String realPath = toRealPath(PATH_IMAGES_PRODUCTOS);
+        String realPath = toRealPath(PATH_RESOURCE_IMAGE);
         savePart(partFile, rootPathToSave.concat(realPath));
         return PATH_IMAGES_PRODUCTOS.concat(getNameFile(partFile.getContentType()));
     }

@@ -46,21 +46,15 @@
                                                 <h:inputText id="descripcion" a:placeholder="Piza de carnes con queso" class="form-control"
                                                              value="#{registroProductoControlador.producto.descripcion}" required="true" requiredMessage="Ingrese la descripción del producto"/>
                                             </div>
-                                            <!--<div class="col col-md-2">
-                                                <label for="imagen" class="form-control-label">#{msjProductos.Imagen}</label>
-                                            </div>
-                                            <div class="custom-file col-12 col-md-4">
-                                                <h:inputFile id="imagen" 
-                                                             a:aria-required="true" a:aria-invalid="false"/>
-                                                <div class="invalid-feedback">Example invalid custom file feedback</div>
-                                            </div>-->
                                             <div class="col col-md-2">
                                                 <label for="imagen" class="form-control-label">#{msjProductos.Imagen}</label>
                                             </div>
                                             <div class="col-12 col-md-4">
-                                                <h:inputText id="imagen" a:placeholder="/Bebidas/JugoMandarina.jpg" class="form-control"
-                                                             value="#{registroProductoControlador.producto.imagenP}"
-                                                             required="true" requiredMessage="Ingrese una imagen"/>
+                                                <h:inputFile id="imagen" class="custom-file-input"
+                                                             value="#{registroProductoControlador.imgProductos}"
+                                                             a:aria-required="true" a:aria-invalid="false"/>
+                                                <label class="custom-file-label" for="imagen">Seleccione una imagen...</label>
+                                                <div class="invalid-feedback">Example invalid custom file feedback</div>
                                             </div>
                                         </div>
                                         <div class="row form-group">
@@ -80,8 +74,9 @@
                                             <div class="col-12 col-md-4">
                                                 <h:selectOneMenu id="categoria"
                                                                  value="#{registroProductoControlador.producto.categoriaProducto}"
-                                                                 class="form-control">
-                                                    <f:selectItems value="#{registroProductoControlador.categorias}" var="cat" itemValue="#{cat}" itemLabel="#{cat.nombreCategoria}"/>
+                                                                 class="form-control" converter="CategoriaProductoConverter">
+                                                    <f:selectItems value="#{registroProductoControlador.categorias}" 
+                                                                   var="cat" itemValue="#{cat}" itemLabel="#{cat.nombreCategoria}"/>
                                                 </h:selectOneMenu>
                                             </div>
                                         </div>
@@ -151,12 +146,12 @@
                                         </div>
                                         <div class="row form-group">
                                             <div class="col-12 col-md-12" id="Añadir Producto">
-                                                <p:commandLink id="registrarPedido"  class="btn btn-block" 
+                                                <h:commandLink id="registrarPedido"  class="btn btn-block" 
                                                                style="background: #951010; color: white"
-                                                               update="contentRegistroPedido"
                                                                actionListener="#{registroProductoControlador.registrarProducto()}">
                                                     <span id="Enviar Producto">#{msjProductos.RegistrarProducto}</span>
-                                                </p:commandLink>
+                                                    <f:ajax render="contentRegistroPedido" execute="@form"/>
+                                                </h:commandLink>
                                             </div>
                                         </div>
                                         <h:messages showDetail="false" layout="table"

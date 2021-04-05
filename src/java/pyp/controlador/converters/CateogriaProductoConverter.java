@@ -17,7 +17,7 @@ import pyp.modelo.entidades.CategoriaProducto;
  *
  * @GAES 1
  */
-@FacesConverter(forClass = CategoriaProducto.class)
+@FacesConverter(value = "CategoriaProductoConverter")
 public class CateogriaProductoConverter implements Converter{
     
     private ICategoriaProductoDAO categoriaProductoDAO;
